@@ -1,0 +1,55 @@
+---
+title: Usecase Examples
+sidebar_position: 3
+last_update:
+  date: 2024-09-24
+  author: Redon Alla
+tags: [react, react-native, expo, framework, component]
+---
+
+
+import ExampleWramper from '@site/src/components/Docs/ExampleWramper';
+import SizesExample from '@site/src/components/Docs/Icons/Sizes';
+import SizesExampleMdx from '!!raw-loader!@site/src/components/Docs/Icons/Sizes';
+import ColorsExample from '@site/src/components/Docs/Icons/Colors';
+import ColorsExampleMdx from '!!raw-loader!@site/src/components/Docs/Icons/Colors';
+import StylingWithStyleSheetExample from '@site/src/components/Docs/Icons/StylingWithStyleSheet';
+import StylingWithStyleSheetExampleMdx from '!!raw-loader!@site/src/components/Docs/Icons/StylingWithStyleSheet';
+import UsingTextComponent from '@site/src/components/Docs/Icons/UsingTextComponent';
+import UsingTextComponentMdx from '!!raw-loader!@site/src/components/Docs/Icons/UsingTextComponent';
+
+
+The following example demonstrates the Icons in action.
+
+## Sizes
+
+<ExampleWramper codeExample={SizesExampleMdx}>
+<SizesExample />
+</ExampleWramper>
+
+## Colors
+
+<ExampleWramper codeExample={ColorsExampleMdx}>
+<ColorsExample />
+</ExampleWramper>
+
+## Styling with StyleSheet
+
+<ExampleWramper codeExample={StylingWithStyleSheetExampleMdx}>
+<StylingWithStyleSheetExample />
+</ExampleWramper>
+
+## Using Text Component
+
+<ExampleWramper codeExample={UsingTextComponentMdx}>
+<UsingTextComponent />
+</ExampleWramper>
+
+
+## Playground
+
+```jsx live noInline
+//Play with props to see live changes;
+
+render(<Icon name='star' size={128} color='primary'/>);
+```

@@ -1,0 +1,128 @@
+---
+title: Check List
+last_update:
+  date: 2024-09-24
+  author: Redon Alla
+tags: [react, react-native, expo, framework, component]
+---
+
+import Installation from '../_installation.mdx';
+import ColorProps from '@site/src/components/Docs/Colors/Props';
+import DocCardList from '@theme/DocCardList';
+
+
+<Installation name='FlexNative Checkbox' />
+
+## API
+
+```jsx
+import { CheckList, CheckListProps } from '@flexnative/inputs';
+```
+
+## Component
+
+**CheckList**
+
+Type: <code>React.PureComponent\<[CheckListProps\<T\>](#properties)\></code>
+
+## Properties
+|  Name   | Type | Required | Default Value | Description |
+| -- | -- | -- | -- | -- |
+| value | `T ❘ Array<T>` | **false** | `undefined` | Representing selected value/values from the available list. |
+| valueField | `string` | **false** | `undefined` | ***When the selected item is an object, always specify valueField.*** If you do not set a value for the field, the list will compare the items by reference, which may complicate debugging. For example, the selected value will not be applied, if it does not reference the exact passed data object. |
+| type | [`InputType`](#inputtype) | **false** | `outlined` | Checklist borders mode. |
+| multipleSelect | `boolean` | **false** | `true` | Boolean value for single or multiple selection. |
+| size | [`Sizes`](#sizes) | **false** | `normal` | Check list sizes. |
+| radius | [`BorderRadius`](#borderradius) | **false** | `medium` | Check list border radius. |
+| borderWidth | [`BorderWidth`](#borderwidth) | **false** | `hairline` | Check list borders width. |
+| borderColor | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `undefined` | Borders color according `react-native` ColorValue. |
+| disabled | `boolean` | **false** | `false` | Indicator if input it is disabled or not. |
+| color | [`InputColor`](#inputcolor) | **false** | `theme.color.default` | Color by theme or a custom color according `react-native` ColorValue. |
+| backgroundColor | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `undefined` | Input background color. |
+| label | `string` or [`React.ReactElement`](https://legacy.reactjs.org/blog/2014/10/14/introducing-react-elements.html) | **false** | `undefined` |  A `string` value to display as labal, or [`React.ReactElement`](https://legacy.reactjs.org/blog/2014/10/14/introducing-react-elements.html) to display a custom element as a label. |
+| labelStyle | `StyleProp<TextStyle>` or `((state: StateCallbackType) => StyleProp<TextStyle>)`| **false** | `undefined` |  Either text styles or a function that receives a boolean reflecting whether the component is currently active and returns text styles. |
+| onChange | <code>(event: NativeSyntheticEvent&lt;[CheckboxEvent](./check-box#checkboxeventt)&lt;T&gt; ❘ SyntheticEvent&lt;HTMLInputElement, &lt;[CheckboxEvent](./check-box#checkboxeventt)&lt;T&gt;&gt;) => void;</code> | **false** | `undefined` | Callback that is invoked when the user presses the checkbox. |
+| onValueChange | `(value: T) => void` | **false** | `undefined` | Callback that is invoked when the user presses the checkbox. |
+| direction | <code>'row' \| 'column'</code> | **false** | `column` | Check element direction. |
+| material | `boolean` | **false** | `false` | Indicator if input should looks like Material input. |
+| helperText | `string` | **false** | `undefined` |  Helper text about input. |
+| children | <code>Array<a href='https://legacy.reactjs.org/blog/2014/10/14/introducing-react-elements.html'></a>&lt;<a href="/@flexnative/framework-docks/docs/components/inputs/check-list#properties">CheckProps&lt;T&gt;</a>&gt;</code>  | **false** | `undefined` | React element to render custom check boxes. |
+
+### InputType
+One of `'outlined' | 'underlined'`
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| outlined | `string` | Property to set check list with borders. |
+| underlined | `string` | Property to set check list underlined, (with only bottom border). |
+
+### Sizes
+One of `'small' | 'default' | 'medium' | 'large'`
+
+|  Name   | Type | Value |
+| ------- | ---- | ----- |
+| small | `string` | Text size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).small <br />Padding Vertical: [FONT_SIZE](/docs/utilities/ui-constants#font_size).small * 0.5<br />Padding Horizonta: [FONT_SIZE](/docs/utilities/ui-constants#font_size).small * 0.75<br />Helper text size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).small * 0.75<br />Label text size: for material [FONT_SIZE](/docs/utilities/ui-constants#font_size).small * 0.78, default [FONT_SIZE](/docs/utilities/ui-constants#font_size).small |
+| default | `string` | Fonts size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).default <br />Icon size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).default * 1.5<br />Padding Horizonta: [FONT_SIZE](/docs/utilities/ui-constants#font_size).default * 0.75<br />Helper text size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).default * 0.75<br />Label text size: for material [FONT_SIZE](/docs/utilities/ui-constants#font_size).default * 0.78, default [FONT_SIZE](/docs/utilities/ui-constants#font_size).default |
+| medium | `string` | Fonts size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).medium <br />Icon size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).medium * 1.5<br />Padding Horizonta: [FONT_SIZE](/docs/utilities/ui-constants#font_size).medium * 0.75<br />Helper text size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).medium * 0.75<br />Label text size: for material [FONT_SIZE](/docs/utilities/ui-constants#font_size).medium * 0.78, default [FONT_SIZE](/docs/utilities/ui-constants#font_size).medium |
+| large | `string` | Fonts size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).large <br />Icon size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).large * 1.5<br />Padding Horizonta: [FONT_SIZE](/docs/utilities/ui-constants#font_size).large * 0.75<br />Helper text size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).large * 0.75<br />Label text size: for material [FONT_SIZE](/docs/utilities/ui-constants#font_size).large * 0.78, default [FONT_SIZE](/docs/utilities/ui-constants#font_size).large |
+
+### BorderRadius
+One of `'none' | 'small' | 'medium' | 'large' | 'full' | number`
+
+| Name | Type | Value |
+| ---- | ---- | ----- |
+| none | `number` | 0 |
+| small | `number` | 2 |
+| medium | `number` | 4 |
+| large | `number` | 6 |
+| full | `number` | 99999 |
+| | `number` | Any number value. |
+
+### BorderWidth
+One of `'none' | 'hairline' | 'thin' | 'base' | 'thick' | number`
+
+|  Name   | Type | Value |
+| ------- | ---- | ----- |
+| none | `number` | 0 |
+| hairline | [`StyleSheet.hairlineWidth`](https://reactnative.dev/docs/stylesheet#hairlinewidth) | This is defined as the width of a thin line on the platform. It can be used as the thickness of a border or division between two elements. |
+| thin | `number` | 1 |
+| base | `number` | 2 |
+| thick | `number` | 3 |
+| | `number` | Any number value |
+
+### InputColor
+
+<ColorProps />
+
+## Playground
+
+```jsx live noInline
+//Play with props to see live changes;
+
+function CheckListPlayground() {
+  const [textValues, setTextValues] = useState(['1', '2', '3']);
+
+  return (
+    <CheckList label='Check list label'
+              value={textValues}
+              color='success'
+              size='large'
+              backgroundColor='default'
+              borderColor='info'
+              borderWidth='thick'
+              radius='medium'
+              onValueChange={(newValues) => setTextValues([...newValues])}>
+      <Check value='1' label='Check 1' />
+      <Check value='2' label='Check 2' />
+      <Check value='3' label='Check 3' color='primary' />
+    </CheckList>
+  );
+}
+
+render(<CheckListPlayground />);
+```
+
+<br />
+<br />
+
+<DocCardList />

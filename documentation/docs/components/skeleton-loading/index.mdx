@@ -1,0 +1,123 @@
+---
+title: Skeleton Loading
+last_update:
+  date: 2024-09-24
+  author: Redon Alla
+tags: [react, react-native, expo, framework, component]
+---
+
+
+import Installation from '../../_installation.mdx';
+import ExampleWramper from '@site/src/components/Docs/ExampleWramper';
+import DefaultExample from '@site/src/components/Docs/skeleton-loading/Default';
+import DefaultExampleMdx from '!!raw-loader!@site/src/components/Docs/skeleton-loading/Default';
+import ColorsExample from '@site/src/components/Docs/skeleton-loading/Colors';
+import ColorsExampleMdx from '!!raw-loader!@site/src/components/Docs/skeleton-loading/Colors';
+import AnimationSpeedExample from '@site/src/components/Docs/skeleton-loading/AnimationSpeed';
+import AnimationSpeedExampleMdx from '!!raw-loader!@site/src/components/Docs/skeleton-loading/AnimationSpeed';
+import AnimationExample from '@site/src/components/Docs/skeleton-loading/Animation';
+import AnimationExampleMdx from '!!raw-loader!@site/src/components/Docs/skeleton-loading/Animation';
+import AnimationIntervalExample from '@site/src/components/Docs/skeleton-loading/AnimationInterval';
+import AnimationIntervalExampleMdx from '!!raw-loader!@site/src/components/Docs/skeleton-loading/AnimationInterval';
+import MaskExample from '@site/src/components/Docs/skeleton-loading/Mask';
+import MaskExampleMdx from '!!raw-loader!@site/src/components/Docs/skeleton-loading/Mask';
+
+
+The **FlexNative Skeleton Loading** is part of the `FlexNative` and is available under the `@flexnative/skeleton-loading` NPM package.
+
+## Dependencies
+- [`@flexnative/theme-context`](../../theme/index.mdx)
+- [`react-native-svg`](https://github.com/software-mansion/react-native-svg)
+
+<Installation title="FlexNative Skeleton Loading" name='@flexnative/skeleton-loading' />
+
+## API
+
+```jsx
+import SkeletonLoader from '@flexnative/skeleton-loading';
+```
+
+## Component
+
+**SkeletonLoader**
+
+Type: <code>React.Component\<[IContentLoaderProps\<T\>](#properties)\></code>
+
+## Properties
+
+:::info
+**`IContentLoaderProps`** props extends [`SvgProps`](https://github.com/software-mansion/react-native-svg)
+so any [`SvgProps`](https://github.com/software-mansion/react-native-svg) propertie it is applicable also in **`IContentLoaderProps`**
+:::
+
+|  Name | Type | Required | Default Value | Description |
+| -- | -- | -- | -- | -- |
+| animate | `boolean` | **false** | `true` | Boolean indicator whether to animate skeleton loading or not. |
+| backgroundColor | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `undefined` | Background color. |
+| foregroundColor | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `undefined` | Foreground color. |
+| speed | `number` | **false** | `1.2` | Animation speed. |
+| interval | `number` | **false** | `0.25` | Animation interval. |
+| uniqueKey | `string` | **false** | `random string` | Used for unique key for `<Rect fill='' clipPath='' />` |
+| beforeMask | `JSX.Element` | **false** | `random string` | Costum JSX.Element to render before loading mask. |
+
+## Usecase Examples
+
+The following example demonstrates the **FlexNative Skeleton Loading** in action.
+
+:::warning
+In documentation apprence of components may not be in correct way.
+To view the component in exact design please view the demo app.
+:::
+
+### Default
+
+<ExampleWramper codeExample={DefaultExampleMdx}>
+  <DefaultExample />
+</ExampleWramper>
+
+### Colors
+
+<ExampleWramper codeExample={ColorsExampleMdx}>
+  <ColorsExample />
+</ExampleWramper>
+
+### Animation Speed
+
+<ExampleWramper codeExample={AnimationSpeedExampleMdx}>
+  <AnimationSpeedExample />
+</ExampleWramper>
+
+### Animation
+
+<ExampleWramper codeExample={AnimationExampleMdx}>
+  <AnimationExample />
+</ExampleWramper>
+
+### Animation Interval
+
+<ExampleWramper codeExample={AnimationIntervalExampleMdx}>
+  <AnimationIntervalExample />
+</ExampleWramper>
+
+### Mask
+
+<ExampleWramper codeExample={MaskExampleMdx}>
+  <MaskExample />
+</ExampleWramper>
+
+## Playground
+
+```jsx live noInline
+//Play with props to see live changes;
+
+render(
+  <SkeletonLoader width={'100%'} height={110} animate={true} backgroundColor='crimson' foregroundColor='#FFC436'>
+    <Rect x="48" y="8" rx="3" ry="3" width="88" height="10" />
+    <Rect x="48" y="26" rx="3" ry="3" width="52" height="6" />
+    <Rect x="0" y="56" rx="3" ry="3" width="100%" height="6" />
+    <Rect x="0" y="72" rx="3" ry="3" width="100%" height="6" />
+    <Rect x="0" y="88" rx="3" ry="3" width="178" height="6" />
+    <Circle cx="20" cy="20" r="20" />
+  </SkeletonLoader>
+);
+```

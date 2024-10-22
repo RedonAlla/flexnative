@@ -1,0 +1,102 @@
+---
+title: Text Type
+sidebar_position: 2
+last_update:
+  date: 2024-09-24
+  author: Redon Alla
+tags: [react, react-native, expo, framework, component, avatar]
+---
+
+import ExampleWramper from '@site/src/components/Docs/ExampleWramper';
+import Colors from '@site/src/components/Docs/avatar/single/text/Colors';
+import ColorsMdx from '!!raw-loader!@site/src/components/Docs/avatar/single/text/Colors';
+import BackgroundColor from '@site/src/components/Docs/avatar/single/text/BackgroundColor';
+import BackgroundColorMdx from '!!raw-loader!@site/src/components/Docs/avatar/single/text/BackgroundColor';
+import BorderColor from '@site/src/components/Docs/avatar/single/text/BorderColor';
+import BorderColorMdx from '!!raw-loader!@site/src/components/Docs/avatar/single/text/BorderColor';
+import BorderWidth from '@site/src/components/Docs/avatar/single/text/BorderWidth';
+import BorderWidthMdx from '!!raw-loader!@site/src/components/Docs/avatar/single/text/BorderWidth';
+import FillMode from '@site/src/components/Docs/avatar/single/text/FillMode';
+import FillModeMdx from '!!raw-loader!@site/src/components/Docs/avatar/single/text/FillMode';
+import Radius from '@site/src/components/Docs/avatar/single/text/Radius';
+import RadiusMdx from '!!raw-loader!@site/src/components/Docs/avatar/single/text/Radius';
+import Size from '@site/src/components/Docs/avatar/single/text/Size';
+import SizeMdx from '!!raw-loader!@site/src/components/Docs/avatar/single/text/Size';
+import TextColor from '@site/src/components/Docs/avatar/single/text/TextColor';
+import TextColorMdx from '!!raw-loader!@site/src/components/Docs/avatar/single/text/textColor';
+
+
+Avatar with text.
+
+
+## Usecase Examples
+
+The following example demonstrates the Avatar of type text in action.
+
+### Color
+
+<ExampleWramper codeExample={ColorsMdx}>
+<Colors />
+</ExampleWramper>
+
+### BackgroundColor
+
+<ExampleWramper codeExample={BackgroundColorMdx}>
+<BackgroundColor />
+</ExampleWramper>
+
+### BorderColor
+
+<ExampleWramper codeExample={BorderColorMdx}>
+<BorderColor />
+</ExampleWramper>
+
+### BorderWidth
+
+<ExampleWramper codeExample={BorderWidthMdx}>
+<BorderWidth />
+</ExampleWramper>
+
+### FillMode
+
+<ExampleWramper codeExample={FillModeMdx}>
+<FillMode />
+</ExampleWramper>
+
+### Radius
+
+<ExampleWramper codeExample={RadiusMdx}>
+<Radius />
+</ExampleWramper>
+
+### Size
+
+<ExampleWramper codeExample={SizeMdx}>
+<Size />
+</ExampleWramper>
+
+
+### TextColor
+
+<ExampleWramper codeExample={TextColorMdx}>
+<TextColor />
+</ExampleWramper>
+
+## Playground
+
+```jsx live noInline
+//Play with props to see live changes;
+
+render(
+  <Avatar text='RA'
+          type='text'
+          style={{fontSize: 64, color: 'crimson'}}
+          size={120}
+          color='default'
+          borderWidth='thin'
+          fillMode='ghost'
+          backgroundColor='#ed143d24'
+          borderColor='crimson'
+  />
+);
+```

@@ -1,0 +1,84 @@
+---
+title: Spinner
+last_update:
+  date: 2024-09-24
+  author: Redon Alla
+tags: [react, react-native, expo, framework, component]
+---
+
+
+import ExampleWramper from '@site/src/components/Docs/ExampleWramper';
+import ColorsExample from '@site/src/components/Docs/spinner/Colors';
+import ColorsExampleMdx from '!!raw-loader!@site/src/components/Docs/spinner/Colors';
+import SizesExample from '@site/src/components/Docs/spinner/Sizes';
+import SizesExampleMdx from '!!raw-loader!@site/src/components/Docs/spinner/Sizes';
+import StylingWithStyleSheetExample from '@site/src/components/Docs/spinner/StylingWithStyleSheet';
+import StylingWithStyleSheetExampleMdx from '!!raw-loader!@site/src/components/Docs/spinner/StylingWithStyleSheet';
+import AnyIconExample from '@site/src/components/Docs/spinner/AnyIcon';
+import AnyIconExampleMdx from '!!raw-loader!@site/src/components/Docs/spinner/AnyIcon';
+
+
+**Spinner** is part of the [**@flexnative/icons**](../icons/index.mdx) package.
+To use the **FlexNative Spinner** you needs to install `@flexnative/icons` package.
+[Fallow this link](../icons/index.mdx#installation) on how to install the package.
+
+You can use any of paskage's icon as apinner.
+
+## API
+
+```jsx
+import { Spinner } from '@flexnative/icons';
+```
+
+## Component
+
+**Spinner**
+
+Type: <code>React.MemoExoticComponent\<(props: [IconProps](#properties)) => React.JSX.Element></code>
+
+## Properties
+
+:::info
+and `Spinner` components expects props of type [`IconProp`](../icons/basic-usage.mdx#properties).
+:::
+
+## Usecase Examples
+
+The following example demonstrates the Spinner in action.
+
+:::warning
+Animation it is not working here in documentation.
+To view animation please view the demo app.
+:::
+
+### Colors
+
+<ExampleWramper codeExample={ColorsExampleMdx}>
+  <ColorsExample />
+</ExampleWramper>
+
+### Sizes
+
+<ExampleWramper codeExample={SizesExampleMdx}>
+  <SizesExample />
+</ExampleWramper>
+
+### Styling with StyleSheet
+
+<ExampleWramper codeExample={StylingWithStyleSheetExampleMdx}>
+  <StylingWithStyleSheetExample />
+</ExampleWramper>
+
+### Any Icon
+
+<ExampleWramper codeExample={AnyIconExampleMdx}>
+  <AnyIconExample />
+</ExampleWramper>
+
+## Playground
+
+```jsx live noInline
+//Play with props to see live changes;
+
+render(<Spinner name='star' size={128} color='secondary' />);
+```

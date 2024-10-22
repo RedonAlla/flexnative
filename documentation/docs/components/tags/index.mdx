@@ -1,0 +1,202 @@
+---
+title: Tags
+last_update:
+  date: 2024-09-24
+  author: Redon Alla
+tags: [react, react-native, expo, framework, component]
+---
+
+
+import Admonition from '@theme/Admonition';
+import Installation from '../../_installation.mdx';
+import ColorProps from '@site/src/components/Docs/Colors/Props';
+import ExampleWramper from '@site/src/components/Docs/ExampleWramper';
+import BackgroundColorExample from '@site/src/components/Docs/tags/BackgroundColor';
+import BackgroundColorExampleMdx from '!!raw-loader!@site/src/components/Docs/tags/BackgroundColor';
+import BorderColorExample from '@site/src/components/Docs/tags/BorderColor';
+import BorderColorExampleMdx from '!!raw-loader!@site/src/components/Docs/tags/BorderColor';
+import BorderWidthExample from '@site/src/components/Docs/tags/BorderWidth';
+import BorderWidthExampleMdx from '!!raw-loader!@site/src/components/Docs/tags/BorderWidth';
+import ChildrenExample from '@site/src/components/Docs/tags/Children';
+import ChildrenExampleMdx from '!!raw-loader!@site/src/components/Docs/tags/Children';
+import ColorsExample from '@site/src/components/Docs/tags/Colors';
+import ColorsExampleMdx from '!!raw-loader!@site/src/components/Docs/tags/Colors';
+import OnDeleteExample from '@site/src/components/Docs/tags/OnDelete';
+import OnDeleteExampleMdx from '!!raw-loader!@site/src/components/Docs/tags/OnDelete';
+import SizesExample from '@site/src/components/Docs/tags/Sizes';
+import SizesExampleMdx from '!!raw-loader!@site/src/components/Docs/tags/Sizes';
+import BorderRadiusExample from '@site/src/components/Docs/tags/BorderRadius';
+import BorderRadiusExampleMdx from '!!raw-loader!@site/src/components/Docs/tags/BorderRadius';
+import TextColorExample from '@site/src/components/Docs/tags/TextColor';
+import TextColorExampleMdx from '!!raw-loader!@site/src/components/Docs/tags/TextColor';
+import TextPropsExample from '@site/src/components/Docs/tags/TextProps';
+import TextPropsExampleMdx from '!!raw-loader!@site/src/components/Docs/tags/TextProps';
+import TypeExample from '@site/src/components/Docs/tags/Types';
+import TypeExampleMdx from '!!raw-loader!@site/src/components/Docs/tags/Types';
+
+
+The **FlexNative Tags** is part of the `FlexNative` and is available under the `@flexnative/tags` NPM package.
+
+## Dependencies
+- [`@flexnative/theme-context`](../../theme/index.mdx)
+- [`@flexnative/icons`](../icons/index.mdx)
+- [`@flexnative/ui-constants`](../../utilities/ui-constants.mdx)
+
+<Installation title="FlexNative Tags" name='@flexnative/tags' />
+
+## API
+
+```jsx
+import Tag from '@flexnative/tags';
+```
+
+## Component
+
+**Tag**
+
+Type: <code>React.PureComponent\<[TagProps](#properties)\></code>
+
+## Properties
+
+:::info INFO
+`TagProps` props extends [`ViewProps`](https://reactnative.dev/docs/view#props) from `react-native`
+:::
+
+|  Name | Type | Required | Default Value | Description |
+| -- | -- | -- | -- | -- |
+| text | `string` | **true** | `undefined` | Text to display on tag. |
+| textColor | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `theme.color.default` | Text Color. |
+| backgroundColor | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `theme.color.default` | Background Color. |
+| children  | [`ReactNode`](https://reactnative.dev/docs/react-node) | **false** | `undefined` | ReactNode to render custom react element. |
+| borderWidth  | [`BorderWidth`](#borderwidth) | **false** | `'none'` | Optional borders width. |
+| borderColor | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `undefined` | Borders color according `react-native` ColorValue. |
+| onDelete | (event: React.BaseSyntheticEvent) => void | **false** | `undefined` | If provided, will render a Delete icon button, which will call this callback on press. |
+| size | [`TagSize`](#tagsize) | **false** | `'default'` | Tag Size variable. |
+| type | [`TagType`](#tagtype) | **false** | `'default'` | Tag type. <Admonition type="warning">To have appearance for <code>'ghost'</code>, with custom color you should use hex colors.</Admonition> |
+| radius | [`TagRadius`](#tagtype) | **false** | `'medium'` | Tag border radius. |
+| color | [`TagColor`](#tagcolor) | **false** | `theme.color.default` | Color by theme or a custom color according `react-native` ColorValue. |
+
+### BorderWidth
+One of `'none' | 'hairline' | 'thin' | 'base' | 'thick' | number`
+
+|  Name   | Type | Value |
+| ------- | ---- | ----- |
+| none | `number` | 0 |
+| hairline | [`StyleSheet.hairlineWidth`](https://reactnative.dev/docs/stylesheet#hairlinewidth) | This is defined as the width of a thin line on the platform. It can be used as the thickness of a border or division between two elements. |
+| thin | `number` | 1 |
+| base | `number` | 2 |
+| thick | `number` | 3 |
+| | `number` | Any number value |
+
+### TagSize
+One of `'small' | 'default' | 'medium' | 'large'`
+
+|  Name   | Type | Value |
+| ------- | ---- | ----- |
+| small | `string` | Text size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).small <br />Action width: [FONT_SIZE](/docs/utilities/ui-constants#font_size).small * 1.18 <br /> Padding Vertical: [FONT_SIZE](/docs/utilities/ui-constants#font_size).small <br/> Padding Horizontal: [BASE_SIZE](/docs/utilities/ui-constants#basesize) * 0.75 <br/> Padding Vertical: [BASE_SIZE](/docs/utilities/ui-constants#basesize) * 0.25 |
+| default | `string` | Text size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).default <br />Action width: [FONT_SIZE](/docs/utilities/ui-constants#font_size).default * 1.18 <br /> Padding Vertical: [FONT_SIZE](/docs/utilities/ui-constants#font_size).default <br/> Padding Horizontal: [BASE_SIZE](/docs/utilities/ui-constants#basesize) * 0.75 <br/> Padding Vertical: [BASE_SIZE](/docs/utilities/ui-constants#basesize) * 0.25 |
+| medium | `string` | Text size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).medium <br />Action width: [FONT_SIZE](/docs/utilities/ui-constants#font_size).medium * 1.18 <br /> Padding Vertical: [FONT_SIZE](/docs/utilities/ui-constants#font_size).medium <br/> Padding Horizontal: [BASE_SIZE](/docs/utilities/ui-constants#basesize) * 0.75 <br/> Padding Vertical: [BASE_SIZE](/docs/utilities/ui-constants#basesize) * 0.25 |
+| large | `string` | Text size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).large <br />Action width: [FONT_SIZE](/docs/utilities/ui-constants#font_size).large * 1.18 <br /> Padding Vertical: [FONT_SIZE](/docs/utilities/ui-constants#font_size).large <br/> Padding Horizontal: [BASE_SIZE](/docs/utilities/ui-constants#basesize) * 0.75 <br/> Padding Vertical: [BASE_SIZE](/docs/utilities/ui-constants#basesize) * 0.25 |
+
+### TagType 
+One of `'default' | 'text' | 'ghost'`
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| default | `string` | Property to fill in solid mode the background color of the Tag component. |
+| ghost | `string` | Property to fill the background with a transparent color the Tag component. |
+| text | `string` | Property to fill the background with a transparent color. |
+
+### TagRadius
+One of `'none' | 'small' | 'medium' | 'large' | 'full' | number`
+
+| Name | Type | Value |
+| ---- | ---- | ----- |
+| none | `number` | 0 |
+| small | `number` | 2 |
+| medium | `number` | 4 |
+| large | `number` | 6 |
+| full | `number` | 99999 |
+| | `number` | Any number value. |
+
+### TagColor
+
+<ColorProps />
+
+## Usecase Examples
+
+The following example demonstrates the **FlexNative Tags** in action.
+
+### Colors
+
+<ExampleWramper codeExample={ColorsExampleMdx}>
+  <ColorsExample />
+</ExampleWramper>
+
+### Background Color
+
+<ExampleWramper codeExample={BackgroundColorExampleMdx}>
+  <BackgroundColorExample />
+</ExampleWramper>
+
+### Border Color
+
+<ExampleWramper codeExample={BorderColorExampleMdx}>
+  <BorderColorExample />
+</ExampleWramper>
+
+### Border Width
+
+<ExampleWramper codeExample={BorderWidthExampleMdx}>
+  <BorderWidthExample />
+</ExampleWramper>
+
+### Children
+
+<ExampleWramper codeExample={ChildrenExampleMdx}>
+  <ChildrenExample />
+</ExampleWramper>
+
+### Size
+
+<ExampleWramper codeExample={SizesExampleMdx}>
+  <SizesExample />
+</ExampleWramper>
+
+### OnDelete
+
+<ExampleWramper codeExample={OnDeleteExampleMdx}>
+  <OnDeleteExample />
+</ExampleWramper>
+
+### Border Radius
+
+<ExampleWramper codeExample={BorderRadiusExampleMdx}>
+  <BorderRadiusExample />
+</ExampleWramper>
+
+### Text Color
+
+<ExampleWramper codeExample={TextColorExampleMdx}>
+  <TextColorExample />
+</ExampleWramper>
+
+### [TextProps](https://reactnative.dev/docs/text#props)
+
+<ExampleWramper codeExample={TextPropsExampleMdx}>
+  <TextPropsExample />
+</ExampleWramper>
+
+### Types
+
+<ExampleWramper codeExample={TypeExampleMdx}>
+  <TypeExample />
+</ExampleWramper>
+
+## Playground
+
+```jsx live noInline
+//Play with props to see live changes;
+
+render(<Tag color='primary' borderWidth='thin' type='ghost' text='Playground Tag Component' borderColor='#ed143d'/>);
+```

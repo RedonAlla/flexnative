@@ -1,0 +1,89 @@
+---
+sidebar_position: 2
+title: Customizing Themes
+last_update:
+  date: 2024-09-24
+  author: Redon Alla
+tags: [react, react-native, expo, framework, component]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+import DocCardList from '@theme/DocCardList';
+
+
+**[BaseTheme](/docs/theme/default-heme#basetheme-props)** object is where you define your application's color palette.
+
+If you need to customize the default theme to match your design requirements you should implement **BaseTheme** from `@flexnative/theme-context`.
+
+
+## Example
+
+Example of customizing theme color.
+
+<Tabs>
+  <TabItem value="javascript" label="Javascript" default>
+
+    ```jsx showLineNumbers
+    // highlight-next-line
+    import ThemeContext from '@flexnative/theme-context';
+
+    const myThemeColors = {
+      default: '#4A148C',
+      background: "#C5CAE9",
+      card: "#E8EAF6",
+      text: '#ffffff',
+      border: '#9FA8DA',
+      info: "#00E5FF",
+      success: "#00C853",
+      warning: "#F9A825",
+      error: "#B71C1C",
+      dark: "#212121",
+      secondary: "#F50057",
+      light: "#ebebeb",
+      primary: '#26C6DA'
+    };
+
+    function App() {
+      return (
+        <ThemeContext.Provider value={{colors: myThemeColors}}>
+          <YourAPP />
+        </ThemeContext.Provider>
+      );
+    }
+    ```
+  </TabItem>
+  <TabItem value="typescript" label="Typescript">
+
+    ```tsx showLineNumbers
+    // highlight-next-line
+    import ThemeContext, { BaseTheme } from '@flexnative/theme-context';
+
+    const myThemeColors: BaseTheme = {
+      default: '#4A148C',
+      background: "#C5CAE9",
+      card: "#E8EAF6",
+      text: '#ffffff',
+      border: '#9FA8DA',
+      info: "#00E5FF",
+      success: "#00C853",
+      warning: "#F9A825",
+      error: "#B71C1C",
+      dark: "#212121",
+      secondary: "#F50057",
+      light: "#ebebeb",
+      primary: '#26C6DA'
+    };
+
+    function App() {
+      return (
+        <ThemeContext.Provider value={{colors: myThemeColors}}>
+          <YourAPP />
+        </ThemeContext.Provider>
+      );
+    }
+    ```
+
+  </TabItem>
+</Tabs>

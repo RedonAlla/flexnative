@@ -1,0 +1,61 @@
+---
+id: ui-constants
+title: UI Constants
+sidebar_position: 1
+last_update:
+  date: 2024-09-24
+  author: Redon Alla
+tags: [react, react-native, framework, utilities]
+---
+
+`ui-constants` Packages is part of **FlexNative**, that provides core constants related with UI Components.
+
+import ColorView from '@site/src/components/Docs/Colors/ColorView';
+import Installation from '../_installation.mdx';
+
+<Installation title="FlexNative Utilities" name='ui-constants' />
+
+## Values
+
+|  Name   | Type | Value |
+| ------- | ---- | ----- |
+| <span id='basesize'>BASE_SIZE</span> | `number` | 16 |
+| DISABLED_OPACITY | `number` | 0.4 |
+| GHOST_TRANSPARENCY | `string` | 40 |
+| GHOST_ACTIVE_TRANSPARENCY | `string` | 73 |
+| WHITE_TEXT_COLOR | [`ColorValue`](https://reactnative.dev/docs/colors) | <ColorView color={'#FFFFFF'}/> #FFFFFF |
+| BLACK_TEXT_COLOR | [`ColorValue`](https://reactnative.dev/docs/colors) | <ColorView color={'#424242'}/> #424242 |
+| DARK_OVERLAY | [`ColorValue`](https://reactnative.dev/docs/colors) | <ColorView color={'#00000021'}/> #00000021 |
+| LIGHT_OVERLAY | [`ColorValue`](https://reactnative.dev/docs/colors) | <ColorView color={'#FFFFFF21'}/> #FFFFFF21 |
+| BUTTON_PADDING_VERTICAL_MULTIPLIER | `number` | 0.16 |
+| BUTTON_PADDING_HORIZONTAL_MULTIPLIER | `number` | 1 |
+| [FONT_SIZE](#font_size) | `Enum` | |
+| [BORDER_RADIUS](#border_radius) | `Enum` | |
+| [BORDER_WIDTH](#border_width) | `Enum` | |
+
+### FONT_SIZE
+|  Name   | Type | Value |
+| ------- | ---- | ----- |
+| small | `number` | [BASE_SIZE](#basesize) * 0.75 |
+| default | `number` | [BASE_SIZE](#basesize) |
+| medium | `number` | [BASE_SIZE](#basesize) * 1.25 |
+| large | `number` | [BASE_SIZE](#basesize) * 1.5 |
+
+### BORDER_RADIUS
+|  Name   | Type | Value |
+| ------- | ---- | ----- |
+| none | `number` | 0 |
+| small | `number` | 2 |
+| medium | `number` | 4 |
+| large | `number` | 6 |
+| full | `number` | 99999 |
+
+
+### BORDER_WIDTH
+|  Name  | Type | Value |
+| ------- | ---- | ----- |
+| none | `number` | 0 |
+| hairline | `number` | [`StyleSheet.hairlineWidth`](https://reactnative.dev/docs/stylesheet#hairlinewidth) |
+| thin | `number` | 1 |
+| base | `number` | 2 |
+| thick | `number` | 3 |

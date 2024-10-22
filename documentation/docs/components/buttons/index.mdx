@@ -1,0 +1,283 @@
+---
+title: Buttons
+last_update:
+  date: 2024-09-24
+  author: Redon Alla
+tags: [react, react-native, expo, framework, component, button]
+---
+
+import Admonition from '@theme/Admonition';
+import Installation from '../../_installation.mdx';
+import ColorProps from '@site/src/components/Docs/Colors/Props';
+import ExampleWramper from '@site/src/components/Docs/ExampleWramper';
+import ColorsExample from '@site/src/components/Docs/buttons/Colors';
+import ColorsExampleMdx from '!!raw-loader!@site/src/components/Docs/buttons/Colors';
+import ActiveColorsExample from '@site/src/components/Docs/buttons/ActiveColor';
+import ActiveColorsExampleMdx from '!!raw-loader!@site/src/components/Docs/buttons/ActiveColor';
+import TypeExample from '@site/src/components/Docs/buttons/Type';
+import TypeExampleMdx from '!!raw-loader!@site/src/components/Docs/buttons/Type';
+import BorderColorExample from '@site/src/components/Docs/buttons/BorderColor';
+import BorderColorExampleMdx from '!!raw-loader!@site/src/components/Docs/buttons/BorderColor';
+import ActiveBorderColorExample from '@site/src/components/Docs/buttons/ActiveBorderColor';
+import ActiveBorderColorExampleMdx from '!!raw-loader!@site/src/components/Docs/buttons/ActiveBorderColor';
+import BorderRadiusExample from '@site/src/components/Docs/buttons/BorderRadius';
+import BorderRadiusExampleMdx from '!!raw-loader!@site/src/components/Docs/buttons/BorderRadius';
+import BorderWidthExample from '@site/src/components/Docs/buttons/BorderWidth';
+import BorderWidthExampleMdx from '!!raw-loader!@site/src/components/Docs/buttons/BorderWidth';
+import DisabledExample from '@site/src/components/Docs/buttons/Disabled';
+import DisabledExampleMdx from '!!raw-loader!@site/src/components/Docs/buttons/Disabled';
+import IconsExample from '@site/src/components/Docs/buttons/Icons';
+import IconsExampleMdx from '!!raw-loader!@site/src/components/Docs/buttons/Icons';
+import LoadingExample from '@site/src/components/Docs/buttons/Loading';
+import LoadingExampleMdx from '!!raw-loader!@site/src/components/Docs/buttons/Loading';
+import RenderLoadingExample from '@site/src/components/Docs/buttons/RenderLoading';
+import RenderLoadingExampleMdx from '!!raw-loader!@site/src/components/Docs/buttons/RenderLoading';
+import SizesExample from '@site/src/components/Docs/buttons/Sizes';
+import SizesExampleMdx from '!!raw-loader!@site/src/components/Docs/buttons/Sizes';
+import TextExample from '@site/src/components/Docs/buttons/Text';
+import TextExampleMdx from '!!raw-loader!@site/src/components/Docs/buttons/Text';
+import RenderChildrenExample from '@site/src/components/Docs/buttons/RenderChildren';
+import RenderChildrenExampleMdx from '!!raw-loader!@site/src/components/Docs/buttons/RenderChildren';
+import StylingWithStyleSheetExample from '@site/src/components/Docs/buttons/StylingWithStyleSheet';
+import StylingWithStyleSheetExampleMdx from '!!raw-loader!@site/src/components/Docs/buttons/StylingWithStyleSheet';
+
+**FlexNative Buttons** package is part of **FlexNative** for React Native, it provides a clickable UI library and functionality.
+
+The package include a variety of button types and styles that have extensive styles options.
+This flexibility allows you to quickly and easily create the exact button you need to fit your specific requirements for functionality and appearance.
+
+
+## Dependencies
+- [`@flexnative/theme-context`](../../theme/index.mdx)
+- [`@flexnative/icons`](../icons/index.mdx)
+- [`@flexnative/ui-constants`](../../utilities/ui-constants.mdx)
+
+<Installation title="FlexNative Buttons" name='@flexnative/buttons' />
+
+## API
+
+```jsx
+import Button from '@flexnative/buttons';
+```
+
+## Component
+**Button**
+
+Type: <code>React.Component\<[IButtonProps](#properties)\></code>
+
+## Properties
+:::info
+`IButtonProps` props extends [`PressableProps`](https://reactnative.dev/docs/pressable#props) from `react-native`
+so any [`Pressable`](https://reactnative.dev/docs/pressable) propertie from **React Native** it is applicable also in Buttons of `@flexnative/buttons` package.
+:::
+
+|  Name   | Type | Required | Default Value | Description |
+| -- | -- | -- | -- | -- |
+| radius | [`BorderRadius`](#borderradius) | **false** | `medium` | Button border radius. One of `BorderRadius` type |
+| borderWidth | [`BorderWidth`](#borderwidth) | **false** | `none` | Optional button borders width. One of `BorderWidth` type |
+| loading | `boolean` | **false** | false | It true the button it is in disabled state and it shows [loading spinner](/docs/components/icons/@flexnative/icons-basic-usage#spinner) while it is on loading state. |
+| renderLoading | [`React.ReactElement`](https://legacy.reactjs.org/blog/2014/10/14/introducing-react-elements.html) | **false** | `false` | [`React.ReactElement`](https://legacy.reactjs.org/blog/2014/10/14/introducing-react-elements.html) to render a custom element as loading indicator component. |
+| disabled | `boolean` | **false** | `false` | Set the button as disabled. |
+| type | [`ButtonType`](#buttontype) | **false** | `default` | <Admonition type="warning">To have appearance for <code>'text'</code>, <code>'link'</code>, <code>'ghost'</code>, with custom color you should use hex colors.</Admonition> |
+| size | [`Sizes`](#sizes) | **false** | `default` | Button Sizes. One of `Sizes` type. |
+| color | [`ButtonColor`](#buttoncolor) | **false** | `theme.color.default` | Color by theme or a custom color according `react-native` ColorValue. |
+| activeColor | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `undefined` | Button color on active state, according `react-native` ColorValue. |
+| backgroundColor | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `undefined` | Button background color. |
+| borderColor | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `undefined` | Button borders color according `react-native` ColorValue. |
+| activeBorderColor | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `undefined` | Border color for active state according `react-native` ColorValue. |
+| text | `string` | [`ITextProps`](#itextprops) | **true** | `undefined` | Text `string` for button or [`ITextProps`](#itextprops), to render a custom element. If children it is set the text property will be ignored. |
+| iconLeft | <code> [keyof IconName](/docs/components/icons/@flexnative/icons-basic-usage#iconname) \| [IconProps](#iconprops) \| [React.ReactElement](https://legacy.reactjs.org/blog/2014/10/14/introducing-react-elements.html)</code> | **false** | `undefined` | [`keyof IconName`](/docs/components/icons/@flexnative/icons-basic-usage#iconname) to display an icon on left side of button, or [`IconProps`](#iconprops) or [`React.ReactElement`](https://legacy.reactjs.org/blog/2014/10/14/introducing-react-elements.html), to render a custom element at left side of button. <Admonition type="warning">If children it is set the text property will be ignored.</Admonition> |
+| iconRight | <code>[keyof IconName](/docs/components/icons/@flexnative/icons-basic-usage#iconname) \| [IconProps](#iconprops) \| [React.ReactElement](https://legacy.reactjs.org/blog/2014/10/14/introducing-react-elements.html)</code> | **false** | `undefined` | [`keyof IconName`](/docs/components/icons/@flexnative/icons-basic-usage#iconname) to display an icon on right side of button, or [`IconProps`](#iconprops) or [`React.ReactElement`](https://legacy.reactjs.org/blog/2014/10/14/introducing-react-elements.html), to render a custom element at right side of button. <Admonition type="warning">If children it is set the text property will be ignored.</Admonition> |
+
+### BorderRadius
+One of `'none' | 'small' | 'medium' | 'large' | 'full' | number`
+
+| Name | Type | Value |
+| ---- | ---- | ----- |
+| none | `number` | 0 |
+| small | `number` | 2 |
+| medium | `number` | 4 |
+| large | `number` | 6 |
+| full | `number` | 99999 |
+| | `number` | Any number value. |
+
+### BorderWidth
+One of `'none' | 'hairline' | 'thin' | 'base' | 'thick' | number`
+
+|  Name   | Type | Value |
+| ------- | ---- | ----- |
+| none | `number` | 0 |
+| hairline | [`StyleSheet.hairlineWidth`](https://reactnative.dev/docs/stylesheet#hairlinewidth) | This is defined as the width of a thin line on the platform. It can be used as the thickness of a border or division between two elements. |
+| thin | `number` | 1 |
+| base | `number` | 2 |
+| thick | `number` | 3 |
+| | `number` | Any number value |
+
+### ButtonType 
+One of `'default' | 'ghost' | 'inverse' | 'link' | 'text'`
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| default | `string` | Property to fill in solid mode the background color of the button component. |
+| ghost | `string` | Property to fill the background with a transparent color the button component. |
+| inverse | `string` | Property to set transparent background of the button component and with solid background on press. |
+| link | `string` | Property to set transparent background of the button component width borders and with underllined text. |
+| text | `string` | Property to fill the background with a transparent color the button component and with `ghost` background on press. |
+
+### Sizes
+One of `'small' | 'default' | 'medium' | 'large'`
+
+|  Name   | Type | Value |
+| ------- | ---- | ----- |
+| small | `string` | Fonts size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).small <br />Icon size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).small <br /> Padding Vertical: [FONT_SIZE](/docs/utilities/ui-constants#font_size).small <br/> Padding Horizontal: [FONT_SIZE](/docs/utilities/ui-constants#font_size).small * 0.6 |
+| default | `string` | Fonts size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).default <br />Icon size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).default <br /> Padding Vertical: [FONT_SIZE](/docs/utilities/ui-constants#font_size).default <br/> Padding Horizontal: [FONT_SIZE](/docs/utilities/ui-constants#font_size).default * 0.6 |
+| medium | `string` | Fonts size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).medium <br />Icon size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).medium <br /> Padding Vertical: [FONT_SIZE](/docs/utilities/ui-constants#font_size).medium <br/> Padding Horizontal: [FONT_SIZE](/docs/utilities/ui-constants#font_size).medium * 0.6 |
+| large | `string` | Fonts size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).large <br />Icon size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).large <br /> Padding Vertical: [FONT_SIZE](/docs/utilities/ui-constants#font_size).large <br/> Padding Horizontal: [FONT_SIZE](/docs/utilities/ui-constants#font_size).large * 0.6 |
+
+### ButtonColor
+
+<ColorProps />
+
+### ITextProps
+:::info
+`ITextProps` props extends [`TextProps`](https://reactnative.dev/docs/0.71/text#props)
+from [`react-native`](https://reactnative.dev/)
+so any [`TextProps`](https://reactnative.dev/docs/0.71/text#props) propertie from **React Native**
+it is applicable also in `text` propery.
+:::
+
+|  Name   | Type | Required | Default Value | Description |
+| -- | -- | -- | -- | -- |
+| color | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `undefined` | Button text color. |
+| activeColor | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `undefined` | Button text color when button it is pressed. |
+| value | `string` | **false** | `undefined` | Text value to display on button component. |
+
+### IconProps
+:::info
+`IconProps` props extends [`TextProps`](https://reactnative.dev/docs/0.71/text#props)
+from [`react-native`](https://reactnative.dev/)
+so any [`TextProps`](https://reactnative.dev/docs/0.71/text#props) propertie from **React Native**
+it is applicable also in `text` propery.
+:::
+
+|  Name   | Type | Required | Default Value | Description |
+| -- | -- | -- | -- | -- |
+| color | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `undefined` | Button icon color. |
+| activeColor | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `undefined` | Button text icon when button it is pressed. |
+| name | <code>keyof [IconName](/docs/components/icons/basic-usage#iconname)</code> | **false** | `undefined` | Icon (name) to display on button component. |
+
+## Usecase Examples
+
+The following example demonstrates the **FlexNative Buttons** in action.
+
+:::warning Caution
+In documentation apprence of components may not be in correct way.
+To view the component in exact design please view the [demo app](https://redonalla.github.io/@flexnative/framework-demo/).
+:::
+
+### Colors
+
+<ExampleWramper codeExample={ColorsExampleMdx}>
+<ColorsExample />
+</ExampleWramper>
+
+### Active Colors
+
+<ExampleWramper codeExample={ActiveColorsExampleMdx}>
+<ActiveColorsExample />
+</ExampleWramper>
+
+### Type
+
+<ExampleWramper codeExample={TypeExampleMdx}>
+<TypeExample />
+</ExampleWramper>
+
+### Border Color
+
+<ExampleWramper codeExample={BorderColorExampleMdx}>
+<BorderColorExample />
+</ExampleWramper>
+
+### Active Border Color
+
+<ExampleWramper codeExample={ActiveBorderColorExampleMdx}>
+<ActiveBorderColorExample />
+</ExampleWramper>
+
+### Border Radius
+
+<ExampleWramper codeExample={BorderRadiusExampleMdx}>
+<BorderRadiusExample />
+</ExampleWramper>
+
+### Border Width
+
+<ExampleWramper codeExample={BorderWidthExampleMdx}>
+<BorderWidthExample />
+</ExampleWramper>
+
+### Disabled
+
+<ExampleWramper codeExample={DisabledExampleMdx}>
+<DisabledExample />
+</ExampleWramper>
+
+### Icons
+
+<ExampleWramper codeExample={IconsExampleMdx}>
+<IconsExample />
+</ExampleWramper>
+
+### Loading
+
+<ExampleWramper codeExample={LoadingExampleMdx}>
+<LoadingExample />
+</ExampleWramper>
+
+### Render Loading
+
+<ExampleWramper codeExample={RenderLoadingExampleMdx}>
+<RenderLoadingExample />
+</ExampleWramper>
+
+### Sizes
+
+<ExampleWramper codeExample={SizesExampleMdx}>
+<SizesExample />
+</ExampleWramper>
+
+### Text
+
+<ExampleWramper codeExample={TextExampleMdx}>
+<TextExample />
+</ExampleWramper>
+
+### Render Children
+
+<ExampleWramper codeExample={RenderChildrenExampleMdx}>
+<RenderChildrenExample />
+</ExampleWramper>
+
+### Styling with StyleSheet
+
+<ExampleWramper codeExample={StylingWithStyleSheetExampleMdx}>
+<StylingWithStyleSheetExample />
+</ExampleWramper>
+
+## Playground
+
+```jsx live noInline
+//Play with props to see live changes;
+
+render(
+  <Button
+    text='Button'
+    color='primary'
+    activeColor='#ed143d'
+    radius='full'
+    size='large'
+    iconLeft='star'
+  />
+);
+```

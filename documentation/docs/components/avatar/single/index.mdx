@@ -1,0 +1,133 @@
+---
+title: Single Avatar
+sidebar_position: 1
+last_update:
+  date: 2024-09-24
+  author: Redon Alla
+tags: [react, react-native, expo, framework, component, avatar]
+---
+
+import Admonition from '@theme/Admonition';
+import ImageType from '@site/src/components/Docs/avatar/single/image/Colors';
+import IconType from '@site/src/components/Docs/avatar/single/icon/Colors';
+import TextType from '@site/src/components/Docs/avatar/single/text/Colors';
+
+
+## API
+
+```jsx
+import Avatar from '@flexnative/avatar';
+```
+
+## Component
+
+**Avatar**
+
+Type: `React.PureComponent<AvatarProps>`
+
+## Props
+
+:::info
+**AvatarProps** of `@flexnative/avatar` package extends
+[`ImageProps`](https://docs.expo.dev/versions/latest/sdk/image/#imageprops) | [`TextProps`](https://reactnative.dev/docs/text#props).
+:::
+
+|  Name   | Type | Required | Default Value | Description |
+| -- | -- | -- | -- | -- |
+| type | [`Type`](#type) | **true** | `image` | Avatar Type. `image`, `icon` and `text` are supported |
+| fillMode | [`FillMode`](#fillmode) | **false** | `solid` | Fill Mode |
+| radius |  [`BorderRadius`](#borderradius) | **false** | `full` | Avatar border radius. |
+| size | [`Sizes`](#sizes) | **false** | `medium` | Avatar Size. |
+| backgroundColor | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `undefined` | Background color according `react-native` ColorValue. |
+| borderColor | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `undefined` | Borders color according `react-native` ColorValue. |
+| color | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `default` | Color by theme or a custom color according `react-native` ColorValue. |
+| borderWidth | [`BorderWidth`](#borderwidth) | **false** | `none` | Optional avatar borders width. |
+| text | `string` | **false** | `undefined` | Text to display on avatar for type `Type = 'text'` |
+| textColor | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `undefined` | Text color according `react-native` ColorValue. Available for `Type = 'text'` |
+| icon | [`IconName`](/docs/components/icons/@flexnative/icons-basic-usage#iconname) | **false** | `undefined` | Name of icon. Icon props for `Avatar Type = 'icon'` |
+| iconColor | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `undefined` | Icon color according `react-native` ColorValue. Available for `Type = 'icon'` |
+
+
+### Type
+One of `'image' | 'icon' | 'text'`
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| image | `string` | Property to render image on avatar component. |
+| icon | `string` | Property to render icon on avatar component. |
+| text | `string` | Property to render text on avatar component. |
+
+### FillMode
+One of `'solid' | 'none' | 'ghost'`
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| solid | `string` | Property to fill in solid mode the bac of avatar component. |
+| outline | `outline` | Property to set transparent background avatar component width borders. |
+| ghost | `ghost` | Property to fill in the background of avatar component with a transparent color. <Admonition type="warning">To have good appearance for <code>'ghost'</code>, with custom color you should use hex colors.</Admonition> |
+
+### BorderRadius
+One of `'none' | 'small' | 'medium' | 'large' | 'full' | number`
+
+| Name | Type | Value |
+| ---- | ---- | ----- |
+| none | `number` | 0 |
+| small | `number` | 2 |
+| medium | `number` | 4 |
+| large | `number` | 6 |
+| full | `number` | 99999 |
+| | `number` | Any number value. |
+
+### Sizes
+One of `'small' | 'medium' | 'large' | number`
+
+|  Name   | Type | Value |
+| ------- | ---- | ----- |
+| small | `number` | 24 |
+| medium | `number` | 40 |
+| large | `number` | 64 |
+| | `number` | Any number value |
+
+### BorderWidth
+One of `'none' | 'hairline' | 'thin' | 'base' | 'thick' | number`
+
+|  Name   | Type | Value |
+| ------- | ---- | ----- |
+| none | `number` | 0 |
+| hairline | [`StyleSheet.hairlineWidth`](https://reactnative.dev/docs/stylesheet#hairlinewidth) | This is defined as the width of a thin line on the platform. It can be used as the thickness of a border or division between two elements. |
+| thin | `number` | 1 |
+| base | `number` | 2 |
+| thick | `number` | 3 |
+| | `number` | Any number value. |
+
+
+##  Usecase Examples
+
+The following example demonstrates the different types of Avatar in action.
+
+### Image Type
+
+<ImageType />
+
+### Icon Type
+
+<IconType />
+
+### Text Type
+
+<TextType />
+
+## Playground
+
+```jsx live noInline
+//Play with props to see live changes;
+
+render(<Avatar source={LOGO} size={120} color='primary' borderWidth='thin' fillMode='ghost' borderColor='crimson'/>);
+```
+
+<br />
+<br />
+<br />
+
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList />

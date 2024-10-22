@@ -1,0 +1,116 @@
+---
+title: Group Avatar
+sidebar_position: 2
+last_update:
+  date: 2024-09-24
+  author: Redon Alla
+tags: [react, react-native, expo, framework, component, avatar]
+---
+
+**AvatarGroup** is part of the [**@flexnative/avatar**](../) package.
+To use the **AvatarGroup** you needs to install `@flexnative/avatar` package.
+[Fallow this link](./index.mdx#installation) on how to install the package.
+
+## API
+
+```jsx
+import { AvatarGroup } from '@flexnative/avatar';
+```
+
+## Component
+
+**AvatarGroup**
+Type: `React.PureComponent<AvatarGroupProps>`
+
+## Props
+
+:::info
+AvatarGroup extends [`ViewProps`](https://reactnative.dev/docs/view#props) from **React Native**.
+:::
+
+|  Name   | Type | Required | Default Value | Description |
+| -- | -- | -- | -- | -- |
+| sortIndex | <code>'asc' \| 'asc'</code> | **false** | `'asc'` | `asc` or `desc` are supported |
+| itemPadding | `number` | **false** | 13 | Padding between avatar items. |
+| itemBorderWidth | [`BorderWidth`](/docs/components/avatar/single/#borderwidth) | **false** | `thick` | Optional avatar borders width. |
+| itemBorderColor | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `theme.colors.card` | Borders color according `react-native` ColorValue. |
+| children | `Array<React.ReactElement<AvatarProps>>` | **true** | `full` | |
+
+## Usecase Examples
+
+The following example demonstrates the different types of Avatar Groups in action.
+
+import ExampleWramper from '@site/src/components/Docs/ExampleWramper';
+import ChildrenExample from '@site/src/components/Docs/avatar/group/Children';
+import ChildrenExampleMdx from '!!raw-loader!@site/src/components/Docs/avatar/group/Children';
+import SortIndexExample from '@site/src/components/Docs/avatar/group/SortIndex';
+import SortIndexExampleMdx from '!!raw-loader!@site/src/components/Docs/avatar/group/SortIndex';
+import ItemBorderColorExample from '@site/src/components/Docs/avatar/group/ItemBorderColor';
+import ItemBorderColorExampleMdx from '!!raw-loader!@site/src/components/Docs/avatar/group/ItemBorderColor';
+import ItemBorderWidthExample from '@site/src/components/Docs/avatar/group/ItemBorderWidth';
+import ItemBorderWidthExampleMdx from '!!raw-loader!@site/src/components/Docs/avatar/group/ItemBorderWidth';
+import ItemPaddingExample from '@site/src/components/Docs/avatar/group/ItemPadding';
+import ItemPaddingExampleMdx from '!!raw-loader!@site/src/components/Docs/avatar/group/ItemPadding';
+import CombinationsExample from '@site/src/components/Docs/avatar/group/Combinations';
+import CombinationsExampleMdx from '!!raw-loader!@site/src/components/Docs/avatar/group/Combinations';
+
+### Children
+
+<ExampleWramper codeExample={ChildrenExampleMdx}>
+<ChildrenExample />
+</ExampleWramper>
+
+### SortIndex
+
+<ExampleWramper codeExample={ItemBorderColorExampleMdx}>
+<SortIndexExample />
+</ExampleWramper>
+
+### ItemBorderColor
+
+<ExampleWramper codeExample={ItemBorderColorExampleMdx}>
+<ItemBorderColorExample />
+</ExampleWramper>
+
+### ItemBorderWidth
+
+<ExampleWramper codeExample={ItemBorderWidthExampleMdx}>
+<ItemBorderWidthExample />
+</ExampleWramper>
+
+### ItemPadding
+
+<ExampleWramper codeExample={ItemPaddingExampleMdx}>
+<ItemPaddingExample />
+</ExampleWramper>
+
+### Combinations
+
+<ExampleWramper codeExample={CombinationsExampleMdx}>
+<CombinationsExample />
+</ExampleWramper>
+
+## Playground
+
+```jsx live noInline
+//Play with props to see live changes;
+
+const styles = {
+  groupStyle: {
+    paddingTop: 8,
+    paddingBottom: 8,
+    paddingRight: 8,
+    paddingLeft: 21,
+    borderRadius: 99,
+    backgroundColor: '#ed143d30'
+  }
+};
+
+render(
+  <AvatarGroup style={styles.groupStyle}>
+    <Avatar text='RA' size='large' type='text' color='primary' />
+    <Avatar icon='avatar' size='large' type='icon' color='success' />
+    <Avatar source={LOGO} size='large' color='info' />
+  </AvatarGroup>
+);
+```

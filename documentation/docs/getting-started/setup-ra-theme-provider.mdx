@@ -1,0 +1,139 @@
+---
+sidebar_position: 2
+title: Setup Theme Provider
+last_update:
+  date: 2024-09-24
+  author: Redon Alla
+tags: [react, react-native, expo, framework]
+---
+
+import Installation from '../_installation.mdx';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+import LightColors from '@site/src/components/Docs/Colors/LightColors';
+
+**FlexNative ThemeProvider** from *FlexNative* is a component that makes the theme available throughout your app.
+It uses **React's Context API**.
+
+:::info
+If you are not familiar with React's Context we strongly suggest to follow **[this link](https://reactjs.org/docs/context.html)** before starting.
+:::
+
+<Installation title="FlexNative ThemeProvider" name='@flexnative/theme-context' />
+
+## Using ThemeProvider
+
+ThemeProvider it is a ***Class React Component*** that let's passing/consuming theme from all components through the App.
+It accepts a [value prop](#themeproviderprops) which is the data that will be shared with all components that are consumers of that context.
+
+**ThemeProvider** wrap the top-level component of your application with a Provider component, thus making the context available to all its descendants.
+
+**ThemeProvider** it comes with the base structure for implementing *multiple themes* and supporting *dark mode*.
+
+:::danger CAUTION
+***ThemeProvider*** it supports dark mode depending on the device's color scheme.
+You also can implement you custom dark mode beheiver, for more details read section
+**[ThemeProvider](../theme/examples.mdx)**.
+:::
+
+To change default colors or add new colors fallow this link on [how to change default colors](../theme/customizing-theme.mdx)
+or [how to add custom colors](../theme//extend-theme.mdx).
+
+To support dark mode fallow this link on [how to implement dark mode using ThemeContext](../theme/examples.mdx).
+
+### Examples
+
+Add **ThemeProvider** from *FlexNative* to the root of your app and update App.js as follows examples.
+
+```jsx showLineNumbers
+// highlight-next-line
+import ThemeContext, { light } from '@flexnative/theme-context';
+
+function App() {
+  return (
+    <ThemeContext.Provider value={{colors: themeColors}}>
+      <YourAPP />
+    </ThemeContext.Provider>
+  );
+}
+```
+
+## ThemeProviderProps
+
+|  Name   | Type | Required | Default Value | Description |
+| -- | -- | -- | -- | -- |
+| colors | [`BaseTheme<TColors>`](#themecontextprops) | ***true*** | null | Where **TColors** is the object with custom colors. |
+| colorScheme  | [`ColorSchemeName`](https://reactnative.dev/docs/usecolorscheme#supported-color-schemes) | **false** | null | Value indicates the current user preferred color scheme. |
+
+### BaseTheme
+<LightColors />
+
+
+## Using ThemeContext
+
+ThemeContext it expects as `value` an object of type **[`ThemeProviderProps<TColors>`](#themecontextprops)**.
+You can use one of default themes **[light](/docs/theme/default-heme#light-palette)** or **[dark](/docs/theme/default-heme#dark-palette)**
+from `@flexnative/theme-context` or you can create your own theme as long you implements **[`ThemeBase`](#basetheme)** object.
+
+To change default colors or add new colors fallow this link on [how to change default colors](/docs/theme/@flexnative/theme-customizing-theme)
+or [how to add custom colors](/docs/theme/@flexnative/theme-customizing-theme).
+
+To support dark mode fallow this link on [how to implement dark mode using ThemeContext](/docs/theme/@flexnative/theme-dark-mod-theme).
+
+
+### ThemeContextProps
+
+|  Name   | Type | Required | Default Value | Description |
+| -- | -- | -- | -- | -- |
+| colors | [`BaseTheme<TColors>`](#basethemetcolors) | **true** | [BaseTheme](#basetheme) | Where **TColors** object with custom colors |
+| colorScheme  | `ColorSchemeName` | **false** | Device ColorScheme | **ColorSchemeName** from `react-native` |
+| setTheme  | `(theme: BaseTheme & TColors) => void` | **false** | null | **void function** for change all theme colors. It expect as parameter object of `BaseTheme<TColors>` |
+| setColorScheme  | `(colorScheme: ColorSchemeName) => void` | **false** | null | **void function** for change schema (light/dark). It expect as parameter type of `ColorSchemeName` |
+
+### BaseTheme&lt;TColors&gt;
+
+[`BaseTheme`](#basetheme) and `TColors` custom extendet colors.
+
+### Examples
+
+Example of consuming Theme Context.
+
+<Tabs>
+  <TabItem value="function-component" label="Function Component" default>
+
+    ```tsx showLineNumbers
+    import { useThemeContext } from '@flexnative/theme-context';
+    // highlight-next-line
+    import ThemeContext from '@flexnative/theme-context';
+
+    function App() {
+      const theme = useThemeContext();
+
+      return (
+        <Text style={{ color: theme.colors.text}}>Example of consuming Theme Context.</Text>
+      );
+    }
+    ```
+  </TabItem>
+  <TabItem value="class-component" label="Class Component">
+
+    ```tsx showLineNumbers
+    import React from 'react';
+    import { Text } from 'react-native';
+    // highlight-next-line
+    import ThemeContext, { light } from '@flexnative/theme-context';
+
+    class App extends React.Component {
+      // highlight-start
+      static contextType = ThemeContext;
+      declare context: React.ContextType<typeof ThemeContext>;
+      // highlight-end
+
+      return (
+        <Text style={{ color: this.context.colors.text}}>Example of consuming Theme Context.</Text>
+      );
+    }
+    ```
+  </TabItem>
+</Tabs>

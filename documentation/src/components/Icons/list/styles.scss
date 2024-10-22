@@ -1,0 +1,37 @@
+.icon-list {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+  .item {
+    display: grid;
+    margin: 0.5rem;
+    padding: 2rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: transform .15s;
+    border: 1px solid var(--ifm-color-emphasis-200);
+    border-radius: var(--ifm-card-border-radius);
+    background-color: var(--ifm-card-background-color);
+    font-family: 'Regular';
+
+    &:hover {
+      transform: scale(1.15);
+      border-color: var(--ifm-color-primary);
+      box-shadow: var(--ifm-global-shadow-lw);
+
+      [class^="icon-"] {
+        color: var(--ifm-color-primary);
+      }
+    }
+
+    [class^="icon-"] {
+      margin-bottom: 1rem;
+      font-size: 4rem;
+    }
+  }
+}
