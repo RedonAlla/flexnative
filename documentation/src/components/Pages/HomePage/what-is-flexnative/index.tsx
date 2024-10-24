@@ -25,7 +25,7 @@ const services: Array<ServiceProps> = [
     wowDuration: "1.3s",
     icon: "icon-multi-device",
     description: "Consistent design across android, iOS, and web. Up to 11 general-purpose components designed to save development time.",
-    link: "/@flexnative/framework-docks/docs/getting-started",
+    link: "/flexnative/docs/getting-started",
   },
   {
     title: "Components",
@@ -33,7 +33,7 @@ const services: Array<ServiceProps> = [
     wowDuration: "1.3s",
     icon: "icon-puzzle",
     description: `Up to ${TOTAL_COMPONENTS} general-purpose components designed to save development time while providing a smooth app experience.`,
-    link: "/@flexnative/framework-docks/docs/components",
+    link: "/flexnative/docs/components",
   },
   {
     title: "Easy to use",
@@ -41,7 +41,7 @@ const services: Array<ServiceProps> = [
     wowDuration: "1.3s",
     icon: "icon-lightning",
     description: "Built completely in TypeScript. Starting your react native app has never been easier. Supports Expo too!",
-    link: "/@flexnative/framework-docks/docs/getting-started",
+    link: "/flexnative/docs/getting-started",
   },
   {
     title: "Customizable",
@@ -57,7 +57,7 @@ const services: Array<ServiceProps> = [
     wowDuration: "1.3s",
     icon: "icon-color-palete",
     description: "Switch between Light and Dark themes in the runtime. Drive diversity by creating as many themes as needed without changing the source code of the components.",
-    link: "/@flexnative/framework-docks/docs/theme",
+    link: "/flexnative/docs/theme",
   }
 ] 
 

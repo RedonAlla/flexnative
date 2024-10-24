@@ -24,13 +24,13 @@
 }
 
 :root {
-  --ifm-color-primary: #fe0e00;
-  --ifm-color-primary-dark: #e50d00;
-  --ifm-color-primary-darker: #d80c00;
-  --ifm-color-primary-darkest: #b20a00;
-  --ifm-color-primary-light: #ff2518;
-  --ifm-color-primary-lighter: #ff3125;
-  --ifm-color-primary-lightest: #ff554b;
+  --ifm-color-primary: #e50d00;
+  --ifm-color-primary-dark: #ce0c00;
+  --ifm-color-primary-darker: #c30b00;
+  --ifm-color-primary-darkest: #a00900;
+  --ifm-color-primary-light: #fc0e00;
+  --ifm-color-primary-lighter: #ff1608;
+  --ifm-color-primary-lightest: #ff372b;
 
   //--ifm-card-background-color: #f8f8f8;
   /* --ifm-code-font-size: 95%; */
@@ -43,13 +43,13 @@
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #ff6358;
-  --ifm-color-primary-dark: #ff4336;
-  --ifm-color-primary-darker: #ff3325;
-  --ifm-color-primary-darkest: #f01000;
-  --ifm-color-primary-light: #ff837a;
-  --ifm-color-primary-lighter: #ff938b;
-  --ifm-color-primary-lightest: #ffc3bf;
+  --ifm-color-primary: #e50d00;
+  --ifm-color-primary-dark: #ce0c00;
+  --ifm-color-primary-darker: #c30b00;
+  --ifm-color-primary-darkest: #a00900;
+  --ifm-color-primary-light: #fc0e00;
+  --ifm-color-primary-lighter: #ff2114;
+  --ifm-color-primary-lightest: #ff372b;
   
   --docusaurus-highlighted-code-line-bg: #042642;
 }
@@ -191,3 +191,19 @@ li {
 }
 
 /* -------------- END Side Bar -----------------*/
+
+/* ------------------- START Announcement Bar ---------------------- */
+div[class^=announcementBar_] {
+  z-index: 100;
+  --site-announcement-bar-stripe-color1: #ff6358;
+  --site-announcement-bar-stripe-color2: rgba(255, 99, 88, 0.2);
+  background: repeating-linear-gradient(
+    35deg,
+    var(--site-announcement-bar-stripe-color1),
+    var(--site-announcement-bar-stripe-color1) 20px,
+    var(--site-announcement-bar-stripe-color2) 10px,
+    var(--site-announcement-bar-stripe-color2) 40px
+  );
+  font-weight: 700;
+}
+/* ------------------- END Announcement Bar ---------------------- */

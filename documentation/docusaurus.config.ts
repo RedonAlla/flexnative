@@ -12,7 +12,7 @@ const config: Config = {
   url: 'https://redonalla.github.io/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/flexnative/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -41,10 +41,11 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           // editUrl:
-          //   'https://github.com/RedonAlla/@flexnative/framework-docks',
+          //   'https://github.com/RedonAlla/flexnative',
           editUrl: ({locale, versionDocsDirPath, docPath}) => {
-            return `https://github.com/RedonAlla/flexnative/edit/main/docs/${docPath}`;
+            return `https://github.com/RedonAlla/flexnative/documentation/edit/main/docs/${docPath}`;
           },
+          sidebarCollapsible: true,
           showLastUpdateAuthor: false,
           showLastUpdateTime: true,
         },
@@ -154,13 +155,13 @@ const config: Config = {
           label: 'Documentation',
         },
         {
-          href: 'https://redonalla.github.io/@flexnative/framework-demo',
+          href: 'https://flexnative.netlify.app/',
           label: 'Demo App',
           position: 'left',
         },
         // {to: '/blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/RedonAlla/@flexnative/framework-docks',
+          href: 'https://github.com/RedonAlla/flexnative',
           position: 'right',
           className: 'header-github-link',
           'aria-label': 'GitHub repository',
@@ -217,7 +218,7 @@ const config: Config = {
             },
             {
               label: 'Demo Web App',
-              href: 'https://redonalla.github.io/@flexnative/framework-demo/',
+              href: 'https://flexnative.netlify.app/',
             },
           ],
         },

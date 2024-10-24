@@ -44,7 +44,7 @@ export default class extends React.PureComponent<{}, {}> {
               <div className="col col--8">
                 <div className="header-image">
                   <img
-                    src="/@flexnative/framework-docks/img/platforms-demo.svg"
+                    src="/flexnative/img/platforms-demo.svg"
                     alt="app"
                     className="image wow fadeInRightBig"
                     data-wow-duration="1.3s"

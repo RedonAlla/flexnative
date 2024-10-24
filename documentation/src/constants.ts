@@ -1,2 +1,2 @@
 export const TOTAL_COMPONENTS = 13;
-export const LOGO = "/@flexnative/framework-docks/img/logo.svg";
+export const LOGO = "/flexnative/img/logo.svg";

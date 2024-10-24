@@ -65,7 +65,7 @@ class DemoApp extends React.PureComponent<DemoProps> {
           <div className="download-shape-2">
             <img
               className="svg"
-              src="/@flexnative/framework-docks/img/download-shape.svg"
+              src="/flexnative/img/download-shape.svg"
               alt="shape"
             />
           </div>
