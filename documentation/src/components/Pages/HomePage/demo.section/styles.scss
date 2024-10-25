@@ -135,6 +135,13 @@
   }
 }
 
+
+@media only screen and (max-width: 996px) {  
+  .download-content .download-title {
+    margin-top: 5rem;
+  }
+}
+
 @media (max-width: 767px) {
   .download-area {
     display: flex;
@@ -195,4 +202,16 @@
   .download-content .download-title {
     font-size: 28px;
   }
+}
+
+@media only screen and (max-width: 600px) {
+  .desktop {
+      .download-image {
+        .image {
+          max-width: 420px;
+          max-height: 250px;  
+          margin: 0 auto;
+        }
+      }
+    }
 }

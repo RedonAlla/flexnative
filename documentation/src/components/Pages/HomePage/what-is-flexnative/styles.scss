@@ -5,6 +5,10 @@
   .container {
     .row {
       justify-content: center !important;
+	  
+	  .col {
+		margin-bottom: 1rem;
+	  }
     }
   }
 
