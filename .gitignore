@@ -1,0 +1,5 @@
+/*/node_modules
+
+# Production
+/demo-app-builds/*
+/documentation/*
