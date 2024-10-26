@@ -213,3 +213,11 @@ div[class^=announcementBar_] {
   color: var(--ifm-font-color-base);
 }
 /* ------------------- END Announcement Bar ---------------------- */
+
+
+/* ------------------- START Tags ---------------------- */
+.tag_node_modules-\@docusaurus-theme-classic-lib-theme-Tag-styles-module {
+  border: none !important;
+  background-color: var(--ifm-breadcrumb-item-background-active);
+}
+/* ------------------- END Tags ---------------------- */

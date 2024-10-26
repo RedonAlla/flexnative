@@ -22,7 +22,8 @@
 }
 
 .example-block {
-  border: 1px solid var(--ifm-color-emphasis-300);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  background-color: var(--ifm-pre-background);
   border-radius: var(--ifm-pagination-nav-border-radius);
   height: 100%;
   line-height: var(--ifm-heading-line-height);

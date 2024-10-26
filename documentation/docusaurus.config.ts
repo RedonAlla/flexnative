@@ -46,6 +46,7 @@ const config: Config = {
             return `https://github.com/RedonAlla/flexnative/documentation/edit/main/docs/${docPath}`;
           },
           sidebarCollapsible: true,
+          sidebarCollapsed: true,
           showLastUpdateAuthor: false,
           showLastUpdateTime: true,
         },
@@ -140,6 +141,12 @@ const config: Config = {
 	  announcementBar: {
       id: 'work_in_progress',
       content: 'work in progress...'
+    },
+    docs: {
+      sidebar: {
+        hideable: true,
+        autoCollapseCategories: true,
+      },
     },
     navbar: {
       title: 'FlexNative',

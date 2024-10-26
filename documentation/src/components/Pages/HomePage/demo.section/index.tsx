@@ -33,7 +33,7 @@ type BtnPros = {
 class DownloadBtn extends React.PureComponent<BtnPros, {}> {
   render() {
     return (
-		<div class="dropdown dropdown--hoverable">
+		<div className="dropdown dropdown--hoverable">
 		  <div className={clsx("btn-download", this.props.icon)}>
 			<span className={`icon-${this.props.icon}`}></span>
 			<div className="text-content">
@@ -41,18 +41,18 @@ class DownloadBtn extends React.PureComponent<BtnPros, {}> {
 			  <span>{this.props.app}</span>
 			</div>
 		  </div>
-		  <ul class="dropdown__menu">
+		  <ul className="dropdown__menu">
 			<li>
-			  <a class="dropdown__link"
+			  <a className="dropdown__link"
 				target="_blank"
-				title="Dounload build from Github."
+				title="Download build from Github."
 				href="https://github.com/RedonAlla/flexnative/tree/main/demo-app-builds"
 			>Download from <strong>Git</strong></a>
 			</li>
 			<li>
-			  <a class="dropdown__link"
+			  <a className="dropdown__link"
 				target="_blank"
-				title="Dounload build from Expo."
+				title="Download build from Expo."
 				href={`https://expo.dev/accounts/redonalla/projects/flexnative-demo/builds/${this.props.expoBuildId}`}
 			 >Download from <strong>Expo</strong></a>
 			</li>
@@ -155,8 +155,8 @@ export default class extends React.PureComponent<{}, DemoStateProps> {
                 </p>
                 
                 <div className="btn-download-container">
-                  <DownloadBtn icon="apple" app="iOS" expoBuildId="28959397-b2a2-4361-a8fa-2c208bce439a" />
-                  <DownloadBtn icon="android" app="Android" expoBuildId="90a88c8e-ae88-4b76-a1ad-4593886db8a6" />
+                  <DownloadBtn icon="apple" app="iOS" expoBuildId="90a88c8e-ae88-4b76-a1ad-4593886db8a6" />
+                  <DownloadBtn icon="android" app="Android" expoBuildId="28959397-b2a2-4361-a8fa-2c208bce439a" />
                 </div>
               </div>
             </div>

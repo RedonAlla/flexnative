@@ -1,4 +1,5 @@
 import React from "react";
+import { Alert, Platform } from "react-native";
 
 import Button from '@flexnative/buttons';
 // highlight-next-line
@@ -6,7 +7,6 @@ import BottomSheet from "@flexnative/bottom-sheet";
 
 import MockContainer from "./MockContainer";
 import { OPEN_TIME_OUT } from "./constants";
-import { Alert, Platform } from "react-native";
 
 
 export default class extends React.PureComponent<{}, {}> {
