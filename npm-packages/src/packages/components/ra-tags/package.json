@@ -1,0 +1,30 @@
+{
+  "name": "@flexnative/tags",
+  "version": "0.0.1",
+  "description": "React Native Tags",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "react-native",
+    "tags"
+  ],
+  "author": "Redon Alla",
+  "license": "MIT",
+  "peerDependencies": {
+    "@flexnative/icons": "*",
+    "@flexnative/ui-constants": "*",
+    "@flexnative/theme-context": "*"
+  }
+}

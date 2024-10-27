@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    // "esModuleInterop": true,
+    "isolatedModules": true,
+    "jsx": "react",
+    // "lib": ["es6"],
+    // "moduleResolution": "node",
+    "strict": true,
+    //"target": "esnext",
+    "sourceMap": true,
+    "outDir": "dist",
+    "rootDir": "src",
+
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["esnext"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noImplicitUseStrict": false,
+    "noStrictGenericChecks": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "target": "esnext"
+  },
+  "include": ["src"],
+  "exclude": [
+    "node_modules"
+  ],
+  "paths": {
+    "react": [ "./node_modules/@types/react" ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "@flexnative/skeleton-loading",
+  "version": "0.0.1",
+  "description": "React Native Skeleton loadings",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "react",
+    "react-native",
+    "skeleton-loading"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Redon Alla",
+  "license": "MIT",
+  "peerDependencies": {
+    "react-native-svg": "*",
+    "@flexnative/theme-context": "*"
+  }
+}

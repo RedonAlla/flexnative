@@ -1,0 +1,29 @@
+{
+  "name": "@flexnative/bottom-sheet",
+  "version": "0.0.1",
+  "description": "React Native Bottom Sheet",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "keywords": [
+    "react",
+    "react-native",
+    "bottom-sheet"
+  ],
+  "author": "Redon Alla",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "peerDependencies": {
+    "expo-blur": "*",
+    "@flexnative/theme-context": "*"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@flexnative/theme-context",
+  "version": "0.0.2",
+  "description": "React ThemeContext",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "buildpack": "npm pack --pack-destination=dist/context",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "react-native",
+    "theme-context"
+  ],
+  "author": "Redon Alla",
+  "license": "MIT",
+  "devDependencies": {}
+}

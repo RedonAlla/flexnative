@@ -1,0 +1,30 @@
+{
+  "name": "@flexnative/inputs",
+  "version": "0.0.2",
+  "description": "React Native Inputs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "react-native",
+    "input"
+  ],
+  "author": "Redon Alla",
+  "license": "MIT",
+  "peerDependencies": {
+    "@flexnative/icons": "*",
+    "@flexnative/theme-context": "*",
+    "@flexnative/ui-constants": "*"
+  }
+}

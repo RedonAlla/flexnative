@@ -1,0 +1,29 @@
+{
+  "name": "@flexnative/icons",
+  "version": "0.0.1",
+  "description": "React Native Icons using fonts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "react-native",
+    "icons"
+  ],
+  "author": "Redon Alla",
+  "license": "MIT",
+  "peerDependencies": {
+    "@flexnative/theme-context": "*",
+    "react-native-reanimated": "*"
+  }
+}

@@ -7,3 +7,15 @@
 
 # Generated files
 /*/.docusaurus
+/npm-packages/src/packages/components/ra-avatar/dist
+/npm-packages/src/packages/components/ra-badges/dist
+/npm-packages/src/packages/components/ra-bottom-sheet/dist
+/npm-packages/src/packages/components/ra-buttons/dist
+/npm-packages/src/packages/components/ra-icons/dist
+/npm-packages/src/packages/components/ra-inputs/dist
+/npm-packages/src/packages/components/ra-skeleton-loading/dist
+/npm-packages/src/packages/components/ra-tags/dist
+/npm-packages/src/packages/context/ra-theme-context/dist
+/npm-packages/src/packages/services/ra-local-storage/dist
+/npm-packages/src/packages/utilities/dist
+/npm-packages/src/shared/ui-constants

@@ -1,0 +1,30 @@
+{
+  "name": "@flexnative/utilities",
+  "version": "0.0.2",
+  "description": "Utilities helpers.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "devDependencies": {
+    "@react-native-async-storage/async-storage": "*"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "buildpack": "npm pack --pack-destination=dist/ra-utilities",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "javascript",
+    "utilities",
+    "helpers"
+  ],
+  "author": "Redon Alla",
+  "license": "MIT"
+}
