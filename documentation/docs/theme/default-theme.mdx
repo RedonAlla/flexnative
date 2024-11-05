@@ -10,16 +10,77 @@ tags: [react, react-native, expo, framework, component]
 
 import LightColors from '@site/src/components/Docs/Colors/LightColors';
 
-:::note
+The [theme object](#basethemetcolors) is where you define your application's color palette, type scale, borders, border radius values, and more.
+
+:::info
 First of all you need to install `@flexnative/theme-context`.
 Fallow instructions here on **[how to install and how to use](../getting-started/installation.mdx)** `@flexnative/theme-context`.
 :::
 
-**[BaseTheme](/docs/getting-started/setup-@flexnative/theme-provider#basetheme)** object is where you define your application's color palette.
+## BaseTheme\<TColors\>
 
-By default there are two color palette `light` or `dark` from `@flexnative/theme-context`.
-You also can extend [`BaseTheme`](/docs/getting-started/setup-@flexnative/theme-provider#basetheme) object to add custom/extra colors.
-Fallow the section on [how customizing default theme colors](./consuming-theme.mdx)
-or [how to extend of default theme colors](./extend-theme.mdx).
+:::note
+**`TColors`** it is opbect template for extra colors.
+See using custom colors [section](./customizing-theme.mdx)
+:::
 
+|  Name   | Type | Required | Default Value | Description |
+| -- | -- | -- | -- | -- |
+| colors | [`BaseColors`](#basecolors) & `TColors` | ***true*** | [`BaseColors`](#basecolors) | Default theme colors.<br /> You can add whatever values you want to the theme, and they will be merged with the default. |
+| scheme  | [`ColorSchemeName`](https://reactnative.dev/docs/usecolorscheme#supported-color-schemes) | **false** | Device color scheme. | Theme [`ColorSchemeName`](https://reactnative.dev/docs/usecolorscheme#supported-color-schemes)  |
+| borderWidth | [`Record<BorderWidth, number>`](#borderwidth) | ***true*** | [`BorderWidth`](#borderwidth) | Border width used by components. |
+| borderRadius | [`Record<BorderRadius, number>`](#borderradius) | ***true*** | [`BorderRadius`](#borderradius) | Border radius used by components. |
+| fontSize | [`Record<FontSize, number>`](#fontsize) | ***true*** | [`FontSize`](#fontsize) | Font size used by components. |
+| metrics | [`object`](#metrics) | ***true*** | [`metrics`](#metrics) | Base constants values used by components. |
+
+### BaseColors
+Default theme colors.
+You can add whatever values you want to the theme, and they will be merged with the default.
 <LightColors />
+
+### BorderWidth
+Border width used by components.
+One of `'none' | 'hairline' | 'thin' | 'base' | 'thick' | number`
+
+|  Name  | Type | Value |
+| ------- | ---- | ----- |
+| none | `number` | 0 |
+| hairline | `number` | [`StyleSheet.hairlineWidth`](https://reactnative.dev/docs/stylesheet#hairlinewidth) |
+| thin | `number` | 1 |
+| base | `number` | 2 |
+| thick | `number` | 3 |
+
+### BorderRadius
+Border radius used by components.
+One of `'none' | 'small' | 'medium' | 'large' | 'full' | number`
+
+|  Name   | Type | Value |
+| ------- | ---- | ----- |
+| none | `number` | 0 |
+| small | `number` | 2 |
+| medium | `number` | 4 |
+| large | `number` | 6 |
+| full | `number` | 99999 |
+
+### FontSize
+Font size used by components.
+One of `'small' | 'default' | 'medium' | 'large'`
+
+|  Name   | Type | Value |
+| ------- | ---- | ----- |
+| small | `number` | [metrics.basSize](#basesize) * 0.75 |
+| default | `number` | [metrics.basSize](#basesize) |
+| medium | `number` | [metrics.basSize](#basesize) * 1.25 |
+| large | `number` | [metrics.basSize](#basesize) * 1.5 |
+
+### metrics
+Base constants values used by components.
+
+|  Name   | Type | Value | Description |
+| ------- | ---- | ----- | ----------- |
+| <span id='basesize'>baseSize</span> | `number` | 16 | Base size used in fontSize. |
+| disabledOpacity | `number` | 0.4 | Opacity style property value for disabled components. |
+| ghostOpacity | `string` | 40 | Color opacity for components with 'ghost' appearance. |
+| ghostActiveOpacity | `string` | 73 | Color opacity for components with 'ghost' appearance in active sate. |
+| verticalMultiplier | `number` | 0.6 | A constant multiplayer for components vertical padding. |
+| horizontalMultiplier | `number` | 16 | A constant multiplayer for components horizontal padding. |

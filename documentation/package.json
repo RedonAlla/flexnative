@@ -29,7 +29,7 @@
     "@flexnative/inputs": "^0.0.2",
     "@flexnative/skeleton-loading": "^0.0.1",
     "@flexnative/tags": "^0.0.1",
-    "@flexnative/theme-context": "^0.0.1",
+    "@flexnative/theme-context": "^0.0.2",
     "@flexnative/ui-constants": "^0.0.2",
     "@mdx-js/react": "^3.0.1",
     "clsx": "^2.1.1",

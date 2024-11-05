@@ -13,14 +13,14 @@ import CodeBlock from '@theme/CodeBlock';
 import DocCardList from '@theme/DocCardList';
 
 
-**[BaseTheme](/docs/theme/default-heme#basetheme-props)** object is where you define your application's color palette.
-
+**[BaseTheme\<TColors\>](./default-theme#basethemetcolors)** 
+is where you define your application's color palette, type scale, borders, border radius values, and more.
 If you need to customize the default theme to match your design requirements you should implement **BaseTheme** from `@flexnative/theme-context`.
 
 
 ## Example
 
-Example of customizing theme color.
+Example of using custom theme values.
 
 <Tabs>
   <TabItem value="javascript" label="Javascript" default>
@@ -28,6 +28,18 @@ Example of customizing theme color.
     ```jsx showLineNumbers
     // highlight-next-line
     import ThemeContext from '@flexnative/theme-context';
+
+    import {
+      BASE_SIZE,
+      BORDER_RADIUS,
+      BORDER_WIDTH,
+      DISABLED_OPACITY,
+      FONT_SIZE,
+      GHOST_ACTIVE_TRANSPARENCY,
+      GHOST_TRANSPARENCY,
+      PADDING_HORIZONTAL_MULTIPLIER,
+      PADDING_VERTICAL_MULTIPLIER
+    } from "./constants";
 
     const myThemeColors = {
       default: '#4A148C',
@@ -42,12 +54,33 @@ Example of customizing theme color.
       dark: "#212121",
       secondary: "#F50057",
       light: "#ebebeb",
-      primary: '#26C6DA'
+      primary: '#26C6DA',
+      overlay: '#00000021',
+      // highlight-start
+      color1: '#C51162', //New color
+      color2: '#7B1FA2', //New color
+      // highlight-end
     };
+
+    const myTheme = {
+      colors: myThemeColors,
+      scheme: 'light',
+      borderWidth: BORDER_WIDTH,
+      borderRadius: BORDER_RADIUS,
+      fontSize: FONT_SIZE,
+      metrics: {
+        basSize: BASE_SIZE,
+        disabledOpacity: DISABLED_OPACITY,
+        ghostOpacity: GHOST_TRANSPARENCY,
+        ghostActiveOpacity: GHOST_ACTIVE_TRANSPARENCY,
+        verticalMultiplier: PADDING_VERTICAL_MULTIPLIER,
+        horizontalMultiplier: PADDING_HORIZONTAL_MULTIPLIER
+      }
+    }
 
     function App() {
       return (
-        <ThemeContext.Provider value={{colors: myThemeColors}}>
+        <ThemeContext.Provider value={myTheme}>
           <YourAPP />
         </ThemeContext.Provider>
       );
@@ -60,7 +93,25 @@ Example of customizing theme color.
     // highlight-next-line
     import ThemeContext, { BaseTheme } from '@flexnative/theme-context';
 
-    const myThemeColors: BaseTheme = {
+    import {
+      BASE_SIZE,
+      BORDER_RADIUS,
+      BORDER_WIDTH,
+      DISABLED_OPACITY,
+      FONT_SIZE,
+      GHOST_ACTIVE_TRANSPARENCY,
+      GHOST_TRANSPARENCY,
+      PADDING_HORIZONTAL_MULTIPLIER,
+      PADDING_VERTICAL_MULTIPLIER
+    } from "./constants";
+
+    
+    type MyExtraColorsProps = {
+      color1: ColorValue;
+      color2: ColorValue,
+    }
+
+    const myThemeColors: BaseTheme<MyExtraColorsProps> = {
       default: '#4A148C',
       background: "#C5CAE9",
       card: "#E8EAF6",
@@ -73,12 +124,33 @@ Example of customizing theme color.
       dark: "#212121",
       secondary: "#F50057",
       light: "#ebebeb",
-      primary: '#26C6DA'
+      primary: '#26C6DA',
+      overlay: '#00000021',
+      // highlight-start
+      color1: '#C51162', //New color
+      color2: '#7B1FA2', //New color
+      // highlight-end
     };
+
+    const myTheme = {
+      colors: myThemeColors,
+      scheme: 'light',
+      borderWidth: BORDER_WIDTH,
+      borderRadius: BORDER_RADIUS,
+      fontSize: FONT_SIZE,
+      metrics: {
+        basSize: BASE_SIZE,
+        disabledOpacity: DISABLED_OPACITY,
+        ghostOpacity: GHOST_TRANSPARENCY,
+        ghostActiveOpacity: GHOST_ACTIVE_TRANSPARENCY,
+        verticalMultiplier: PADDING_VERTICAL_MULTIPLIER,
+        horizontalMultiplier: PADDING_HORIZONTAL_MULTIPLIER
+      }
+    }
 
     function App() {
       return (
-        <ThemeContext.Provider value={{colors: myThemeColors}}>
+        <ThemeContext.Provider value={myTheme}>
           <YourAPP />
         </ThemeContext.Provider>
       );
@@ -86,4 +158,75 @@ Example of customizing theme color.
     ```
 
   </TabItem>
+  <TabItem value="constants" label="constants.js">
+  ```tsx showLineNumbers
+  import { StyleSheet } from "react-native";
+  import { BorderRadius, BorderWidth } from "./props";
+
+  export const BASE_SIZE = 16;
+  export const DISABLED_OPACITY = 0.4;
+  export const GHOST_TRANSPARENCY = '40';
+  export const GHOST_ACTIVE_TRANSPARENCY = '73';
+  export const PADDING_VERTICAL_MULTIPLIER = 0.6;
+  export const PADDING_HORIZONTAL_MULTIPLIER = 1;
+
+  export const FONT_SIZE = {
+    small: BASE_SIZE * 0.75,
+    default: BASE_SIZE,
+    medium: BASE_SIZE * 1.25,
+    large: BASE_SIZE * 1.5
+  }
+
+  export const BORDER_RADIUS: Record<BorderRadius, number> = {
+    none: 0,
+    small: 2,
+    medium: 4,
+    large: 6,
+    full: 99999,
+  }
+
+  export const BORDER_WIDTH: Record<BorderWidth, number> = {
+    none: 0,
+    hairline: StyleSheet.hairlineWidth,
+    thin: 1,
+    base: 2,
+    thick: 3,
+  }
+  ```
+  </TabItem>
 </Tabs>
+
+:::note
+You can use **`createTheme`** method to create your custom theme.
+
+```tsx showLineNumbers
+// highlight-next-line
+import ThemeContext, { BaseTheme, createTheme, light as colors} from '@flexnative/theme-context';
+
+
+type MyExtraColorsProps = {
+  color1: ColorValue;
+  color2: ColorValue,
+}
+
+const myThemeColors: BaseTheme<MyExtraColorsProps> = {
+  ...colors
+  // highlight-start
+  color1: '#C51162', //New color
+  color2: '#7B1FA2', //New color
+  // highlight-end
+};
+
+const metrics: {
+  basSize: 12,
+}
+
+function App() {
+  return (
+    <ThemeContext.Provider value={createTheme({colors: myThemeColors, metrics})}>
+      <YourAPP />
+    </ThemeContext.Provider>
+  );
+}
+```
+:::

@@ -45,7 +45,7 @@ export interface BaseTheme<TColors> {
     /** Base size used in fontSize.
      * @default 16 
      */
-    basSize: number;
+    baseSize: number;
 
     /**
      * Opacity style property value for disabled components.

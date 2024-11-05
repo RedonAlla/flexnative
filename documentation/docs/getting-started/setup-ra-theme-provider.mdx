@@ -1,5 +1,4 @@
 ---
-sidebar_position: 2
 title: Setup Theme Provider
 last_update:
   date: 2024-09-24
@@ -11,9 +10,8 @@ import Installation from '../_installation.mdx';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
-import LightColors from '@site/src/components/Docs/Colors/LightColors';
 
-**FlexNative ThemeProvider** from *FlexNative* is a component that makes the theme available throughout your app.
+**FlexNative ThemeProvider** is part of *FlexNative* and is a component that makes the theme available throughout your app.
 It uses **React's Context API**.
 
 :::info
@@ -25,7 +23,7 @@ If you are not familiar with React's Context we strongly suggest to follow **[th
 ## Using ThemeProvider
 
 ThemeProvider it is a ***Class React Component*** that let's passing/consuming theme from all components through the App.
-It accepts a [value prop](#themeproviderprops) which is the data that will be shared with all components that are consumers of that context.
+It accepts a [value prop](../theme/default-theme.mdx#basethemetcolors) which is the data that will be shared with all components that are consumers of that context.
 
 **ThemeProvider** wrap the top-level component of your application with a Provider component, thus making the context available to all its descendants.
 
@@ -58,17 +56,6 @@ function App() {
   );
 }
 ```
-
-## ThemeProviderProps
-
-|  Name   | Type | Required | Default Value | Description |
-| -- | -- | -- | -- | -- |
-| colors | [`BaseTheme<TColors>`](#themecontextprops) | ***true*** | null | Where **TColors** is the object with custom colors. |
-| colorScheme  | [`ColorSchemeName`](https://reactnative.dev/docs/usecolorscheme#supported-color-schemes) | **false** | null | Value indicates the current user preferred color scheme. |
-
-### BaseTheme
-<LightColors />
-
 
 ## Using ThemeContext
 

@@ -24,33 +24,33 @@ and implement `onChangeTheme` method or you can create you own *ThemeContext*.
     import { ColorValue } from 'react-native';
     import { light, BaseTheme } from '@flexnative/theme-context';
 
-    export interface MyColorsColors {
+    export interface MyExtraColorsProps {
       color1: ColorValue,
       color2: ColorValue
     };
 
-    export const lightRedTheme: BaseTheme<MyColorsColors> = {
+    export const lightRedTheme: BaseTheme<MyExtraColorsProps> = {
       ...light,
       primary: '#FF0000',
       color1: '#C51162',
       color2: '#7B1FA2',
     }
 
-    export const lightBlueTheme: BaseTheme<MyColorsColors> = {
+    export const lightBlueTheme: BaseTheme<MyExtraColorsProps> = {
       ...light,
       primary: '#00008B',
       color1: '#C51162',
       color2: '#7B1FA2',
     }
 
-    export const darkRedTheme: BaseTheme<MyColorsColors> = {
+    export const darkRedTheme: BaseTheme<MyExtraColorsProps> = {
       ...dark,
       primary: '#FF0000',
       color1: '#C51162',
       color2: '#7B1FA2',
     }
 
-    export const darkBlueTheme: BaseTheme<MyColorsColors> = {
+    export const darkBlueTheme: BaseTheme<MyExtraColorsProps> = {
       ...dark,
       primary: '#00008B',
       color1: '#C51162',
@@ -68,10 +68,10 @@ and implement `onChangeTheme` method or you can create you own *ThemeContext*.
     // highlight-start
     import { ThemeProvider } from '@flexnative/theme-context';
     // highlight-end
-    import { MyColorsColors } from './colors';
+    import { MyExtraColorsProps } from './colors';
 
 
-    export default class MyThemeProvider extends ThemeProvider<MyColorsColors> {
+    export default class MyThemeProvider extends ThemeProvider<MyExtraColorsProps> {
       // Here you can implement your logic to get inital theme
       // if you are storing your theme in persistent memory (db or local storage).
       async onLoad(): Promise<void> {
@@ -79,34 +79,34 @@ and implement `onChangeTheme` method or you can create you own *ThemeContext*.
         Appearance.addChangeListener(this.onAppearanceChange);
 
         this.setState({
-          colorScheme: appThemeStorage.colorScheme,
-          colors: getThemeColors(appThemeStorage.primaryColor, appThemeStorage.colorScheme)
+          scheme: appThemeStorage.scheme,
+          colors: getThemeColors(appThemeStorage.primaryColor, appThemeStorage.scheme)
         });
       }
 
-      onAppearanceChange = (colorScheme: Appearance.AppearancePreferences) => {
-        if(this.state.colorScheme === null) {
+      onAppearanceChange = (scheme: Appearance.AppearancePreferences) => {
+        if(this.state.scheme === null) {
           this.setState({ ...this.state });
         }
         else {
           this.setState({
-            colorScheme: colorScheme.colorScheme,
-            colors: getThemeColors(this.state.colors.primary, colorScheme.colorScheme)
+            scheme: scheme.scheme,
+            colors: getThemeColors(this.state.colors.primary, scheme.scheme)
           });
         }
       }
 
       onChangeTheme = async (theme: BaseTheme): Promise<void> => {
-        await Storage.saveItem(APP_THEME, { colorScheme: this.state.colorScheme, primaryColor: theme.primary });
+        await Storage.saveItem(APP_THEME, { scheme: this.state.scheme, primaryColor: theme.primary });
         this.setState({ colors: theme });
       }
 
-      onChangeColorSchemeTheme = async (colorScheme: ColorSchemeName): Promise<void>  => {
-        await Storage.saveItem(APP_THEME, { colorScheme: colorScheme, primaryColor: this.state.colors.primary });
+      onChangeColorScheme = async (scheme: ColorSchemeName): Promise<void>  => {
+        await Storage.saveItem(APP_THEME, { scheme: scheme, primaryColor: this.state.colors.primary });
 
         this.setState({
-          colorScheme: colorScheme ?? Appearance.getColorScheme(),
-          colors: getThemeColors(this.state.colors.primary, colorScheme)
+          scheme: scheme ?? Appearance.getColorScheme(),
+          colors: getThemeColors(this.state.colors.primary, scheme)
         });
       }
     }
@@ -121,7 +121,7 @@ and implement `onChangeTheme` method or you can create you own *ThemeContext*.
 
   // highlight-start
   import { useThemeContext } from '@flexnative/theme-context';
-  import { lightRedTheme, lightBlueTheme, darkRedTheme, darkBlueTheme, MyColorsColors } from './colors';
+  import { lightRedTheme, lightBlueTheme, darkRedTheme, darkBlueTheme, MyExtraColorsProps } from './colors';
   // highlight-end
 
   type BtnToggleProps = {
@@ -134,9 +134,9 @@ and implement `onChangeTheme` method or you can create you own *ThemeContext*.
     const theme = useThemeContext();
 
     const onTheme = async (): Promise<void>  => {
-      let newColors: BaseTheme<MyColorsColors>;
+      let newColors: BaseTheme<MyExtraColorsProps>;
 
-      if(theme.colorScheme === 'dark')
+      if(theme.scheme === 'dark')
         newColors = props.theme 'red' ? darkRedTheme : darkBlueTheme;
       else
         newColors = props.theme 'red' ? lightRedTheme : lightBlueTheme;
