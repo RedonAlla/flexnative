@@ -2,14 +2,16 @@
  * @ Author: Redon Alla
  * @ Create Time: 2023-06-04 21:29:02
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-10-20 13:05:09
+ * @ Modified time: 2024-10-27 16:07:16
  * @ Description: Default colors for FlexNative framework. Support dark and light colors.
  */
 
-import { BaseTheme } from './types';
+import { BaseColors } from './props';
 
 
-export const light: BaseTheme = {
+export const light: BaseColors = {
+  white: '#FFFFFF',
+  black: '#424242',
   background: "#f8f8f8",
   default: '#f5f5f5',
   card: '#ffffff',
@@ -23,10 +25,13 @@ export const light: BaseTheme = {
   dark: "#424242",
   secondary: "#666666",
   light: "#ebebeb",
-  primary: '#ff6358'
+  primary: '#ff6358',
+  overlay: '#00000021',
 };
 
-export const dark: BaseTheme = {
+export const dark: BaseColors = {
+  white: '#FFFFFF',
+  black: '#424242',
   default: '#404040',
   background: "#000000",
   card: "#232323",
@@ -40,5 +45,6 @@ export const dark: BaseTheme = {
   dark: "#424242",
   secondary: "#5C5C5C",
   light: "#ebebeb",
-  primary: '#ff6358'
+  primary: '#ff6358',
+  overlay: '#FFFFFF21',
 };
