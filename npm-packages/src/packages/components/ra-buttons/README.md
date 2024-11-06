@@ -10,4 +10,4 @@ This flexibility allows you to quickly and easily create the exact button you ne
 - [`@flexnative/ui-constants`](https://www.npmjs.com/package/@flexnative/ui-constants)
 
 
-For more details on how to start and how to use read the [documentation](https://redonalla.github.io/ra-framework-docks/).
+For more details on how to start and how to use read the [documentation](https://redonalla.github.io/flexnative/).

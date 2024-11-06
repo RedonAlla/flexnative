@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2023-06-04 21:29:02
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-10-27 20:34:52
+ * @ Modified time: 2024-11-06 21:37:07
  * @ Description: All props for ThemeContext and ThemeProvider.
  */
 
@@ -22,6 +22,7 @@ export type FontSize = 'small' | 'default' | 'medium' | 'large' | number;
 
 export type Color = 'default' | 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error' | 'dark' | 'light' | ColorValue;
 
+/** The theme object where you define your application's color palette, type scale, borders, border radius values, and more. */
 export interface BaseTheme<TColors> {
   /**
    * Default theme colors.
@@ -41,6 +42,7 @@ export interface BaseTheme<TColors> {
   /** Font size used by components. */
   fontSize: Record<FontSize, number>;
 
+  /** Base constants values used by components. */
   metrics: {
     /** Base size used in fontSize.
      * @default 16 
@@ -78,6 +80,7 @@ export interface BaseTheme<TColors> {
   }
 }
 
+/** Base colors used by components. */
 export interface BaseColors {
   white: ColorValue;
   black: ColorValue;
@@ -98,11 +101,16 @@ export interface BaseColors {
   overlay: ColorValue;
 }
 
+/** Props for ThemeProvider component. */
 export interface ThemeProviderProps<TColors> extends BaseTheme<TColors> {
   children: React.ReactNode;
 };
 
+/** Props for ThemeContext component. */
 export interface ThemeContextProps<TColors> extends BaseTheme<TColors> {
+  /** Method to implement for change theme. */
   setTheme?: (theme: BaseTheme<TColors>) => void;
+
+  /** Method to implement for change color scheme. */
   setColorScheme?: (scheme: ColorSchemeName) => void;
 }

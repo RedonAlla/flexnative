@@ -8,4 +8,4 @@ The **FlexNative Icons** is part of the **FlexNative Framework** and is availabl
 - [`expo-font`](https://docs.expo.dev/develop/user-interface/fonts/)
 
 
-For more details on how to start and how to use read the [documentation](https://redonalla.github.io/ra-framework-docks/).
+For more details on how to start and how to use read the [documentation](https://redonalla.github.io/flexnative/).
