@@ -1,7 +1,11 @@
 import { TextProps } from 'react-native';
 import { Color, FontSize } from '@flexnative/theme-context';
 
-/** Name of the icon to use. */
+/**
+ * Interface representing the names of various icons.
+ * Each property is a readonly string representing a specific icon name.
+ * These names can be used to access the corresponding Unicode value from the `icons` object.
+ */
 export interface IconName {
   readonly "sort-number-desc": string;
   readonly "sort-number-asc": string;
@@ -54,7 +58,10 @@ export interface IconName {
   readonly "trash": string;
 } 
 
-/** Name of the icon to use. */
+/**
+ * A collection of icon names mapped to their corresponding Unicode values.
+ * These icons can be used throughout the application for various UI elements.
+ */
 export const icons = {
   "sort-number-desc": "\ue90a",
   "sort-number-asc": "\ue90b",
@@ -107,8 +114,19 @@ export const icons = {
   "trash": "\ue906"
 }
 
+/**
+ * Properties for the BaseIcon component.
+ * 
+ * @extends TextProps
+ * 
+ * @property {FontSize} [size] - Icon size.
+ * @default "normal"
+ * 
+ * @property {Color} [color] - Icon color, which can be one of the colors used by ThemeProvider or a given ColorValue.
+ * @default theme.colors.text (text color provided by ThemeContextProps)
+ */
 export interface BaseIconProps extends TextProps {
-  /** Icon size 
+  /** Icon size
    * @default normal
   */
   size?: FontSize;
@@ -119,6 +137,13 @@ export interface BaseIconProps extends TextProps {
   color?: Color;
 }
 
+/**
+ * Interface representing the properties for an icon component.
+ * 
+ * @extends BaseIconProps
+ * 
+ * @property {keyof IconName} name - Name of the icon to use (Specific to the chosen Icon Pack).
+ */
 export interface IconProps extends BaseIconProps {
   /** Name of the icon to use (Specific to the chosen Icon Pack) */
   name: keyof IconName;
