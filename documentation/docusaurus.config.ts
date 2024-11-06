@@ -43,7 +43,7 @@ const config: Config = {
           // editUrl:
           //   'https://github.com/RedonAlla/flexnative',
           editUrl: ({locale, versionDocsDirPath, docPath}) => {
-            return `https://github.com/RedonAlla/flexnative/documentation/edit/main/docs/${docPath}`;
+            return `https://github.com/RedonAlla/flexnative/edit/main/documentation/docs/${docPath}`;
           },
           sidebarCollapsible: true,
           sidebarCollapsed: true,

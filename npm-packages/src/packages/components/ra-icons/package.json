@@ -11,8 +11,6 @@
     ".": "./dist/index.js"
   },
   "scripts": {
-    "build": "tsc",
-    "prepare": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -25,5 +23,12 @@
   "peerDependencies": {
     "@flexnative/theme-context": "*",
     "react-native-reanimated": "*"
+  },
+  "homepage": "https://redonalla.github.io/flexnative/",
+  "bugs": "https://github.com/RedonAlla/flexnative/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RedonAlla/flexnative.git",
+    "directory": "npm-packages/src/packages/context/ra-theme-context"
   }
 }

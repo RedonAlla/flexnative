@@ -19,8 +19,9 @@ const ANIMATION_DURATION = 700;
 
 
 export default React.memo((props: IconProps)=> {
-  const appTheme = useThemeContext();
+  const theme = useThemeContext();
   const rotation = useSharedValue(0);
+  
   const animatedStyles = useAnimatedStyle(() => {
     return {
       transform: [
@@ -45,8 +46,10 @@ export default React.memo((props: IconProps)=> {
   const { name, size, color, style, ...otherProps } = props;
 
   const styles = createStyles(
-    { color: color || 'default', size: size || 'normal' },
-    appTheme.colors,
+    {
+      color: (theme.colors[color] ?? color) || theme.colors.text,
+      size: (theme.fontSize[size] ?? size) || theme.fontSize.default
+    },
   );
   
   return <Animated.Text style={[styles.icon, style, animatedStyles]} {...otherProps}>{icons[name]}</Animated.Text>;

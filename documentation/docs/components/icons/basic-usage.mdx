@@ -136,27 +136,12 @@ import ColorProps from '@site/src/components/Docs/Colors/Props';
 |  Name   | Type | Required | Default Value | Description |
 | -- | -- | -- | -- | -- |
 | name | [`IconName`](#iconname) | **true** | `undefined` |  |
-| size  | [`IconSize`](#iconsize) | **false** | `'normal'` | Icon size |
-| color  | [`IconColor`](#iconcolor) | **false** | `theme.colors.text` | Icon color one of color used by [`BaseTheme<TColors>`](/docs/getting-started/setup-@flexnative/theme-provider#basethemetcolors) or given [`ColorValue`](https://reactnative.dev/docs/colors) by user. |
+| size  | [`FontSize`](../../theme/default-theme.mdx#fontsize) | **false** | `theme.fontSize.default` | Icon size |
+| color  | [`BaseColors`](../../theme/default-theme.mdx#basecolors) | **false** | `theme.colors.text` | Icon color one of color used by [`BaseTheme<TColors>`](../../theme/default-theme.mdx#basecolors) or given [`ColorValue`](https://reactnative.dev/docs/colors) by user. |
 
 ### IconName
 
 <IconsNames />
-
-### IconSize
-One of `'small' | 'normal' | 'medium' | 'large' | number`
-
-| Name | Type | Value |
-| ---- | ---- | ----- |
-| small | `number` | 16 |
-| normal | `number` | 16 |
-| medium | `number` | 32 |
-| large | `number` | 48 |
-| | `number` | Any number value. |
-
-### IconColor
-
-<ColorProps />
 
 
 ## Using `Icon` component

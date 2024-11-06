@@ -1,4 +1,5 @@
-import { ColorValue, TextProps } from 'react-native';
+import { TextProps } from 'react-native';
+import { Color, FontSize } from '@flexnative/theme-context';
 
 /** Name of the icon to use. */
 export interface IconName {
@@ -106,19 +107,16 @@ export const icons = {
   "trash": "\ue906"
 }
 
-export type IconSize = 'small' | 'normal' | 'medium' | 'large' | number;
-export type IconColor = 'default' | 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error' | 'dark' | 'light' | ColorValue;
-
 export interface BaseIconProps extends TextProps {
   /** Icon size 
    * @default normal
   */
-  size?: IconSize;
+  size?: FontSize;
 
   /** Icon color one of color used by ThemeProvider or given ColorValue
    * @default theme.colors.text (text color provided by ThemeContextProps)
   */
-  color?: IconColor;
+  color?: Color;
 }
 
 export interface IconProps extends BaseIconProps {

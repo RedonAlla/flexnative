@@ -7,12 +7,14 @@ import createStyles from './styles';
 
 
 export default React.memo((props: IconProps) => {
-  const appTheme = useThemeContext();
+  const theme = useThemeContext();
   const { name, size, color, style, ...otherProps } = props;
 
   const styles = createStyles(
-    { color: color || appTheme.colors.text, size: size || 'normal' },
-    appTheme.colors,
+    {
+      color: (theme.colors[color] ?? color) || theme.colors.text,
+      size: (theme.fontSize[size] ?? size) || theme.fontSize.default
+    },
   );
 
   return (<Text style={[styles.icon, style ]} {...otherProps}>{icons[name]}</Text>);
