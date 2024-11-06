@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2023-06-04 21:29:02
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-05 21:58:52
+ * @ Modified time: 2024-11-06 23:24:40
  * @ Description: Theme Provider
  */
 
@@ -14,6 +14,14 @@ import { BaseColors, BaseTheme, ThemeProviderProps } from './props';
 import { createTheme, defaultColors } from './utilities';
 
 
+/**
+ * Represents the state properties for the theme provider.
+ *
+ * @template TColors - A type representing additional theme colors.
+ *
+ * @property {BaseColors & TColors} colors - Default theme colors. You can add whatever values you want to the theme, and they will be merged with the default.
+ * @property {ColorSchemeName} [scheme] - Theme color scheme.
+ */
 interface StateProps<TColors> {
   /**
    * Default theme colors.
