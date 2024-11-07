@@ -2,13 +2,13 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-06-07 23:29:01
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-10-20 19:23:56
+ * @ Modified time: 2024-11-07 19:44:33
  * @ Description: Utilities functions used for Avatar component.
  */
 
 import { ColorValue } from "react-native";
 
-import { BaseTheme } from "@flexnative/theme-context";
+import { BaseTheme, Color } from "@flexnative/theme-context";
 import { BLACK_TEXT_COLOR, BORDER_RADIUS, BORDER_WIDTH, GHOST_TRANSPARENCY, WHITE_TEXT_COLOR } from "@flexnative/ui-constants";
 
 import { AVATAR_SIZES } from "./constants";
@@ -164,20 +164,21 @@ export function getBorderWidth(width?: BorderWidth): number {
  * extract the color from theme by property
  * if there's no theme property in the theme, return the value
  * 
- * @param {boolean} isLight - Boolean if Color Scheme it is in light mode.
- * @param {AvatarColor} color - user selected color.
+ * @param {Color} color - user selected color.
  * @param {FillMode} fillMode - user selected avatar type.
  * @param {BaseTheme} theme - colors from selected theme.
  * 
  * @returns {ColorValue}
  */
-export function getTextColor(color: AvatarColor, fillMode: FillMode, isLight: boolean, theme: BaseTheme) {
+export function getTextColor(color: Color, fillMode: FillMode, theme: BaseTheme<any>): ColorValue {
+  const isLight = theme.scheme === 'dark';
+
   if(Boolean(color === 'light' || color === 'secondary'))
-    return BLACK_TEXT_COLOR;
+    return theme.colors.black;
 
   return Boolean(isLight && color === 'default')
-    ? BLACK_TEXT_COLOR
+    ? theme.colors.black
     : fillMode === 'solid'
-      ? WHITE_TEXT_COLOR
-      : getColor(color, theme)
+      ? theme.colors.white
+      : theme.colors[color!] ?? color
 }

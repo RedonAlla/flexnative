@@ -2,21 +2,21 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-06-07 23:29:01
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-10-19 23:50:03
+ * @ Modified time: 2024-11-07 19:44:45
  * @ Description: Styles applied in to Avatar component.
  */
 
 import { ColorValue, StyleSheet } from 'react-native';
-import { BaseTheme } from '@flexnative/theme-context';
+import { BaseTheme, BorderRadius, BorderWidth, Color, Sizes } from '@flexnative/theme-context';
 
-import { FillMode, BorderWidth, Sizes, Type, AvatarColor, BorderRadius } from "./props";
+import { FillMode, Type } from "./props";
 import { getColor, getSize, getBackgroundColor, getBorderWidth, getBorderRadius, getTextColor } from './utilities';
 
 
 type AvatarItemStyleProps = {
   size: Sizes;
   type: Type;
-  color: AvatarColor;
+  color: Color;
   fillMode: FillMode;
   radius: BorderRadius;
   borderWidth?: BorderWidth;
@@ -24,25 +24,20 @@ type AvatarItemStyleProps = {
   backgroundColor?: ColorValue;
   textColor?: ColorValue;
   iconColor?: ColorValue;
-  theme: {
-    colors: BaseTheme;
-    isDark: boolean;
-  }
+  theme: BaseTheme<any>
 }
 
 type AvatarGroupStyleProps = {
   itemPadding: number;
   itemBorderWidth?: BorderWidth;
   itemBorderColor?: ColorValue;
-  theme: {
-    colors: BaseTheme;
-  }
+  theme: BaseTheme<any>;
 }
 
 export default function applyStyle(props: AvatarItemStyleProps) {
   const size = getSize(props.size);
   const color = getColor(props.color, props.theme.colors);
-  const textColor = getTextColor(props.color, props.fillMode, !props.theme.isDark, props.theme.colors);
+  const textColor = getTextColor(props.color, props.fillMode, props.theme);
 
   return StyleSheet.create({
     container: {

@@ -2,22 +2,54 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-06-07 23:29:01
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-10-19 23:47:23
+ * @ Modified time: 2024-11-07 19:23:22
  * @ Description: Avatar props to change the component behavior.
  */
 
 import { IconName } from "@flexnative/icons";
+import { BorderRadius, BorderWidth, Sizes } from "@flexnative/theme-context";
 import { ImageProps } from 'expo-image';
 import { ColorValue, TextProps, ViewProps } from "react-native";
 
+/**
+ * Defines the type of avatar to be displayed.
+ * 
+ * - 'image': An avatar that displays an image.
+ * - 'icon': An avatar that displays an icon.
+ * - 'text': An avatar that displays text.
+ */
 export type Type = 'image' | 'icon' | 'text';
-export type BorderRadius = 'none' | 'small' | 'medium' | 'large' | 'full' | number;
-export type BorderWidth = 'none' | 'hairline' | 'thin' | 'base' | 'thick' | number;
-export type Sizes = 'small' | 'medium' | 'large' | number;
-export type AvatarColor = 'default' | 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error' | 'dark' | 'light' | ColorValue;
+
+/**
+ * Represents the fill mode for an avatar component.
+ * 
+ * - `solid`: The avatar will have a solid fill.
+ * - `none`: The avatar will have no fill.
+ * - `ghost`: The avatar will have a ghost fill.
+ */
 export type FillMode = 'solid' | 'none' | 'ghost';
 
 
+/**
+ * Properties for the Avatar component.
+ * 
+ * @interface AvatarProps
+ * @extends {ImageProps}
+ * @extends {Omit<TextProps, 'style'>}
+ * 
+ * @property {FillMode} fillMode - Fill Mode. Defaults to 'solid'.
+ * @property {BorderRadius} radius - Avatar border radius. Defaults to 'medium'.
+ * @property {Sizes} size - Avatar Size. Defaults to 'normal'.
+ * @property {Type} type - Avatar type. Defaults to 'image'.
+ * @property {ColorValue} [color] - Color by theme or a custom color according to `react-native` ColorValue. Defaults to 'default'.
+ * @property {BorderWidth} [borderWidth] - Optional avatar borders width. Defaults to 'none'.
+ * @property {ColorValue} [borderColor] - Borders color according to `react-native` ColorValue.
+ * @property {ColorValue} [backgroundColor] - Background color according to `react-native` ColorValue.
+ * @property {string} [text] - Text to display on avatar for type `Type = 'text'`.
+ * @property {ColorValue} [textColor] - Text color according to `react-native` ColorValue. Available for `Type = 'text'`.
+ * @property {keyof IconName} [icon] - Name of icon. Icon props for `Avatar Type = 'icon'`.
+ * @property {ColorValue} [iconColor] - Icon color according to `react-native` ColorValue. Available for `Type = 'icon'`.
+ */
 export interface AvatarProps extends ImageProps, Omit<TextProps, 'style'>
 {
   /**
@@ -83,6 +115,21 @@ export interface AvatarProps extends ImageProps, Omit<TextProps, 'style'>
   iconColor?: ColorValue;
 };
 
+/**
+ * Properties for the AvatarGroup component.
+ * 
+ * @extends ViewProps
+ * 
+ * @property {'asc' | 'desc'} sortIndex - The sorting order of the avatars.
+ * 
+ * @property {number} [itemPadding=13] - Padding between avatar items.
+ * 
+ * @property {BorderWidth} [itemBorderWidth='thick'] - Optional avatar borders width.
+ * 
+ * @property {ColorValue} [itemBorderColor='theme.colors.card'] - Borders color according to `react-native` ColorValue.
+ * 
+ * @property {Array<React.ReactElement<AvatarProps>>} children - Array of Avatar components.
+ */
 export interface AvatarGroupProps extends ViewProps {
   sortIndex: 'asc' | 'desc';
 

@@ -20,13 +20,17 @@ import Avatar from '@flexnative/avatar';
 ```
 
 ## Component
+A React PureComponent that renders an avatar component with various customization options.
 
 **Avatar**
 
 Type: `React.PureComponent<AvatarProps>`
 
-## Props
 
+## Props
+Properties for the Avatar component.
+
+### AvatarProps
 :::info
 **AvatarProps** of `@flexnative/avatar` package extends
 [`ImageProps`](https://docs.expo.dev/versions/latest/sdk/image/#imageprops) | [`TextProps`](https://reactnative.dev/docs/text#props).
@@ -34,8 +38,8 @@ Type: `React.PureComponent<AvatarProps>`
 
 |  Name   | Type | Required | Default Value | Description |
 | -- | -- | -- | -- | -- |
-| type | [`Type`](#type) | **true** | `image` | Avatar Type. `image`, `icon` and `text` are supported |
-| fillMode | [`FillMode`](#fillmode) | **false** | `solid` | Fill Mode |
+| type | [`Type`](#type) | **true** | `image` | Defines the type of avatar to be displayed. `image`, `icon` and `text` are supported. |
+| fillMode | [`FillMode`](#fillmode) | **false** | `solid` | Represents the fill mode for an avatar component. |
 | radius |  [`BorderRadius`](#borderradius) | **false** | `full` | Avatar border radius. |
 | size | [`Sizes`](#sizes) | **false** | `medium` | Avatar Size. |
 | backgroundColor | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `undefined` | Background color according `react-native` ColorValue. |
@@ -49,7 +53,9 @@ Type: `React.PureComponent<AvatarProps>`
 
 
 ### Type
+Defines the type of avatar to be displayed.
 One of `'image' | 'icon' | 'text'`
+
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | image | `string` | Property to render image on avatar component. |
@@ -57,6 +63,7 @@ One of `'image' | 'icon' | 'text'`
 | text | `string` | Property to render text on avatar component. |
 
 ### FillMode
+Represents the fill mode for an avatar component.
 One of `'solid' | 'none' | 'ghost'`
 
 | Name | Type | Description |
