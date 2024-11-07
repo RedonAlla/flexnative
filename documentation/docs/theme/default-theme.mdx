@@ -17,17 +17,17 @@ First of all you need to install `@flexnative/theme-context`.
 Fallow instructions here on **[how to install and how to use](../getting-started/installation.mdx)** `@flexnative/theme-context`.
 :::
 
-## BaseTheme\<TColors\>
+## Properties
 
-:::note
-**`TColors`** it is object template for extra colors.
-See using custom colors [section](./customizing-theme.mdx)
-:::
+
+### BaseTheme\<TColors\>
+Interface representing the base theme structure.
+TColors - @template for Custom colors that extend the base colors.
 
 |  Name   | Type | Required | Default Value | Description |
 | -- | -- | -- | -- | -- |
-| colors | [`BaseColors`](#basecolors) & `TColors` | ***true*** | [`BaseColors`](#basecolors) | Default theme colors.<br /> You can add whatever values you want to the theme, and they will be merged with the default. |
-| scheme  | [`ColorSchemeName`](https://reactnative.dev/docs/usecolorscheme#supported-color-schemes) | **false** | Device color scheme. | Theme [`ColorSchemeName`](https://reactnative.dev/docs/usecolorscheme#supported-color-schemes)  |
+| colors | <code>[BaseColors](#basecolors) & TColors</code> | ***true*** | [`BaseColors`](#basecolors) | Default theme colors. You can add whatever values you want to the theme, and they will be merged with the default. |
+| scheme  | [`ColorSchemeName`](https://reactnative.dev/docs/usecolorscheme#supported-color-schemes) | **false** | Device color scheme. | Theme color scheme. [`ColorSchemeName`](https://reactnative.dev/docs/usecolorscheme#supported-color-schemes)  |
 | borderWidth | [`Record<BorderWidth, number>`](#borderwidth) | ***true*** | [`BorderWidth`](#borderwidth) | Border width used by components. |
 | borderRadius | [`Record<BorderRadius, number>`](#borderradius) | ***true*** | [`BorderRadius`](#borderradius) | Border radius used by components. |
 | fontSize | [`Record<FontSize, number>`](#fontsize) | ***true*** | [`FontSize`](#fontsize) | Font size used by components. |
@@ -36,6 +36,12 @@ See using custom colors [section](./customizing-theme.mdx)
 ### BaseColors
 Default theme colors.
 You can add whatever values you want to the theme, and they will be merged with the default.
+
+#### Color
+Represents the possible color options for a component.
+The available color options are:
+<code>'default' | 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error' | 'dark' | 'light' | [ColorValue](https://reactnative.dev/docs/colors)</code>
+
 <LightColors />
 
 ### BorderWidth
@@ -64,7 +70,7 @@ One of `'none' | 'small' | 'medium' | 'large' | 'full' | number`
 
 ### FontSize
 Font size used by components.
-One of `'small' | 'default' | 'medium' | 'large'`
+One of `'small' | 'default' | 'medium' | 'large' | number`
 
 |  Name   | Type | Value |
 | ------- | ---- | ----- |

@@ -129,17 +129,23 @@ import ColorProps from '@site/src/components/Docs/Colors/Props';
 
 ## Properties
 
+### IconProps
+Interface representing the properties for an icon component.
+
 :::info
 `Icon` and `Spinner` components expects props of type `IconProp` which extends [`TextProps`](https://reactnative.dev/docs/text#props) from **React Native**
 :::
 
 |  Name   | Type | Required | Default Value | Description |
 | -- | -- | -- | -- | -- |
-| name | [`IconName`](#iconname) | **true** | `undefined` |  |
-| size  | [`FontSize`](../../theme/default-theme.mdx#fontsize) | **false** | `theme.fontSize.default` | Icon size |
-| color  | [`BaseColors`](../../theme/default-theme.mdx#basecolors) | **false** | `theme.colors.text` | Icon color one of color used by [`BaseTheme<TColors>`](../../theme/default-theme.mdx#basecolors) or given [`ColorValue`](https://reactnative.dev/docs/colors) by user. |
+| name | [`IconName`](#iconname) | **true** | `undefined` | Name of the icon to use (Specific to the chosen Icon Pack) |
+| size  | [`FontSize`](../../theme/default-theme.mdx#fontsize) | **false** | `theme.fontSize.default` | Icon size. |
+| color | <code>[BaseColors](../../theme/default-theme.mdx#color) \| [ColorValue](https://reactnative.dev/docs/colors)</code> | **false** | `theme.colors.text` | Icon color one of color used by [`BaseTheme<TColors>`](../../theme/default-theme.mdx#basecolors) or given [`ColorValue`](https://reactnative.dev/docs/colors) by user. |
 
 ### IconName
+Interface representing the names of various icons.
+Each property is a readonly string representing a specific icon name.
+These names can be used to access the corresponding Unicode value from the `icons` object.
 
 <IconsNames />
 

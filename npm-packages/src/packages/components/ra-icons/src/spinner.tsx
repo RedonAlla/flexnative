@@ -18,6 +18,28 @@ const TO_VALUE_ANIMATION = 360;
 const ANIMATION_DURATION = 700;
 
 
+/**
+ * A memoized React component that renders a spinning icon using animated styles.
+ * 
+ * @param {IconProps} props - The properties for the icon component.
+ * @returns {JSX.Element} The animated spinning icon component.
+ * 
+ * @component
+ * @example
+ * return (
+ *   <Spinner name="loading" size="large" color="primary" />
+ * )
+ * 
+ * @remarks
+ * This component uses the `useThemeContext` hook to access theme values and the `useSharedValue` and `useAnimatedStyle` hooks from Reanimated for animation.
+ * 
+ * @param {IconProps} props - The properties for the icon component.
+ * @param {string} props.name - The name of the icon to be displayed.
+ * @param {string} props.size - The size of the icon.
+ * @param {string} props.color - The color of the icon.
+ * @param {object} props.style - Additional styles for the icon.
+ * @param {object} props.otherProps - Any other properties to be passed to the icon component.
+ */
 export default React.memo((props: IconProps)=> {
   const theme = useThemeContext();
   const rotation = useSharedValue(0);
@@ -47,8 +69,8 @@ export default React.memo((props: IconProps)=> {
 
   const styles = createStyles(
     {
-      color: (theme.colors[color] ?? color) || theme.colors.text,
-      size: (theme.fontSize[size] ?? size) || theme.fontSize.default
+      color: (theme.colors[color!] ?? color) || theme.colors.text,
+      size: (theme.fontSize[size!] ?? size) || theme.fontSize.default
     },
   );
   
