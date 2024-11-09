@@ -88,21 +88,19 @@ export default class extends React.PureComponent<AvatarProps, {}> {
     } = this.props;
 
     const styles = applyStyle({
-      props: {
-        size: size,
-        type: type,
-        color: color!,
-        fillMode: fillMode,
-        radius: radius,
-        borderWidth: borderWidth,
-        borderColor: borderColor,
-        backgroundColor: backgroundColor,
-        textColor: textColor,
-        iconColor: iconColor,
-        theme: {
-          colors: this.context.colors,
-          isDark: this.context.scheme === 'dark'
-        }
+      size: size,
+      type: type,
+      color: color!,
+      fillMode: fillMode,
+      radius: radius,
+      borderWidth: borderWidth,
+      borderColor: borderColor,
+      backgroundColor: backgroundColor,
+      textColor: textColor,
+      iconColor: iconColor,
+      theme: {
+        colors: this.context.colors,
+        isDark: this.context.scheme === 'dark'
       }
     });
 

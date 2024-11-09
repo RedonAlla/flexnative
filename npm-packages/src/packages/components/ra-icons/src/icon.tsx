@@ -1,3 +1,11 @@
+/**
+ * @ Author: Redon Alla
+ * @ Create Time: 2024-10-27 14:25:26
+ * @ Modified by: Redon Alla
+ * @ Modified time: 2024-11-08 20:26:00
+ * @ Description: Icon component used to display icons using text characters.
+ */
+
 import React from 'react';
 import { Text } from 'react-native';
 import { useThemeContext } from '@flexnative/theme-context';
@@ -18,16 +26,22 @@ import createStyles from './styles';
  * 
  * @returns {JSX.Element} The rendered icon component.
  */
-export default React.memo((props: IconProps) => {
+const IconComponent = (props: IconProps) => {
   const theme = useThemeContext();
-  const { name, size, color, style, ...otherProps } = props;
+  const { name, size = 'default', color = 'text', style, ...otherProps } = props;
 
-  const styles = createStyles(
-    {
-      color: (theme.colors[color!] ?? color) || theme.colors.text,
-      size: (theme.fontSize[size!] ?? size) || theme.fontSize.default
-    },
+  const styleProps = {
+    color: (theme.colors[color] ?? color) || theme.colors.text,
+    size: (theme.fontSize[size] ?? size) || theme.fontSize.default
+  };
+
+  const styles = createStyles(styleProps);
+
+  return (
+    <Text style={[styles.icon, style]} {...otherProps} >
+      {icons[name]}
+    </Text>
   );
+};
 
-  return (<Text style={[styles.icon, style ]} {...otherProps}>{icons[name]}</Text>);
-});
+export default React.memo(IconComponent);

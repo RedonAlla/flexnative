@@ -1,3 +1,11 @@
+/**
+ * @ Author: Redon Alla
+ * @ Create Time: 2024-10-27 14:25:26
+ * @ Modified by: Redon Alla
+ * @ Modified time: 2024-11-08 20:43:52
+ * @ Description: Spinner component used to display a spinning icon.
+ */
+
 import React from 'react';
 import Animated, {
   useAnimatedStyle,
@@ -14,7 +22,17 @@ import { IconProps, icons } from './props';
 import createStyles from './styles';
 
 
+/**
+ * The value to which the spinner animation will rotate.
+ * This constant represents the total degrees of rotation for the spinner animation.
+ */
 const TO_VALUE_ANIMATION = 360;
+
+/**
+ * The duration of the spinner animation in milliseconds.
+ * @constant
+ * @type {number}
+ */
 const ANIMATION_DURATION = 700;
 
 
@@ -40,7 +58,7 @@ const ANIMATION_DURATION = 700;
  * @param {object} props.style - Additional styles for the icon.
  * @param {object} props.otherProps - Any other properties to be passed to the icon component.
  */
-export default React.memo((props: IconProps)=> {
+const Spinner = (props: IconProps) => {
   const theme = useThemeContext();
   const rotation = useSharedValue(0);
   
@@ -52,7 +70,7 @@ export default React.memo((props: IconProps)=> {
         },
       ],
     };
-  }, [rotation.value]);
+  }, [rotation]);
 
   React.useEffect(() => {
     rotation.value = withRepeat(
@@ -63,16 +81,25 @@ export default React.memo((props: IconProps)=> {
       0
     );
     return () => cancelAnimation(rotation);
-  }, []);
+  }, [rotation]);
 
-  const { name, size, color, style, ...otherProps } = props;
+  const { name, size = 'default', color = 'text', style, ...otherProps } = props;
 
-  const styles = createStyles(
-    {
-      color: (theme.colors[color!] ?? color) || theme.colors.text,
-      size: (theme.fontSize[size!] ?? size) || theme.fontSize.default
-    },
-  );
+  const styleProps = {
+    color: (theme.colors[color] ?? color) || theme.colors.text,
+    size: (theme.fontSize[size] ?? size) || theme.fontSize.default
+  };
+
+  const styles = createStyles(styleProps);
   
-  return <Animated.Text style={[styles.icon, style, animatedStyles]} {...otherProps}>{icons[name]}</Animated.Text>;
-});
+  return (
+    <Animated.Text
+      style={[styles.icon, style, animatedStyles]}
+      {...otherProps}
+    >
+      {icons[name]}
+    </Animated.Text>
+  );
+};
+
+export default React.memo(Spinner);

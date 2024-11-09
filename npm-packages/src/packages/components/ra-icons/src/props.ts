@@ -1,3 +1,11 @@
+/**
+ * @ Author: Redon Alla
+ * @ Create Time: 2024-10-27 14:25:26
+ * @ Modified by: Redon Alla
+ * @ Modified time: 2024-11-08 20:10:07
+ * @ Description: Props for Icon component.
+ */
+
 import { TextProps } from 'react-native';
 import { Color, FontSize } from '@flexnative/theme-context';
 

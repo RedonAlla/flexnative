@@ -1,3 +1,11 @@
+/**
+ * @ Author: Redon Alla
+ * @ Create Time: 2024-10-27 14:25:26
+ * @ Modified by: Redon Alla
+ * @ Modified time: 2024-11-08 20:14:02
+ * @ Description: Styles for the icon and spinner component.
+ */
+
 import { ColorValue, StyleSheet } from 'react-native';
 
 type Props = { color: ColorValue; size: number };

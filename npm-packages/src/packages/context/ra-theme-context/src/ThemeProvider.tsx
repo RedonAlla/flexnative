@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2023-06-04 21:29:02
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-06 23:24:40
+ * @ Modified time: 2024-11-08 20:48:08
  * @ Description: Theme Provider
  */
 
@@ -54,7 +54,7 @@ export default abstract class ThemeProvider<TColors> extends React.PureComponent
 
   /**
   * This method it is called on `componentDidMount`.
-    You can store your themes on Data Base, on Local Storage or any where you want
+    You can store your themes in a database, local storage, or any other storage.
     and this method it is used to write the logic for reading the theme from your storage and render on your app.
     @see Example <https://redonalla.github.io/flexnative/docs/theme/examples>
   * @return Promise of type void {Promise<void>}
@@ -64,28 +64,25 @@ export default abstract class ThemeProvider<TColors> extends React.PureComponent
   /**
   * This method it is used to change ColorSchemeName of your app.
   * @param colorScheme
-  * @return Promise so you can write the logic for storing your ColorSchemeName on you storage.
+  * Returns a Promise so you can write the logic for storing your ColorSchemeName in your storage.
   */
   abstract onChangeColorScheme(colorScheme: ColorSchemeName): Promise<void>;
 
   /**
    * This method it is used to change theme of your app.
    * @param {BaseColors & TColors} theme
-   * @return Promise so you can write the logic for storing your theme on you preferred storage.
+   * Returns a Promise so you can write the logic for storing your theme in your preferred storage.
    */
   abstract onChangeTheme(theme: BaseTheme<TColors>): Promise<void>;
 
   render() {
     return (
       <ThemeContext.Provider
-        value={createTheme(Object.assign(
-          {},
-          this.props,
-          {
-            scheme: this.props.scheme,
-            colors: this.props.colors
-          }
-        ))}
+        value={createTheme({
+          ...this.props,
+          scheme: this.props.scheme,
+          colors: this.state.colors
+        })}
       >
         {this.props.children}
       </ThemeContext.Provider>

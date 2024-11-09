@@ -1,3 +1,11 @@
+/**
+ * @ Author: Redon Alla
+ * @ Create Time: 2024-11-05 22:13:28
+ * @ Modified by: Redon Alla
+ * @ Modified time: 2024-11-08 20:44:49
+ * @ Description: Constants used for theming and styling in the application.
+ */
+
 import { StyleSheet } from "react-native";
 import { BorderRadius, BorderWidth } from "./props";
 

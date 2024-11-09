@@ -1,3 +1,11 @@
+/**
+ * @ Author: Redon Alla
+ * @ Create Time: 2024-11-05 22:13:28
+ * @ Modified by: Redon Alla
+ * @ Modified time: 2024-11-09 16:00:17
+ * @ Description: Utility functions for creating themes.
+ */
+
 import { Appearance, ColorSchemeName } from "react-native";
 import { BaseColors, BaseTheme } from "./props";
 import { dark, light } from "./colors";
@@ -23,26 +31,13 @@ export function defaultColors(scheme: ColorSchemeName): BaseColors {
   return scheme === 'dark' ? dark : light;
 }
 
+
 /**
  * Generates the default theme configuration based on the current color scheme.
  *
- * @returns An object containing the default theme settings, including colors, scheme, border width, border radius, font size, and various metrics.
- *
- * The returned object has the following structure:
- * - `colors`: The default colors based on the current color scheme.
- * - `scheme`: The current color scheme.
- * - `borderWidth`: The default border width.
- * - `borderRadius`: The default border radius.
- * - `fontSize`: The default font size.
- * - `metrics`: An object containing various metric settings:
- *   - `basSize`: The base size.
- *   - `disabledOpacity`: The opacity for disabled elements.
- *   - `ghostOpacity`: The opacity for ghost elements.
- *   - `ghostActiveOpacity`: The active opacity for ghost elements.
- *   - `verticalMultiplier`: The vertical padding multiplier.
- *   - `horizontalMultiplier`: The horizontal padding multiplier.
+ * @returns {BaseTheme<BaseColors>} The default theme object containing colors, scheme, border width, border radius, font size, and various metrics.
  */
-export function defaultTheme() {
+export function defaultTheme(): BaseTheme<BaseColors> {
   const scheme = Appearance.getColorScheme();
   return {
     colors: defaultColors(scheme),
@@ -51,7 +46,7 @@ export function defaultTheme() {
     borderRadius: BORDER_RADIUS,
     fontSize: FONT_SIZE,
     metrics: {
-      basSize: BASE_SIZE,
+      baseSize: BASE_SIZE,
       disabledOpacity: DISABLED_OPACITY,
       ghostOpacity: GHOST_TRANSPARENCY,
       ghostActiveOpacity: GHOST_ACTIVE_TRANSPARENCY,
@@ -61,27 +56,28 @@ export function defaultTheme() {
   }
 }
 
+
 /**
- * Creates a theme object based on the provided properties and defaults.
+ * Creates a theme object by merging the provided properties with default values.
  *
  * @template TColors - The type of the colors object.
  * @param {BaseTheme<TColors>} props - The base theme properties.
- * @returns {object} The theme object.
+ * @returns {BaseTheme<TColors>} The created theme object.
  *
- * @property {TColors} colors - The colors for the theme. Defaults to `defaultColors(scheme)`.
- * @property {string} scheme - The color scheme. Defaults to `Appearance.getColorScheme()`.
- * @property {number} borderWidth - The border width. Defaults to `BORDER_WIDTH`.
- * @property {number} borderRadius - The border radius. Defaults to `BORDER_RADIUS`.
- * @property {number} fontSize - The font size. Defaults to `FONT_SIZE`.
- * @property {object} metrics - The metrics for the theme, including:
- *   @property {number} basSize - The base size. Defaults to `BASE_SIZE`.
- *   @property {number} disabledOpacity - The opacity for disabled elements. Defaults to `DISABLED_OPACITY`.
- *   @property {number} ghostOpacity - The opacity for ghost elements. Defaults to `GHOST_TRANSPARENCY`.
- *   @property {number} ghostActiveOpacity - The active opacity for ghost elements. Defaults to `GHOST_ACTIVE_TRANSPARENCY`.
- *   @property {number} verticalMultiplier - The vertical padding multiplier. Defaults to `PADDING_VERTICAL_MULTIPLIER`.
- *   @property {number} horizontalMultiplier - The horizontal padding multiplier. Defaults to `PADDING_HORIZONTAL_MULTIPLIER`.
+ * @property {TColors} colors - The color scheme for the theme.
+ * @property {string} scheme - The color scheme name.
+ * @property {number} borderWidth - The width of the borders.
+ * @property {number} borderRadius - The radius of the borders.
+ * @property {number} fontSize - The font size.
+ * @property {object} metrics - Various metrics used in the theme.
+ * @property {number} metrics.baseSize - The base size.
+ * @property {number} metrics.disabledOpacity - The opacity for disabled elements.
+ * @property {number} metrics.ghostOpacity - The opacity for ghost elements.
+ * @property {number} metrics.ghostActiveOpacity - The opacity for active ghost elements.
+ * @property {number} metrics.verticalMultiplier - The vertical padding multiplier.
+ * @property {number} metrics.horizontalMultiplier - The horizontal padding multiplier.
  */
-export function createTheme<TColors>(props: BaseTheme<TColors>) {
+export function createTheme<TColors>(props: BaseTheme<TColors>): BaseTheme<TColors> {
   const scheme = props.scheme ?? Appearance.getColorScheme();
 
   return {
@@ -92,7 +88,7 @@ export function createTheme<TColors>(props: BaseTheme<TColors>) {
     fontSize: props.fontSize ?? FONT_SIZE,
     metrics: Object.assign({},
       {
-        basSize: BASE_SIZE,
+        baseSize: BASE_SIZE,
         disabledOpacity: DISABLED_OPACITY,
         ghostOpacity: GHOST_TRANSPARENCY,
         ghostActiveOpacity: GHOST_ACTIVE_TRANSPARENCY,
