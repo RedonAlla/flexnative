@@ -5,6 +5,7 @@ import { StyleSheet, Text } from 'react-native';
 
 import TestThemeContextConsumer from './tests/contexts/theme-consumer';
 import TestThemeChange from './tests/contexts/theme-change';
+import TestIcon from './tests/components/icons/Icon';
 // import CustomThemeProvider from './tests/contexts/custom-theme-provider';
 // import ThemeChange from './tests/contexts/theme-change';
 // import TestThemeChange from './tests/contexts/theme-change';
@@ -13,7 +14,8 @@ export default function App() {
   return (
     // <TestThemeContextConsumer />
     // <Text>TEST</Text>
-    <TestThemeChange />
+    // <TestThemeChange />
+    <TestIcon />
   );
 }
 

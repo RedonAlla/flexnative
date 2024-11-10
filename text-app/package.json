@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.3",
+    "@flexnative/icons": "^0.0.2",
     "@flexnative/theme-context": "^0.0.5",
     "crypto-browserify": "^3.12.1",
     "expo": "~51.0.39",
@@ -18,7 +19,9 @@
     "react-dom": "18.2.0",
     "react-native": "0.74.5",
     "react-native-svg": "15.2.0",
-    "react-native-web": "^0.19.13"
+    "react-native-web": "^0.19.13",
+    "react-native-reanimated": "~3.10.1",
+    "expo-splash-screen": "~0.27.7"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
