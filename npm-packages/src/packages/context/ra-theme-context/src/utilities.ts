@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-11-05 22:13:28
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-09 16:00:17
+ * @ Modified time: 2024-11-10 12:57:03
  * @ Description: Utility functions for creating themes.
  */
 
@@ -21,6 +21,7 @@ import {
   PADDING_VERTICAL_MULTIPLIER
 } from "./constants";
 
+
 /**
  * Returns the default color scheme based on the provided scheme name.
  *
@@ -30,7 +31,6 @@ import {
 export function defaultColors(scheme: ColorSchemeName): BaseColors {
   return scheme === 'dark' ? dark : light;
 }
-
 
 /**
  * Generates the default theme configuration based on the current color scheme.
@@ -56,7 +56,6 @@ export function defaultTheme(): BaseTheme<BaseColors> {
   }
 }
 
-
 /**
  * Creates a theme object by merging the provided properties with default values.
  *
@@ -78,7 +77,7 @@ export function defaultTheme(): BaseTheme<BaseColors> {
  * @property {number} metrics.horizontalMultiplier - The horizontal padding multiplier.
  */
 export function createTheme<TColors>(props: BaseTheme<TColors>): BaseTheme<TColors> {
-  const scheme = props.scheme ?? Appearance.getColorScheme();
+  const scheme = props.scheme ?? Appearance.getColorScheme() ?? 'light';
 
   return {
     colors: props.colors ?? defaultColors(scheme),

@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2023-06-04 21:29:02
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-08 20:48:08
+ * @ Modified time: 2024-11-10 13:18:19
  * @ Description: Theme Provider
  */
 
@@ -43,8 +43,8 @@ export default abstract class ThemeProvider<TColors> extends React.PureComponent
     super(props)
     
     this.state = {
-      scheme: props.scheme,
-      colors: props.colors ?? defaultColors(props.scheme)
+      scheme: props.theme.scheme,
+      colors: props.theme.colors ?? defaultColors(props.theme.scheme)
     }
   }
 
@@ -77,13 +77,15 @@ export default abstract class ThemeProvider<TColors> extends React.PureComponent
 
   render() {
     return (
-      <ThemeContext.Provider
-        value={createTheme({
-          ...this.props,
-          scheme: this.props.scheme,
-          colors: this.state.colors
-        })}
-      >
+      <ThemeContext.Provider value={{
+        ...createTheme<TColors>({
+          ...this.props.theme,
+          scheme: this.state.scheme,
+          colors: this.state.colors,
+        }),
+        setTheme: this.onChangeTheme.bind(this),
+        setColorScheme: this.onChangeColorScheme.bind(this),
+      }}>
         {this.props.children}
       </ThemeContext.Provider>
     );

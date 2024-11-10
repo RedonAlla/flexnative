@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2023-06-04 21:29:02
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-06 23:13:06
+ * @ Modified time: 2024-11-10 13:17:21
  * @ Description: All props for ThemeContext and ThemeProvider.
  */
 
@@ -204,24 +204,27 @@ export interface BaseColors {
  *
  * @property {React.ReactNode} children - The child components to be rendered within the ThemeProvider.
  */
-export interface ThemeProviderProps<TColors> extends BaseTheme<TColors> {
+export interface ThemeProviderProps<TColors> {
+  /** The current theme object. */
+  theme: BaseTheme<TColors>;
+
+  /** The child components to be rendered the App. */
   children: React.ReactNode;
 };
 
 /**
- * Interface representing the properties for the Theme Context.
+ * Interface representing the properties for the ThemeContext.
  *
- * @template TColors - The type representing the colors in the theme.
+ * @template TColors - The type representing the colors used in the theme.
  *
- * @extends BaseTheme<TColors>
- *
- * @property {function} [setTheme] - Optional method to implement for changing the theme.
- * @property {function} [setColorScheme] - Optional method to implement for changing the color scheme.
+ * @property {BaseTheme<TColors>} theme - The current theme object.
+ * @property {(theme: BaseTheme<TColors>) => void} [setTheme] - Optional function to update the theme.
+ * @property {(scheme: ColorSchemeName) => void} [setColorScheme] - Optional function to update the color scheme.
  */
 export interface ThemeContextProps<TColors> extends BaseTheme<TColors> {
-  /** Optional method to change the theme. */
+  /** Function to update the theme. */
   setTheme?: (theme: BaseTheme<TColors>) => void;
 
-  /** Optional method to change color scheme. */
+  /** Function to update the color scheme. */
   setColorScheme?: (scheme: ColorSchemeName) => void;
 }
