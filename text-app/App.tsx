@@ -1,15 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import ThemeContext, { defaultTheme } from '@flexnative/theme-context';
+
+import React from 'react';
+import { StyleSheet, Text } from 'react-native';
+// import ThemeContext, { defaultTheme } from '@flexnative/theme-context';
+
+import TestThemeContextConsumer from './tests/contexts/theme-consumer';
+import TestThemeChange from './tests/contexts/theme-change';
+// import CustomThemeProvider from './tests/contexts/custom-theme-provider';
+// import ThemeChange from './tests/contexts/theme-change';
+// import TestThemeChange from './tests/contexts/theme-change';
 
 export default function App() {
   return (
-    <ThemeContext.Provider value={defaultTheme()}>
-      <View style={styles.container}>
-        <Text>Open up App.tsx to start working on your app!</Text>
-        <StatusBar style="auto" />
-      </View>
-    </ThemeContext.Provider>
+    // <TestThemeContextConsumer />
+    // <Text>TEST</Text>
+    <TestThemeChange />
   );
 }
 
