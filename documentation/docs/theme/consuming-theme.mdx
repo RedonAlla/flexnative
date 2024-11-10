@@ -14,6 +14,27 @@ import TabItem from '@theme/TabItem';
 This section show how to consume (use) theme colors for your components.
 For more details about ***React Context*** or how to consume ***React Context*** please read  this **[link](https://reactjs.org/docs/context.html)**.
 
+```jsx showLineNumbers
+import React from 'react';
+import { Text } from 'react-native';
+// highlight-next-line
+import ThemeContext from '@flexnative/theme-context';
+
+export default class extends React.Component {
+  render() {
+    return (
+      <ThemeContext.Consumer>
+        {value => <Text>
+          { JSON.stringify(value, null, 2) }
+        </Text>}
+      </ThemeContext.Consumer>
+    );
+  }
+}
+ ```
+
+ Ore you can use the `useThemeContext` hook to consume the theme.
+
 <Tabs>
   <TabItem value="function-component" label="Function Component" default>
 
@@ -22,24 +43,26 @@ For more details about ***React Context*** or how to consume ***React Context***
     // highlight-next-line
     import { useThemeContext } from '@flexnative/theme-context';
 
+
     const ThemedButton = React.memo((props) => {
     // highlight-next-line
-    const theme = useThemeContext();
-    return (
-      <Pressable style={({pressed}) => [styles.wrapperCustom, { backgroundColor: pressed ? theme.dark : theme.primary }]}>
-        <Text style={styles.text}>{props.text}</Text>
-      </Pressable>
-    );
+      const theme = useThemeContext();
+
+      return (
+        <Pressable style={({pressed}) => [styles.wrapperCustom, { backgroundColor: pressed ? theme.dark : theme.primary }]}>
+          <Text style={styles.text}>{props.text}</Text>
+        </Pressable>
+      );
     });
 
     const styles = StyleSheet.create({
-    text: {
-      fontSize: 16,
-    },
-    wrapperCustom: {
-      borderRadius: 8,
-      padding: 6,
-    }
+      text: {
+        fontSize: 16,
+      },
+      wrapperCustom: {
+        borderRadius: 8,
+        padding: 6,
+      }
     });
     ```
   </TabItem>
@@ -50,6 +73,7 @@ For more details about ***React Context*** or how to consume ***React Context***
     import { Pressable, StyleSheet, Text } from 'react-native';
     // highlight-next-line
     import ThemeContext from '@flexnative/theme-context';
+
 
     class ThemedButton extends React.Component {
       // highlight-start
