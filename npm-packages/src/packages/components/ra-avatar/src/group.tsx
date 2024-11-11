@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-06-07 23:29:01
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-07 19:32:47
+ * @ Modified time: 2024-11-10 23:16:34
  * @ Description: Avatar Group component used to represent a list ov Avatar components.
  */
 
@@ -51,7 +51,17 @@ export default class extends React.PureComponent<AvatarGroupProps, {}> {
     super(props);
   }
 
+  /**
+   * Specifies the context type for the component.
+   * This allows the component to subscribe to the nearest 
+   * ThemeContext provider and access its value.
+   */
+  
   static contextType = ThemeContext;
+  /**
+   * Declares a context variable of the type inferred from the ThemeContext.
+   * This context is used to access the current theme settings within the component.
+   */
   declare context: React.ContextType<typeof ThemeContext>;
 
   public render() {
@@ -59,11 +69,8 @@ export default class extends React.PureComponent<AvatarGroupProps, {}> {
 
     const styles = applyGroupStyle({
       itemPadding: itemPadding || ITEM_PADDING,
-      itemBorderWidth: itemBorderWidth,
-      itemBorderColor: itemBorderColor || this.context.colors.card,
-      theme: {
-        colors: this.context.colors
-      }
+      itemBorderWidth: this.context.borderWidth[itemBorderWidth!] ?? itemBorderWidth,
+      itemBorderColor: (this.context.colors[itemBorderColor!] ?? itemBorderColor) ?? this.context.colors.card
     });
 
     return (

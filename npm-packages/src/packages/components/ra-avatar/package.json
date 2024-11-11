@@ -1,6 +1,6 @@
 {
   "name": "@flexnative/avatar",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "React Native Avatar",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -13,6 +13,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "prepare": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Redon Alla",

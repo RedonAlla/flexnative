@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2023-11-03 21:50:51
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-07 19:07:46
+ * @ Modified time: 2024-11-10 23:17:00
  * @ Description: Avatar component used to represent users or things, supporting the display of images, icons, or characters.
  */
 
@@ -15,6 +15,7 @@ import ThemeContext from '@flexnative/theme-context';
 
 import { AvatarProps } from './props';
 import applyStyle from './styles';
+import { getBackgroundColor, getTextColor } from './utilities';
 
 
 /**
@@ -66,7 +67,16 @@ export default class extends React.PureComponent<AvatarProps, {}> {
     color: 'default'
   }
 
+  /**
+   * Specifies the context type for the component.
+   * This allows the component to subscribe to the nearest 
+   * ThemeContext provider and use its value.
+   */
   static contextType = ThemeContext;
+  /**
+   * Declares the context type for the Avatar component using the ThemeContext.
+   * This allows the component to consume the theme context and access its values.
+   */
   declare context: React.ContextType<typeof ThemeContext>;
 
   public render() {
@@ -87,21 +97,17 @@ export default class extends React.PureComponent<AvatarProps, {}> {
       ...restProps
     } = this.props;
 
+    const selectedColor = this.context.colors[color!] ?? color!
+
     const styles = applyStyle({
       size: size,
-      type: type,
-      color: color!,
-      fillMode: fillMode,
-      radius: radius,
-      borderWidth: borderWidth,
+      color: selectedColor,
+      radius: this.context.borderRadius[radius] ?? radius,
+      borderWidth: this.context.borderWidth[borderWidth!] ?? borderWidth,
       borderColor: borderColor,
-      backgroundColor: backgroundColor,
-      textColor: textColor,
-      iconColor: iconColor,
-      theme: {
-        colors: this.context.colors,
-        isDark: this.context.scheme === 'dark'
-      }
+      backgroundColor: backgroundColor ?? getBackgroundColor(selectedColor, this.context.metrics.ghostOpacity, fillMode),
+      textColor: textColor ?? getTextColor(selectedColor, fillMode, this.context.colors.black, this.context.scheme === 'light'),
+      iconColor: iconColor ?? getTextColor(selectedColor, fillMode, this.context.colors.black, this.context.scheme === 'light')
     });
 
     switch(type) {
