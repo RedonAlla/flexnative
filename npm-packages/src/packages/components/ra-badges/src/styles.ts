@@ -2,58 +2,63 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-06-01 00:00:43
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-10-20 12:58:46
+ * @ Modified time: 2024-11-11 22:51:56
  * @ Description: Badge styles.
  */
 
 import { StyleSheet, ColorValue } from "react-native";
 
-import { BaseTheme } from "@flexnative/theme-context/dist/types";
+import { BadgePosition, Position } from "./props";
+import { PADDING_MULTIPLIER, POSITION } from "./constants";
+import { isString } from "./utilities";
 
-import { BorderWidth, BadgeColor, BadgeRadius, BadgeSize, BadgeType, BadgePosition } from "./props";
-import { getBackgroundColor, getBorderRadius, getBorderWidth, getPosition, getTextColor, getTextSize } from "./utilities";
-import { PADDING } from "./constants";
-
-
-export default (props: {
-  type: BadgeType,
-  color: BadgeColor,
-  size: BadgeSize,
-  radius: BadgeRadius,
-  position: BadgePosition,
+type StyleProps = {
+  baseSize: number,
+  fontSize: number,
+  borderRadius: number,
+  position: BadgePosition | Position,
   textColor?: ColorValue,
-  borderWidth?: BorderWidth,
+  borderWidth?: number,
   borderColor?: ColorValue;
   backgroundColor?: ColorValue,
-  theme: {
-    colors: BaseTheme,
-    isLight: boolean
-  }
-}) => {
-  const fontSize = getTextSize(props.size);
-  const textColor = getTextColor(props.theme.isLight, props.color, props.type, props.theme.colors, props.textColor);
+}
 
+/**
+ * Generates a stylesheet for the badge component based on the provided style properties.
+ *
+ * @param props - The style properties for the badge component.
+ * @returns The generated stylesheet.
+ *
+ * @typedef {Object} StyleProps
+ * @property {number} baseSize - The base size for padding calculation.
+ * @property {number} borderRadius - The border radius of the badge.
+ * @property {number} borderWidth - The border width of the badge.
+ * @property {string} borderColor - The border color of the badge.
+ * @property {string} backgroundColor - The background color of the badge.
+ * @property {BadgePosition | Position} position - The position of the badge.
+ * @property {number} fontSize - The font size of the badge text.
+ * @property {string} textColor - The color of the badge text.
+ */
+export default (props: StyleProps) => {
   return StyleSheet.create({
     container: {
       position: 'relative'
     },
     text: {
+      position: 'absolute',
       alignItems: 'center',
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'center',
-      padding: PADDING,
-      borderRadius: getBorderRadius(props.radius),
-      borderWidth: getBorderWidth(props.borderWidth!),
-      borderColor: props.borderColor || textColor,
-      backgroundColor: getBackgroundColor(props.color, props.theme.colors, props.type, props.backgroundColor),
-
-      position: 'absolute',
-      ...getPosition(props.position),
-
+      padding: props.baseSize * PADDING_MULTIPLIER,
+      borderRadius: props.borderRadius,
+      borderWidth: props.borderWidth,
+      borderColor: props.borderColor,
+      backgroundColor: props.backgroundColor,
       fontFamily: 'Bold',
-      fontSize: fontSize,
-      color: textColor
+      fontSize: props.fontSize,
+      color: props.textColor,
+      ...(isString(props.position) ? POSITION[props.position as BadgePosition] : props.position as Position)
     }
   });
 }
