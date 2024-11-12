@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2023-11-03 21:50:51
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-10 23:17:00
+ * @ Modified time: 2024-11-12 22:00:46
  * @ Description: Avatar component used to represent users or things, supporting the display of images, icons, or characters.
  */
 
@@ -98,6 +98,7 @@ export default class extends React.PureComponent<AvatarProps, {}> {
     } = this.props;
 
     const selectedColor = this.context.colors[color!] ?? color!
+    const calTextColor = getTextColor(color!, selectedColor, fillMode, this.context.colors.black, this.context.scheme === 'light');
 
     const styles = applyStyle({
       size: size,
@@ -106,8 +107,8 @@ export default class extends React.PureComponent<AvatarProps, {}> {
       borderWidth: this.context.borderWidth[borderWidth!] ?? borderWidth,
       borderColor: borderColor,
       backgroundColor: backgroundColor ?? getBackgroundColor(selectedColor, this.context.metrics.ghostOpacity, fillMode),
-      textColor: textColor ?? getTextColor(selectedColor, fillMode, this.context.colors.black, this.context.scheme === 'light'),
-      iconColor: iconColor ?? getTextColor(selectedColor, fillMode, this.context.colors.black, this.context.scheme === 'light')
+      textColor: textColor ?? calTextColor,
+      iconColor: iconColor ?? calTextColor
     });
 
     switch(type) {

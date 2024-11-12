@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-06-07 23:29:01
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-10 21:10:38
+ * @ Modified time: 2024-11-12 21:58:40
  * @ Description: Utilities functions used for Avatar component.
  */
 
@@ -38,16 +38,21 @@ export function getBackgroundColor(color: ColorValue, ghostOpacity: string, fill
   }
 }
 
+
 /**
  * Determines the appropriate text color based on the provided parameters.
  *
- * @param color - The color to evaluate.
- * @param fillMode - The fill mode to consider.
- * @param blackColor - The color value to use for black.
+ * @param color - The color type which can be 'light', 'secondary', or other custom values.
+ * @param colorValue - The default color value to be used.
+ * @param fillMode - The fill mode which can be 'none', 'solid', or other custom values.
+ * @param blackColor - The color value to be used when the text color should be black.
  * @param isLight - A boolean indicating if the theme is light.
- * @returns The calculated text color value.
+ * @returns The calculated color value for the text.
  */
-export function getTextColor(color: Color, fillMode: FillMode, blackColor: ColorValue, isLight: boolean): ColorValue {
+export function getTextColor(color: Color, colorValue: ColorValue, fillMode: FillMode, blackColor: ColorValue, isLight: boolean): ColorValue {
+  if(fillMode === 'none')
+    return colorValue;
+    
   if(Boolean(color === 'light' || color === 'secondary'))
     return blackColor;
 
