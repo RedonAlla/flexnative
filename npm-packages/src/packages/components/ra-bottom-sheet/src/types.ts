@@ -2,13 +2,15 @@
  * @ Author: Redon Alla
  * @ Create Time: 2023-06-28 19:37:05
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-10-20 13:00:06
+ * @ Modified time: 2024-11-12 22:30:40
  * @ Description: Bottom Sheet props.
  */
 
 import { BlurTint } from 'expo-blur';
 import { StyleProp, ViewStyle } from 'react-native';
 
+
+/*Props for the BottomSheet component.*/
 export type BottomSheetProps = {
   /**
    * Animation type when BottomSheet it is open.
@@ -135,6 +137,16 @@ export type BottomSheetStateProps = {
   pan: any;
 }
 
+/**
+ * An array of supported screen orientations for the application.
+ * 
+ * The supported orientations include:
+ * - 'portrait': The device is in a portrait orientation with the home button at the bottom.
+ * - 'portrait-upside-down': The device is in a portrait orientation with the home button at the top.
+ * - 'landscape': The device is in a landscape orientation with the home button on the right.
+ * - 'landscape-left': The device is in a landscape orientation with the home button on the left.
+ * - 'landscape-right': The device is in a landscape orientation with the home button on the right.
+ */
 export const SUPPORTED_ORIENTATIONS: Array<'portrait' | 'portrait-upside-down' | 'landscape' | 'landscape-left' | 'landscape-right'>
   = [
     'portrait',
