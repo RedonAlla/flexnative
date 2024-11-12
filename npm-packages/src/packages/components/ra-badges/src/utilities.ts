@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-06-01 00:00:43
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-11 22:43:15
+ * @ Modified time: 2024-11-12 21:45:58
  * @ Description: Utilities functions use for Badge component.
  */
 
@@ -14,23 +14,24 @@ import { WHITE_COLOR } from "./constants";
 
 
 /**
- * Determines the appropriate text color for a badge based on the provided parameters.
+ * Determines the appropriate text color based on the provided parameters.
  *
- * @param color - The color of the badge.
- * @param type - The type of the badge.
- * @param blackColor - The color value to use for black text.
- * @param isLight - A boolean indicating if the badge is light-themed.
- * @returns The color value to be used for the text.
+ * @param color - The color type of the badge.
+ * @param colorValue - The color value to be used if conditions are met.
+ * @param type - The type of the badge (e.g., solid).
+ * @param blackColor - The color value to be used for black text.
+ * @param isLight - A boolean indicating if the background is light.
+ * @returns The appropriate color value for the text.
  */
-export function getTextColor(color: Color, type: BadgeType, blackColor: ColorValue, isLight: boolean): ColorValue {
+export function getTextColor(color: Color, colorValue: ColorValue, type: BadgeType, blackColor: ColorValue, isLight: boolean, ): ColorValue {
   if(Boolean(color === 'light' || color === 'secondary'))
     return blackColor;
 
   return Boolean(isLight && color === 'default')
     ? blackColor
-    : type === 'default'
+    : type === 'solid'
       ? WHITE_COLOR
-      : color
+      : colorValue
 }
 
 /**
@@ -39,13 +40,9 @@ export function getTextColor(color: Color, type: BadgeType, blackColor: ColorVal
  * @param color - The base color of the badge.
  * @param ghostOpacity - The opacity value to be used when the badge type is 'ghost'.
  * @param type - (Optional) The type of the badge, which can be 'text', 'ghost', or other types.
- * @param backgroundColor - (Optional) A specific background color to override the default behavior.
  * @returns The computed background color for the badge.
  */
-export function getBackgroundColor(color: Color, ghostOpacity: string, type?: BadgeType, backgroundColor?: ColorValue): ColorValue {
-  if(Boolean(backgroundColor))
-      return backgroundColor!;
-
+export function getBackgroundColor(color: Color, ghostOpacity: string, type?: BadgeType): ColorValue {
   switch (type) {
     case 'text':
       return 'transparent';

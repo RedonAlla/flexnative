@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2023-10-26 00:35:01
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-11 22:32:27
+ * @ Modified time: 2024-11-12 21:26:15
  * @ Description: Tag Component.
  */
 
@@ -13,7 +13,7 @@ import ThemeContext from "@flexnative/theme-context";
 
 import BadgedProps from "./props";
 import createStyles from './styles';
-import { getBackgroundColor } from "./utilities";
+import { getBackgroundColor, getTextColor } from "./utilities";
 
 /**
  * A React PureComponent that renders a badge with customizable properties.
@@ -50,8 +50,8 @@ import { getBackgroundColor } from "./utilities";
 export default class extends React.PureComponent<BadgedProps, {}> {
   static defaultProps = {
     radius: 'full',
-    size: 'default',
-    type: 'default',
+    size: 'medium',
+    type: 'solid',
     color: 'default',
     borderWidth: 'none',
     position: 'top-right'
@@ -78,7 +78,6 @@ export default class extends React.PureComponent<BadgedProps, {}> {
       size,
       color,
       textColor,
-      backgroundColor,
       radius,
       borderWidth,
       borderColor,
@@ -93,10 +92,10 @@ export default class extends React.PureComponent<BadgedProps, {}> {
       fontSize: this.context.fontSize[size!],
       borderRadius: this.context.borderRadius[radius!] ?? radius,
       position: position ?? 'top-right',
-      textColor: textColor ?? this.context.colors[color],
+      textColor: getTextColor(color, (textColor ?? this.context.colors[color]) ?? color, type!, this.context.colors.black, this.context.scheme === 'light'),
       borderWidth: this.context.borderWidth[borderWidth!] ?? borderWidth,
-      borderColor: borderColor,
-      backgroundColor: getBackgroundColor(color, this.context.metrics.ghostOpacity, type, backgroundColor)
+      borderColor: borderColor ?? this.context.colors[color] ?? color,
+      backgroundColor: getBackgroundColor(this.context.colors[color] ?? color, this.context.metrics.ghostOpacity, type)
     });
     
     return (

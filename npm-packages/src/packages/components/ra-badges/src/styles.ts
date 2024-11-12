@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-06-01 00:00:43
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-11 22:51:56
+ * @ Modified time: 2024-11-12 21:26:35
  * @ Description: Badge styles.
  */
 

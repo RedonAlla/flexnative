@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-06-01 00:00:43
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-11 22:27:54
+ * @ Modified time: 2024-11-12 21:49:01
  * @ Description: Badge component.
  */
 
@@ -32,7 +32,7 @@ export type Position = {
  * - `text`: A badge that displays text.
  * - `ghost`: A badge with a ghost style.
  */
-export type BadgeType = 'default' | 'text' | 'ghost';
+export type BadgeType = 'solid' | 'text' | 'ghost';
 
 /**
  * Represents the possible positions for a badge component.
@@ -55,8 +55,6 @@ export type BadgePosition = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-r
  * @property {string} [text] - Text to display on the badge.
  * 
  * @property {ColorValue} [textColor] - Text color value.
- * 
- * @property {ColorValue} [backgroundColor] - Badge background color.
  * 
  * @property {React.ReactNode} children - ReactNode to render where to render the badge.
  * 
@@ -86,11 +84,6 @@ export default interface BadgedProps extends TextProps {
   textColor?: ColorValue;
 
   /**
-   * Badge background color.
-   */
-  backgroundColor?: ColorValue;
-
-  /**
    * ReactNode to render where to render the badge.
    */
   children: React.ReactNode;
@@ -109,12 +102,12 @@ export default interface BadgedProps extends TextProps {
   borderColor?: ColorValue;
 
   /** Badged Size variable
-  * @default 'default'
+  * @default 'medium'
   */
   size?: Sizes;
 
   /**
-   * @default 'default'
+   * @default 'solid'
   */
   type?: BadgeType;
 
