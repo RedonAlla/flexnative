@@ -1,29 +1,25 @@
 import { ColorValue, PressableStateCallbackType, StyleProp, StyleSheet, ViewStyle } from 'react-native';
 import { BaseTheme } from '@flexnative/theme-context';
 
-import { BorderRadius, BorderWidth, Sizes, ButtonColor, ButtonType } from './props';
-import { DISABLED_OPACITY, WHITE_TEXT_COLOR } from "@flexnative/ui-constants";
+
 import {
   getBackgroundColor,
   getBackgroundColorActive,
-  getBorderRadius,
-  getBorderWidth,
-  getColor,
   getOverlayColor, 
   getPaddingHorizontal,
   getPaddingVertical,
-  getTextColor,
-  getTextSize
+  getTextColor
 } from './utilities';
+import { ButtonType } from './props';
 
 type ContainerProps = {
   type: ButtonType;
-  color: ButtonColor;
+  color: Color;
   size: Sizes;
-  radius: BorderRadius;
+  radius: number;
   hasText: boolean;
-  borderWidth?: BorderWidth;
-  disabled?: boolean;
+  borderWidth: number;
+  disabledOpacity: number;
   activeColor?: ColorValue;
   borderColor?: ButtonColor;
   activeBorderColor?: ColorValue;
@@ -61,7 +57,7 @@ export function applyStyle(props: ContainerProps, style?: StyleProp<ViewStyle>) 
         alignItems: 'center',
         justifyContent: 'center',
         columnGap: 0.5 * paddingHorizontal,
-        opacity: props.disabled ? DISABLED_OPACITY : 1,
+        opacity: props.disabledOpacity,
         paddingVertical: paddingVertical,
         paddingHorizontal: props.hasText ? paddingHorizontal : paddingVertical,
         borderRadius: getBorderRadius(props.radius),
