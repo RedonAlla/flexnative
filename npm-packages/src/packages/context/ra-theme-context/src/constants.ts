@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-11-05 22:13:28
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-08 20:44:49
+ * @ Modified time: 2024-11-20 21:55:25
  * @ Description: Constants used for theming and styling in the application.
  */
 
@@ -31,14 +31,6 @@ export const DISABLED_OPACITY = 0.4;
  * @constant {string}
  */
 export const GHOST_TRANSPARENCY = '40';
-
-/**
- * Represents the transparency level for the active state of a ghost element.
- * The value is a string representing the percentage of transparency.
- * 
- * @constant {string}
- */
-export const GHOST_ACTIVE_TRANSPARENCY = '73';
 
 /**
  * Multiplier used to calculate vertical padding.

@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-11-05 22:13:28
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-10 12:57:03
+ * @ Modified time: 2024-11-20 21:58:26
  * @ Description: Utility functions for creating themes.
  */
 
@@ -15,7 +15,6 @@ import {
   BORDER_WIDTH,
   DISABLED_OPACITY,
   FONT_SIZE,
-  GHOST_ACTIVE_TRANSPARENCY,
   GHOST_TRANSPARENCY,
   PADDING_HORIZONTAL_MULTIPLIER,
   PADDING_VERTICAL_MULTIPLIER
@@ -49,7 +48,6 @@ export function defaultTheme(): BaseTheme<BaseColors> {
       baseSize: BASE_SIZE,
       disabledOpacity: DISABLED_OPACITY,
       ghostOpacity: GHOST_TRANSPARENCY,
-      ghostActiveOpacity: GHOST_ACTIVE_TRANSPARENCY,
       verticalMultiplier: PADDING_VERTICAL_MULTIPLIER,
       horizontalMultiplier: PADDING_HORIZONTAL_MULTIPLIER
     }
@@ -72,7 +70,6 @@ export function defaultTheme(): BaseTheme<BaseColors> {
  * @property {number} metrics.baseSize - The base size.
  * @property {number} metrics.disabledOpacity - The opacity for disabled elements.
  * @property {number} metrics.ghostOpacity - The opacity for ghost elements.
- * @property {number} metrics.ghostActiveOpacity - The opacity for active ghost elements.
  * @property {number} metrics.verticalMultiplier - The vertical padding multiplier.
  * @property {number} metrics.horizontalMultiplier - The horizontal padding multiplier.
  */
@@ -90,7 +87,6 @@ export function createTheme<TColors>(props: BaseTheme<TColors>): BaseTheme<TColo
         baseSize: BASE_SIZE,
         disabledOpacity: DISABLED_OPACITY,
         ghostOpacity: GHOST_TRANSPARENCY,
-        ghostActiveOpacity: GHOST_ACTIVE_TRANSPARENCY,
         verticalMultiplier: PADDING_VERTICAL_MULTIPLIER,
         horizontalMultiplier: PADDING_HORIZONTAL_MULTIPLIER
       },

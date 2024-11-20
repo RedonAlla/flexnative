@@ -73,14 +73,14 @@ so any [`Pressable`](https://reactnative.dev/docs/pressable) propertie from **Re
 
 |  Name   | Type | Required | Default Value | Description |
 | -- | -- | -- | -- | -- |
-| radius | [`BorderRadius`](#borderradius) | **false** | `medium` | Button border radius. One of `BorderRadius` type |
-| borderWidth | [`BorderWidth`](#borderwidth) | **false** | `none` | Optional button borders width. One of `BorderWidth` type |
+| radius | [`BorderRadius`](../../theme/default-theme.mdx#borderradius) | **false** | `medium` | Button border radius. One of `BorderRadius` type |
+| borderWidth | [`BorderWidth`](../../theme/default-theme.mdx#borderwidth) | **false** | `none` | Optional button borders width. One of `BorderWidth` type |
 | loading | `boolean` | **false** | false | It true the button it is in disabled state and it shows [loading spinner](/docs/components/icons/@flexnative/icons-basic-usage#spinner) while it is on loading state. |
 | renderLoading | [`React.ReactElement`](https://legacy.reactjs.org/blog/2014/10/14/introducing-react-elements.html) | **false** | `false` | [`React.ReactElement`](https://legacy.reactjs.org/blog/2014/10/14/introducing-react-elements.html) to render a custom element as loading indicator component. |
 | disabled | `boolean` | **false** | `false` | Set the button as disabled. |
 | type | [`ButtonType`](#buttontype) | **false** | `default` | <Admonition type="warning">To have appearance for <code>'text'</code>, <code>'link'</code>, <code>'ghost'</code>, with custom color you should use hex colors.</Admonition> |
 | size | [`Sizes`](#sizes) | **false** | `default` | Button Sizes. One of `Sizes` type. |
-| color | [`ButtonColor`](#buttoncolor) | **false** | `theme.color.default` | Color by theme or a custom color according `react-native` ColorValue. |
+| color | [`Color`](../../theme/default-theme.mdx#color) | **false** | `theme.color.default` | Color by theme or a custom color according `react-native` ColorValue. |
 | activeColor | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `undefined` | Button color on active state, according `react-native` ColorValue. |
 | backgroundColor | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `undefined` | Button background color. |
 | borderColor | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `undefined` | Button borders color according `react-native` ColorValue. |
@@ -88,30 +88,7 @@ so any [`Pressable`](https://reactnative.dev/docs/pressable) propertie from **Re
 | text | `string` | [`ITextProps`](#itextprops) | **true** | `undefined` | Text `string` for button or [`ITextProps`](#itextprops), to render a custom element. If children it is set the text property will be ignored. |
 | iconLeft | <code> [keyof IconName](/docs/components/icons/@flexnative/icons-basic-usage#iconname) \| [IconProps](#iconprops) \| [React.ReactElement](https://legacy.reactjs.org/blog/2014/10/14/introducing-react-elements.html)</code> | **false** | `undefined` | [`keyof IconName`](/docs/components/icons/@flexnative/icons-basic-usage#iconname) to display an icon on left side of button, or [`IconProps`](#iconprops) or [`React.ReactElement`](https://legacy.reactjs.org/blog/2014/10/14/introducing-react-elements.html), to render a custom element at left side of button. <Admonition type="warning">If children it is set the text property will be ignored.</Admonition> |
 | iconRight | <code>[keyof IconName](/docs/components/icons/@flexnative/icons-basic-usage#iconname) \| [IconProps](#iconprops) \| [React.ReactElement](https://legacy.reactjs.org/blog/2014/10/14/introducing-react-elements.html)</code> | **false** | `undefined` | [`keyof IconName`](/docs/components/icons/@flexnative/icons-basic-usage#iconname) to display an icon on right side of button, or [`IconProps`](#iconprops) or [`React.ReactElement`](https://legacy.reactjs.org/blog/2014/10/14/introducing-react-elements.html), to render a custom element at right side of button. <Admonition type="warning">If children it is set the text property will be ignored.</Admonition> |
-
-### BorderRadius
-One of `'none' | 'small' | 'medium' | 'large' | 'full' | number`
-
-| Name | Type | Value |
-| ---- | ---- | ----- |
-| none | `number` | 0 |
-| small | `number` | 2 |
-| medium | `number` | 4 |
-| large | `number` | 6 |
-| full | `number` | 99999 |
-| | `number` | Any number value. |
-
-### BorderWidth
-One of `'none' | 'hairline' | 'thin' | 'base' | 'thick' | number`
-
-|  Name   | Type | Value |
-| ------- | ---- | ----- |
-| none | `number` | 0 |
-| hairline | [`StyleSheet.hairlineWidth`](https://reactnative.dev/docs/stylesheet#hairlinewidth) | This is defined as the width of a thin line on the platform. It can be used as the thickness of a border or division between two elements. |
-| thin | `number` | 1 |
-| base | `number` | 2 |
-| thick | `number` | 3 |
-| | `number` | Any number value |
+| children | `React.ReactNode` | **false** | `undefined` | [`React.ReactNode`](https://legacy.reactjs.org/blog/2014/10/14/introducing-react-elements.html) to render a custom element inside button. <Admonition type="warning">If children it is set the text property will be ignored.</Admonition> |
 
 ### ButtonType 
 One of `'default' | 'ghost' | 'inverse' | 'link' | 'text'`

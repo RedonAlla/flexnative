@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2023-06-04 21:29:02
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-10 13:17:21
+ * @ Modified time: 2024-11-20 21:58:16
  * @ Description: All props for ThemeContext and ThemeProvider.
  */
 
@@ -92,7 +92,6 @@ export type Color = 'default' | 'primary' | 'secondary' | 'info' | 'success' | '
  * @property {number} metrics.baseSize - Base size used in fontSize. Default is 16.
  * @property {number} metrics.disabledOpacity - Opacity style property value for disabled components. Default is 0.4.
  * @property {string} metrics.ghostOpacity - Color opacity for components with 'ghost' appearance. Default is '40'.
- * @property {string} metrics.ghostActiveOpacity - Color opacity for components with 'ghost' appearance in active state. Default is '73'.
  * @property {number} metrics.verticalMultiplier - A constant multiplier for components vertical padding. Default is 0.6.
  * @property {number} metrics.horizontalMultiplier - A constant multiplier for components horizontal padding. Default is 1.
  */
@@ -133,12 +132,6 @@ export interface BaseTheme<TColors> {
      * @default '40'
      */
     ghostOpacity: string;
-
-    /**
-     * Color opacity for components with 'ghost' appearance in active sate.
-     * @default '73'
-     */
-    ghostActiveOpacity: string;
 
     /** A constant multiplayer for components vertical padding.
      * @default 0.6

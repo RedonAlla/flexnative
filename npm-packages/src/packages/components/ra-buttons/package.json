@@ -1,6 +1,6 @@
 {
   "name": "@flexnative/buttons",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "React Native Buttons",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -24,7 +24,6 @@
   "license": "MIT",
   "peerDependencies": {
     "@flexnative/icons": "*",
-    "@flexnative/theme-context": "*",
-    "@flexnative/ui-constants": "*"
+    "@flexnative/theme-context": "*"
   }
 }
