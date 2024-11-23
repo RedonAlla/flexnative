@@ -31,6 +31,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/RedonAlla/flexnative.git",
-    "directory": "npm-packages/src/packages/context/ra-theme-context"
+    "directory": "npm-packages/src/packages/context/ra-icons"
   }
 }
