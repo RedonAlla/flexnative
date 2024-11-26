@@ -1,0 +1,93 @@
+name: generate-changelog
+description: ""
+
+inputs:
+  git-cliff-args:
+    description: ""
+    required: false
+    default: --current
+  git-cliff-config:
+    description: ""
+    required: false
+    default: ${GITHUB_ACTION_PATH}/../cliff.toml
+  trim-version-and-date:
+    description: ""
+    required: false
+    default: "true"
+  save-json-output:
+    description: ""
+    required: false
+    default: false
+  version:
+    description: The version of git-cliff
+    required: false
+    default: latest
+  token:
+    description: The token for GitHub API
+    required: false
+    default: ${{ github.token }}
+
+outputs:
+  changelog:
+    description: ""
+    value: ${{ steps.generate-changelog.outputs.changelog }}
+
+runs:
+  using: composite
+  steps:
+    - name: Set up git-cliff
+      uses: kenji-miyake/setup-git-cliff@v2
+      with:
+        version: ${{ inputs.version }}
+        token: ${{ inputs.token }}
+
+    - name: Generate changelog
+      id: generate-changelog
+      shell: bash
+      if: ${{ inputs.save-json-output == 'false' }}
+      run: |
+        # Generate changelog
+        git cliff --output CHANGELOG.md --config ${{ inputs.git-cliff-config }} \
+          -vv --strip header ${{ inputs.git-cliff-args }}
+        changelog=$(cat CHANGELOG.md)
+        rm CHANGELOG.md
+
+        # Trim version and date
+        if [ "${{ inputs.trim-version-and-date }}" = "true" ]; then
+          changelog="$(printf "$changelog" | tail -n +3)"
+        fi
+
+        # Output multiline strings: https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#multiline-strings
+        EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+        echo "changelog<<$EOF" >> $GITHUB_OUTPUT
+        echo "$changelog" >> $GITHUB_OUTPUT
+        echo "$EOF" >> $GITHUB_OUTPUT
+
+    - name: Show result
+      shell: bash
+      if: ${{ inputs.save-json-output == 'false' }}
+      run: |
+        echo "$CHANGELOG"
+      env:
+        CHANGELOG: ${{ steps.generate-changelog.outputs.changelog }}
+
+    - name: Generate changelog JSON
+      id: generate-changelog-json
+      shell: bash
+      if: ${{ inputs.save-json-output == 'true' }}
+      run: |
+        git cliff --config ${{ inputs.git-cliff-config }} \
+          -vv --strip all ${{ inputs.git-cliff-args }} --context --output context.json
+
+        # Output multiline strings: https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#multiline-strings
+        EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+        echo "changelog<<$EOF" >> $GITHUB_OUTPUT
+        echo "$changelog" | sed "s/'//" >> $GITHUB_OUTPUT
+        echo "$EOF" >> $GITHUB_OUTPUT
+
+    - name: Upload changelog JSON
+      id: upload-changelog-json
+      uses: actions/upload-artifact@v4
+      with:
+        name: changelog-json
+        path: ./context.json
