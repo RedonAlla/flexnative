@@ -30,8 +30,8 @@ jobs:
       
       - name: Commit and push changes
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config RedonAlla "github-actions[bot]"
+          git config redon.alla@gmail.com "github-actions[bot]@users.noreply.github.com"
           git add CHANGELOG.md
           git commit -m "Update CHANGELOG.md"
           git push
