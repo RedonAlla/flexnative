@@ -1,5 +1,5 @@
 name: generate-changelog
-description: ""
+description: "Generate Changelog"
 
 inputs:
   git-cliff-args:
@@ -9,7 +9,7 @@ inputs:
   git-cliff-config:
     description: ""
     required: false
-    default: ${GITHUB_ACTION_PATH}/../cliff.toml
+    default: ./cliff.toml
   trim-version-and-date:
     description: ""
     required: false
