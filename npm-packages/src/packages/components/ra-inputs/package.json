@@ -26,5 +26,12 @@
     "@flexnative/icons": "*",
     "@flexnative/theme-context": "*",
     "@flexnative/ui-constants": "*"
+  },
+  "homepage": "https://redonalla.github.io/flexnative/",
+  "bugs": "https://github.com/RedonAlla/flexnative/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RedonAlla/flexnative.git",
+    "directory": "npm-packages/src/packages/context/ra-inputs"
   }
 }

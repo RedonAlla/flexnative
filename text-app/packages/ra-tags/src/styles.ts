@@ -80,22 +80,25 @@ export default (props: {
    */
   return StyleSheet.create({
     container: {
-      alignItems: 'center',
       display: 'flex',
+      alignItems: 'center',
       flexDirection: 'row',
       justifyContent: 'center',
-      paddingVertical: fontSize * VERTICAL_PADDING_MULTIPLIER,
-      paddingHorizontal: fontSize * HORIZONTAL_PADDING_MULTIPLIER,
+      paddingVertical: props.theme.metrics.baseSize * VERTICAL_PADDING_MULTIPLIER,
+      paddingHorizontal: props.theme.metrics.baseSize * HORIZONTAL_PADDING_MULTIPLIER,
       borderRadius: props.theme.borderRadius[props.radius] ?? props.radius,
       borderWidth: props.theme.borderWidth[props.borderWidth!] ?? props.borderWidth as number,
       borderColor: props.borderColor || textColor,
       backgroundColor: props.backgroundColor ?? backgroundColor,
     },
     text: {
-      height: fontSize,
+      //height: fontSize,
       fontFamily: 'Regular',
       fontSize: fontSize,
-      color: textColor
+      color: textColor,
+
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     delete: {
       color: textColor,

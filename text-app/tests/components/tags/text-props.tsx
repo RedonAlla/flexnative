@@ -1,10 +1,8 @@
 import React from "react";
-import { Alert, Button, StyleSheet } from "react-native";;
-import Badge from '@flexnative/badges';
+import { Alert, StyleSheet, View } from "react-native";
 
-import { GAP } from "../../../constants/sizes";
+import Tag from "../../../packages/ra-tags/src/tag";
 import DemoBlock from "../../../components/icons/DemoBlock";
-
 
 export default class extends React.PureComponent<{}, {}> {
   constructor(props: {}) {
@@ -25,9 +23,7 @@ export default class extends React.PureComponent<{}, {}> {
   public render() {
     return (
       <DemoBlock title='Text Props' contentStyle={styles.block}>
-        <Badge text='10' type='default' color='primary' onPress={this.openAlert} allowFontScaling={true}>
-          <Button title="default"/>
-        </Badge>
+        <Tag color='primary' text='TextProps' textProps={{onPress: this.openAlert, allowFontScaling: true}} />
       </DemoBlock>
     );
   }
@@ -36,8 +32,8 @@ export default class extends React.PureComponent<{}, {}> {
 
 const styles = StyleSheet.create({
   block: {
-    rowGap: GAP,
-    columnGap: GAP,
+    rowGap: 10,
+    columnGap: 10,
     flexWrap: 'wrap',
     flexDirection: 'row',
     backgroundColor: 'transparent',

@@ -25,5 +25,12 @@
   "peerDependencies": {
     "expo-blur": "*",
     "@flexnative/theme-context": "*"
+  },
+  "homepage": "https://redonalla.github.io/flexnative/",
+  "bugs": "https://github.com/RedonAlla/flexnative/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RedonAlla/flexnative.git",
+    "directory": "npm-packages/src/packages/context/ra-bottom-sheet"
   }
 }
