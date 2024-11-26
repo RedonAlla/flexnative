@@ -2,8 +2,7 @@ name: Generate Changelog
 
 on:
   push:
-    tags:
-      - 'v*'  # Trigger when a tag matching "v*" is pushed
+    branches: ["main"]
 
 jobs:
   update-changelog:
