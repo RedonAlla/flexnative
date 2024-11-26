@@ -7,7 +7,6 @@
  */
 
 import { StyleSheet, ColorValue } from "react-native";
-
 import { BaseTheme, BorderRadius, BorderWidth, Color, Sizes } from "@flexnative/theme-context";
 
 import { TagType } from "./props";
