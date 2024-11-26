@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-05-31 00:42:57
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-10-18 21:29:40
+ * @ Modified time: 2024-11-25 00:18:21
  * @ Description: Tag component.
  */
 
@@ -14,7 +14,6 @@ import ThemeContext from "@flexnative/theme-context";
 
 import TagProps from "./props";
 import createStyles from './styles';
-import { DELETE_COLOR, DELETE_COLOR_ACTIVE } from "./constants";
 
 
 export default class extends React.PureComponent<TagProps, {}> {
@@ -57,10 +56,7 @@ export default class extends React.PureComponent<TagProps, {}> {
       borderWidth: borderWidth,
       borderColor: borderColor,
       backgroundColor: backgroundColor,
-      theme: {
-        colors: this.context.colors,
-        isLight: this.context.colorScheme === 'light'
-      }
+      theme: this.context
     });
     
     return (
@@ -72,7 +68,7 @@ export default class extends React.PureComponent<TagProps, {}> {
             { onDelete &&
               <Pressable onPress={onDelete}
                 style={({pressed}) => [
-                  { backgroundColor: pressed ? DELETE_COLOR_ACTIVE : DELETE_COLOR },
+                  { opacity: pressed ? 1 : 0.8 },
                   styles.deleteButton,
                 ]}>
                 <Icon name='close-circle' style={styles.delete} />

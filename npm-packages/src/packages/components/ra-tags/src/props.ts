@@ -2,17 +2,21 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-05-31 00:42:57
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-10-17 23:29:13
+ * @ Modified time: 2024-11-24 22:42:40
  * @ Description: Prop for Tag component.
  */
 
+import { BorderRadius, BorderWidth, Color, Sizes } from "@flexnative/theme-context";
 import { TextProps, ColorValue, ViewProps } from "react-native";
 
-export type TagRadius = 'none' | 'small' | 'medium' | 'large' | 'full' | number;
-export type TagColor = 'default' | 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error' | 'dark' | 'light' | ColorValue;
+/**
+ * Represents the type of a Tag component.
+ * 
+ * - `default`: The standard Tag type.
+ * - `text`: A Tag that displays text.
+ * - `ghost`: A Tag with a ghost style.
+ */
 export type TagType = 'default' | 'text' | 'ghost';
-export type TagSize = 'small' | 'default' | 'medium' | 'large';
-export type BorderWidth = 'none' | 'hairline' | 'thin' | 'base' | 'thick' | number;
 
 export default interface TagProps extends ViewProps {
   /**
@@ -55,7 +59,7 @@ export default interface TagProps extends ViewProps {
   /** Tag Size variable.
   * @default default
   */
-  size?: TagSize;
+  size?: Sizes;
 
   /**
    * Tag type.
@@ -67,12 +71,12 @@ export default interface TagProps extends ViewProps {
   /** Tag border radius.
   * @default 'medium'
   */
-  radius: TagRadius;
+  radius: BorderRadius;
 
   /** Color by theme or a custom color according `react-native` ColorValue.
    * @default 'default'
   */
-  color: TagColor;
+  color: Color;
 
   /** Props to pass to the inner `Text` component */
   textProps?: TextProps;

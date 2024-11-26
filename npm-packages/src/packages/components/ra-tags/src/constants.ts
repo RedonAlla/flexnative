@@ -2,14 +2,30 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-06-09 22:40:44
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-10-17 22:50:20
+ * @ Modified time: 2024-11-25 00:17:33
  * @ Description: Constant Values use for Tag component.
  */
 
-import { BASE_SIZE } from "@flexnative/ui-constants";
+/**
+ Define a constant for horizontal padding multiplier, used to calculate or adjust padding.
+ It can be used across the application to maintain consistency in horizontal spacing.
+ */
+ export const HORIZONTAL_PADDING_MULTIPLIER = 0.75;
 
-export const DELETE_COLOR = '#00000066';
-export const DELETE_COLOR_ACTIVE = '#00000080';
+ /**
+  * Define a constant for vertical padding multiplier, used to calculate or adjust padding.
+  ‚* This ensures consistent vertical spacing throughout the application.
+  */
+ export const VERTICAL_PADDING_MULTIPLIER = 0.25;
 
-export const PADDING_HORIZONTAL = 0.75 * BASE_SIZE;
-export const PADDING_VERTICAL = 0.25 * BASE_SIZE;
+/**
+ * Represents the color white in hexadecimal format.
+ * This constant can be used for styling components where a white color is needed.
+ */
+export const WHITE_COLOR = '#FFFFFF';
+
+/**
+ * Constant to define the multiplier used for calculating action element widths.
+ * This helps standardize action element sizes across different components in the application.
+ */
+export const ACTION_WIDTH_MULTIPLIER = 1.18;

@@ -24,7 +24,6 @@
   "license": "MIT",
   "peerDependencies": {
     "@flexnative/icons": "*",
-    "@flexnative/ui-constants": "*",
     "@flexnative/theme-context": "*"
   },
   "homepage": "https://redonalla.github.io/flexnative/",
