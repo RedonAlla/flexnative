@@ -3,7 +3,7 @@ import { Button, StyleSheet } from "react-native";;
 import Badge from '@flexnative/badges';
 
 import { GAP } from "../../../constants/sizes";
-import DemoBlock from "../../../components/icons/DemoBlock";;
+import DemoBlock from "../../../components/icons/DemoBlock";
 
 export default class extends React.PureComponent<{}, {}> {
   public render() {
