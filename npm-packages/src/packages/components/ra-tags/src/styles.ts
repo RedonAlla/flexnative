@@ -12,7 +12,11 @@ import { BaseTheme, BorderRadius, BorderWidth, Color, Sizes } from "@flexnative/
 
 import { TagType } from "./props";
 import { getBackgroundColor, getTextColor } from "./utilities";
-import { ACTION_WIDTH_MULTIPLIER, HORIZONTAL_PADDING_MULTIPLIER, VERTICAL_PADDING_MULTIPLIER } from "./constants";
+import {
+  ACTION_WIDTH_MULTIPLIER,
+  HORIZONTAL_PADDING_MULTIPLIER,
+  VERTICAL_PADDING_MULTIPLIER
+} from "./constants";
 
 /**
  * Creates a stylesheet for Tag's components with customizable styles.
