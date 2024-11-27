@@ -1,15 +1,15 @@
 import { ColorValue, StyleSheet } from 'react-native';
 
-import { BaseTheme } from '@flexnative/theme-context';
+import { BaseTheme, BorderRadius, BorderWidth, Color, Sizes } from '@flexnative/theme-context';
 
-import { BorderRadius, BorderWidth, InputColor, InputType, Sizes } from '../input.props';
-import { getBorderRadius, getBorders, getColor, getTextSize } from '../input.utilities';
+import { InputType } from '../input.props';
+import { getBorders } from '../input.utilities';
 import { PADDING_HORIZONTAL_MULTIPLIER, PADDING_VERTICAL_MULTIPLIER, TEXT_HELPER_MULTIPLIER } from '../input.constants';
 
 
 type StyleProps = {
   type: InputType;
-  color: InputColor;
+  color: Color;
   size: Sizes;
   radius: BorderRadius;
   borderWidth?: BorderWidth;
@@ -18,18 +18,15 @@ type StyleProps = {
   backgroundColor?: ColorValue;
   material?: boolean;
   direction?: 'row' | 'column';
-  theme: {
-    colors: BaseTheme,
-    isDark: boolean
-  }
+  theme: BaseTheme<any>;
 }
   
 export const createStyles = (props: StyleProps) => {
-  const fontSize = getTextSize(props.size);
-  const color = getColor(props.theme.colors, props.color);
+  const fontSize = props.theme.fontSize[props.size!] ?? props.theme.fontSize.default;
+  const themeColor = props.theme.colors[props.color] ?? props.color;
   const paddingVertical = PADDING_VERTICAL_MULTIPLIER * fontSize;
   const paddingHorizontal = PADDING_HORIZONTAL_MULTIPLIER * fontSize;
-  const borderRadius = getBorderRadius(props.radius);
+  const borderRadius = props.theme.borderRadius[props.radius] ?? props.radius;
   
   return StyleSheet.create({
     wrapper: {
@@ -47,7 +44,7 @@ export const createStyles = (props: StyleProps) => {
       rowGap: paddingVertical,
       columnGap: paddingVertical,
       padding: paddingVertical,
-      borderColor: props.borderColor ?? color,
+      borderColor: props.borderColor ?? themeColor,
       backgroundColor: props.backgroundColor ?? 'transparent',
       borderRadius: props.type === 'underlined' ? 0 : borderRadius,
       paddingHorizontal:
@@ -56,7 +53,7 @@ export const createStyles = (props: StyleProps) => {
         : (props.radius === 'full' && props.material)
           ? 2 * paddingHorizontal
           : paddingHorizontal,
-      ...getBorders(props.type, props.borderWidth!),
+      ...getBorders(props.type, props.theme.borderWidth[props.borderWidth!] ?? props.borderWidth),
     },
     listContainer: {
       display: 'flex',

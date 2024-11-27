@@ -1,8 +1,9 @@
 import { ReactElement, SyntheticEvent } from "react";
 import { ColorValue, NativeSyntheticEvent, StyleProp, TextStyle, ViewProps } from "react-native";
 
-import { BorderRadius, BorderWidth, InputColor, InputType, Sizes } from "../input.props";
+import { InputType } from "../input.props";
 import { CheckProps, CheckboxEvent } from "../check/props";
+import { BorderRadius, BorderWidth, Color, Sizes } from "@flexnative/theme-context";
 
 
 export interface CheckListProps<T> extends ViewProps {
@@ -35,7 +36,7 @@ export interface CheckListProps<T> extends ViewProps {
   /** Color by theme or a custom color according `react-native` ColorValue.
    * @default 'default'
   */
-  color?: InputColor;
+  color?: Color;
 
   /**
    * Input Sizes

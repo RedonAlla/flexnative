@@ -2,24 +2,19 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-06-17 22:55:53
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-10-16 23:40:00
+ * @ Modified time: 2024-11-27 22:18:17
  * @ Description:
  */
 
 import { ColorValue, StyleProp, TextStyle, TextInputProps, ViewStyle } from 'react-native';
 import { IconName } from '@flexnative/icons';
+import { BorderRadius, BorderWidth, Color, Sizes } from '@flexnative/theme-context';
 
 export interface StateCallbackType {
   readonly focused: boolean;
 }
 
-export type BorderRadius = 'none' | 'small' | 'medium' | 'large' | 'full' | number;
-export type BorderWidth = 'none' | 'hairline' | 'thin' | 'base' | 'thick' | number;
-
-export type Sizes = 'small' | 'default' | 'medium' | 'large';
-
 export type InputType = 'outlined' | 'underlined';
-export type InputColor = 'default' | 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error' | 'dark' | 'light' | ColorValue;
 
 
 export interface BaseInputProps extends TextInputProps {
@@ -67,7 +62,7 @@ export interface BaseInputProps extends TextInputProps {
   /** Color by theme or a custom color according `react-native` ColorValue.
    * @default 'default'
   */
-  color?: InputColor;
+  color?: Color;
 
   /** Background color for according `react-native` ColorValue. */
   backgroundColor?: ColorValue;

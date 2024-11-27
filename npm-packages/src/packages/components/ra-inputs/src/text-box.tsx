@@ -111,10 +111,7 @@ export default class extends React.PureComponent<BaseInputProps, State> {
         activeBackgroundColor: activeBackgroundColor,
         //focusedBorders: focusedBorders,
         material,
-        theme: {
-          colors: this.context.colors,
-          isDark: this.context.colorScheme === 'dark'
-        }
+        theme: this.context.colors
       }
     );
     

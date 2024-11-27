@@ -1,12 +1,9 @@
 import { ColorValue, StyleSheet } from 'react-native';
 
-import { BaseTheme } from '@flexnative/theme-context';
-import { GHOST_ACTIVE_TRANSPARENCY } from '@flexnative/ui-constants';
+import { BaseTheme, BorderRadius, BorderWidth, Sizes } from '@flexnative/theme-context';
 
-import { getBorderRadius, getBorderWidth, getColor, getTextSize } from "../input.utilities";
 import { InputColor, CheckType } from './props';
-import { BorderRadius, BorderWidth, Sizes } from '../input.props';
-import { BLACK_TEXT_COLOR, DISABLED_OPACITY, PADDING_VERTICAL_MULTIPLIER, WHITE_TEXT_COLOR } from '../input.constants';
+import { PADDING_VERTICAL_MULTIPLIER, WHITE_TEXT_COLOR } from '../input.constants';
 
 
 type StyleProps = {
@@ -20,18 +17,15 @@ type StyleProps = {
   checkedBorderColor: ColorValue;
   backgroundColor?: ColorValue;
   checkedBackgroundColor?: ColorValue;
-  theme: {
-    colors: BaseTheme,
-    isDark: boolean
-  }
+  theme: BaseTheme<any>;
 }
 
 export const createStyles = (props: StyleProps) => {
-  const fontSize = getTextSize(props.size);
-  const color = getColor(props.theme.colors, props.color);
+  const fontSize = props.theme.fontSize[props.size] ?? props.theme.fontSize.default;
+  const themeColor = props.theme.colors[props.color] ?? props.color as ColorValue;
   const paddingVertical = PADDING_VERTICAL_MULTIPLIER * fontSize;
-  const borderWidth = getBorderWidth(props.borderWidth!);
-  const borderRadius = getBorderRadius(props.radius);
+  const borderWidth = props.theme.borderWidth[props.borderWidth!] ?? props.borderWidth as number;
+  const borderRadius = props.theme.borderRadius[props.radius] ?? props.radius as number;
   
   return StyleSheet.create({
     container: {
@@ -39,7 +33,7 @@ export const createStyles = (props: StyleProps) => {
       flexDirection: 'row',
       alignItems: 'center',
       columnGap: paddingVertical,
-      opacity: props.disabled ? DISABLED_OPACITY : 1,
+      opacity: props.disabled ? props.theme.metrics.disabledOpacity : 1,
     },
     checkContainer: {
       overflow: 'hidden',
@@ -56,18 +50,17 @@ export const createStyles = (props: StyleProps) => {
       fontFamily: 'Icons',
       fontWeight: 'bold',
       alignSelf : "center",
-      color: getCheckColor(!props.theme.isDark, color, props.color, props.type),
+      color: getCheckColor(!props.theme.scheme, themeColor, props.color, props.type, props.theme.colors.black),
     },
     checkBoxChecked: {
-      borderColor: Boolean(props.checkedBorderColor) ? props.checkedBorderColor : color,
-      backgroundColor:
-        Boolean(props.checkedBackgroundColor)
-          ? props.checkedBackgroundColor
-          : props.type === 'outlined'
-              ? 'transparent'
-              : props.type === 'ghost'
-                  ? `${color.toString()}${GHOST_ACTIVE_TRANSPARENCY}`
-                : color,
+      borderColor: props.checkedBorderColor ?? themeColor,
+      backgroundColor: Boolean(props.checkedBackgroundColor)
+        ? props.checkedBackgroundColor
+        : props.type === 'outlined'
+            ? 'transparent'
+            : props.type === 'ghost'
+                ? `${themeColor.toString()}${props.theme.metrics.ghostOpacity}`
+                : themeColor,
     },
     checkBoxUnChecked: {
       borderColor: Boolean(props.borderColor) ? props.borderColor : props.type === 'solid' ? props.theme.colors.default : props.theme.colors.border,
@@ -82,14 +75,17 @@ export const createStyles = (props: StyleProps) => {
   });
 }
 
-function getCheckColor(isLight: boolean, colorValue: ColorValue, color: InputColor, type: CheckType) {
+function getCheckColor(isLight: boolean, colorValue: ColorValue, color: InputColor, type: CheckType, blackColor: ColorValue = 'black') {
   if(type === 'outlined' || type === 'ghost')
     return colorValue;
 
+  if(Boolean(color === 'secondary'))
+    return WHITE_TEXT_COLOR;
+
   if(Boolean(color === 'light'))
-    return BLACK_TEXT_COLOR;
+    return blackColor;
 
   return Boolean(isLight && color === 'default')
-    ? BLACK_TEXT_COLOR
+    ? blackColor
     : WHITE_TEXT_COLOR
 }

@@ -21,7 +21,6 @@ import { getStyle } from "./input.utilities";
 import InputContainer from './components/input-container';
 import Adornment from './components/input-adornment';
 import FalsyComponent from "./components/falsy-component";
-import { DARK_OVERLAY, LIGHT_OVERLAY } from "./input.constants";
 
 
 type State = {
@@ -143,12 +142,8 @@ export default class extends React.PureComponent<NumberTextBoxProps, State> {
         activeBorderColor: activeBorderColor,
         backgroundColor: backgroundColor,
         activeBackgroundColor: activeBackgroundColor,
-        //focusedBorders: focusedBorders,
         material,
-        theme: {
-          colors: this.context.colors,
-          isDark: this.context.colorScheme === 'dark'
-        }
+        theme: this.context
       }
     );
     
@@ -206,7 +201,7 @@ export default class extends React.PureComponent<NumberTextBoxProps, State> {
             bgColor={this.context.colors.placeholder}
             borderColor={this.context.colors.border}
             disabled={Boolean(disabled || readOnly)}
-            isDark={this.context.colorScheme ==='dark'}
+            overlay={this.context.colors.overlay}
             width={material ? Number(styles.icon.width!) : Number(styles.icon.width!) * 1.3}
             fontSize={Number(styles.icon?.width) * 0.25}
             borderRadius={Number(styles.container.borderRadius!) / 1.2}
@@ -233,7 +228,7 @@ export default class extends React.PureComponent<NumberTextBoxProps, State> {
 
 type ActionProp = {
   disabled: boolean;
-  isDark: boolean;
+  overlay: ColorValue;
   fontSize: number;
   textColor: ColorValue;
   icon: 'caret-up' | 'caret-down';
@@ -242,12 +237,12 @@ type ActionProp = {
 
 class Action extends React.PureComponent<ActionProp, {}> {
   public render() {
-    const { disabled, isDark, fontSize, textColor, icon, action } = this.props;
+    const { disabled, overlay, fontSize, textColor, icon, action } = this.props;
 
     return (
       <Pressable onPress={action} disabled={disabled} style={({pressed}) => [
         {
-          backgroundColor: pressed ? isDark ? LIGHT_OVERLAY : DARK_OVERLAY : 'transparent',
+          backgroundColor: pressed ? overlay : 'transparent',
         },
         styles.button,
       ]}>
@@ -259,7 +254,7 @@ class Action extends React.PureComponent<ActionProp, {}> {
 
 type ActionContainerProp = {
   disabled: boolean;
-  isDark: boolean;
+  overlay: ColorValue;
   showActions: boolean;
   textColor: ColorValue;
   bgColor: ColorValue;
@@ -273,7 +268,7 @@ type ActionContainerProp = {
 
 class ActionContainer extends React.PureComponent<ActionContainerProp, {}> {
   public render() {
-    const { isDark, textColor, bgColor, borderColor, fontSize, width, borderRadius, showActions, disabled, onIncrement, onDecrement } = this.props;
+    const { overlay, textColor, bgColor, borderColor, fontSize, width, borderRadius, showActions, disabled, onIncrement, onDecrement } = this.props;
 
     if(!showActions)
       return null;
@@ -289,9 +284,9 @@ class ActionContainer extends React.PureComponent<ActionContainerProp, {}> {
           opacity: disabled ? 0.4 : 1
         }
       ]}>
-        <Action isDark={isDark} fontSize={fontSize} textColor={textColor} icon='caret-up' disabled={disabled} action={onIncrement}/>
+        <Action overlay={overlay} fontSize={fontSize} textColor={textColor} icon='caret-up' disabled={disabled} action={onIncrement}/>
         <View style={{width: '100%', height: 1, backgroundColor: borderColor}}/>
-        <Action isDark={isDark} fontSize={fontSize}  textColor={textColor} icon='caret-down' disabled={disabled} action={onDecrement}/>
+        <Action overlay={overlay} fontSize={fontSize}  textColor={textColor} icon='caret-down' disabled={disabled} action={onDecrement}/>
       </View>
     );
   }

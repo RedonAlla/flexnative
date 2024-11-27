@@ -1,6 +1,6 @@
 {
   "name": "@flexnative/inputs",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "React Native Inputs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -22,10 +22,9 @@
   ],
   "author": "Redon Alla",
   "license": "MIT",
-  "peerDependencies": {
+  "devDependencies": {
     "@flexnative/icons": "*",
-    "@flexnative/theme-context": "*",
-    "@flexnative/ui-constants": "*"
+    "@flexnative/theme-context": "*"
   },
   "homepage": "https://redonalla.github.io/flexnative/",
   "bugs": "https://github.com/RedonAlla/flexnative/issues",

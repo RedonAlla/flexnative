@@ -1,41 +1,46 @@
 import { ColorValue, StyleSheet } from "react-native";
-import { BaseTheme } from "@flexnative/theme-context";
+import { BaseTheme, BorderRadius, BorderWidth, Color, Sizes } from "@flexnative/theme-context";
 
-import { InputType, InputColor, Sizes, BorderRadius, BorderWidth } from "./input.props";
-import { getBackgroundColor, getBorderRadius, getBorders, getColor, getTextSize } from "./input.utilities";
-import { MAT_ICON_MULTIPLIER, PADDING_HORIZONTAL_MULTIPLIER, PADDING_VERTICAL_MULTIPLIER, TEXT_HELPER_MULTIPLIER } from "./input.constants";
+import { InputType } from "./input.props";
+import { getBorders } from "./input.utilities";
+
+import {
+  MAT_ICON_MULTIPLIER,
+  PADDING_HORIZONTAL_MULTIPLIER,
+  PADDING_VERTICAL_MULTIPLIER,
+  TEXT_HELPER_MULTIPLIER
+} from "./input.constants";
 
 
 type ContainerProps = {
   type: InputType;
-  color: InputColor;
+  color: Color;
   size: Sizes;
   radius: BorderRadius;
   borderWidth?: BorderWidth;
   disabled?: boolean;
   readOnly?: boolean;
   readonly?: boolean;
-  borderColor?: InputColor;
+  borderColor?: ColorValue;
   activeBorderColor?: ColorValue;
   backgroundColor?: ColorValue;
   activeBackgroundColor?: ColorValue;
-  //focusedBorders?: boolean;
   material?: boolean;
-  theme: {
-    colors: BaseTheme,
-    isDark: boolean
-  }
+  theme: BaseTheme<any>;
 }
 
-export const createStyles = (props: ContainerProps) => {
-  const fontSize = getTextSize(props.size);
-  const color = getColor(props.theme.colors, props.color);
-  const backgroundColor = getBackgroundColor(props.activeBackgroundColor);
+export function createStyles(props: ContainerProps) {
+  const fontSize = props.theme.fontSize[props.size] ?? props.theme.fontSize.default;
+  const themeColor = props.theme.colors[props.color] ?? props.color;
+  const backgroundColor = props.backgroundColor ?? 'transparent';
   const paddingVertical = PADDING_VERTICAL_MULTIPLIER * fontSize;
   const paddingHorizontal = PADDING_HORIZONTAL_MULTIPLIER * fontSize;
-  const borderRadius = getBorderRadius(props.radius);
+  const borderRadius = props.theme.borderRadius[props.radius] ?? props.radius;
   const iconSize = props.material ? MAT_ICON_MULTIPLIER * fontSize : fontSize;
-  const focusBorderColor = props.readOnly ? props.borderColor || color : props.activeBorderColor || props.theme.colors.primary
+
+  const focusBorderColor = props.readOnly
+    ? props.borderColor ?? themeColor
+    : props.activeBorderColor ?? props.theme.colors.primary;
   
   return StyleSheet.create({
     wrapper: {
@@ -48,7 +53,6 @@ export const createStyles = (props: ContainerProps) => {
     },
     input: {
       flex: 1,
-      //@ts-ignore
       outlineWidth: 0,
       //@ts-ignore
       minWidth: 'inherit',
@@ -69,29 +73,26 @@ export const createStyles = (props: ContainerProps) => {
       alignItems: 'center',
       justifyContent: 'center',
       columnGap: paddingVertical,
-      borderColor: color,
+      borderColor: props.borderColor || themeColor,
       paddingVertical: paddingVertical,
       borderRadius: props.type === 'underlined' ? 0 : borderRadius,
-      paddingHorizontal:
-        props.type === 'underlined'
+      paddingHorizontal: props.type === 'underlined'
         ? 0
         : (props.radius === 'full' && props.material)
           ? 2 * paddingHorizontal
           : paddingHorizontal,
-      ...getBorders(props.type, props.borderWidth!),
+      ...getBorders(props.type, props.theme.borderWidth[props.borderWidth!] ?? props.borderWidth),
     },
     containerFocus: {
-      backgroundColor: backgroundColor,
+      backgroundColor: props.activeBackgroundColor ?? backgroundColor,
       borderColor: focusBorderColor,
     },
     containerNotFocus: {
-      borderColor: props.disabled ? 'transparent' : props.borderColor || color,
+      borderColor: props.disabled ? 'transparent' : props.borderColor || themeColor,
       backgroundColor:
         props.disabled
           ? props.theme.colors.default
-          : props.readOnly
-            ? backgroundColor
-            : getBackgroundColor(props.backgroundColor),
+          : backgroundColor
     },
     text: {
       fontFamily: 'Regular',
@@ -133,18 +134,15 @@ export const createStyles = (props: ContainerProps) => {
   });
 }
 
-export const materialStyle = () => StyleSheet.create({
-  container: {
-    flex: 1,
-    display: 'flex',
-    overflow: 'hidden',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    backgroundColor: 'transparent'
-  },
-});
-
-// Platform.OS === 'web' && { outlineWidth: 0 },
-//         {
-//             textAlignVertical: props.numberOfLines ? 'top' : 'center'
-//         }
+export function materialStyle() {
+  return StyleSheet.create({
+    container: {
+      flex: 1,
+      display: 'flex',
+      overflow: 'hidden',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      backgroundColor: 'transparent'
+    },
+  });
+};
