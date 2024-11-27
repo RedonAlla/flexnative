@@ -1,5 +1,11 @@
 ##  (2024-11-27)
 
+* refactor(inputs): update default size and theme structure ([7834392](https://github.com/RedonAlla/flexnative/commit/7834392))
+
+
+
+##  (2024-11-27)
+
 * Update action.yaml ([129e621](https://github.com/RedonAlla/flexnative/commit/129e621))
 
 
