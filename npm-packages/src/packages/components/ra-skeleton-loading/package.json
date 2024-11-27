@@ -1,6 +1,6 @@
 {
   "name": "@flexnative/skeleton-loading",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "React Native Skeleton loadings",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -10,7 +10,10 @@
   "exports": {
     ".": "./dist/index.js"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "react-native-svg": "*",
+    "@flexnative/theme-context": "*"
+  },
   "keywords": [
     "react",
     "react-native",
@@ -23,10 +26,6 @@
   },
   "author": "Redon Alla",
   "license": "MIT",
-  "peerDependencies": {
-    "react-native-svg": "*",
-    "@flexnative/theme-context": "*"
-  },
   "homepage": "https://redonalla.github.io/flexnative/",
   "bugs": "https://github.com/RedonAlla/flexnative/issues",
   "repository": {
