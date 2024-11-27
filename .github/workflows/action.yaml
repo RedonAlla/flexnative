@@ -1,9 +1,8 @@
-name: Continuous Deployment
+name: Generate Changelog 2
 
 on:
   push:
-    tags:
-      - "v*.*.*"
+    branches: ["main"]
 
 jobs:
   generate-changelog:
