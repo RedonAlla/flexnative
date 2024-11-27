@@ -1,5 +1,11 @@
 ##  (2024-11-27)
 
+* Update action.yaml ([129e621](https://github.com/RedonAlla/flexnative/commit/129e621))
+
+
+
+##  (2024-11-27)
+
 * refactor(inputs): update to latest theme context and components ([8c52c02](https://github.com/RedonAlla/flexnative/commit/8c52c02))
 
 
