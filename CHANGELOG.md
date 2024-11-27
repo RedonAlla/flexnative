@@ -1,5 +1,11 @@
 ##  (2024-11-27)
 
+* Update cliff.toml ([69f8315](https://github.com/RedonAlla/flexnative/commit/69f8315))
+
+
+
+##  (2024-11-27)
+
 * docs(bottom-sheet): enhance documentation strings for components and types ([b409a8c](https://github.com/RedonAlla/flexnative/commit/b409a8c))
 
 
