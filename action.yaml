@@ -1,0 +1,49 @@
+name: "git-cliff - Changelog Generator"
+description: "Generate changelog based on your Git history"
+inputs:
+  version:
+    description: "git-cliff version"
+    required: false
+    default: "v2.7.0"
+  config:
+    description: "config file location"
+    required: false
+    default: "cliff.toml"
+  args:
+    description: "git-cliff arguments"
+    required: false
+    default: "-v"
+  github_token:
+    description: "GitHub API token"
+    required: false
+    default: "${{ github.token }}"
+outputs:
+  changelog:
+    description: "output file"
+    value: ${{ steps.run-git-cliff.outputs.changelog }}
+  content:
+    description: "content of the changelog"
+    value: ${{ steps.run-git-cliff.outputs.content }}
+  version:
+    description: "version of the latest release"
+    value: ${{ steps.run-git-cliff.outputs.version }}
+runs:
+  using: "composite"
+  steps:
+    - name: Download git-cliff
+      shell: bash
+      run: ${GITHUB_ACTION_PATH}/install.sh
+      env:
+        RUNNER_OS: ${{ runner.os }}
+        RUNNER_ARCH: ${{ runner.arch }}
+        VERSION: ${{ inputs.version }}
+        GITHUB_API_TOKEN: ${{ inputs.github_token }}
+
+    - name: Run git-cliff
+      id: run-git-cliff
+      shell: bash
+      run: ${GITHUB_ACTION_PATH}/run.sh --config=${{ inputs.config }} ${{ inputs.args }}
+
+branding:
+  icon: "triangle"
+  color: "green"
