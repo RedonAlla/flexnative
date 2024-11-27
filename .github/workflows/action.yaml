@@ -1,6 +1,10 @@
 name: generate-changelog
 description: "Generate Changelog"
 
+on:
+  push:
+    branches: ["main"]
+
 inputs:
   git-cliff-args:
     description: ""
