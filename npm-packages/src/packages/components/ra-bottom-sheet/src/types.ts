@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2023-06-28 19:37:05
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-12 22:30:40
+ * @ Modified time: 2024-11-27 17:35:06
  * @ Description: Bottom Sheet props.
  */
 
@@ -131,9 +131,23 @@ export type BottomSheetProps = {
   draggableIconStyle?: StyleProp<ViewStyle> | undefined;
 }
 
+/**
+ * Represents the state properties for the BottomSheet component.
+ */
 export type BottomSheetStateProps = {
+  /**
+   * Indicates whether the modal is visible.
+   */
   modalVisible: boolean;
+
+  /**
+   * The animated height of the bottom sheet.
+   */
   animatedHeight: any;
+
+  /**
+   * The pan gesture handler.
+   */
   pan: any;
 }
 

@@ -67,7 +67,7 @@ const getMasKMode = (isDark: boolean, mode?: BlurTint): BlurTint => {
  * @prop {object} draggableIconStyle - Custom styles for the draggable icon.
  * @prop {boolean} keyboardAvoidingViewEnabled - If true, enables the KeyboardAvoidingView.
  * @prop {string} maskMode - Mode of the mask.
- * @prop {object} context - Context from the ThemeContext.
+ * @prop {ThemeContextType} context - Context from the ThemeContext.
  *
  * @method setModalVisible - Sets the visibility of the modal.
  * @method createPanResponder - Creates the pan responder for drag-to-close functionality.
@@ -265,6 +265,9 @@ class BottomSheet extends React.PureComponent<BottomSheetProps, BottomSheetState
   }
 }
 
+/**
+ * Set default props for the BottomSheet component.
+ */
 BottomSheet.defaultProps = {
   animationType: 'fade',
   height: 260,

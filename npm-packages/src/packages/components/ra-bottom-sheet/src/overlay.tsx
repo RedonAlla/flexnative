@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-05-26 15:52:11
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-12 22:27:24
+ * @ Modified time: 2024-11-27 17:34:48
  * @ Description: Bottom Sheet overlay (background).
  */
 
@@ -30,6 +30,17 @@ type Props = {
   onPress?: () => void;
 }
 
+/**
+ * `Background` is a memoized React functional component that renders a pressable
+ * area with a blur effect. It uses `Pressable` to handle press events and `BlurView`
+ * to apply a blur effect to the background.
+ *
+ * @param {Props} props - The properties passed to the component.
+ * @param {() => void} props.onPress - The function to call when the pressable area is pressed.
+ * @param {string} props.maskMode - The tint mode for the blur effect.
+ *
+ * @returns {JSX.Element} The rendered component.
+ */
 export const Background = React.memo((props: Props) => (
   <Pressable style={styles.action} onPress={props.onPress} >
     <BlurView
