@@ -1,3 +1,9 @@
+##  (2024-11-27)
+
+* refactor(skeleton-loading): improve documentation and restructure imports ([23fa66a](https://github.com/RedonAlla/flexnative/commit/23fa66a))
+
+
+
 ##  (2024-11-26)
 
 * Update changelog.yml ([5db9c08](https://github.com/RedonAlla/flexnative/commit/5db9c08))
