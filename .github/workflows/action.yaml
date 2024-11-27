@@ -15,9 +15,9 @@ jobs:
           fetch-depth: 0
       - name: Generate a changelog
         id: git-cliff
-        uses: ./
+        uses: orhun/git-cliff-action@main
         with:
-          config: fixtures/cliff.toml
+          config: cliff.toml
           args: --verbose --strip 'footer' --exclude-path '.github/**' --tag 0.0.0
         env:
           OUTPUT: fixtures/CHANGELOG.md
