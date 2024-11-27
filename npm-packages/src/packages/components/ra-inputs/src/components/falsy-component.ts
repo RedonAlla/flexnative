@@ -8,7 +8,6 @@ export type FalsyFCProps<Props> = Props & {
   shouldRender: boolean;
   component?: RenderProp<Props>;
   fallback?: React.ReactElement;
-  test?: React.ReactElement;
 };
 
 /**
@@ -44,7 +43,7 @@ export default class FalsyComponent<Props> extends React.PureComponent<FalsyFCPr
   }
 
   public render() {
-    const { component, test, fallback, shouldRender, ...props } = this.props;
+    const { component, fallback, shouldRender, ...props } = this.props;
 
     if(!shouldRender)
       return null;
