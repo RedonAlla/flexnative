@@ -108,7 +108,7 @@ commit_parsers = [
   { message = "^chore\\(npm\\).*yarn\\.lock", skip = true },
   { message = "^chore|^ci", group = "<!-- 7 -->⚙️ Miscellaneous Tasks" },
   { body = ".*security", group = "<!-- 8 -->🛡️ Security" },
-  { message = "^revert", group = "<!-- 9 -->◀♻️ Revert" },
+  { message = "^revert", group = "<!-- 9 -->♻️ Revert" },
 ]
 # protect breaking changes from being skipped due to matching a skipping commit_parser
 protect_breaking_commits = false
