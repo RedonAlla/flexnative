@@ -1,27 +1,49 @@
-name: Generate Changelog 2
+name: "git-cliff - Changelog Generator"
+description: "Generate changelog based on your Git history"
+inputs:
+  version:
+    description: "git-cliff version"
+    required: false
+    default: "v2.7.0"
+  config:
+    description: "config file location"
+    required: false
+    default: "cliff.toml"
+  args:
+    description: "git-cliff arguments"
+    required: false
+    default: "-v"
+  github_token:
+    description: "GitHub API token"
+    required: false
+    default: "${{ github.token }}"
+outputs:
+  changelog:
+    description: "output file"
+    value: ${{ steps.run-git-cliff.outputs.changelog }}
+  content:
+    description: "content of the changelog"
+    value: ${{ steps.run-git-cliff.outputs.content }}
+  version:
+    description: "version of the latest release"
+    value: ${{ steps.run-git-cliff.outputs.version }}
+runs:
+  using: "composite"
+  steps:
+    - name: Download git-cliff
+      shell: bash
+      run: ${GITHUB_ACTION_PATH}/install.sh
+      env:
+        RUNNER_OS: ${{ runner.os }}
+        RUNNER_ARCH: ${{ runner.arch }}
+        VERSION: ${{ inputs.version }}
+        GITHUB_API_TOKEN: ${{ inputs.github_token }}
 
-on:
-  push:
-    branches: ["main"]
+    - name: Run git-cliff
+      id: run-git-cliff
+      shell: bash
+      run: ${GITHUB_ACTION_PATH}/run.sh --config=${{ inputs.config }} ${{ inputs.args }}
 
-jobs:
-  git-cliff-action:
-    runs-on: ubuntu-latest
-    name: Test the git-cliff changelog generator action
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Generate a changelog
-        id: git-cliff
-        uses: ./
-        with:
-          config: cliff.toml
-          args: --verbose --strip 'footer' --exclude-path '.github/**' --tag 0.0.0
-        env:
-          OUTPUT: fixtures/CHANGELOG.md
-      - name: Print the changelog
-        run: cat "${{ steps.git-cliff.outputs.changelog }}"
-      - name: Print the version
-        run: echo "${{ steps.git-cliff.outputs.version }}"
+branding:
+  icon: "triangle"
+  color: "green"
