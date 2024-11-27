@@ -2,7 +2,8 @@
 import { SyntheticEvent } from "react";
 import { ColorValue, NativeSyntheticEvent, PressableProps, StyleProp, TextStyle } from "react-native";
 
-import { BorderRadius, BorderWidth, Sizes, StateCallbackType } from "../input.props";
+import { StateCallbackType } from "../input.props";
+import { BorderRadius, BorderWidth, Sizes } from "@flexnative/theme-context";
 
 export type CheckType = 'outlined' | 'solid' | 'inverse' | 'ghost';
 export type InputColor = 'default' | 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error' | 'dark' | 'light' | ColorValue;

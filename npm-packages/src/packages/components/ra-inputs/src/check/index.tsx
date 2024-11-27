@@ -53,7 +53,7 @@ export default class Check<T> extends React.PureComponent<CheckProps<T>> {
       {
         type: type || 'inverse',
         color: color || 'primary',
-        size: size || 'default',
+        size: size ?? 'medium',
         radius: radius || 'medium',
         borderWidth: borderWidth || 'hairline',
         disabled: disabled,
@@ -61,10 +61,7 @@ export default class Check<T> extends React.PureComponent<CheckProps<T>> {
         checkedBorderColor: checkedBorderColor!,
         backgroundColor: backgroundColor,
         checkedBackgroundColor: checkedBackgroundColor,
-        theme: {
-          colors: this.context.colors,
-          isDark: this.context.colorScheme === 'dark'
-        }
+        theme: this.context.colors
       }
     );
 
