@@ -1,5 +1,11 @@
 ##  (2024-11-28)
 
+* refactor(ra-inputs): remove unused 'test' prop from FalsyComponent ([5918968](https://github.com/RedonAlla/flexnative/commit/5918968))
+
+
+
+##  (2024-11-28)
+
 * feat(components): add 'test' prop to FalsyComponent ([801f8ee](https://github.com/RedonAlla/flexnative/commit/801f8ee))
 
 
