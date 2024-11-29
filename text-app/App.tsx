@@ -3,6 +3,9 @@ import React from 'react';
 import { StyleSheet, Text } from 'react-native';
 import TestTagComponents from './tests/components/tags/TestTagComponents';
 import TestIcon from './tests/components/icons/Icon';
+import TestTextBoxComponents from './tests/components/inputs/textbox/material/TestTextBoxComponents';
+import TestNumberBoxComponents from './tests/components/inputs/numbers/material/TestNumberBoxComponents';
+import TestCheckBoxComponents from './tests/components/inputs/checkbox/TestCheckBoxComponents';
 // import ThemeContext, { defaultTheme } from '@flexnative/theme-context';
 
 // import TestThemeContextConsumer from './tests/contexts/theme-consumer';
@@ -20,8 +23,9 @@ export default function App() {
     // <Text>TEST</Text>
     // <TestThemeChange />
     // <TestAvatarGroup />
+    // <TestTagComponents />
     <>
-    <TestTagComponents />
+    <TestCheckBoxComponents />
     <TestIcon />
     </>
     
