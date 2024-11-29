@@ -106,7 +106,7 @@ export default class CheckList<T> extends React.PureComponent<CheckListProps<T>,
         backgroundColor: backgroundColor,
         material: material,
         direction: direction,
-        theme: this.context.colors
+        theme: this.context
       }
     );
     

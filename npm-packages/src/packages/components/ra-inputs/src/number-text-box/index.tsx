@@ -6,21 +6,19 @@ import {
   NativeSyntheticEvent,
   TextInputFocusEventData,
   ViewStyle,
-  TextStyle,
-  StyleSheet,
-  Pressable,
-  ColorValue
+  TextStyle
 } from "react-native";
 
 import ThemeContext from "@flexnative/theme-context";
-import Icon from "@flexnative/icons";
 
-import { NumberTextBoxProps } from "./input.props";
-import { createStyles } from "./input.styles";
-import { getStyle } from "./input.utilities";
-import InputContainer from './components/input-container';
-import Adornment from './components/input-adornment';
-import FalsyComponent from "./components/falsy-component";
+import { NumberTextBoxProps } from "../input.props";
+import { createStyles } from "../input.styles";
+import { getStyle } from "../input.utilities";
+import InputContainer from '../components/input-container';
+import InputIcon from '../components/input-icon';
+import FalsyComponent from "../components/falsy-component";
+import HelperText from "../components/input-helper-text";
+import ActionContainer from "./number-actions";
 
 
 type State = {
@@ -149,9 +147,13 @@ export default class extends React.PureComponent<NumberTextBoxProps, State> {
     
     return (
       <View style={styles.wrapper}>
+
         <FalsyComponent
           shouldRender={Boolean(label && !material)}
-          style={[styles.label, getStyle<TextStyle>(labelStyle, this.state.isFocused)]}
+          style={[
+            styles.label,
+            getStyle<TextStyle>(labelStyle, this.state.isFocused)
+          ]}
           component={<Text>{label}</Text>}
         />
 
@@ -160,16 +162,21 @@ export default class extends React.PureComponent<NumberTextBoxProps, State> {
           { paddingRight: Boolean(actions && radius === 'full') ? styles.container.paddingVertical : undefined },
           this.state.isFocused ? styles.containerFocus : styles.containerNotFocus
         ]}>
-          <Adornment
-            adornment={prefix}
-            adornmentStyle={[
+          
+          <InputIcon
+            icon={prefix}
+            iconStyle={[
               styles.icon,
               prefixSeparator ? styles.prefixSeparator : undefined,
               getStyle<ViewStyle | TextStyle>(prefixStyle, this.state.isFocused)
             ]}
           />
 
-          <InputContainer material={material} label={label} labelStyle={[styles.label, getStyle<TextStyle>(labelStyle, this.state.isFocused)]}>
+          <InputContainer
+            material={material}
+            label={label}
+            labelStyle={[styles.label, getStyle<TextStyle>(labelStyle, this.state.isFocused)]}
+          >
             <TextInput
               onBlur={this.handleBlur}
               onFocus={this.handleFocus}
@@ -186,128 +193,36 @@ export default class extends React.PureComponent<NumberTextBoxProps, State> {
             />
           </InputContainer>
           
-          <Adornment
-            adornment={suffix}
-            adornmentStyle={[
+          <InputIcon
+            icon={suffix}
+            iconStyle={[
               styles.icon,
-              { textAlign: 'end' },
               suffixSeparator ? styles.suffixSeparator : undefined,
               getStyle<ViewStyle | TextStyle>(suffixStyle, this.state.isFocused)
             ]}
           />
           <ActionContainer
+            isMaterial={material!}
             showActions={actions}
-            textColor={this.context.colors.text}
-            bgColor={this.context.colors.placeholder}
-            borderColor={this.context.colors.border}
             disabled={Boolean(disabled || readOnly)}
-            overlay={this.context.colors.overlay}
-            width={material ? Number(styles.icon.width!) : Number(styles.icon.width!) * 1.3}
-            fontSize={Number(styles.icon?.width) * 0.25}
-            borderRadius={Number(styles.container.borderRadius!) / 1.2}
+            size={size}
+            borderRadius={radius}
+            theme={this.context}
             onIncrement={this.handleIncrement}
             onDecrement={this.handleDecrement}
           />
         </View>
 
-        {Boolean(helperText || maxLength) && (
-          <View style={styles.helpTextContainer}>
-            {Boolean(helperText) && (
-              <Text style={[styles.text, styles.helpText]}>{helperText}</Text>
-            )}
-            {Boolean(maxLength) && (
-              <Text style={[styles.text, styles.txtCounter]}>{`${this.state.currentLength} / ${maxLength}`}</Text>
-            )}
-          </View>
-        )}
+        <HelperText
+          helperText={helperText}
+          maxLength={maxLength}
+          currentLength={this.state.currentLength}
+          containerStyle={styles.helpTextContainer}
+          helpTextStyle={[styles.text, styles.helpText]}
+          txtCounterStyle={[styles.text, styles.txtCounter]}
+        />
+        
       </View>
     );
   }
 }
-
-
-type ActionProp = {
-  disabled: boolean;
-  overlay: ColorValue;
-  fontSize: number;
-  textColor: ColorValue;
-  icon: 'caret-up' | 'caret-down';
-  action: () => void;
-}
-
-class Action extends React.PureComponent<ActionProp, {}> {
-  public render() {
-    const { disabled, overlay, fontSize, textColor, icon, action } = this.props;
-
-    return (
-      <Pressable onPress={action} disabled={disabled} style={({pressed}) => [
-        {
-          backgroundColor: pressed ? overlay : 'transparent',
-        },
-        styles.button,
-      ]}>
-        <Icon name={icon} size={fontSize} style={[styles.icon, {paddingRight: fontSize * 1.8, color: textColor}]} />
-      </Pressable>
-    );
-  }
-}
-
-type ActionContainerProp = {
-  disabled: boolean;
-  overlay: ColorValue;
-  showActions: boolean;
-  textColor: ColorValue;
-  bgColor: ColorValue;
-  width: number;
-  fontSize: number;
-  borderRadius: number;
-  borderColor: ColorValue;
-  onIncrement: () => void;
-  onDecrement: () => void;
-}
-
-class ActionContainer extends React.PureComponent<ActionContainerProp, {}> {
-  public render() {
-    const { overlay, textColor, bgColor, borderColor, fontSize, width, borderRadius, showActions, disabled, onIncrement, onDecrement } = this.props;
-
-    if(!showActions)
-      return null;
-
-    return (
-      <View style={[
-        styles.actionsContainer,
-        {
-          width: width,
-          backgroundColor: bgColor,
-          borderTopRightRadius: borderRadius,
-          borderBottomRightRadius: borderRadius,
-          opacity: disabled ? 0.4 : 1
-        }
-      ]}>
-        <Action overlay={overlay} fontSize={fontSize} textColor={textColor} icon='caret-up' disabled={disabled} action={onIncrement}/>
-        <View style={{width: '100%', height: 1, backgroundColor: borderColor}}/>
-        <Action overlay={overlay} fontSize={fontSize}  textColor={textColor} icon='caret-down' disabled={disabled} action={onDecrement}/>
-      </View>
-    );
-  }
-}
-
-
-const styles = StyleSheet.create({
-  button: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  actionsContainer: {
-    display: 'flex',
-    height: '100%',
-    overflow: "hidden",
-    flexDirection: 'column',
-    backgroundColor: 'transparent'
-  },
-  icon: {
-    textAlign: 'center',
-    verticalAlign: 'middle',
-  }
-})

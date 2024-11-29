@@ -61,7 +61,7 @@ export default class Check<T> extends React.PureComponent<CheckProps<T>> {
         checkedBorderColor: checkedBorderColor!,
         backgroundColor: backgroundColor,
         checkedBackgroundColor: checkedBackgroundColor,
-        theme: this.context.colors
+        theme: this.context
       }
     );
 
@@ -75,7 +75,10 @@ export default class Check<T> extends React.PureComponent<CheckProps<T>> {
         style={styles.container}
       >
         <FalsyComponent
-          style={[styles.checkContainer, Boolean(value) ? styles.checkBoxChecked : styles.checkBoxUnChecked]}
+          style={[
+            styles.checkContainer,
+            Boolean(value) ? styles.checkBoxChecked : styles.checkBoxUnChecked
+          ]}
           component={
             value
               ? (checkElement as React.ReactElement) ?? <View><Icon name='check' style={styles.checkBox} size={styles.label.fontSize} /></View>

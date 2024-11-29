@@ -70,7 +70,6 @@ export const createStyles = (props: StyleProps) => {
     },
     helpText: {
       fontStyle: 'italic',
-      //opacity: DISABLED_OPACITY,
       marginTop: 0.25 * fontSize,
       paddingHorizontal: borderRadius,
       color: props.theme.colors.text,

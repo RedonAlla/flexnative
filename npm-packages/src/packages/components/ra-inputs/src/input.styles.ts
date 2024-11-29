@@ -5,9 +5,12 @@ import { InputType } from "./input.props";
 import { getBorders } from "./input.utilities";
 
 import {
+  ICON_MULTIPLIER,
+  ICON_SEPARATOR_WIDTH,
   MAT_ICON_MULTIPLIER,
   PADDING_HORIZONTAL_MULTIPLIER,
   PADDING_VERTICAL_MULTIPLIER,
+  TEXT_HELPER_MARGIN_TOP_MULTIPLIER,
   TEXT_HELPER_MULTIPLIER
 } from "./input.constants";
 
@@ -36,7 +39,11 @@ export function createStyles(props: ContainerProps) {
   const paddingVertical = PADDING_VERTICAL_MULTIPLIER * fontSize;
   const paddingHorizontal = PADDING_HORIZONTAL_MULTIPLIER * fontSize;
   const borderRadius = props.theme.borderRadius[props.radius] ?? props.radius;
-  const iconSize = props.material ? MAT_ICON_MULTIPLIER * fontSize : fontSize;
+
+  const iconSize =
+    props.material
+      ? fontSize * MAT_ICON_MULTIPLIER
+      : fontSize * ICON_MULTIPLIER;
 
   const focusBorderColor = props.readOnly
     ? props.borderColor ?? themeColor
@@ -56,14 +63,16 @@ export function createStyles(props: ContainerProps) {
       outlineWidth: 0,
       //@ts-ignore
       minWidth: 'inherit',
+      outlineStyle: "none",
       fontSize: fontSize,
       fontFamily: 'Regular',
       backgroundColor: 'transparent',
       color: props.theme.colors.text,
+      alignVertical: 'center'
     },
     icon: {
       width: iconSize,
-      height: iconSize,
+      height: '100%',
       fontSize: iconSize,
       textAlign: 'center',
       verticalAlign: 'middle',
@@ -101,7 +110,7 @@ export function createStyles(props: ContainerProps) {
     label: {
       fontFamily: 'Regular',
       color: props.theme.colors.text,
-      marginBottom: 0.6 * paddingVertical,
+      marginBottom: TEXT_HELPER_MARGIN_TOP_MULTIPLIER * paddingVertical,
       fontSize: props.material ? TEXT_HELPER_MULTIPLIER * fontSize : fontSize,
     },
     helpTextContainer: {
@@ -109,7 +118,7 @@ export function createStyles(props: ContainerProps) {
       flexDirection: 'row',
       backgroundColor: 'transparent',
       justifyContent: 'space-between',
-      marginTop: 0.25 * fontSize,
+      marginTop: TEXT_HELPER_MARGIN_TOP_MULTIPLIER * fontSize,
       paddingHorizontal: borderRadius,
     },
     helpText: {
@@ -122,13 +131,15 @@ export function createStyles(props: ContainerProps) {
       fontSize: TEXT_HELPER_MULTIPLIER * fontSize,
     },
     prefixSeparator: {
-      borderRightWidth: 1,
+      textAlign: 'left',
       width: paddingVertical + iconSize,
+      borderRightWidth: ICON_SEPARATOR_WIDTH,
       borderRightColor: props.theme.colors.border,
     },
     suffixSeparator: {
-      borderLeftWidth: 1,
+      textAlign: 'right',
       width: paddingVertical + iconSize,
+      borderLeftWidth: ICON_SEPARATOR_WIDTH,
       borderLeftColor: props.theme.colors.border,
     }
   });

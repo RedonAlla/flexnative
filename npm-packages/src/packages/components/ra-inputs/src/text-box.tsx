@@ -1,5 +1,13 @@
 import React from "react";
-import { View, Text, TextInput, NativeSyntheticEvent, TextInputFocusEventData, ViewStyle, TextStyle } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  NativeSyntheticEvent,
+  TextInputFocusEventData,
+  ViewStyle,
+  TextStyle
+} from "react-native";
 
 import ThemeContext from "@flexnative/theme-context";
 
@@ -7,8 +15,9 @@ import { BaseInputProps } from "./input.props";
 import { createStyles } from "./input.styles";
 import { getStyle } from "./input.utilities";
 import InputContainer from './components/input-container';
-import Adornment from './components/input-adornment';
+import InputIcon from './components/input-icon';
 import FalsyComponent from "./components/falsy-component";
+import HelperText from "./components/input-helper-text";
 
 
 type State = {
@@ -111,7 +120,7 @@ export default class extends React.PureComponent<BaseInputProps, State> {
         activeBackgroundColor: activeBackgroundColor,
         //focusedBorders: focusedBorders,
         material,
-        theme: this.context.colors
+        theme: this.context
       }
     );
     
@@ -127,9 +136,9 @@ export default class extends React.PureComponent<BaseInputProps, State> {
           styles.container,
           this.state.isFocused ? styles.containerFocus : styles.containerNotFocus
         ]}>
-          <Adornment
-            adornment={prefix}
-            adornmentStyle={[
+          <InputIcon
+            icon={prefix}
+            iconStyle={[
               styles.icon,
               prefixSeparator ? styles.prefixSeparator : undefined,
               getStyle<ViewStyle | TextStyle>(prefixStyle, this.state.isFocused)]}
@@ -150,27 +159,24 @@ export default class extends React.PureComponent<BaseInputProps, State> {
             />
           </InputContainer>
           
-          <Adornment
-            adornment={suffix}
-            adornmentStyle={[
+          <InputIcon
+            icon={suffix}
+            iconStyle={[
               styles.icon,
-              { textAlign: 'end' },
               suffixSeparator ? styles.suffixSeparator : undefined,
               getStyle<ViewStyle | TextStyle>(suffixStyle, this.state.isFocused)
             ]}
           />
         </View>
 
-        {Boolean(helperText || maxLength) && (
-          <View style={styles.helpTextContainer}>
-            {Boolean(helperText) && (
-              <Text style={[styles.text, styles.helpText]}>{helperText}</Text>
-            )}
-            {Boolean(maxLength) && (
-              <Text style={[styles.text, styles.txtCounter]}>{`${this.state.currentLength} / ${maxLength}`}</Text>
-            )}
-          </View>
-        )}
+        <HelperText
+          helperText={helperText}
+          maxLength={maxLength}
+          currentLength={this.state.currentLength}
+          containerStyle={styles.helpTextContainer}
+          helpTextStyle={[styles.text, styles.helpText]}
+          txtCounterStyle={[styles.text, styles.txtCounter]}
+        />
       </View>
     );
   }

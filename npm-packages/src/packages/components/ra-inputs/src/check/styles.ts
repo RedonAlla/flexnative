@@ -1,14 +1,14 @@
 import { ColorValue, StyleSheet } from 'react-native';
 
-import { BaseTheme, BorderRadius, BorderWidth, Sizes } from '@flexnative/theme-context';
+import { BaseTheme, BorderRadius, BorderWidth, Color, Sizes } from '@flexnative/theme-context';
 
-import { InputColor, CheckType } from './props';
-import { PADDING_VERTICAL_MULTIPLIER, WHITE_TEXT_COLOR } from '../input.constants';
+import { CheckType } from './props';
+import { CHECK_CONTAINER_SIZE_MULTIPLIER, PADDING_VERTICAL_MULTIPLIER, WHITE_TEXT_COLOR } from '../input.constants';
 
 
 type StyleProps = {
   type: CheckType;
-  color: InputColor;
+  color: Color;
   size: Sizes;
   radius: BorderRadius;
   borderWidth?: BorderWidth;
@@ -26,7 +26,8 @@ export const createStyles = (props: StyleProps) => {
   const paddingVertical = PADDING_VERTICAL_MULTIPLIER * fontSize;
   const borderWidth = props.theme.borderWidth[props.borderWidth!] ?? props.borderWidth as number;
   const borderRadius = props.theme.borderRadius[props.radius] ?? props.radius as number;
-  
+  const checkContainerSize = fontSize * CHECK_CONTAINER_SIZE_MULTIPLIER;
+
   return StyleSheet.create({
     container: {
       display: 'flex',
@@ -37,8 +38,8 @@ export const createStyles = (props: StyleProps) => {
     },
     checkContainer: {
       overflow: 'hidden',
-      width: 1.5 * fontSize,
-      height: 1.5 * fontSize,
+      width: checkContainerSize,
+      height: checkContainerSize,
       alignItems: 'center',
       justifyContent: 'center',
       borderWidth: borderWidth,
@@ -75,7 +76,7 @@ export const createStyles = (props: StyleProps) => {
   });
 }
 
-function getCheckColor(isLight: boolean, colorValue: ColorValue, color: InputColor, type: CheckType, blackColor: ColorValue = 'black') {
+function getCheckColor(isLight: boolean, colorValue: ColorValue, color: Color, type: CheckType, blackColor: ColorValue = 'black') {
   if(type === 'outlined' || type === 'ghost')
     return colorValue;
 

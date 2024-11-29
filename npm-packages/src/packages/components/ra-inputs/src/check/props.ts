@@ -3,10 +3,9 @@ import { SyntheticEvent } from "react";
 import { ColorValue, NativeSyntheticEvent, PressableProps, StyleProp, TextStyle } from "react-native";
 
 import { StateCallbackType } from "../input.props";
-import { BorderRadius, BorderWidth, Sizes } from "@flexnative/theme-context";
+import { BorderRadius, BorderWidth, Color, Sizes } from "@flexnative/theme-context";
 
 export type CheckType = 'outlined' | 'solid' | 'inverse' | 'ghost';
-export type InputColor = 'default' | 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error' | 'dark' | 'light' | ColorValue;
 
 export interface CheckProps<T> extends PressableProps {
   /**
@@ -57,7 +56,7 @@ export interface CheckProps<T> extends PressableProps {
   /** Color by theme or a custom color according `react-native` ColorValue.
    * @default 'default'
   */
-  color?: InputColor;
+  color?: Color;
 
   /** Background color for according `react-native` ColorValue. */
   backgroundColor?: ColorValue;

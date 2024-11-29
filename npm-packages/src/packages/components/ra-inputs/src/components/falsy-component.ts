@@ -49,11 +49,11 @@ export default class FalsyComponent<Props> extends React.PureComponent<FalsyFCPr
       return null;
 
     if (!component)
-      return fallback || null;
+      return fallback;
 
     if (React.isValidElement(component))
       return React.cloneElement(component, props);
 
-    return React.createElement(component as string | React.FunctionComponent<{}> | React.ComponentClass<{}, Props>, props);
+    return React.createElement(component as React.FunctionComponent | React.ComponentClass, props);
   }
 }
