@@ -1,3 +1,9 @@
+##  (2024-11-30)
+
+* chore(gitignore): add VSCode settings file to .gitignore ([002dc5a](https://github.com/RedonAlla/flexnative/commit/002dc5a))
+
+
+
 ##  (2024-11-29)
 
 * Test APP (tests for inputs) ([109c14c](https://github.com/RedonAlla/flexnative/commit/109c14c))
