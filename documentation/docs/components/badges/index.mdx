@@ -1,7 +1,7 @@
 ---
 title: Badges
 last_update:
-  date: 2024-09-24
+  date: 2024-11-30
   author: Redon Alla
 tags: [react, react-native, expo, framework, component, badge]
 ---
@@ -55,6 +55,9 @@ import Badge from '@flexnative/badges';
 
 Type: ` React.PureComponent<BadgedProps>`
 
+This component uses the `ThemeContext` to apply theme-based styles.
+Component extending React.PureComponent, which is optimized for performance by implementing a shallow prop and state comparison.
+
 ## Properties
 
 :::info
@@ -66,13 +69,13 @@ Type: ` React.PureComponent<BadgedProps>`
 | text | `string` | **true** | `undefined` | Text to display on badged. |
 | textColor | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `undefined` | Text Color. |
 | children  | [`ReactNode`](https://reactnative.dev/docs/react-node) | **true** | `undefined` | ReactNode to render where to render the badge. |
-| borderWidth  | [`BorderWidth`](../../theme/default-theme#borderwidth) | **false** | `'none'` | Optional borders width. |
+| borderWidth  | [`BorderWidth`](../../theme/default-theme.mdx#borderwidth) | **false** | `'none'` | Optional borders width. |
 | position  | [`BadgePosition`](#badgeposition) | **false** | `'top-right'` | Badge position. |
 | borderColor | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `undefined` | Borders color according `react-native` ColorValue. |
-| size | [`Sizes`](../../theme/default-theme#sizes) | **false** | `'default'` | Badge Size variable. |
+| size | [`Sizes`](../../theme/default-theme.mdx#sizes) | **false** | `'default'` | Badge Size variable. |
 | type | [`BadgeType`](#badgetype) | **false** | `'default'` | Badge type. |
-| radius | [`BadgeRadius`](../../theme/default-theme#borderradius) | **false** | `'full'` | Badge border radius. |
-| color | [`BadgeColor`](#badgecolor) | **false** | `theme.color.default` | Color by theme or a custom color according `react-native` ColorValue. |
+| radius | [`BorderRadius`](../../theme/default-theme.mdx#borderradius) | **false** | `'full'` | Badge border radius. |
+| color | [`Color`](../../theme/default-theme.mdx#color) | **false** | `theme.color.default` | Color by theme or a custom color according `react-native` ColorValue. |
 
 ### BadgePosition
 One of `'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | Position`
@@ -101,15 +104,15 @@ One of `'default' | 'text' | 'ghost'`
 |  Name   | Type | Description |
 | ------- | ---- | ----- |
 | default | `string` | Badge filled with solid background. |
-| text | `string` | Badge with only text, ith transparet background. |
-| ghost | `string` | Badge filled with a transparet background. <Admonition type="warning">To have good appearance for <code>'ghost'</code>, with custom color you should use hex colors.</Admonition> |
+| text | `string` | Badge with only text, ith transparent background. |
+| ghost | `string` | Badge filled with a transparent background. <Admonition type="warning">To have good appearance for <code>'ghost'</code>, with custom color you should use hex colors.</Admonition> |
 
 
-### BadgeColor
+### Color
 
 <ColorProps />
 
-## Usecase Examples
+## Use case Examples
 
 The following example demonstrates the **FlexNative Badges** in action.
 

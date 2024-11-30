@@ -1,7 +1,7 @@
 ---
 title: Check Box
 last_update:
-  date: 2024-09-24
+  date: 2024-11-30
   author: Redon Alla
 tags: [react, react-native, expo, framework, component]
 ---
@@ -44,6 +44,11 @@ The CheckBox is typically used to represent boolean values via a binary checked 
 
 <Installation name='FlexNative Checkbox' />
 
+This code defines a generic React component called Check, which represents a checkbox element.
+Component extending React.PureComponent, which is optimized for performance by implementing a shallow prop and state comparison.
+The component accepts various props for customization, such as value, type, size, colors, and label. 
+It handles changes via the handleChange method, which triggers an onValueChange callback when the checkbox is pressed. 
+The component renders a `Pressable` element that toggles between checked and unchecked states, displaying appropriate check and label elements based on the current state.
 
 ## API
 
@@ -62,13 +67,13 @@ Type: <code>React.PureComponent\<[CheckProps\<T\>](#properties)\></code>
 | -- | -- | -- | -- | -- |
 | value | `T` | **false** | `undefined` | Representing checkbox selected value. |
 | type | [`CheckType`](#checktype) | **false** | `inverse ` | Check box fill mode. <Admonition type="warning">To have appearance for <code>'text'</code>, <code>'link'</code>, <code>'ghost'</code>, with custom color you should use hex colors.</Admonition> |
-| size | [`Sizes`](#sizes) | **false** | `normal` | Check Box size. |
-| radius | [`BorderRadius`](#borderradius) | **false** | `medium` | Check Box border radius. |
-| borderWidth | [`BorderWidth`](#borderwidth) | **false** | `hairline` | Check Box borders width. |
+| size | [`Sizes`](../../../theme/default-theme.mdx#sizes) | **false** | `normal` | Check Box size. |
+| radius | [`BorderRadius`](../../../theme/default-theme.mdx#borderradius) | **false** | `medium` | Check Box border radius. |
+| borderWidth | [`BorderWidth`](../../../theme/default-theme.mdx#borderwidth) | **false** | `hairline` | Check Box borders width. |
 | borderColor | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `undefined` | Borders color according `react-native` ColorValue. |
 | checkedBorderColor | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `undefined` | Borders color according `react-native` ColorValue. |
 | disabled | `boolean` | **false** | `false` | Indicator if input it is disabled or not. |
-| color | [`InputColor`](#inputcolor) | **false** | `theme.color.default` | Color by theme or a custom color according `react-native` ColorValue. |
+| color | [`Color`](../../../theme/default-theme.mdx#color) | **false** | `theme.color.default` | Color by theme or a custom color according `react-native` ColorValue. |
 | backgroundColor | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `undefined` | Input background color. |
 | checkedBackgroundColor | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `undefined` | Background color for active state according `react-native` ColorValue. |
 | label | `string` or [`React.ReactElement`](https://legacy.reactjs.org/blog/2014/10/14/introducing-react-elements.html) | **false** | `undefined` |  A `string` value to display as labal, or [`React.ReactElement`](https://legacy.reactjs.org/blog/2014/10/14/introducing-react-elements.html) to display a custom element as a label. |
@@ -87,40 +92,6 @@ One of `'outlined' | 'solid' | 'inverse'`
 | solid | `string` | Property to fill in solid mode the background color of the checkbox component. |
 | inverse | `string` | Property to set transparent background of the checkbox component and with solid background on check state. |
 
-### Sizes
-One of `'small' | 'default' | 'medium' | 'large'`
-
-|  Name   | Type | Value |
-| ------- | ---- | ----- |
-| small | `string` | Text size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).small <br />CheckBox size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).small * 1.5 |
-| default | `string` | Fonts size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).default <br />Icon size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).default * 1.5 |
-| medium | `string` | Fonts size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).medium <br />Icon size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).medium * 1.5 |
-| large | `string` | Fonts size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).large <br />Icon size: [FONT_SIZE](/docs/utilities/ui-constants#font_size).large * 1.5 |
-
-### BorderRadius
-One of `'none' | 'small' | 'medium' | 'large' | 'full' | number`
-
-| Name | Type | Value |
-| ---- | ---- | ----- |
-| none | `number` | 0 |
-| small | `number` | 2 |
-| medium | `number` | 4 |
-| large | `number` | 6 |
-| full | `number` | 99999 |
-| | `number` | Any number value. |
-
-### BorderWidth
-One of `'none' | 'hairline' | 'thin' | 'base' | 'thick' | number`
-
-|  Name   | Type | Value |
-| ------- | ---- | ----- |
-| none | `number` | 0 |
-| hairline | [`StyleSheet.hairlineWidth`](https://reactnative.dev/docs/stylesheet#hairlinewidth) | This is defined as the width of a thin line on the platform. It can be used as the thickness of a border or division between two elements. |
-| thin | `number` | 1 |
-| base | `number` | 2 |
-| thick | `number` | 3 |
-| | `number` | Any number value |
-
 ### InputColor
 
 <ColorProps />
@@ -132,7 +103,7 @@ One of `'none' | 'hairline' | 'thin' | 'base' | 'thick' | number`
 | value | `T` | **false** | `undefined` | A value representing current checkbox value. |
 | target | `any` | **false** | `undefined` | On native platforms, a `NodeHandle` for the element on which the event has occurred. On web, a DOM node on which the event has occurred. |
 
-## Usecase Examples
+## Use case Examples
 
 The following example demonstrates the **FlexNative CheckBox** in action.
 
