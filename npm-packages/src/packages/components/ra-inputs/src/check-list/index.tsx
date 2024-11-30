@@ -1,3 +1,9 @@
+/**
+ * @ Author: Redon Alla
+ * @ Modified by: Redon Alla
+ * @ Description: React component that allows users to select items from a list. Component extending React.PureComponent, which is optimized for performance by implementing a shallow prop and state comparison. It supports both single and multiple selection modes based on the 'multipleSelect' prop. The component maintains its selected items in the state and updates the selection when an item is pressed. It also provides styling options through various props and handles rendering of labels and helper text conditionally.
+ */
+
 import React from "react";
 import { View, Text } from "react-native";
 import ThemeContext from "@flexnative/theme-context";
@@ -8,11 +14,32 @@ import FalsyComponent from "../components/falsy-component";
 import { includes, isEqual, isObject } from "../input.utilities";
 
 
+/**
+ * This defines a generic type alias StateProps that takes a type parameter T.
+ * This allows us to create flexible and reusable types.
+ */
 type StateProps<T> = {
+  /**
+   * An optional property `selectedItem` of type `T`
+   */
   selectedItem?: T;
+
+  /**
+   * An optional property `selectedItems` which is an array of items of type `T`
+   */
   selectedItems?: Array<T>;
 }
 
+/**
+ * React component that allows users to select items from a list.
+ * Component extending React.PureComponent, which is optimized for performance by implementing a shallow prop and state comparison.
+ * It supports both single and multiple selection modes based on the 'multipleSelect' prop.
+ * The component maintains its selected items in the state and updates the selection when an item is pressed.
+ * It also provides styling options through various props and handles rendering of labels and helper text conditionally.
+ * 
+ * @class CheckList<T>
+ * @extends {React.PureComponent<CheckListProps<T>, StateProps<T>>}
+ */
 export default class CheckList<T> extends React.PureComponent<CheckListProps<T>, StateProps<T>> {
   static contextType = ThemeContext;
   declare context: React.ContextType<typeof ThemeContext>;

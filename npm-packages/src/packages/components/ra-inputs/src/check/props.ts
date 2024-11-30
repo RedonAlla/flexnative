@@ -7,6 +7,9 @@ import { BorderRadius, BorderWidth, Color, Sizes } from "@flexnative/theme-conte
 
 export type CheckType = 'outlined' | 'solid' | 'inverse' | 'ghost';
 
+/**
+ * PRops that specifies the properties needed for styling CheckBox components.
+ */
 export interface CheckProps<T> extends PressableProps {
   /**
    * @template T representing checkbox selected value.

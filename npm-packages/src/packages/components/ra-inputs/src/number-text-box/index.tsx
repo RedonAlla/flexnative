@@ -1,3 +1,9 @@
+/**
+ * @ Author: Redon Alla
+ * @ Modified by: Redon Alla
+ * @ Description: Number input box with additional functionalities like incrementing and decrementing the value, handling focus and blur events, and supporting various styles and themes. It is designed to be highly customizable through props.
+ */
+
 import React from "react";
 import {
   View,
@@ -20,13 +26,35 @@ import FalsyComponent from "../components/falsy-component";
 import HelperText from "../components/input-helper-text";
 import ActionContainer from "./number-actions";
 
-
+/**
+ * Define a type 'State' representing the state structure for a component or application.
+ */
 type State = {
+  /**
+   * A boolean indicating whether the element is currently focused.
+   */
   isFocused: boolean;
-  currentLength?: number;
-  value?: string;
+
+  /**
+   * An integer representing the current length of the value, 
+   * possibly used to track input length or similar metrics.
+   */
+  currentLength: number;
+
+  /**
+   * A string containing the current value, likely representing input data or content.
+   */
+  value: string;
 }
 
+/**
+ * NumericTextBox component.
+ * Component extending React.PureComponent,
+ * which is optimized for performance by implementing a shallow prop and state comparison.
+ * 
+ * @class NumericTextBox
+ * @extends {React.PureComponent<NumberTextBoxProps>}
+ */
 export default class extends React.PureComponent<NumberTextBoxProps, State> {
   static defaultProps = {
     size: 'default',

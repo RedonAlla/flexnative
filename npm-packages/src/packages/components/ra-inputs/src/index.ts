@@ -1,3 +1,9 @@
+/**
+ * @ Author: Redon Alla
+ * @ Modified by: Redon Alla
+ * @ Description: Exports Input components and props.
+ */
+
 export { default as Check } from './check';
 export type { CheckProps, CheckboxEvent } from "./check/props";
 

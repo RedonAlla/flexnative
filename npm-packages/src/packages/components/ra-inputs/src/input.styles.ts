@@ -1,3 +1,9 @@
+/**
+ * @ Author: Redon Alla
+ * @ Modified by: Redon Alla
+ * @ Description: It creates dynamic styles for input components using the StyleSheet API from React Native. The styles are generated based on properties provided to the createStyles function, allowing for customizable appearance and behavior.
+ */
+
 import { ColorValue, StyleSheet } from "react-native";
 import { BaseTheme, BorderRadius, BorderWidth, Color, Sizes } from "@flexnative/theme-context";
 
@@ -14,7 +20,9 @@ import {
   TEXT_HELPER_MULTIPLIER
 } from "./input.constants";
 
-
+/**
+ * Defines the properties for styling a container element, specifically used for input components.
+ */
 type ContainerProps = {
   type: InputType;
   color: Color;
@@ -32,19 +40,54 @@ type ContainerProps = {
   theme: BaseTheme<any>;
 }
 
+/**
+ * Generates a set of styles for a Input components.
+ * This function takes ContainerProps as input and utilizes various properties to determine the appearance of several elements within the container component. Here's a breakdown of what each part of the code does:
+ * @param {ContainerProps} props - Input UI props.
+ * @returns - Set of styles for a Input components.
+ */
 export function createStyles(props: ContainerProps) {
+  /**
+   * Determine font size based on props size or use default if not provided.
+   */
   const fontSize = props.theme.fontSize[props.size] ?? props.theme.fontSize.default;
+
+  /**
+   * Set theme color using provided color or fallback to the specified prop color.
+   */
   const themeColor = props.theme.colors[props.color] ?? props.color;
+
+  /**
+   * Use specified background color or default to transparent.
+   */
   const backgroundColor = props.backgroundColor ?? 'transparent';
+
+  /**
+   * Calculate vertical padding as a multiplier of the font size.
+   */
   const paddingVertical = PADDING_VERTICAL_MULTIPLIER * fontSize;
+
+  /**
+   * Calculate horizontal padding similarly
+   */
   const paddingHorizontal = PADDING_HORIZONTAL_MULTIPLIER * fontSize;
+
+  /**
+   * Determine border radius from theme settings or use directly from props.
+   */
   const borderRadius = props.theme.borderRadius[props.radius] ?? props.radius;
 
+  /**
+   * Compute icon size differently for material design versus default.
+   */
   const iconSize =
     props.material
       ? fontSize * MAT_ICON_MULTIPLIER
       : fontSize * ICON_MULTIPLIER;
 
+  /**
+   * Decide focus border color based on readonly status and other conditions.
+   */
   const focusBorderColor = props.readOnly
     ? props.borderColor ?? themeColor
     : props.activeBorderColor ?? props.theme.colors.primary;

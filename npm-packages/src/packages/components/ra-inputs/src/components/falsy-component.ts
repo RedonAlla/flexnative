@@ -1,3 +1,9 @@
+/**
+ * @ Author: Redon Alla
+ * @ Modified by: Redon Alla
+ * @ Description: Helper component for conditionally render a component.
+ */
+
 import React from 'react';
 
 export type RenderFCProp<Props> = (props?: Props) => React.ReactElement;

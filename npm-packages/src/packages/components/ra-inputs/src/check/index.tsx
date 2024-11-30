@@ -1,3 +1,9 @@
+/**
+ * @ Author: Redon Alla
+ * @ Modified by: Redon Alla
+ * @ Description: This code defines a generic React component called Check, which represents a checkbox element. Component extending React.PureComponent, which is optimized for performance by implementing a shallow prop and state comparison. The component accepts various props for customization, such as value, type, size, colors, and label. It handles changes via the handleChange method, which triggers an onValueChange callback when the checkbox is pressed. The component renders a Pressable element that toggles between checked and unchecked states, displaying appropriate check and label elements based on the current state.
+ */
+
 import React from "react";
 import { Pressable, Text, TextStyle, View } from "react-native";
 
@@ -10,6 +16,16 @@ import FalsyComponent from "../components/falsy-component";
 import { getStyle } from "../input.utilities";
 
 
+/**
+ * This code defines a generic React component called Check, which represents a checkbox element.
+ * Component extending React.PureComponent, which is optimized for performance by implementing a shallow prop and state comparison.
+ * The component accepts various props for customization, such as value, type, size, colors, and label. 
+ * It handles changes via the handleChange method, which triggers an onValueChange callback when the checkbox is pressed. 
+ * The component renders a Pressable element that toggles between checked and unchecked states, displaying appropriate check and label elements based on the current state.
+ * 
+ * @class Check<T>
+ * @extends {React.PureComponent<CheckProps<T>>}
+ */
 export default class Check<T> extends React.PureComponent<CheckProps<T>> {
   static contextType = ThemeContext;
   declare context: React.ContextType<typeof ThemeContext>;

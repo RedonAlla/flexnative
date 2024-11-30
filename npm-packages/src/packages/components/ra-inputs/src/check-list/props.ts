@@ -1,3 +1,9 @@
+/**
+ * @ Author: Redon Alla
+ * @ Modified by: Redon Alla
+ * @ Description: Interface defines the properties for a CheckList component. It allows for single or multiple selections of items, supports custom styling options, and provides callbacks for handling changes in selection. The interface is generic, enabling it to work with various types of selected values.
+ */
+
 import { ReactElement, SyntheticEvent } from "react";
 import { ColorValue, NativeSyntheticEvent, StyleProp, TextStyle, ViewProps } from "react-native";
 import { BorderRadius, BorderWidth, Color, Sizes } from "@flexnative/theme-context";
@@ -5,7 +11,12 @@ import { BorderRadius, BorderWidth, Color, Sizes } from "@flexnative/theme-conte
 import { InputType } from "../input.props";
 import { CheckProps, CheckboxEvent } from "../check/props";
 
-
+/**
+ * Interface defines the properties for a CheckList component. 
+ * It allows for single or multiple selections of items, supports custom styling options,
+ * and provides callbacks for handling changes in selection. The interface is generic, 
+ * enabling it to work with various types of selected values.
+ */
 export interface CheckListProps<T> extends ViewProps {
   /**
    * @template T representing selected value from the available list.

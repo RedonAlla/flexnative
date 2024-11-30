@@ -1,3 +1,9 @@
+/**
+ * @ Author: Redon Alla
+ * @ Modified by: Redon Alla
+ * @ Description: TextBox input field.
+ */
+
 import React from "react";
 import {
   View,
@@ -19,13 +25,30 @@ import InputIcon from './components/input-icon';
 import FalsyComponent from "./components/falsy-component";
 import HelperText from "./components/input-helper-text";
 
-
+/**
+ * Defines a TypeScript type alias `State`, which is used to represent the current state of a component. 
+ * It contains two properties:
+ */
 type State = {
+  /**
+   * A boolean indicating whether the component (e.g., an input field) is currently focused.
+   */
   isFocused: boolean;
+
+  /**
+   * A number that may represent the current length of the value in the component, if applicable.
+   * This could be used for inputs where measuring the length is relevant, such as text inputs or text areas.
+   */
   currentLength?: number;
 }
 
-export default class extends React.PureComponent<BaseInputProps, State> {
+/**
+ * Defines a TextBox component, extending React.PureComponent,
+ * which is optimized for performance by implementing a shallow prop and state comparison.
+ * 
+ * It uses generics to type props as BaseInputProps and state as State.
+ */
+export default class TextBox extends React.PureComponent<BaseInputProps, State> {
   static defaultProps = {
     size: 'default',
     type: 'outlined',
@@ -46,6 +69,10 @@ export default class extends React.PureComponent<BaseInputProps, State> {
     this.handleChangeText = this.handleChangeText.bind(this);
   }
 
+  /**
+   * Handles blur event, sets focus state, and triggers a parent's onBlur callback if not disabled.
+   * @param {NativeSyntheticEvent<TextInputFocusEventData>} e 
+   */
   private handleBlur(e: NativeSyntheticEvent<TextInputFocusEventData>) {
     if(!this.props.disabled)
       this.setState({isFocused: false});
@@ -53,6 +80,10 @@ export default class extends React.PureComponent<BaseInputProps, State> {
     this.props.onBlur?.(e);
   };
 
+  /**
+   * Handles focus event and updates focus state. It also calls a parent's onFocus callback.
+   * @param {NativeSyntheticEvent<TextInputFocusEventData>} e 
+   */
   private handleFocus = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
     if(!this.props.disabled)
       this.setState({isFocused: true});
@@ -60,6 +91,10 @@ export default class extends React.PureComponent<BaseInputProps, State> {
     this.props.onFocus?.(e);
   };
 
+  /**
+   * Updates the text length state and triggers a parent's onChangeText callback.
+   * @param {string} text 
+   */
   private handleChangeText = (text: string) => {
     this.setState({currentLength: text.length});
 
