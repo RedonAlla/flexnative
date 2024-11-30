@@ -20,3 +20,4 @@
 /npm-packages/src/packages/utilities/dist
 /npm-packages/src/shared/ui-constants
 npm-packages/.vscode/settings.json
+documentation/package-lock.json
