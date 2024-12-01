@@ -12,3 +12,4 @@ Deleted outdated blog entries from the `documentation/blog` directory to streaml
 Added new changelog posts reflecting recent changes and enhancements in various components, such as `tags`, `inputs`, and `bottom-sheet`.
 Updated `docusaurus.config.ts` to rename "Blog" to "Changelog" for better clarity and documentation consistency.
 This restructuring enhances the project's maintainability by removing obsolete information and highlighting ongoing development progress.
+
