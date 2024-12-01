@@ -1,5 +1,11 @@
 ##  (2024-12-01)
 
+* style(docs): reformat documentation paragraphs for improved readability ([613e0da](https://github.com/RedonAlla/flexnative/commit/613e0da))
+
+
+
+##  (2024-12-01)
+
 * chore(docs): update blog slugs and commit references ([147890b](https://github.com/RedonAlla/flexnative/commit/147890b))
 
 
