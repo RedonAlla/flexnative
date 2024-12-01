@@ -50,22 +50,28 @@ const config: Config = {
           showLastUpdateAuthor: false,
           showLastUpdateTime: true,
         },
-        blog: false,
-        // blog: {
-        //   showReadingTime: true,
-        //   feedOptions: {
-        //     type: ['rss', 'atom'],
-        //     xslt: true,
-        //   },
+        // blog: false,
+        blog: {
+          routeBasePath: '/changelog',
+          showReadingTime: true,
+          feedOptions: {
+            type: ['rss', 'atom'],
+            xslt: true,
+          },
+          blogTitle: 'Changelog',
+          blogDescription: 'Changelog history',
+          postsPerPage: 'ALL',
+          blogSidebarTitle: 'Changelog',
+          blogSidebarCount: 'ALL',
         //   // Please change this to your repo.
         //   // Remove this to remove the "edit this page" links.
         //   editUrl:
         //     'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         //   // Useful options to enforce blogging best practices
-        //   onInlineTags: 'warn',
-        //   onInlineAuthors: 'warn',
-        //   onUntruncatedBlogPosts: 'warn',
-        // },
+          onInlineTags: 'warn',
+          onInlineAuthors: 'warn',
+          onUntruncatedBlogPosts: 'warn',
+        },
         theme: {
           customCss: [
             './src/css/icons.css',
@@ -161,12 +167,12 @@ const config: Config = {
           position: 'left',
           label: 'Documentation',
         },
+        {to: '/changelog', label: 'Changelog', position: 'left'},
         {
           href: 'https://flexnative.netlify.app/',
           label: 'Demo App',
           position: 'left',
         },
-        // {to: '/blog', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/RedonAlla/flexnative',
           position: 'right',
@@ -220,8 +226,8 @@ const config: Config = {
           title: 'Demo',
           items: [
             {
-              label: 'Blog',
-              to: '/blog',
+              label: 'Changelog',
+              to: '/changelog',
             },
             {
               label: 'Demo Web App',

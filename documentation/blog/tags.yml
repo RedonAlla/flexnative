@@ -1,19 +1,24 @@
-facebook:
-  label: Facebook
-  permalink: /facebook
-  description: Facebook tag description
+docs:
+  label: Documentation
+  permalink: /documentation
+  description: Documentations for FlexNative components.
 
-hello:
-  label: Hello
-  permalink: /hello
-  description: Hello tag description
+component:
+  label: Component
+  permalink: /component
+  description: Components of FlexNative framework.
 
-docusaurus:
-  label: Docusaurus
-  permalink: /docusaurus
-  description: Docusaurus tag description
+chore:
+  label: Chore
+  permalink: /chore
+  description: Miscellaneous commits changes on FlexNative framework.
 
-hola:
-  label: Hola
-  permalink: /hola
-  description: Hola tag description
+refactor:
+  label: Refactor
+  permalink: /refactor
+  description: Components changes that rewrite/restructure your code, however does not change any API behaviors.
+
+newvesion:
+  label: New Version
+  permalink: /new-version
+  description: Updated the package version to an newer one.
