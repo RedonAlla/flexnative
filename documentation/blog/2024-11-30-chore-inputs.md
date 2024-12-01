@@ -10,5 +10,6 @@ tags: [component, refactor, newvesion]
 
 **[#4bc9101](https://github.com/RedonAlla/flexnative/commit/4bc9101) chore(inputs): bump package version to `0.0.4`**
 
-Update the version of the `@flexnative/inputs` package from `0.0.3` to `0.0.4` to prepare for a new release. No functional changes were made, but this ensures that downstream dependencies can distinguish this iteration from previous ones.
+Update the version of the `@flexnative/inputs` package from `0.0.3` to `0.0.4` to prepare for a new release.
+No functional changes were made, but this ensures that downstream dependencies can distinguish this iteration from previous ones.
 
