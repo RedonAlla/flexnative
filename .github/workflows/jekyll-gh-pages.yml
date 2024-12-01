@@ -4,7 +4,7 @@ name: Deploy static content to Pages
 on:
   push:
   # Runs on pushes targeting the default branch
-    branches: ["documentation"]
+    branches: ["main"]
     tags:
       - "documentation"
       - "docs"
