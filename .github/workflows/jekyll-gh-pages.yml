@@ -5,9 +5,6 @@ on:
   push:
   # Runs on pushes targeting the default branch
     branches: ["main"]
-    tags:
-      - "documentation"
-      - "docs"
 
 
   # Allows you to run this workflow manually from the Actions tab
