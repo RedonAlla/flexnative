@@ -1,3 +1,9 @@
+##  (2024-12-01)
+
+* gitignore documents/package-lock.json ([d71b1cf](https://github.com/RedonAlla/flexnative/commit/d71b1cf))
+
+
+
 ##  (2024-11-30)
 
 * chore(gitignore): add VSCode settings file to .gitignore ([002dc5a](https://github.com/RedonAlla/flexnative/commit/002dc5a))
