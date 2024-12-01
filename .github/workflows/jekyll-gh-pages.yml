@@ -2,10 +2,11 @@
 name: Deploy static content to Pages
 
 on:
+  push:
   # Runs on pushes targeting the default branch
-  tags:
-    - "documentation"
-    - "docs"
+    tags:
+      - "documentation"
+      - "docs"
 
 
   # Allows you to run this workflow manually from the Actions tab
