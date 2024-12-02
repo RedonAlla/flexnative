@@ -1,24 +1,50 @@
-docs:
-  label: Documentation
-  permalink: /documentation
-  description: Documentations for FlexNative components.
+JSDoc:
+  label: JSDoc
+  permalink: /JSDoc
+  description: JSDoc comments to the code, enhancing code readability and developer understanding. Use this tag to filter all JSDoc comments changes.
 
-component:
-  label: Component
-  permalink: /component
-  description: Components of FlexNative framework.
-
-chore:
-  label: Chore
-  permalink: /chore
-  description: Miscellaneous commits changes on FlexNative framework.
-
-refactor:
-  label: Refactor
-  permalink: /refactor
-  description: Components changes that rewrite/restructure your code, however does not change any API behaviors.
-
-newvesion:
+new_version:
   label: New Version
   permalink: /new-version
-  description: Updated the package version to an newer one.
+  description: Updated the package version to an newer one. Use this tag to filter all version updates.
+  
+feature:
+  label: Feature
+  permalink: /feature
+  description: New features for the FlexNative framework. Use this tag to filter all features changes.
+
+inputs_v0.0.3:
+  label: Inputs 0.0.3
+  permalink: /inputs_v0.0.3
+  description: Inputs 0.0.3. Use this tag to filter all changes about Inputs version 0.0.3.
+
+inputs_v0.0.4:
+  label: Inputs 0.0.4
+  permalink: /inputs_v0.0.4
+  description: Inputs 0.0.4. Use this tag to filter all changes about Inputs version 0.0.4.
+
+bottom-sheet_v0.0.3:
+  label: BottomSheet 0.0.3
+  permalink: /bottom-sheet_v0.0.3
+  description: BottomSheet 0.0.3. Use this tag to filter all changes about BottomSheet version 0.0.1.
+
+skeleton-loading_v0.0.1:
+  label: Skeleton loading 0.0.1
+  permalink: /skeleton-loading_v0.0.1
+  description: Skeleton loading 0.0.1. Use this tag to filter all changes about Skeleton loading version 0.0.1.
+
+skeleton-loading_v0.0.2:
+  label: Skeleton loading 0.0.2
+  permalink: /skeleton-loading_v0.0.2
+  description: Skeleton loading 0.0.2. Use this tag to filter all changes about Skeleton loading version 0.0.2.
+
+tag_v0.0.1:
+  label: Tag 0.0.1
+  permalink: /tag_v0.0.1
+  description: Component Tag 0.0.1. Use this tag to filter all changes about Tag version 0.0.1.
+  
+tag_v0.0.2:
+  label: Tag 0.0.2
+  permalink: /tag_v0.0.2
+  description: Component Tag 0.0.2. Use this tag to filter all changes about Tag version 0.0.2.
+  

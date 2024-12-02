@@ -3,7 +3,7 @@ slug: 4bc9101
 title: ✨ Inputs 0.0.4
 description: chore(inputs) bump package version to `0.0.4`
 authors: RedonAlla
-tags: [component, refactor, newvesion]
+tags: [inputs_v0.0.4]
 ---
 
 ## ✨ Version 0.0.4

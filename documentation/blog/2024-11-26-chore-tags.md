@@ -3,7 +3,7 @@ slug: a65ea4c
 title: ✨ Tags 0.0.2
 description: chore(tags) bump version to `0.0.2`
 authors: RedonAlla
-tags: [chore, component, newvesion]
+tags: [tag_v0.0.2, new_version]
 ---
 
 ## ✨ Version 0.0.2
