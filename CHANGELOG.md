@@ -1,3 +1,9 @@
+##  (2024-12-02)
+
+* chore(tags): update blog post tags and remove outdated docs ([e1c549e](https://github.com/RedonAlla/flexnative/commit/e1c549e))
+
+
+
 ##  (2024-12-01)
 
 * deploy documentation ([9b72550](https://github.com/RedonAlla/flexnative/commit/9b72550))
