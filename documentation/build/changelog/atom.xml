@@ -2,28 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://redonalla.github.io/flexnative/changelog</id>
     <title>FlexNative Blog</title>
-    <updated>2024-12-01T00:00:00.000Z</updated>
+    <updated>2024-11-30T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://redonalla.github.io/flexnative/changelog"/>
     <subtitle>FlexNative Blog</subtitle>
     <icon>https://redonalla.github.io/flexnative/img/logo.svg</icon>
-    <entry>
-        <title type="html"><![CDATA[📔 Documentation]]></title>
-        <id>https://redonalla.github.io/flexnative/changelog/cbcc692</id>
-        <link href="https://redonalla.github.io/flexnative/changelog/cbcc692"/>
-        <updated>2024-12-01T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[chore(documentation) add changelog.]]></summary>
-        <content type="html"><![CDATA[<p><strong><a href="https://github.com/RedonAlla/flexnative/commit/cbcc692" target="_blank" rel="noopener noreferrer">#cbcc692</a> chore(documentation): add changelog</strong></p>
-<p>Deleted outdated blog entries from the <code>documentation/blog</code> directory to streamline the content and focus on current updates.
-Added new changelog posts reflecting recent changes and enhancements in various components, such as <code>tags</code>, <code>inputs</code>, and <code>bottom-sheet</code>.
-Updated <code>docusaurus.config.ts</code> to rename "Blog" to "Changelog" for better clarity and documentation consistency.
-This restructuring enhances the project's maintainability by removing obsolete information and highlighting ongoing development progress.</p>]]></content>
-        <author>
-            <name>Redon Alla</name>
-            <uri>https://github.com/RedonAlla</uri>
-        </author>
-        <category label="Documentation" term="Documentation"/>
-    </entry>
     <entry>
         <title type="html"><![CDATA[✨ Inputs 0.0.4]]></title>
         <id>https://redonalla.github.io/flexnative/changelog/4bc9101</id>
@@ -38,9 +21,7 @@ No functional changes were made, but this ensures that downstream dependencies c
             <name>Redon Alla</name>
             <uri>https://github.com/RedonAlla</uri>
         </author>
-        <category label="Component" term="Component"/>
-        <category label="Refactor" term="Refactor"/>
-        <category label="New Version" term="New Version"/>
+        <category label="Inputs 0.0.4" term="Inputs 0.0.4"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[📕 Inputs Documentation]]></title>
@@ -56,25 +37,7 @@ By including this documentation, the codebase becomes more maintainable and easi
             <name>Redon Alla</name>
             <uri>https://github.com/RedonAlla</uri>
         </author>
-        <category label="Component" term="Component"/>
-        <category label="Documentation" term="Documentation"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[📔 Documentation]]></title>
-        <id>https://redonalla.github.io/flexnative/changelog/70ba5d6</id>
-        <link href="https://redonalla.github.io/flexnative/changelog/70ba5d6"/>
-        <updated>2024-11-30T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Updated the documentation for several components, including badges, bottom sheets, checkboxes, and input elements.]]></summary>
-        <content type="html"><![CDATA[<p><strong><a href="https://github.com/RedonAlla/flexnative/commit/70ba5d6" target="_blank" rel="noopener noreferrer">#70ba5d6</a> docs: update component documentation and refine theme references</strong></p>
-<p>Updated the documentation for several components, including <strong>badges</strong>, <strong>bottom sheets</strong>, <strong>checkboxes</strong>, and <strong>input</strong> elements.
-Changes include updating the last update date, refining descriptions, correcting typos, and ensuring consistent styling options across components by linking them to the default theme file.
-Removed duplicate constant definitions by deleting the <code>ui-constants</code> file and updated package dependencies to their latest versions for improved stability and new features.
-These changes aim to enhance clarity, performance insights, and maintainability of the documentation.</p>]]></content>
-        <author>
-            <name>Redon Alla</name>
-            <uri>https://github.com/RedonAlla</uri>
-        </author>
-        <category label="Documentation" term="Documentation"/>
+        <category label="Inputs 0.0.4" term="Inputs 0.0.4"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[🛠️ Inputs refactor]]></title>
@@ -96,8 +59,8 @@ These updates aim to streamline the codebase, reduce redundancy, and improve the
             <name>Redon Alla</name>
             <uri>https://github.com/RedonAlla</uri>
         </author>
-        <category label="Component" term="Component"/>
-        <category label="Refactor" term="Refactor"/>
+        <category label="JSDoc" term="JSDoc"/>
+        <category label="Inputs 0.0.3" term="Inputs 0.0.3"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[🛠️ Inputs refactor]]></title>
@@ -114,8 +77,7 @@ These changes streamline the component's configuration and enhance maintainabili
             <name>Redon Alla</name>
             <uri>https://github.com/RedonAlla</uri>
         </author>
-        <category label="Component" term="Component"/>
-        <category label="Refactor" term="Refactor"/>
+        <category label="Inputs 0.0.3" term="Inputs 0.0.3"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[📕 BottomSheet Documentation]]></title>
@@ -132,8 +94,8 @@ No functional logic was altered.</p>]]></content>
             <name>Redon Alla</name>
             <uri>https://github.com/RedonAlla</uri>
         </author>
-        <category label="Component" term="Component"/>
-        <category label="Documentation" term="Documentation"/>
+        <category label="JSDoc" term="JSDoc"/>
+        <category label="BottomSheet 0.0.3" term="BottomSheet 0.0.3"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[🛠️ Skeleton Loading refactor]]></title>
@@ -150,8 +112,8 @@ This refactor does not introduce any breaking changes or affect functionality bu
             <name>Redon Alla</name>
             <uri>https://github.com/RedonAlla</uri>
         </author>
-        <category label="Component" term="Component"/>
-        <category label="Refactor" term="Refactor"/>
+        <category label="JSDoc" term="JSDoc"/>
+        <category label="Skeleton loading 0.0.2" term="Skeleton loading 0.0.2"/>
         <category label="New Version" term="New Version"/>
     </entry>
     <entry>
@@ -171,8 +133,7 @@ The focus was to enhance maintainability and leverage improved theming capabilit
             <name>Redon Alla</name>
             <uri>https://github.com/RedonAlla</uri>
         </author>
-        <category label="Component" term="Component"/>
-        <category label="Refactor" term="Refactor"/>
+        <category label="Inputs 0.0.3" term="Inputs 0.0.3"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[✨ Tags 0.0.2]]></title>
@@ -188,8 +149,7 @@ This minor version increment suggests backward-compatible enhancements or bug fi
             <name>Redon Alla</name>
             <uri>https://github.com/RedonAlla</uri>
         </author>
-        <category label="Chore" term="Chore"/>
-        <category label="Component" term="Component"/>
+        <category label="Tag 0.0.2" term="Tag 0.0.2"/>
         <category label="New Version" term="New Version"/>
     </entry>
     <entry>
@@ -199,13 +159,12 @@ This minor version increment suggests backward-compatible enhancements or bug fi
         <updated>2024-11-26T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[refactor(tags) remove ui-constants dependency and refactor type definitions]]></summary>
         <content type="html"><![CDATA[<p><strong><a href="https://github.com/RedonAlla/flexnative/commit/d5a4ed7" target="_blank" rel="noopener noreferrer">#d5a4ed7</a> refactor(tags): remove ui-constants dependency and refactor type definitions</strong></p>
-<p>This commit removes the <code>@flexnative/ui-constants</code> dependency from the <code>ra-tags</code> component, replacing hardcoded values and constants with locally defined equivalents for padding and action elements. It also refactors type definitions by aligning them more closely with <code>@flexnative/theme-context</code>, ensuring consistency across different parts of the application.</p>
+<p>This commit removes the <code>@flexnative/ui-constants</code> dependency from the <code>tags</code> component, replacing hardcoded values and constants with locally defined equivalents for padding and action elements. It also refactors type definitions by aligning them more closely with <code>@flexnative/theme-context</code>, ensuring consistency across different parts of the application.</p>
 <p>The removal of <code>ui-constants</code> simplifies the dependencies and allows for more flexibility and maintainability within the module. Additionally, it updates the logic in utility functions to improve clarity and reusability of color handling within tags. This refactoring might require testing to ensure compatibility with existing themes and styles.</p>]]></content>
         <author>
             <name>Redon Alla</name>
             <uri>https://github.com/RedonAlla</uri>
         </author>
-        <category label="Component" term="Component"/>
-        <category label="Refactor" term="Refactor"/>
+        <category label="Tag 0.0.1" term="Tag 0.0.1"/>
     </entry>
 </feed>

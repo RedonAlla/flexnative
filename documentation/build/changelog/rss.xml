@@ -4,23 +4,10 @@
         <title>FlexNative Blog</title>
         <link>https://redonalla.github.io/flexnative/changelog</link>
         <description>FlexNative Blog</description>
-        <lastBuildDate>Sun, 01 Dec 2024 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 30 Nov 2024 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
-        <item>
-            <title><![CDATA[📔 Documentation]]></title>
-            <link>https://redonalla.github.io/flexnative/changelog/cbcc692</link>
-            <guid>https://redonalla.github.io/flexnative/changelog/cbcc692</guid>
-            <pubDate>Sun, 01 Dec 2024 00:00:00 GMT</pubDate>
-            <description><![CDATA[chore(documentation) add changelog.]]></description>
-            <content:encoded><![CDATA[<p><strong><a href="https://github.com/RedonAlla/flexnative/commit/cbcc692" target="_blank" rel="noopener noreferrer">#cbcc692</a> chore(documentation): add changelog</strong></p>
-<p>Deleted outdated blog entries from the <code>documentation/blog</code> directory to streamline the content and focus on current updates.
-Added new changelog posts reflecting recent changes and enhancements in various components, such as <code>tags</code>, <code>inputs</code>, and <code>bottom-sheet</code>.
-Updated <code>docusaurus.config.ts</code> to rename "Blog" to "Changelog" for better clarity and documentation consistency.
-This restructuring enhances the project's maintainability by removing obsolete information and highlighting ongoing development progress.</p>]]></content:encoded>
-            <category>Documentation</category>
-        </item>
         <item>
             <title><![CDATA[✨ Inputs 0.0.4]]></title>
             <link>https://redonalla.github.io/flexnative/changelog/4bc9101</link>
@@ -31,9 +18,7 @@ This restructuring enhances the project's maintainability by removing obsolete i
 <p><strong><a href="https://github.com/RedonAlla/flexnative/commit/4bc9101" target="_blank" rel="noopener noreferrer">#4bc9101</a> chore(inputs): bump package version to <code>0.0.4</code></strong></p>
 <p>Update the version of the <code>@flexnative/inputs</code> package from <code>0.0.3</code> to <code>0.0.4</code> to prepare for a new release.
 No functional changes were made, but this ensures that downstream dependencies can distinguish this iteration from previous ones.</p>]]></content:encoded>
-            <category>Component</category>
-            <category>Refactor</category>
-            <category>New Version</category>
+            <category>Inputs 0.0.4</category>
         </item>
         <item>
             <title><![CDATA[📕 Inputs Documentation]]></title>
@@ -45,21 +30,7 @@ No functional changes were made, but this ensures that downstream dependencies c
 <p>This commit adds detailed JSDoc comments to the inputs components, enhancing code readability and developer understanding.
 These comments describe the purpose of components, types, interfaces, props, methods, and provide information on styling and behavior.
 By including this documentation, the codebase becomes more maintainable and easier for new developers to understand, facilitating a better development workflow and more efficient onboarding.</p>]]></content:encoded>
-            <category>Component</category>
-            <category>Documentation</category>
-        </item>
-        <item>
-            <title><![CDATA[📔 Documentation]]></title>
-            <link>https://redonalla.github.io/flexnative/changelog/70ba5d6</link>
-            <guid>https://redonalla.github.io/flexnative/changelog/70ba5d6</guid>
-            <pubDate>Sat, 30 Nov 2024 00:00:00 GMT</pubDate>
-            <description><![CDATA[Updated the documentation for several components, including badges, bottom sheets, checkboxes, and input elements.]]></description>
-            <content:encoded><![CDATA[<p><strong><a href="https://github.com/RedonAlla/flexnative/commit/70ba5d6" target="_blank" rel="noopener noreferrer">#70ba5d6</a> docs: update component documentation and refine theme references</strong></p>
-<p>Updated the documentation for several components, including <strong>badges</strong>, <strong>bottom sheets</strong>, <strong>checkboxes</strong>, and <strong>input</strong> elements.
-Changes include updating the last update date, refining descriptions, correcting typos, and ensuring consistent styling options across components by linking them to the default theme file.
-Removed duplicate constant definitions by deleting the <code>ui-constants</code> file and updated package dependencies to their latest versions for improved stability and new features.
-These changes aim to enhance clarity, performance insights, and maintainability of the documentation.</p>]]></content:encoded>
-            <category>Documentation</category>
+            <category>Inputs 0.0.4</category>
         </item>
         <item>
             <title><![CDATA[🛠️ Inputs refactor]]></title>
@@ -77,8 +48,8 @@ These changes aim to enhance clarity, performance insights, and maintainability 
 <li>Deletion of obsolete components that have been refactored elsewhere in the project.
 These updates aim to streamline the codebase, reduce redundancy, and improve the overall maintainability of the input components.</li>
 </ul>]]></content:encoded>
-            <category>Component</category>
-            <category>Refactor</category>
+            <category>JSDoc</category>
+            <category>Inputs 0.0.3</category>
         </item>
         <item>
             <title><![CDATA[🛠️ Inputs refactor]]></title>
@@ -91,8 +62,7 @@ These updates aim to streamline the codebase, reduce redundancy, and improve the
 Refactored the theme structure by removing redundant <code>isDark</code> context, now relying solely on <code>colors</code>.
 Import paths for <code>BorderRadius</code>, <code>BorderWidth</code>, and <code>Sizes</code> are updated to use <code>@flexnative/theme-context</code> for better modularity and alignment with the project architecture.
 These changes streamline the component's configuration and enhance maintainability.</p>]]></content:encoded>
-            <category>Component</category>
-            <category>Refactor</category>
+            <category>Inputs 0.0.3</category>
         </item>
         <item>
             <title><![CDATA[📕 BottomSheet Documentation]]></title>
@@ -105,8 +75,8 @@ These changes streamline the component's configuration and enhance maintainabili
 The changes include adding more explicit type declarations, refining existing descriptions, and ensuring consistency throughout the documentation.
 These updates aim to facilitate better understanding and usability of the code for future developers and maintainers.
 No functional logic was altered.</p>]]></content:encoded>
-            <category>Component</category>
-            <category>Documentation</category>
+            <category>JSDoc</category>
+            <category>BottomSheet 0.0.3</category>
         </item>
         <item>
             <title><![CDATA[🛠️ Skeleton Loading refactor]]></title>
@@ -119,8 +89,8 @@ No functional logic was altered.</p>]]></content:encoded>
 Moved dev dependencies from peerDependencies in <code>package.json</code>.
 Clarified comments and added detailed JSDoc annotations throughout the code to make it more maintainable and comprehensible.
 This refactor does not introduce any breaking changes or affect functionality but improves code readability and developer experience.</p>]]></content:encoded>
-            <category>Component</category>
-            <category>Refactor</category>
+            <category>JSDoc</category>
+            <category>Skeleton loading 0.0.2</category>
             <category>New Version</category>
         </item>
         <item>
@@ -136,8 +106,7 @@ Updated component styles and logic according to new props and theming guidelines
 This includes changes to border radius definitions, color handling, and input styling.
 Transitioned peer dependencies to devDependencies where applicable, reflecting the updated package structure.
 The focus was to enhance maintainability and leverage improved theming capabilities from the upgraded dependencies.</p>]]></content:encoded>
-            <category>Component</category>
-            <category>Refactor</category>
+            <category>Inputs 0.0.3</category>
         </item>
         <item>
             <title><![CDATA[✨ Tags 0.0.2]]></title>
@@ -149,8 +118,7 @@ The focus was to enhance maintainability and leverage improved theming capabilit
 <p><strong><a href="https://github.com/RedonAlla/flexnative/commit/a65ea4c" target="_blank" rel="noopener noreferrer">#a65ea4c</a> chore(tags): bump version to <code>0.0.2</code></strong></p>
 <p>Updated the package version from 0.0.1 to 0.0.2 to reflect changes made since the initial release.
 This minor version increment suggests backward-compatible enhancements or bug fixes have been implemented.</p>]]></content:encoded>
-            <category>Chore</category>
-            <category>Component</category>
+            <category>Tag 0.0.2</category>
             <category>New Version</category>
         </item>
         <item>
@@ -160,10 +128,9 @@ This minor version increment suggests backward-compatible enhancements or bug fi
             <pubDate>Tue, 26 Nov 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[refactor(tags) remove ui-constants dependency and refactor type definitions]]></description>
             <content:encoded><![CDATA[<p><strong><a href="https://github.com/RedonAlla/flexnative/commit/d5a4ed7" target="_blank" rel="noopener noreferrer">#d5a4ed7</a> refactor(tags): remove ui-constants dependency and refactor type definitions</strong></p>
-<p>This commit removes the <code>@flexnative/ui-constants</code> dependency from the <code>ra-tags</code> component, replacing hardcoded values and constants with locally defined equivalents for padding and action elements. It also refactors type definitions by aligning them more closely with <code>@flexnative/theme-context</code>, ensuring consistency across different parts of the application.</p>
+<p>This commit removes the <code>@flexnative/ui-constants</code> dependency from the <code>tags</code> component, replacing hardcoded values and constants with locally defined equivalents for padding and action elements. It also refactors type definitions by aligning them more closely with <code>@flexnative/theme-context</code>, ensuring consistency across different parts of the application.</p>
 <p>The removal of <code>ui-constants</code> simplifies the dependencies and allows for more flexibility and maintainability within the module. Additionally, it updates the logic in utility functions to improve clarity and reusability of color handling within tags. This refactoring might require testing to ensure compatibility with existing themes and styles.</p>]]></content:encoded>
-            <category>Component</category>
-            <category>Refactor</category>
+            <category>Tag 0.0.1</category>
         </item>
     </channel>
 </rss>
