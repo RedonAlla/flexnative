@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2023-06-04 21:29:02
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-20 21:58:16
+ * @ Modified time: 2024-12-08 21:32:09
  * @ Description: All props for ThemeContext and ThemeProvider.
  */
 
@@ -199,7 +199,7 @@ export interface BaseColors {
  */
 export interface ThemeProviderProps<TColors> {
   /** The current theme object. */
-  theme: BaseTheme<TColors>;
+  theme?: BaseTheme<TColors>;
 
   /** The child components to be rendered the App. */
   children: React.ReactNode;

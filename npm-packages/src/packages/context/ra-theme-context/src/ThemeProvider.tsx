@@ -2,17 +2,22 @@
  * @ Author: Redon Alla
  * @ Create Time: 2023-06-04 21:29:02
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-10 13:18:19
+ * @ Modified time: 2024-12-08 21:32:11
  * @ Description: Theme Provider
  */
 
 import React from 'react';
-import { ColorSchemeName } from 'react-native';
+import { Appearance, ColorSchemeName } from 'react-native';
 
 import ThemeContext from './ThemeContext';
 import { BaseColors, BaseTheme, ThemeProviderProps } from './props';
 import { createTheme, defaultColors } from './utilities';
 
+/**
+ * Retrieve the current color scheme (e.g., 'light' or 'dark') from the device's appearance settings.
+ * This method is typically used to apply different styles depending on the user's preferred theme.
+ */
+const scheme = Appearance.getColorScheme();
 
 /**
  * Represents the state properties for the theme provider.
@@ -43,8 +48,8 @@ export default abstract class ThemeProvider<TColors> extends React.PureComponent
     super(props)
     
     this.state = {
-      scheme: props.theme.scheme,
-      colors: props.theme.colors ?? defaultColors(props.theme.scheme)
+      scheme: props?.theme?.scheme ?? scheme,
+      colors: props?.theme?.colors ?? defaultColors(props?.theme?.scheme ?? scheme)
     }
   }
 
@@ -79,9 +84,9 @@ export default abstract class ThemeProvider<TColors> extends React.PureComponent
     return (
       <ThemeContext.Provider value={{
         ...createTheme<TColors>({
-          ...this.props.theme,
+          ...this.props?.theme ?? {} as BaseTheme<TColors>,
           scheme: this.state.scheme,
-          colors: this.state.colors,
+          colors: this.state.colors as BaseColors & TColors,
         }),
         setTheme: this.onChangeTheme.bind(this),
         setColorScheme: this.onChangeColorScheme.bind(this),

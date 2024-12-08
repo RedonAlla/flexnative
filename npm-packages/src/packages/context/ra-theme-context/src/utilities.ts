@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-11-05 22:13:28
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-20 21:58:26
+ * @ Modified time: 2024-12-08 21:33:00
  * @ Description: Utility functions for creating themes.
  */
 
@@ -27,8 +27,8 @@ import {
  * @param scheme - The name of the color scheme, either 'dark' or 'light'.
  * @returns The base colors corresponding to the specified color scheme.
  */
-export function defaultColors(scheme: ColorSchemeName): BaseColors {
-  return scheme === 'dark' ? dark : light;
+export function defaultColors<TColors>(scheme: ColorSchemeName): BaseColors & TColors {
+  return (scheme === 'dark' ? dark : light) as BaseColors & TColors;
 }
 
 /**

@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-11-05 22:13:28
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-20 21:55:25
+ * @ Modified time: 2024-12-08 21:31:30
  * @ Description: Constants used for theming and styling in the application.
  */
 
