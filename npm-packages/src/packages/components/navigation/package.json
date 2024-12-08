@@ -1,0 +1,42 @@
+{
+  "name": "@flexnative/navigation",
+  "version": "0.0.1",
+  "description": "The `withFancyDrawer` function is a HOC that enhances a given component with additional animations and styles to simulate a fancy drawer effect.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RedonAlla/flexnative.git",
+    "directory": "npm-packages/src/packages/context/navigation"
+  },
+  "devDependencies": {
+    "expo-status-bar": "*",
+    "@react-navigation/drawer": "*",
+    "react-native-gesture-handler": "*",
+    "react-native-reanimated": "*"
+  },
+  "keywords": [
+    "react",
+    "react-native",
+    "navigation",
+    "drawer",
+    "fancy-drawer"
+  ],
+  "author": "Redon Alla",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RedonAlla/flexnative/issues"
+  },
+  "homepage": "https://redonalla.github.io/flexnative/"
+}
