@@ -14,7 +14,8 @@
     "src/packages/components/ra-tags",
     "src/packages/components/ra-inputs",
     "src/shared/ui-constants",
-    "src/packages/components/navigation"
+    "src/packages/components/navigation",
+    "src/packages/components/layout"
   ],
   "version": "0.0.1",
   "description": "React Native Framework",
