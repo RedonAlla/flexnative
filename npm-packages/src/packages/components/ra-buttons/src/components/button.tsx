@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-10-27 14:25:25
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-20 22:55:47
+ * @ Modified time: 2024-12-17 20:31:27
  * @ Description: Button component.
  */
 
@@ -138,12 +138,16 @@ export default class extends React.PureComponent<IButtonProps, {}> {
 
             {loading
               ? renderLoading ?? <Spinner name="spinner" style={styles.text} />
-              : <ButtonIcon pressed={pressed} icon={iconLeft} style={[ styles.text, pressedTextColor(pressed, type) ]} />
+              : !Boolean(children) && <ButtonIcon pressed={pressed} icon={iconLeft} style={[ styles.text, pressedTextColor(pressed, type) ]} />
             }
             
-            <ButtonText pressed={pressed} text={text} style={[ styles.text, pressedTextColor(pressed, type) ]} />
-            
-            <ButtonIcon pressed={pressed} icon={iconRight} style={[ styles.text, pressedTextColor(pressed, type) ]} />
+            {
+              Boolean(children) ? children :
+              <>
+                <ButtonText pressed={pressed} text={text} style={[ styles.text, pressedTextColor(pressed, type) ]} />
+                <ButtonIcon pressed={pressed} icon={iconRight} style={[ styles.text, pressedTextColor(pressed, type) ]} />
+              </>
+            }
           </>
         )}
       </Pressable>

@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-12-16 22:06:38
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-12-17 19:37:21
+ * @ Modified time: 2024-12-17 19:42:56
  * @ Description: This code defines a `Block` component in TypeScript using React and React Native. The `Block` component extends `React.PureComponent`, which optimizes the component by preventing unnecessary re-renders when the props haven't changed.
  */
 
