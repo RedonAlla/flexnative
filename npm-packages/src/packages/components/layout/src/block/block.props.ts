@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-12-16 21:53:03
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-12-16 22:56:29
+ * @ Modified time: 2024-12-17 19:31:58
  * @ Description: Define an interface BlockProps which extends properties from ViewProps.
  */
 
@@ -73,6 +73,16 @@ export interface BlockProps extends ViewProps {
    * If set to true, it likely indicates that the component's children should be displayed horizontally.
    */
   row?: boolean;
+
+  /**
+   * Optional property `rowGap` which takes a value from ViewStyle's `rowGap` type definition.
+   */
+  rowGap?: ViewStyle["rowGap"];
+
+  /**
+   * Optional property `columnGap` which takes a value from ViewStyle's `columnGap` type definition.
+   */
+  columnGap?: ViewStyle["columnGap"];
   
   /**
    * Optional property 'backgroundColor' of type 'ColorValue'.

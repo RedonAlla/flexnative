@@ -1,6 +1,6 @@
 {
   "name": "@flexnative/layout",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A set of horizontal and vertical lines that divide the mobile app screen into columns and rows.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

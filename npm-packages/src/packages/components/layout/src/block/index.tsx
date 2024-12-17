@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-12-16 22:06:38
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-12-16 23:01:29
+ * @ Modified time: 2024-12-17 19:37:21
  * @ Description: This code defines a `Block` component in TypeScript using React and React Native. The `Block` component extends `React.PureComponent`, which optimizes the component by preventing unnecessary re-renders when the props haven't changed.
  */
 
@@ -27,6 +27,8 @@ export default class Block extends React.PureComponent<BlockProps> {
       height,
       backgroundColor,
       gap,
+      rowGap,
+      columnGap,
       style,
       children,
       ...rest
@@ -35,6 +37,9 @@ export default class Block extends React.PureComponent<BlockProps> {
     const blockStyle: StyleProp<ViewStyle>  = [
       flex !== undefined && { flex },
       row && { flexDirection: "row" },
+      gap !== undefined && { gap: gap } ,
+      rowGap !== undefined && { rowGap: rowGap } ,
+      columnGap !== undefined && { columnGap: columnGap } ,
       Boolean(row && gap) && { rowGap: gap },
       Boolean(!row && gap) && { columnGap: gap },
       justify !== undefined && { justifyContent: justify },
