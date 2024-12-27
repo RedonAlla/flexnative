@@ -57,4 +57,23 @@ tag_v0.0.2:
   label: Tag 0.0.2
   permalink: /tag_v0.0.2
   description: Component Tag 0.0.2. Use this tag to filter all changes about Tag version 0.0.2.
+
+theme-context.0.0.7:
+  label: Theme Context 0.0.7
+  permalink: /theme-context.0.0.7
+  description: Theme Context 0.0.7. Use this tag to filter all changes about InTheme Contextputs version 0.0.7.
+
+layout_v0.0.1:
+  label: Layout 0.0.1
+  permalink: /layout_v0.0.1
+  description: Layout 0.0.1. Use this tag to filter all changes about Layout version 0.0.1.
+
+layout_v0.0.2:
+  label: Layout 0.0.2
+  permalink: /layout_v0.0.2
+  description: Layout 0.0.2. Use this tag to filter all changes about Layout version 0.0.2.
   
+buttons_v0.0.4:
+  label: Inputs 0.0.4
+  permalink: /buttons_v0.0.4
+  description: Inputs 0.0.4. Use this tag to filter all changes about Inputs version 0.0.4.
