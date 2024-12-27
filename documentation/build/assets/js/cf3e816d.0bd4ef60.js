@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_flexnative_framework_docks_3=self.webpackChunk_flexnative_framework_docks_3||[]).push([[2899],{49189:e=>{e.exports=JSON.parse('{"metadata":{"permalink":"/flexnative/changelog","page":1,"postsPerPage":9,"totalPages":1,"totalCount":9,"blogDescription":"Changelog history","blogTitle":"Changelog"}}')}}]);
