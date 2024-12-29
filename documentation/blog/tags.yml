@@ -77,3 +77,8 @@ buttons_v0.0.4:
   label: Inputs 0.0.4
   permalink: /buttons_v0.0.4
   description: Inputs 0.0.4. Use this tag to filter all changes about Inputs version 0.0.4.
+
+messages_v0.0.4:
+  label: Messages 0.0.4
+  permalink: /messages_v0.0.4
+  description: Messages 0.0.4. Use this tag to filter all changes about Messages version 0.0.4.
