@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-10-27 14:25:26
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-12-29 21:47:22
+ * @ Modified time: 2024-12-29 21:52:35
  * @ Description: Props for Icon component.
  */
 
@@ -64,7 +64,7 @@ export interface IconName {
   readonly "spinner": string;
   readonly "file-pdf": string;
   readonly "paint-brush": string;
-  readonly "trash": "string"
+  readonly "trash": string;
 } 
 
 /**
@@ -84,8 +84,8 @@ export const icons = {
   "gridicons": "\ue92b",
   "light-dark": "\ue900",
   "color-palete": "\ue901",
-  "check": "\ue902",
-  "badge": "\ue903",
+  "check": "\ue903",
+  "badge": "\ue902",
   "menu": "\ue90d",
   "bookmark": "\ue90e",
   "label": "\ue910",
