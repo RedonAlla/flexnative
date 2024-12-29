@@ -3,7 +3,7 @@ slug: c2569d7
 title: ✨ Messages 0.0.4
 description: feat(messages) add new MessageBox component
 authors: RedonAlla
-tags: [messages_v0.0.2]
+tags: [messages_v0.0.4]
 ---
 
 ## ✨ Version 0.0.4
