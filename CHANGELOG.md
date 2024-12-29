@@ -1,5 +1,11 @@
 ##  (2024-12-29)
 
+* refactor: remove unused constants and components; add new App entry point ([4c766ef](https://github.com/RedonAlla/flexnative/commit/4c766ef))
+
+
+
+##  (2024-12-29)
+
 * feat(messages): add new MessageBox component ([c2569d7](https://github.com/RedonAlla/flexnative/commit/c2569d7))
 
 
