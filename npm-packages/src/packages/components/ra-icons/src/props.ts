@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-10-27 14:25:26
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-08 20:10:07
+ * @ Modified time: 2024-12-29 21:47:22
  * @ Description: Props for Icon component.
  */
 
@@ -15,6 +15,7 @@ import { Color, FontSize } from '@flexnative/theme-context';
  * These names can be used to access the corresponding Unicode value from the `icons` object.
  */
 export interface IconName {
+  readonly "layout": string;
   readonly "sort-number-desc": string;
   readonly "sort-number-asc": string;
   readonly "sort-alphabet-desc": string;
@@ -63,7 +64,7 @@ export interface IconName {
   readonly "spinner": string;
   readonly "file-pdf": string;
   readonly "paint-brush": string;
-  readonly "trash": string;
+  readonly "trash": "string"
 } 
 
 /**
@@ -71,6 +72,7 @@ export interface IconName {
  * These icons can be used throughout the application for various UI elements.
  */
 export const icons = {
+  "layout": "\ue92e",
   "sort-number-desc": "\ue90a",
   "sort-number-asc": "\ue90b",
   "sort-alphabet-desc": "\ue90c",
