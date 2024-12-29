@@ -1,0 +1,34 @@
+{
+  "name": "@flexnative/messages",
+  "version": "0.0.4",
+  "description": "Display warning messages that require attention.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RedonAlla/flexnative.git",
+    "directory": "npm-packages/src/packages/components/messages"
+  },
+  "keywords": [
+    "react",
+    "react-native",
+    "messages"
+  ],
+  "author": "Redon Alla",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RedonAlla/flexnative/issues"
+  },
+  "homepage": "https://redonalla.github.io/flexnative/"
+}
