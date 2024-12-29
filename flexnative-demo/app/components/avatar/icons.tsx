@@ -1,32 +1,27 @@
-import React from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
+/**
+ * @ Author: Redon Alla
+ * @ Create Time: 2024-12-15 21:41:59
+ * @ Modified by: Redon Alla
+ * @ Modified time: 2024-12-29 01:38:54
+ * @ Description: Route for Avatar of type icon demo screen.
+ */
 
-import { HEADER_HEIGHT, PADDING, TAB_NAV_HEIGHT } from '@/constants/sizes';
-import { WEB_MAX_SCREEN_WIDTH } from '@/components/app/constants';
+import React from "react";
+import { ScrollView, StyleSheet } from "react-native";
+import AvatarIconDemoScreen from "@/screens/components/Avatars/icons";
 import {
-  AvatarColors,
-  AvatarFillMode,
-  AvatarBackgroundColors,
-  AvatarBorderColors,
-  AvatarBorderWidth,
-  AvatarSizes,
-  AvatarRadius,
-  AvatarIconColor
-} from '@/components/app/components/avatars/icon';
+  BOTTOM_TAB_HEIGHT,
+  HEADER_HEIGHT,
+  MAX_WIDTH,
+  PADDING_HORIZONTAL
+} from "@/constants/layout";
 
 
-export default class extends React.PureComponent<{}, {}> {
+export default class extends React.PureComponent {
   public render() {
     return (
       <ScrollView contentContainerStyle={styles.content}>
-        <AvatarColors />
-        <AvatarFillMode />
-        <AvatarBackgroundColors />
-        <AvatarBorderColors />
-        <AvatarBorderWidth />
-        <AvatarSizes />
-        <AvatarRadius />
-        <AvatarIconColor />
+        <AvatarIconDemoScreen />
       </ScrollView>
     );
   }
@@ -38,9 +33,9 @@ const styles = StyleSheet.create({
     width: '100%',
     marginHorizontal: "auto",
     paddingTop: HEADER_HEIGHT,
-    paddingBottom: TAB_NAV_HEIGHT,
-    paddingHorizontal: PADDING,
     backgroundColor: 'transparent',
-    maxWidth: WEB_MAX_SCREEN_WIDTH,
+    paddingBottom: BOTTOM_TAB_HEIGHT,
+    paddingHorizontal: PADDING_HORIZONTAL,
+    maxWidth: MAX_WIDTH,
   },
 });

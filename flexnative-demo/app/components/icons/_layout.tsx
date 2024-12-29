@@ -1,12 +1,19 @@
+/**
+ * @ Author: Redon Alla
+ * @ Create Time: 2024-12-15 21:38:50
+ * @ Modified by: Redon Alla
+ * @ Modified time: 2024-12-19 19:12:11
+ * @ Description: Layout for icons demo screens.
+ */
+
 import React from 'react';
 import { Tabs } from 'expo-router';
 
 import { icons } from '@flexnative/icons';
+import TabLayout, { TabBarIcon } from '@/screens/components/layout/TabLayout';
 
-import TabLayout, { TabBarIcon } from '@/components/app/components/layout/tab-layout';
 
-
-export default class extends React.PureComponent<{}, {}> {
+export default class extends React.PureComponent {
   public render() {
     return(
       <TabLayout initialRouteName='list'>

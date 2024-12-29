@@ -1,29 +1,22 @@
-import React from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
+/**
+ * @ Author: Redon Alla
+ * @ Create Time: 2024-12-15 21:41:59
+ * @ Modified by: Redon Alla
+ * @ Modified time: 2024-12-29 01:39:34
+ * @ Description: Route for Avatar group demo screen.
+ */
 
-import { HEADER_HEIGHT, PADDING, TAB_NAV_HEIGHT } from '@/constants/sizes';
-import { WEB_MAX_SCREEN_WIDTH } from '@/components/app/constants';
-import {
-  AvatarGroupFillMode,
-  AvatarGroupBackgroundColors,
-  AvatarGroupBorderColors,
-  AvatarGroupBorderWidth,
-  AvatarGroupRadius,
-  AvatarGroupCombinations
-} from '@/components/app/components/avatars/group';
+import React from "react";
+import { ScrollView, StyleSheet } from "react-native";
+import { BOTTOM_TAB_HEIGHT, HEADER_HEIGHT, MAX_WIDTH, PADDING_HORIZONTAL } from "@/constants/layout";
+import AvatarGroupDemoScreen from "@/screens/components/Avatars/group";
 
 
-export default class extends React.PureComponent<{}, {}> {
+export default class extends React.PureComponent {
   public render() {
     return (
       <ScrollView contentContainerStyle={styles.content}>
-        <AvatarGroupFillMode />
-        <AvatarGroupBackgroundColors />
-        <AvatarGroupBorderColors />
-        <AvatarGroupBorderColors />
-        <AvatarGroupBorderWidth />
-        <AvatarGroupRadius />
-        <AvatarGroupCombinations />
+        <AvatarGroupDemoScreen />
       </ScrollView>
     );
   }
@@ -35,9 +28,9 @@ const styles = StyleSheet.create({
     width: '100%',
     marginHorizontal: "auto",
     paddingTop: HEADER_HEIGHT,
-    paddingBottom: TAB_NAV_HEIGHT,
-    paddingHorizontal: PADDING,
     backgroundColor: 'transparent',
-    maxWidth: WEB_MAX_SCREEN_WIDTH,
+    paddingBottom: BOTTOM_TAB_HEIGHT,
+    paddingHorizontal: PADDING_HORIZONTAL,
+    maxWidth: MAX_WIDTH,
   },
 });

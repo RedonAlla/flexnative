@@ -1,36 +1,22 @@
-import React from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
+/**
+ * @ Author: Redon Alla
+ * @ Create Time: 2024-12-19 09:15:00
+ * @ Modified by: Redon Alla
+ * @ Modified time: 2024-12-26 19:27:07
+ * @ Description: Root for Badges component demo.
+ */
 
-import { HEADER_HEIGHT, PADDING } from '@/constants/sizes';
-import { WEB_MAX_SCREEN_WIDTH } from '@/components/app/constants';
-import {
-  DemoBadgePosition,
-  DemoBadgeTypes,
-  DemoBadgeColors,
-  DemoBadgeSizes,
-  DemoBadgeTextColor,
-  DemoBadgeBackgroundColor,
-  DemoBadgeBorderWidth,
-  DemoBadgeBorderColor,
-  DemoBadgeRadius,
-  DemoBadgeTextProps
-} from '@/components/app/components/badges';
+import React from "react";
+import { ScrollView, StyleSheet } from "react-native";
+import { HEADER_HEIGHT, MAX_WIDTH, PADDING_HORIZONTAL } from "@/constants/layout";
+import BadgesDemoScreen from "@/screens/components/Badges";
 
 
-export default class extends React.PureComponent<{}, {}> {
+export default class extends React.PureComponent {
   public render() {
     return (
       <ScrollView contentContainerStyle={styles.content}>
-        <DemoBadgePosition />
-        <DemoBadgeColors />
-        <DemoBadgeSizes />
-        <DemoBadgeTypes />
-        <DemoBadgeTextColor />
-        <DemoBadgeBackgroundColor />
-        <DemoBadgeBorderWidth />
-        <DemoBadgeBorderColor />
-        <DemoBadgeRadius />
-        <DemoBadgeTextProps />
+        <BadgesDemoScreen />
       </ScrollView>
     );
   }
@@ -42,8 +28,9 @@ const styles = StyleSheet.create({
     width: '100%',
     marginHorizontal: "auto",
     paddingTop: HEADER_HEIGHT,
-    paddingHorizontal: PADDING,
     backgroundColor: 'transparent',
-    maxWidth: WEB_MAX_SCREEN_WIDTH,
-  }
+    paddingBottom: PADDING_HORIZONTAL,
+    paddingHorizontal: PADDING_HORIZONTAL,
+    maxWidth: MAX_WIDTH,
+  },
 });

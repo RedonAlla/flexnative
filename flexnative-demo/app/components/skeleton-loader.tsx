@@ -1,16 +1,23 @@
-import React from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
+/**
+ * @ Author: Redon Alla
+ * @ Create Time: 2024-12-19 09:15:00
+ * @ Modified by: Redon Alla
+ * @ Modified time: 2024-12-27 21:55:17
+ * @ Description: Root for SkeletonLoader component demo.
+ */
+
+import React from "react";
+import { ScrollView, StyleSheet } from "react-native";
 
 import SkeletonLoader, { Circle, Rect } from '@flexnative/skeleton-loading';
 
-import { HEADER_HEIGHT, PADDING } from '@/constants/sizes';
-import { WEB_MAX_SCREEN_WIDTH } from '@/components/app/constants';
-import DemoBlock from '@/components/app/DemoBlock';
+import { HEADER_HEIGHT, MAX_WIDTH, PADDING_HORIZONTAL } from "@/constants/layout";
+import DemoBlock from "@/components/common/DemoBlock";
 
 const SKELETON_HEIGHT = 110;
 
 
-export default class extends React.PureComponent<{}, {}> {
+export default class extends React.PureComponent {
   public render() {
     return (
       <ScrollView contentContainerStyle={styles.content}>
@@ -79,8 +86,9 @@ const styles = StyleSheet.create({
     width: '100%',
     marginHorizontal: "auto",
     paddingTop: HEADER_HEIGHT,
-    paddingHorizontal: PADDING,
     backgroundColor: 'transparent',
-    maxWidth: WEB_MAX_SCREEN_WIDTH,
+    paddingBottom: PADDING_HORIZONTAL,
+    paddingHorizontal: PADDING_HORIZONTAL,
+    maxWidth: MAX_WIDTH,
   },
 });

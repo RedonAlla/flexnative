@@ -1,46 +1,14 @@
-import React from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
-
-import { HEADER_HEIGHT, PADDING, TAB_NAV_HEIGHT } from '@/constants/sizes';
-import { WEB_MAX_SCREEN_WIDTH } from '@/components/app/constants';
-import {
-  DemoCheckListType,
-  DemoCheckListColor,
-  DemoCheckListBorderColor,
-  DemoCheckListBorderWidth,
-  DemoCheckListBackgroundColor,
-  DemoCheckListHelperText,
-  DemoCheckListLabel,
-  DemoCheckListLabelStyle,
-  DemoCheckListCustomItems,
-  DemoCheckListRadio,
-  DemoCheckListValue,
-  DemoCheckListValueField,
-  DemoCheckListSizes,
-  DemoDisabled,
-  DemoDirection
-} from '@/components/app/components/check-list/material';
+import React from "react";
+import { ScrollView, StyleSheet } from "react-native";
+import { BOTTOM_TAB_HEIGHT, HEADER_HEIGHT, MAX_WIDTH, PADDING_HORIZONTAL } from "@/constants/layout";
+import CheckListDemoScreen from "@/screens/components/CheckList/Material";
 
 
-export default class extends React.PureComponent<{}, {}> {
+export default class extends React.PureComponent {
   public render() {
     return (
       <ScrollView contentContainerStyle={styles.content}>
-        <DemoCheckListCustomItems />
-        <DemoCheckListValue />
-        <DemoCheckListValueField />
-        <DemoCheckListRadio />
-        <DemoCheckListType />
-        <DemoCheckListSizes />
-        <DemoDisabled />
-        <DemoDirection />
-        <DemoCheckListBorderWidth />
-        <DemoCheckListBorderColor />
-        <DemoCheckListBackgroundColor />
-        <DemoCheckListHelperText />
-        <DemoCheckListColor />
-        <DemoCheckListLabel />
-        <DemoCheckListLabelStyle />
+        <CheckListDemoScreen />
       </ScrollView>
     );
   }
@@ -52,9 +20,9 @@ const styles = StyleSheet.create({
     width: '100%',
     marginHorizontal: "auto",
     paddingTop: HEADER_HEIGHT,
-    paddingBottom: TAB_NAV_HEIGHT,
-    paddingHorizontal: PADDING,
     backgroundColor: 'transparent',
-    maxWidth: WEB_MAX_SCREEN_WIDTH,
+    paddingBottom: BOTTOM_TAB_HEIGHT,
+    paddingHorizontal: PADDING_HORIZONTAL,
+    maxWidth: MAX_WIDTH,
   },
 });

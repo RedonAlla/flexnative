@@ -1,46 +1,22 @@
-import React from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
+/**
+ * @ Author: Redon Alla
+ * @ Create Time: 2024-12-19 09:15:00
+ * @ Modified by: Redon Alla
+ * @ Modified time: 2024-12-29 01:41:08
+ * @ Description: Root for Button component demo.
+ */
 
-import { HEADER_HEIGHT, PADDING } from '@/constants/sizes';
-import {
-  DemoButtonType,
-  DemoButtonColor,
-  DemoButtonColorActive,
-  DemoButtonBorderColor,
-  DemoButtonBorderColorActive,
-  DemoButtonBorderRadius,
-  DemoButtonBorderWidth,
-  DemoButtonDisabled,
-  DemoButtonIcons,
-  DemoButtonLoading,
-  DemoButtonSize,
-  DemoButtonText,
-  DemoButtonStylingWithStyleSheet,
-  DemoButtonCustomLoader,
-  DemoButtonChildren
-} from '@/components/app/components/buttons';
-import { WEB_MAX_SCREEN_WIDTH } from '@/components/app/constants';
+import React from "react";
+import { ScrollView, StyleSheet } from "react-native";
+import { HEADER_HEIGHT, MAX_WIDTH, PADDING_HORIZONTAL } from "@/constants/layout";
+import ButtonsDemoScreen from "@/screens/components/Buttons";
 
 
-export default class extends React.PureComponent<{}, {}> {
+export default class extends React.PureComponent {
   public render() {
     return (
       <ScrollView contentContainerStyle={styles.content}>
-        <DemoButtonColor />
-        <DemoButtonColorActive />
-        <DemoButtonType />
-        <DemoButtonBorderColor />
-        <DemoButtonBorderColorActive />
-        <DemoButtonBorderRadius />
-        <DemoButtonBorderWidth />
-        <DemoButtonDisabled />
-        <DemoButtonLoading />
-        <DemoButtonCustomLoader />
-        <DemoButtonIcons />
-        <DemoButtonSize />
-        <DemoButtonText />
-        <DemoButtonChildren />
-        <DemoButtonStylingWithStyleSheet />
+        <ButtonsDemoScreen />
       </ScrollView>
     );
   }
@@ -52,8 +28,9 @@ const styles = StyleSheet.create({
     width: '100%',
     marginHorizontal: "auto",
     paddingTop: HEADER_HEIGHT,
-    paddingHorizontal: PADDING,
     backgroundColor: 'transparent',
-    maxWidth: WEB_MAX_SCREEN_WIDTH,
-  }
+    paddingBottom: PADDING_HORIZONTAL,
+    paddingHorizontal: PADDING_HORIZONTAL,
+    maxWidth: MAX_WIDTH,
+  },
 });

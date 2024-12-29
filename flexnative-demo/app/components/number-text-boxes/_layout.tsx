@@ -1,10 +1,18 @@
+/**
+ * @ Author: Redon Alla
+ * @ Create Time: 2024-12-15 21:38:50
+ * @ Modified by: Redon Alla
+ * @ Modified time: 2024-12-22 21:41:12
+ * @ Description: Layout for numeric text demo screens.
+ */
+
 import React from 'react';
 import { Tabs } from 'expo-router';
 
-import TabLayout, { TabBarIcon } from '@/components/app/components/layout/tab-layout';
+import TabLayout, { TabBarIcon } from '@/screens/components/layout/TabLayout';
 
 
-export default class extends React.PureComponent<{}, {}> {
+export default class DemoNumericTextBox extends React.PureComponent {
   public render() {
     return(
       <TabLayout initialRouteName='default'>
@@ -12,11 +20,11 @@ export default class extends React.PureComponent<{}, {}> {
           name="default"
           options={{
             tabBarLabel: 'Default',
-            tabBarIcon: (props) => <TabBarIcon icon='number-input' {...props} />
+            tabBarIcon: (props) => <TabBarIcon icon='text-box' {...props} />
           }}
         />
         <Tabs.Screen
-          name="material-design"
+          name="material"
           options={{
             tabBarLabel: 'Material Design',
             tabBarIcon: (props) => <TabBarIcon icon='material-design' {...props} />

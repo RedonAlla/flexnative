@@ -1,24 +1,22 @@
-import React from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
+/**
+ * @ Author: Redon Alla
+ * @ Create Time: 2024-12-19 09:15:00
+ * @ Modified by: Redon Alla
+ * @ Modified time: 2024-12-27 11:05:26
+ * @ Description: Root for Spinner component demo.
+ */
 
-import { HEADER_HEIGHT, PADDING, TAB_NAV_HEIGHT } from '@/constants/sizes';
-import { WEB_MAX_SCREEN_WIDTH } from '@/components/app/constants';
-import {
-  DemoSpinnerColors,
-  DemoSpinnerSizes,
-  DemoSpinnerStylingWithStyleSheet,
-  DemoSpinnerAnyIcon
-} from '@/components/app/components/spinner';
+import React from "react";
+import { ScrollView, StyleSheet } from "react-native";
+import { HEADER_HEIGHT, MAX_WIDTH, PADDING_HORIZONTAL } from "@/constants/layout";
+import SpinnerDemoScreen from "@/screens/components/Spinner";
 
 
-export default class extends React.PureComponent<{}, {}> {
+export default class extends React.PureComponent {
   public render() {
     return (
       <ScrollView contentContainerStyle={styles.content}>
-        <DemoSpinnerSizes />
-        <DemoSpinnerColors />
-        <DemoSpinnerStylingWithStyleSheet />
-        <DemoSpinnerAnyIcon />
+        <SpinnerDemoScreen />
       </ScrollView>
     );
   }
@@ -30,9 +28,9 @@ const styles = StyleSheet.create({
     width: '100%',
     marginHorizontal: "auto",
     paddingTop: HEADER_HEIGHT,
-    paddingBottom: TAB_NAV_HEIGHT,
-    paddingHorizontal: PADDING,
     backgroundColor: 'transparent',
-    maxWidth: WEB_MAX_SCREEN_WIDTH,
+    paddingBottom: PADDING_HORIZONTAL,
+    paddingHorizontal: PADDING_HORIZONTAL,
+    maxWidth: MAX_WIDTH,
   },
 });

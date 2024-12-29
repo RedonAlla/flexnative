@@ -1,10 +1,18 @@
+/**
+ * @ Author: Redon Alla
+ * @ Create Time: 2024-12-15 21:38:50
+ * @ Modified by: Redon Alla
+ * @ Modified time: 2024-12-22 21:37:46
+ * @ Description: Layout for text boxes demo screens.
+ */
+
 import React from 'react';
 import { Tabs } from 'expo-router';
 
-import TabLayout, { TabBarIcon } from '@/components/app/components/layout/tab-layout';
+import TabLayout, { TabBarIcon } from '@/screens/components/layout/TabLayout';
 
 
-export default class extends React.PureComponent<{}, {}> {
+export default class DemoTextModes extends React.PureComponent {
   public render() {
     return(
       <TabLayout initialRouteName='default'>

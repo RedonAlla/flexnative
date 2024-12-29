@@ -1,1 +1,0 @@
-export const avatar = require('../../../../assets/icon.png');

@@ -1,60 +1,22 @@
-import React from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
+/**
+ * @ Author: Redon Alla
+ * @ Create Time: 2024-12-15 21:41:59
+ * @ Modified by: Redon Alla
+ * @ Modified time: 2024-12-22 21:44:10
+ * @ Description: Route for numeric text boxes demo screen with default style.
+ */
 
-import { HEADER_HEIGHT, PADDING, TAB_NAV_HEIGHT } from '@/constants/sizes';
-import { WEB_MAX_SCREEN_WIDTH } from '@/components/app/constants';
-import {
-  DemoNumericTextBoxColors,
-  DemoNumericTextBoxBorderColor,
-  DemoNumericTextBoxBorderActiveColor,
-  DemoNumericTextBoxBorderWidth,
-  DemoNumericTextBoxBorderRadius,
-  DemoTextBackgroundColor,
-  DemoTextActiveBackgroundColor,
-  DemoNumericTextBoxType,
-  DemoNumericTextBoxSize,
-  DemoNumericTextBoxReadOnly,
-  DemoNumericTextBoxDisabled,
-  DemoNumericTextBoxLabel,
-  DemoNumericTextBoxLabelStyle,
-  DemoNumericTextBoxHelperText,
-  DemoNumericTextBoxMaxLength,
-  DemoNumericTextBoxPrefix,
-  DemoNumericTextBoxPrefixStyle,
-  DemoNumericTextBoxSuffix,
-  DemoNumericTextBoxSuffixStyle,
-  DemoNumericTextBoxAdornmentsSeparator,
-  DemoNumericTextBoxActions,
-  DemoNumericTextBoxSteps,
-} from '@/components/app/components/number-text-boxes/default';
+import React from "react";
+import { ScrollView, StyleSheet } from "react-native";
+import { BOTTOM_TAB_HEIGHT, HEADER_HEIGHT, MAX_WIDTH, PADDING_HORIZONTAL } from "@/constants/layout";
+import TextBoxDemoScreen from "@/screens/components/NumericTextBox/default";
 
 
-export default class extends React.PureComponent<{}, {}> {
+export default class extends React.PureComponent {
   public render() {
     return (
       <ScrollView contentContainerStyle={styles.content}>
-        <DemoNumericTextBoxActions />
-        <DemoNumericTextBoxSteps />
-        <DemoNumericTextBoxColors />
-        <DemoNumericTextBoxBorderColor />
-        <DemoNumericTextBoxBorderActiveColor />
-        <DemoNumericTextBoxBorderWidth />
-        <DemoNumericTextBoxBorderRadius />
-        <DemoTextBackgroundColor />
-        <DemoTextActiveBackgroundColor />
-        <DemoNumericTextBoxType />
-        <DemoNumericTextBoxSize />
-        <DemoNumericTextBoxReadOnly />
-        <DemoNumericTextBoxDisabled />
-        <DemoNumericTextBoxLabel />
-        <DemoNumericTextBoxLabelStyle />
-        <DemoNumericTextBoxHelperText />
-        <DemoNumericTextBoxMaxLength />
-        <DemoNumericTextBoxPrefix />
-        <DemoNumericTextBoxPrefixStyle />
-        <DemoNumericTextBoxSuffix />
-        <DemoNumericTextBoxSuffixStyle />
-        <DemoNumericTextBoxAdornmentsSeparator />
+        <TextBoxDemoScreen />
       </ScrollView>
     );
   }
@@ -66,9 +28,9 @@ const styles = StyleSheet.create({
     width: '100%',
     marginHorizontal: "auto",
     paddingTop: HEADER_HEIGHT,
-    paddingBottom: TAB_NAV_HEIGHT,
-    paddingHorizontal: PADDING,
     backgroundColor: 'transparent',
-    maxWidth: WEB_MAX_SCREEN_WIDTH,
+    paddingBottom: BOTTOM_TAB_HEIGHT,
+    paddingHorizontal: PADDING_HORIZONTAL,
+    maxWidth: MAX_WIDTH,
   },
 });
