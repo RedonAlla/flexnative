@@ -1,5 +1,11 @@
 ##  (2024-12-29)
 
+* feat(messages): add new MessageBox component ([c2569d7](https://github.com/RedonAlla/flexnative/commit/c2569d7))
+
+
+
+##  (2024-12-29)
+
 * chore(gitignore): simplify and update ignored paths ([baab796](https://github.com/RedonAlla/flexnative/commit/baab796))
 
 
