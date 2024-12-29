@@ -1,3 +1,9 @@
+##  (2024-12-29)
+
+* chore(gitignore): simplify and update ignored paths ([baab796](https://github.com/RedonAlla/flexnative/commit/baab796))
+
+
+
 ##  (2024-12-27)
 
 * Merge branch 'main' of https://github.com/RedonAlla/flexnative ([dd2e124](https://github.com/RedonAlla/flexnative/commit/dd2e124))
