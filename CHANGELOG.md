@@ -1,5 +1,11 @@
 ##  (2024-12-29)
 
+* chore(ra-icons): bump version to 0.0.5 and fix icon definition typo ([455021b](https://github.com/RedonAlla/flexnative/commit/455021b))
+
+
+
+##  (2024-12-29)
+
 * Merge branch 'main' of https://github.com/RedonAlla/flexnative ([2a748b7](https://github.com/RedonAlla/flexnative/commit/2a748b7))
 
 
