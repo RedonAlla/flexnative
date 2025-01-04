@@ -2,21 +2,21 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-12-19 09:15:00
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-12-29 21:25:38
- * @ Description: Root for Button component demo.
+ * @ Modified time: 2024-12-29 21:26:11
+ * @ Description: Root for Messages component demo.
  */
 
 import React from "react";
 import { ScrollView, StyleSheet } from "react-native";
 import { HEADER_HEIGHT, MAX_WIDTH, PADDING_HORIZONTAL } from "@/constants/layout";
-import ButtonsDemoScreen from "@/screens/components/Buttons";
+import MessagesDemoScreen from "@/screens/components/Messages";
 
 
 export default class extends React.PureComponent {
   public render() {
     return (
       <ScrollView contentContainerStyle={styles.content}>
-        <ButtonsDemoScreen />
+        <MessagesDemoScreen />
       </ScrollView>
     );
   }

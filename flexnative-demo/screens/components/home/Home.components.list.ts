@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-12-12 22:46:13
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-12-19 00:47:06
+ * @ Modified time: 2024-12-29 21:36:16
  * @ Description: This code provides a structured and type-safe way to manage component routes and associated icons within a project that leverages TypeScript's capabilities.
  */
 
@@ -65,11 +65,26 @@ export default [
   {
     href: '/components/bottom-sheet',
     title: 'Bottom Sheet',
-    icon: 'popup' as keyof IconName
+    icon: 'modal' as keyof IconName
   },
   {
     href: '/components/skeleton-loader',
     title: 'Skeleton Loader',
     icon: 'text-block' as keyof IconName
+  },
+  {
+    href: '/components/messages',
+    title: 'Messages',
+    icon: 'popup' as keyof IconName
+  },
+  {
+    href: '/components/navigation',
+    title: 'Navigation',
+    icon: 'menu' as keyof IconName
+  },
+  {
+    href: '/components/layout',
+    title: 'Layout',
+    icon: 'layout' as keyof IconName
   }
 ];

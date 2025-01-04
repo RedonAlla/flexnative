@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-12-11 21:02:00
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-12-27 21:48:36
+ * @ Modified time: 2025-01-03 18:24:39
  * @ Description: Layout for Components demo.
  */
 
@@ -60,6 +60,9 @@ export default class extends React.PureComponent {
           <Stack.Screen name="spinner" options={{title: 'Spinner'}} />
           <Stack.Screen name="bottom-sheet" options={{title: 'Bottom Sheet'}} />
           <Stack.Screen name="skeleton-loader" options={{title: 'Skeleton Loader'}} />
+          <Stack.Screen name="messages" options={{title: 'Messages'}} />
+          <Stack.Screen name="navigation" options={{title: 'Navigation'}} />
+          <Stack.Screen name="layout" options={{title: 'Layout'}} />
         </Stack>
       </>
     )

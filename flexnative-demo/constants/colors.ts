@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-11-21 22:34:36
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-12-29 00:39:47
+ * @ Modified time: 2024-12-29 22:36:05
  * @ Description: This code establishes a centralized approach to manage colors and considers the adaptability needed for light and dark themes, enhancing both visual consistency and user experience across different devices.
  */
 
@@ -60,3 +60,21 @@ export type IPrimaryColors = typeof primaryColors;
  * This method is typically used to apply different styles depending on the user's preferred theme.
  */
 export const deviceScheme = Appearance.getColorScheme();
+
+/**
+ * An array of color names used in the framework.
+ * 
+ * The available colors are:
+ * - 'default'
+ * - 'primary'
+ * - 'secondary'
+ * - 'info'
+ * - 'success'
+ * - 'warning'
+ * - 'error'
+ * - 'dark'
+ * - 'light'
+ */
+export const frameworkColors = [
+  'default' , 'primary' , 'secondary' , 'info' , 'success' , 'warning' , 'error' , 'dark' , 'light' 
+];
