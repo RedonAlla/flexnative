@@ -21,9 +21,6 @@
 /npm-packages/src/shared/ui-constants
 npm-packages/.vscode/settings.json
 documentation/package-lock.json
-documentation/package-lock.json
-documentation/package-lock.json
-documentation/package-lock.json
 npm-packages/src/packages/components/messages/dist
 npm-packages/src/packages/components/navigation/dist
 npm-packages/src/packages/components/layout/dist
@@ -33,3 +30,5 @@ flexnative-demo/.history/*
 npm-packages/package-lock.json
 npm-packages/.history
 documentation/.history
+npm-packages/dist
+text-app/.history
