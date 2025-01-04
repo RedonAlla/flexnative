@@ -21,6 +21,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-layout:before {
+  content: "\e92e";
+}
 .icon-sort-number-desc:before {
   content: "\e90a";
 }
@@ -55,10 +58,10 @@
   content: "\e901";
 }
 .icon-check:before {
-  content: "\e902";
+  content: "\e903";
 }
 .icon-badge:before {
-  content: "\e903";
+  content: "\e902";
 }
 .icon-menu:before {
   content: "\e90d";
@@ -167,4 +170,4 @@
 }
 .icon-trash:before {
   content: "\e906";
-}  
+}

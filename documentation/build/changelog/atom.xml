@@ -8,19 +8,19 @@
     <subtitle>FlexNative Blog</subtitle>
     <icon>https://redonalla.github.io/flexnative/img/logo.svg</icon>
     <entry>
-        <title type="html"><![CDATA[✨ Messages 0.0.4]]></title>
+        <title type="html"><![CDATA[✨ Messages 0.0.11]]></title>
         <id>https://redonalla.github.io/flexnative/changelog/c2569d7</id>
         <link href="https://redonalla.github.io/flexnative/changelog/c2569d7"/>
         <updated>2024-12-29T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[feat(messages) add new MessageBox component]]></summary>
-        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-version-004">✨ Version 0.0.4<a href="https://redonalla.github.io/flexnative/changelog/c2569d7#-version-004" class="hash-link" aria-label="Direct link to ✨ Version 0.0.4" title="Direct link to ✨ Version 0.0.4">​</a></h2>
-<p><strong><a href="https://github.com/RedonAlla/flexnative/commit/c2569d7" target="_blank" rel="noopener noreferrer">#c2569d7</a> feat(messages): add new MessageBox component</strong></p>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-version-0011">✨ Version 0.0.11<a href="https://redonalla.github.io/flexnative/changelog/c2569d7#-version-0011" class="hash-link" aria-label="Direct link to ✨ Version 0.0.11" title="Direct link to ✨ Version 0.0.11">​</a></h2>
+<p><strong>feat(messages): add new MessageBox component</strong></p>
 <p>Introduced the MessageBox component in the <code>@flexnative/messages</code> package, designed to display warning messages with customizable appearance. This includes default props for styling and support for different fill modes like <code>ghost</code> and <code>solid</code>.</p>]]></content>
         <author>
             <name>Redon Alla</name>
             <uri>https://github.com/RedonAlla</uri>
         </author>
-        <category label="messages_v0.0.2" term="messages_v0.0.2"/>
+        <category label="Messages 0.0.11" term="Messages 0.0.11"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[✨ Buttons 0.0.4]]></title>
