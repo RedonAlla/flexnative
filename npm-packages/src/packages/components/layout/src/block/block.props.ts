@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-12-16 21:53:03
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-12-17 19:31:58
+ * @ Modified time: 2025-01-03 20:55:45
  * @ Description: Define an interface BlockProps which extends properties from ViewProps.
  */
 
