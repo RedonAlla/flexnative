@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-12-16 21:53:03
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-01-03 20:55:45
+ * @ Modified time: 2025-01-06 20:11:20
  * @ Description: Define an interface BlockProps which extends properties from ViewProps.
  */
 
@@ -12,14 +12,20 @@ import { ColorValue, ViewProps, ViewStyle } from "react-native";
 /**
  *  Define an interface BlockProps which extends properties from ViewProps.
  */
+/**
+ * Properties for the Block component.
+ */
 export interface BlockProps extends ViewProps {
   /**
-   * Optional property to set flex-grow, flex-shrink, and flex-basis for a component.
+   * Optional property to set flex style for block component.
+   * 
+   * @default 1
    */
   flex?: ViewStyle["flex"];
 
   /**
-   * Optional property to define justification of content along the main axis.
+   * A short version for `justifyContent` style property.
+   * Same as `justifyContent` property.
    */
   justify?: ViewStyle["justifyContent"];
 
@@ -29,32 +35,37 @@ export interface BlockProps extends ViewProps {
   justifyContent?: ViewStyle["justifyContent"];
 
   /**
-   * Optional property to set alignment of items along the cross-axis.
+   * A short version for `justifyContent` style property.
+   * Same as `justifyContent` property.
    */
   align?: ViewStyle["alignItems"];
 
   /**
-   * Alternative optional property name for aligning items along the cross-axis.
+   * Optional property to set alignment of items along the cross-axis.
    */
   alignItems?: ViewStyle["alignItems"];
 
   /**
-   * Optional property to define alignment of content when there is extra space in the cross-axis.
-   */
+   * A short version for `alignContent` style property.
+   * Same as `alignContent` property.
+  */
   content?: ViewStyle["alignContent"];
 
   /**
-   * Alternative optional property name for alignment of content along the cross-axis.
+   * Defines the distribution of lines along the cross-axis.
+   * This only has effect when items are wrapped to multiple lines using `flexWrap`.
+   * 
+   * One of `flex-start`, `flex-end`, `center`, `stretch`, `baseline`
    */
   alignContent?: ViewStyle["alignContent"];
 
   /**
-   * Optional property to specify the width of the component.
+   * Optional property to specify the width of the `Block` component.
    */
   width?: ViewStyle["width"];
 
   /**
-   * Optional property to specify the height of the component.
+   * Optional property to specify the height of the `Block` component.
    */
   height?: ViewStyle["height"];
 
@@ -66,16 +77,16 @@ export interface BlockProps extends ViewProps {
   /**
    * Optional property to specify the gap between rows or column in grid layout.
    */
-  gap?: ViewStyle["rowGap" | "gap"];
+  gap?: ViewStyle["gap"];
 
   /**
    * Optional boolean property to determine if the layout should be in a row format.
-   * If set to true, it likely indicates that the component's children should be displayed horizontally.
+   * If set to `true`, it likely indicates that the component's children should be displayed horizontally.
    */
   row?: boolean;
 
   /**
-   * Optional property `rowGap` which takes a value from ViewStyle's `rowGap` type definition.
+   * Optional property to specify the gap between rows in grid layout.
    */
   rowGap?: ViewStyle["rowGap"];
 
@@ -83,6 +94,11 @@ export interface BlockProps extends ViewProps {
    * Optional property `columnGap` which takes a value from ViewStyle's `columnGap` type definition.
    */
   columnGap?: ViewStyle["columnGap"];
+
+  /**
+   * Optional property for padding top, bottom, left, right.
+   */
+  padding?: ViewStyle["padding"];
   
   /**
    * Optional property 'backgroundColor' of type 'ColorValue'.
