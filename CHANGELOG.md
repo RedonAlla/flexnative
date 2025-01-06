@@ -1,3 +1,9 @@
+##  (2025-01-04)
+
+* chore(documentation): update dependencies and changelog for Messages 0.0.11 ([1f8615c](https://github.com/RedonAlla/flexnative/commit/1f8615c))
+
+
+
 ##  (2025-01-03)
 
 * Merge branch 'main' of https://github.com/RedonAlla/flexnative ([a8df3e8](https://github.com/RedonAlla/flexnative/commit/a8df3e8))
