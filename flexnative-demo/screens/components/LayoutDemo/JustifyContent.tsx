@@ -45,7 +45,7 @@ export default class extends React.PureComponent {
 const blockStyle = (backgroundColor: ColorValue) => {
   return {
     padding: DEMO_COMPONENT_GAP,
-    height: 80,
+    height: 90,
     backgroundColor
   }
 }

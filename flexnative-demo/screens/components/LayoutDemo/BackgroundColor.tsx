@@ -11,11 +11,11 @@ export default class extends React.PureComponent {
     return (
       <DemoBlock title='Background Color'>
         <Block row>
-          <Block flex={1} backgroundColor='crimson' style={styles.block}>
+          <Block backgroundColor='crimson' style={styles.block}>
             <Text style={styles.text}>crimson</Text>
           </Block>
           
-          <Block flex={1} backgroundColor='#229954' style={styles.block}>
+          <Block backgroundColor='#229954' style={styles.block}>
             <Text style={styles.text}>hex: #229954</Text>
           </Block>
         </Block>

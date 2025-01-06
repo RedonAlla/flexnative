@@ -18,7 +18,7 @@
     "@flexnative/buttons": "^0.0.8",
     "@flexnative/icons": "^0.0.5",
     "@flexnative/inputs": "^0.0.6",
-    "@flexnative/layout": "^0.0.4",
+    "@flexnative/layout": "^0.0.6",
     "@flexnative/messages": "^0.0.11",
     "@flexnative/navigation": "^0.0.1",
     "@flexnative/skeleton-loading": "^0.0.2",

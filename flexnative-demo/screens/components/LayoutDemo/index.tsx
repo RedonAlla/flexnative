@@ -15,6 +15,7 @@ import Gap from './Gap';
 import RowGap from './RowGap';
 import ColumnGap from './ColumnGap';
 import BackgroundColor from './BackgroundColor';
+import Padding from './Padding';
 
 
 export default class extends React.PureComponent {
@@ -36,6 +37,7 @@ export default class extends React.PureComponent {
         <RowGap />
         <ColumnGap />
         <BackgroundColor />
+        <Padding />
       </>
     );
   }
