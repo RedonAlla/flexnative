@@ -27,6 +27,8 @@
     "@flexnative/buttons": "^0.0.8",
     "@flexnative/icons": "^0.0.5",
     "@flexnative/inputs": "^0.0.6",
+    "@flexnative/layout": "^0.0.6",
+    "@flexnative/messages": "^0.0.11",
     "@flexnative/skeleton-loading": "^0.0.2",
     "@flexnative/tags": "^0.0.4",
     "@flexnative/theme-context": "^0.0.7",

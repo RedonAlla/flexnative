@@ -9,9 +9,7 @@ tags: [react, react-native, expo, framework, component, badge]
 import Admonition from '@theme/Admonition';
 import Installation from '../../_installation.mdx';
 import ColorProps from '@site/src/components/Docs/Colors/Props';
-import ExampleWramper from '@site/src/components/Docs/ExampleWramper';
-import BackgroundColor from '@site/src/components/Docs/badges/BackgroundColor';
-import BackgroundColorMdx from '!!raw-loader!@site/src/components/Docs/badges/BackgroundColor';
+import ExampleWrapper from '@site/src/components/Docs/ExampleWrapper';
 import BorderColor from '@site/src/components/Docs/badges/BorderColor';
 import BorderColorMdx from '!!raw-loader!@site/src/components/Docs/badges/BorderColor';
 import BorderWidth from '@site/src/components/Docs/badges/BorderWidth';
@@ -53,7 +51,7 @@ import Badge from '@flexnative/badges';
 
 **Badge**
 
-Type: ` React.PureComponent<BadgedProps>`
+Type: `React.PureComponent<BadgedProps>`
 
 This component uses the `ThemeContext` to apply theme-based styles.
 Component extending React.PureComponent, which is optimized for performance by implementing a shallow prop and state comparison.
@@ -116,65 +114,59 @@ One of `'default' | 'text' | 'ghost'`
 
 The following example demonstrates the **FlexNative Badges** in action.
 
-### Background Color
-
-<ExampleWramper codeExample={BackgroundColorMdx}>
-  <BackgroundColor />
-</ExampleWramper>
-
 ### Border Color
 
-<ExampleWramper codeExample={BorderColorMdx}>
+<ExampleWrapper codeExample={BorderColorMdx}>
   <BorderColor />
-</ExampleWramper>
+</ExampleWrapper>
 
 ### Border Width
 
-<ExampleWramper codeExample={BorderWidthMdx}>
+<ExampleWrapper codeExample={BorderWidthMdx}>
   <BorderWidth />
-</ExampleWramper>
+</ExampleWrapper>
 
 ### Border Radius
 
-<ExampleWramper codeExample={BorderRadiusMdx}>
+<ExampleWrapper codeExample={BorderRadiusMdx}>
   <BorderRadius />
-</ExampleWramper>
+</ExampleWrapper>
 
 ### Colors
 
-<ExampleWramper codeExample={ColorsMdx}>
+<ExampleWrapper codeExample={ColorsMdx}>
   <Colors />
-</ExampleWramper>
+</ExampleWrapper>
 
 ### Position
 
-<ExampleWramper codeExample={PositionMdx}>
+<ExampleWrapper codeExample={PositionMdx}>
   <Position />
-</ExampleWramper>
+</ExampleWrapper>
 
 ### Size
 
-<ExampleWramper codeExample={SizeMdx}>
+<ExampleWrapper codeExample={SizeMdx}>
   <Size />
-</ExampleWramper>
+</ExampleWrapper>
 
 ### Text Color
 
-<ExampleWramper codeExample={TextColorMdx}>
+<ExampleWrapper codeExample={TextColorMdx}>
   <TextColor />
-</ExampleWramper>
+</ExampleWrapper>
 
 ### TextProps
 
-<ExampleWramper codeExample={TextPropsMdx}>
+<ExampleWrapper codeExample={TextPropsMdx}>
   <TextProps />
-</ExampleWramper>
+</ExampleWrapper>
 
 ### Type
 
-<ExampleWramper codeExample={TypeMdx}>
+<ExampleWrapper codeExample={TypeMdx}>
   <Type />
-</ExampleWramper>
+</ExampleWrapper>
 
 ## Playground
 

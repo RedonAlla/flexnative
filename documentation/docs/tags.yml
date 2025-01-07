@@ -37,3 +37,15 @@ button:
   label: Button
   permalink: /buttons
   description: Buttons allow users to trigger an action or display content.
+messages:
+  label: Messages
+  permalink: /messages
+  description: Display warning messages that require attention with colored message blocks, to emphasize part of your page.
+layout:
+  label: Layout
+  permalink: /layout
+  description: Useful components for creating responsive and consistent layouts, the `FlexNative Layout` component provides a powerful grid system that allows you to create complex layouts with ease.
+navigation:
+  label: Navigation
+  permalink: /navigation
+  description: Useful components for navigation.

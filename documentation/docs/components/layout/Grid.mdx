@@ -1,0 +1,237 @@
+---
+last_update:
+  date: 2025-01-05
+  author: Redon Alla
+tags: [react, react-native, expo, framework, component, layout]
+---
+
+
+import ExampleWrapper from '@site/src/components/Docs/ExampleWrapper';
+import FlexExample from '@site/src/components/Docs/Layout/Grid/Flex';
+import FlexExampleMdx from '!!raw-loader!@site/src/components/Docs/Layout/Grid/Flex';
+import RowExample from '@site/src/components/Docs/Layout/Grid/Row';
+import RowExampleMdx from '!!raw-loader!@site/src/components/Docs/Layout/Grid/Row';
+import JustifyContentExample from '@site/src/components/Docs/Layout/Grid/JustifyContent';
+import JustifyContentExampleMdx from '!!raw-loader!@site/src/components/Docs/Layout/Grid/JustifyContent';
+import AlignItemsExample from '@site/src/components/Docs/Layout/Grid/AlignItems';
+import AlignItemsExampleMdx from '!!raw-loader!@site/src/components/Docs/Layout/Grid/AlignItems';
+import AlignContentExample from '@site/src/components/Docs/Layout/Grid/AlignContent';
+import AlignContentExampleMdx from '!!raw-loader!@site/src/components/Docs/Layout/Grid/AlignContent';
+import WidthExample from '@site/src/components/Docs/Layout/Grid/Width';
+import WidthExampleMdx from '!!raw-loader!@site/src/components/Docs/Layout/Grid/Width';
+import HeightExample from '@site/src/components/Docs/Layout/Grid/Height';
+import HeightExampleMdx from '!!raw-loader!@site/src/components/Docs/Layout/Grid/Height';
+import WrapExample from '@site/src/components/Docs/Layout/Grid/Wrap';
+import WrapExampleMdx from '!!raw-loader!@site/src/components/Docs/Layout/Grid/Wrap';
+import GapExample from '@site/src/components/Docs/Layout/Grid/Gap';
+import GapExampleMdx from '!!raw-loader!@site/src/components/Docs/Layout/Grid/Gap';
+import RowGapExample from '@site/src/components/Docs/Layout/Grid/RowGap';
+import RowGapExampleMdx from '!!raw-loader!@site/src/components/Docs/Layout/Grid/RowGap';
+import ColumnGapExample from '@site/src/components/Docs/Layout/Grid/ColumnGap';
+import ColumnGapExampleMdx from '!!raw-loader!@site/src/components/Docs/Layout/Grid/ColumnGap';
+import PaddingExample from '@site/src/components/Docs/Layout/Grid/Padding';
+import PaddingExampleMdx from '!!raw-loader!@site/src/components/Docs/Layout/Grid/Padding';
+import BackgroundColorExample from '@site/src/components/Docs/Layout/Grid/BackgroundColor';
+import BackgroundColorExampleMdx from '!!raw-loader!@site/src/components/Docs/Layout/Grid/BackgroundColor';
+
+
+`Block` component it is a wrapper over the **React-Native** `View` component,
+using the Flexbox algorithm which is designed to provide a consistent layout on different screen sizes.
+We will enhance this component to support the grid and layout styling using properties that will speed up our development time.
+
+You will normally use a combination of [`BlockProps`](#properties) to achieve the right layout.
+
+## API
+
+```jsx
+import { Block } from '@flexnative/layout';
+```
+
+## Component
+This component extends [`React.PureComponent`](https://react.dev/reference/react/PureComponent),
+which optimizes the component by preventing unnecessary re-renders when the props haven't changed.
+
+**Block**
+Type: <code>[React.PureComponent](https://react.dev/reference/react/PureComponent)\<[BlockProps](#properties)\></code>
+
+
+## Properties
+
+:::info
+`BlockProps` extends [`ViewProps`](https://reactnative.dev/docs/view#props) from **React Native**, 
+so any property that is available in the `View` component is also available in the `Block` component.
+:::
+
+|  Name | Type | Required | Default Value | Description |
+| ----- | ---- | -------- | ------------- | ----------- |
+| flex | [`ViewStyle["flex"]`](https://reactnative.dev/docs/layout-props#flex) | **false** | 1 | Optional property to set flex style for block component. |
+| row | `boolean` | **false** | false | Optional boolean property to determine if the layout should be in a row format. If set to `true`, it likely indicates that the component's children should be displayed horizontally. |
+| justifyContent | [`ViewStyle["justifyContent"]`](https://reactnative.dev/docs/layout-props#justifycontent) | **false** | undefined | Alternative optional property name for justify content along the main axis. |
+| justify | [`ViewStyle["justifyContent"]`](https://reactnative.dev/docs/layout-props#justifycontent) | **false** | undefined | A short version for `justifyContent` style property. Same as `justifyContent` property. |
+| alignItems | [`ViewStyle["alignItems"]`](https://reactnative.dev/docs/layout-props#alignitems) | **false** | undefined | Optional property to set alignment of items along the cross-axis. |
+| align | [`ViewStyle["alignItems"]`](https://reactnative.dev/docs/layout-props#alignitems) | **false** | undefined | A short version for `alignItems` style property. Same as `alignItems` property. |
+| alignContent | [`ViewStyle["alignContent"]`](https://reactnative.dev/docs/layout-props#aligncontent) | **false** | undefined | Defines the distribution of lines along the cross-axis. This only has effect when items are wrapped to multiple lines using `flexWrap`. |
+| content | [`ViewStyle["alignContent"]`](https://reactnative.dev/docs/layout-props#aligncontent) | **false** | undefined | A short version for `alignContent` style property. Same as `alignContent` property. |
+| width | [`ViewStyle["width"]`](https://reactnative.dev/docs/layout-props#width) | **false** | undefined | Optional property to set the width of the `Block` component. |
+| height | [`ViewStyle["height"]`](https://reactnative.dev/docs/layout-props#height) | **false** | undefined | Optional property to set the height of the `Block` component. |
+| wrap | [`ViewStyle["flexWrap"]`](https://reactnative.dev/docs/layout-props#flexwrap) | **false** | false | It controls whether children can wrap around after they hit the end of a flex container. |
+| gap | [`ViewStyle["gap"]`](https://reactnative.dev/docs/layout-props#gap) | **false** | undefined | Optional property to specify the gap between rows or column in grid layout. |
+| rowGap | [`ViewStyle["rowGap"]`](https://reactnative.dev/docs/layout-props#rowgap) | **false** | undefined | Optional property to specify the gap between rows in grid layout. |
+| columnGap | [`ViewStyle["columnGap"]`](https://reactnative.dev/docs/layout-props#columngap) | **false** | undefined | Optional property to specify the gap between columns in grid layout. |
+| padding | [`ViewStyle["padding"]`](https://reactnative.dev/docs/layout-props#padding) | **false** | undefined | Optional property to set padding for the `Block` component. |
+| backgroundColor | [`ViewStyle["backgroundColor"]`](https://reactnative.dev/docs/view-style-props#backgroundcolor) | **false** | undefined | Optional property to set the background color of the `Block` component. |
+| children | [`ReactNode`](https://reactnative.dev/docs/react-node) | **false** | undefined | The children of the `Block` component. | 
+
+## Use case Examples
+The following example demonstrates the `Box` component in action.
+
+### Flex
+
+`flex` will define how items are going to “fill” over the available space along your main axis.
+Space will be divided according to each element's flex property.
+
+<ExampleWrapper codeExample={FlexExampleMdx}>
+<FlexExample />
+</ExampleWrapper>
+
+### Row
+
+`row` will define the [`flexDirection`](https://reactnative.dev/docs/layout-props#flexdirection).
+If `row` is set to `true`, `flexDirection` it is set to `row` and component's children should be displayed horizontally,
+otherwise `flexDirection` it is set to `column` and component's children should be displayed vertically.
+
+<ExampleWrapper codeExample={RowExampleMdx}>
+<RowExample />
+</ExampleWrapper>
+
+### Justify Content
+
+`justifyContent` specifies how to align children within the main axis of their container.
+For example, you can use this property to center a child horizontally within a container with `flexDirection`
+set to `row` or vertically within a container with `flexDirection` set to `column`.
+
+Property `justify` it is added as a short version for `justifyContent` style property.
+
+<ExampleWrapper codeExample={JustifyContentExampleMdx}>
+<JustifyContentExample />
+</ExampleWrapper>
+
+### Align Items
+
+`alignItems` defines how to align children along the cross axis of their container.
+
+Property `align` it is added as a short version for `alignItems` style property.
+
+<ExampleWrapper codeExample={AlignItemsExampleMdx}>
+<AlignItemsExample />
+</ExampleWrapper>
+
+### Align Content
+
+`alignContent` defines the distribution of lines along the cross-axis
+and it has effect only when items are wrapped to multiple lines using `flexWrap`.
+
+Property `content` it is added as a short version for `alignContent` style property. 
+
+<ExampleWrapper codeExample={AlignContentExampleMdx}>
+<AlignContentExample />
+</ExampleWrapper>
+
+### Width
+Specify the width of the `Block` component.
+
+<ExampleWrapper codeExample={WidthExampleMdx}>
+<WidthExample />
+</ExampleWrapper>
+
+### Height
+Specify the height of the `Block` component.
+
+<ExampleWrapper codeExample={HeightExampleMdx}>
+<HeightExample />
+</ExampleWrapper>
+
+### Wrap
+`wrap` controls whether children can wrap around after they hit the end of a flex container.
+
+<ExampleWrapper codeExample={WrapExampleMdx}>
+<WrapExample />
+</ExampleWrapper>
+
+### Gap
+`gap` defines the size of the gap between the rows and between the columns in flexbox, grid or multi-column layout.
+
+It is a shorthand for the following properties:
+- `rowGap`
+- `columnGap`
+
+<ExampleWrapper codeExample={GapExampleMdx}>
+<GapExample />
+</ExampleWrapper>
+
+### Row Gap
+The `rowGap` property specifies the gap between the rows in a flexbox or grid layout.
+
+<ExampleWrapper codeExample={RowGapExampleMdx}>
+<RowGapExample />
+</ExampleWrapper>
+
+### Column Gap
+The `columnGap` property specifies the gap between the columns in a flexbox or grid layout.
+
+<ExampleWrapper codeExample={ColumnGapExampleMdx}>
+<ColumnGapExample />
+</ExampleWrapper>
+
+### Padding
+The `padding` property for padding top, bottom, left, right.
+
+<ExampleWrapper codeExample={PaddingExampleMdx}>
+<PaddingExample />
+</ExampleWrapper>
+
+### Background Color
+
+<ExampleWrapper codeExample={BackgroundColorExampleMdx}>
+<BackgroundColorExample />
+</ExampleWrapper>
+
+## Playground
+
+```jsx live noInline
+const DEMO_PADDING = 15;
+
+const styles = {
+  text: {
+    padding: 5,
+    borderRadius: 3,
+    borderWidth: 1,
+    borderColor: '#fff',
+    color: '#fff'
+  },
+};
+
+render(
+  <Block>
+    <Block row>
+      <Block backgroundColor='crimson' padding={DEMO_PADDING}>
+        <p style={styles.text}>crimson</p>
+      </Block>
+      
+      <Block backgroundColor='#229954' padding={DEMO_PADDING}>
+        <p style={styles.text}>hex: #229954</p>
+      </Block>
+    </Block>
+
+    <Block>
+      <Block backgroundColor='rgb(255, 195, 0)' padding={DEMO_PADDING}>
+        <p style={styles.text}>RGB: 255, 195, 0</p>
+      </Block>
+
+      <Block backgroundColor='hsl(283, 39%, 53%)' padding={DEMO_PADDING}>
+        <p style={styles.text}>HSL: 283, 39%, 53%</p>
+      </Block>
+    </Block>
+  </Block>
+);
+```

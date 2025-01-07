@@ -8,6 +8,8 @@ import Tag from '@flexnative/tags';
 import Badge from '@flexnative/badges';
 import SkeletonLoader, { Circle, Rect } from '@flexnative/skeleton-loading';
 import { TextBox, NumericTextBox, Check, CheckList } from '@flexnative/inputs';
+import Message from "@flexnative/messages";
+import { Block } from '@flexnative/layout'; 
 
 
 // Add react-live imports you need here
@@ -29,6 +31,8 @@ const ReactLiveScope: any = {
   NumericTextBox,
   Check,
   CheckList,
+  Message,
+  Block,
   LOGO
 };
 

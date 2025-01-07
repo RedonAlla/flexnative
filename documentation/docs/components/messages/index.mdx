@@ -1,0 +1,136 @@
+---
+title: Messages
+last_update:
+  date: 2025-01-04
+  author: Redon Alla
+tags: [react, react-native, expo, framework, component, messages]
+---
+
+import Installation from '../../_installation.mdx';
+import Admonition from '@theme/Admonition';
+import ExampleWrapper from '@site/src/components/Docs/ExampleWrapper';
+import ColorExample from '@site/src/components/Docs/Messages/Color';
+import ColorExampleMdx from '!!raw-loader!@site/src/components/Docs/Messages/Color';
+import BorderColorsExample from '@site/src/components/Docs/Messages/BorderColor';
+import BorderColorsExampleMdx from '!!raw-loader!@site/src/components/Docs/Messages/BorderColor';
+import BorderRadiusExample from '@site/src/components/Docs/Messages/BorderRadius';
+import BorderRadiusExampleMdx from '!!raw-loader!@site/src/components/Docs/Messages/BorderRadius';
+import BorderWidthExample from '@site/src/components/Docs/Messages/BorderWidth';
+import BorderWidthExampleMdx from '!!raw-loader!@site/src/components/Docs/Messages/BorderWidth';
+import FillModeExample from '@site/src/components/Docs/Messages/FillMode';
+import FillModeExampleMdx from '!!raw-loader!@site/src/components/Docs/Messages/FillMode';
+import SizeExample from '@site/src/components/Docs/Messages/Size';
+import SizeExampleMdx from '!!raw-loader!@site/src/components/Docs/Messages/Size';
+import ChildrenExample from '@site/src/components/Docs/Messages/Children';
+import ChildrenExampleMdx from '!!raw-loader!@site/src/components/Docs/Messages/Children';
+
+
+Component to display messages that require attention with colored message blocks,
+to emphasize part of your page.
+
+The **FlexNative Messages** is part of the `FlexNative Framework` and is available under the `@flexnative/messages` NPM package.
+
+## Dependencies
+- [`@flexnative/theme-context`](../../theme/index.mdx)
+
+<Installation title="FlexNative Messages" name='@flexnative/messages' />
+
+## API
+
+```jsx
+import Message from '@flexnative/messages';
+```
+
+## Component
+
+**Message**
+
+Type: <code>[React.PureComponent](https://react.dev/reference/react/PureComponent)\<[MessageBoxProps](#properties)\></code>
+
+This component uses the `ThemeContext` to apply theme-based styles.
+Component extending [`React.PureComponent`](https://react.dev/reference/react/PureComponent),
+which is optimized for performance by implementing a shallow prop and state comparison.
+
+## Properties
+
+:::info
+MessageBoxProps extends [`ViewProps`](https://reactnative.dev/docs/view#props) from **React Native**,
+so any prop of ViewProps it is applicable on `Message` component.
+:::
+
+|  Name | Type | Required | Default Value | Description |
+| ----- | ---- | -------- | ------------- | ----------- |
+| radius | [`BorderRadius`](../../../theme/default-theme.mdx#borderradius) | **false** | `medium` | Message box border radius. Specifies the roundness of the message box corners. |
+| borderWidth | [`BorderWidth`](../../../theme/default-theme.mdx#borderwidth) | **false** | `node` | Optional message box borders width. Specifies the thickness of the message box borders. |
+| borderColor | [`ColorValue`](https://reactnative.dev/docs/colors) | **false** | `undefined` | Specifies the color of the message box borders. Borders color according to `react-native` ColorValue. |
+| fill | [`FillMode`](#fillmode) | **false** | `ghost` | Fill Mode of the message box. Determines the appearance of the message box. <Admonition type="warning">To have appearance for `ghost` with custom color you should use hex colors.</Admonition> |
+| size | [`Sizes`](../../../theme/default-theme.mdx#sizes) | **false** | `normal` | Message box size. Defines the overall size of the message box component. |
+| color | [`Color`](../../../theme/default-theme.mdx#color) | **false** | `theme.color.default` | Color by theme or a custom color according `react-native` ColorValue. Sets the primary color of the message box, either by theme or a specified color code. |
+| text | `string` | **false** | `undefined` | String that contains the text or message to be displayed inside the message box. If the `children` property is used, this text property will be ignored. |
+| children | [`React.ReactNode`](https://reactnative.dev/docs/react-node) | **false** | `undefined` | Children to display inside the Message box. Can be any React elements that will be rendered within the message box. |
+
+### FillMode
+One of `'ghost' | 'solid'`
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| ghost | `string` | Message Box with a transparent background. |
+| solid | `string` | Message Box with a solid background color. |
+
+## Use case Examples
+The following example demonstrates the `Message` component in action.
+
+### Color
+
+<ExampleWrapper codeExample={ColorExampleMdx}>
+<ColorExample />
+</ExampleWrapper>
+
+### BorderColors
+`borderColors` will have effect effect only when `borderWidth` has a value.
+
+<ExampleWrapper codeExample={BorderColorsExampleMdx}>
+<BorderColorsExample />
+</ExampleWrapper>
+
+### BorderRadius
+
+<ExampleWrapper codeExample={BorderRadiusExampleMdx}>
+<BorderRadiusExample />
+</ExampleWrapper>
+
+### BorderWidth
+
+<ExampleWrapper codeExample={BorderWidthExampleMdx}>
+<BorderWidthExample />
+</ExampleWrapper>
+
+### BorderWidth
+
+<ExampleWrapper codeExample={BorderWidthExampleMdx}>
+<BorderWidthExample />
+</ExampleWrapper>
+
+### FillMode
+
+<ExampleWrapper codeExample={FillModeExampleMdx}>
+<FillModeExample />
+</ExampleWrapper>
+
+### Size
+
+<ExampleWrapper codeExample={SizeExampleMdx}>
+<SizeExample />
+</ExampleWrapper>
+
+### Children
+
+<ExampleWrapper codeExample={ChildrenExampleMdx}>
+<ChildrenExample />
+</ExampleWrapper>
+
+## Playground
+
+```jsx live noInline
+render(<Message color='info' size='medium' text='Play with props to see live changes' />);
+```
