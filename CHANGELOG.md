@@ -1,5 +1,11 @@
 ##  (2025-01-07)
 
+* Merge branch 'main' of https://github.com/RedonAlla/flexnative ([5bb0780](https://github.com/RedonAlla/flexnative/commit/5bb0780))
+
+
+
+##  (2025-01-07)
+
 * feat(layout): add Block and Message components with examples and documentation : Documentation ([b30ba7e](https://github.com/RedonAlla/flexnative/commit/b30ba7e))
 
 
