@@ -1,13 +1,13 @@
 ---
-slug: b6a08f4
-title: 📕 Layout
-description: docs(layout) add detailed documentation for Block component properties
+slug: 6f1abf1
+title: ✨ Layout 0.0.6
+description: feat(layout) enhance Block component with default flex and padding support
 authors: RedonAlla
-tags: [JSDoc, layout_v0.0.6]
+tags: [layout_v0.0.6]
 ---
 
-## 📕 Documentation
+## ✨ Version 0.0.6
 
-**[#b6a08f4](https://github.com/RedonAlla/flexnative/commit/b6a08f4) docs(layout): add detailed documentation for Block component properties**
+**[#6f1abf1](https://github.com/RedonAlla/flexnative/commit/6f1abf1) feat(layout): enhance Block component with default flex and padding support**
 
-This commit introduces a comprehensive documentation block for the `Block` component, detailing its purpose, usage example, and all props available. This enhancement aims to improve code readability and facilitate developers' understanding of the component's functionality and customization options.
+Updated the `Block` component to include a default flex value of 1 and added a new padding property. This change simplifies the use of the Block component by providing sensible defaults, reducing the need for explicit style definitions. Additionally, the module entry point was specified in package.json, which is now aligned with modern module resolution practices.

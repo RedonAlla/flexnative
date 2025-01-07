@@ -74,7 +74,7 @@ export default class extends React.PureComponent {
                   Whether you're building for the web, Android or iOS, FlexNative got you covered.
                   Fast-track your dev process with universal components. The framework contains a set of general-purpose UI components styled in a similar way.
                   The themes can be changed in the runtime without reloading the application.
-                  This way, you may easily focus on business logic, while UI Kitten takes care of the visual appearance of your product.
+                  This way, you may easily focus on business logic, while FlexNative takes care of the visual appearance of your product.
                 </p>
               </div>
             </div>
