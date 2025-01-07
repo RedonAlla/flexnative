@@ -1,5 +1,11 @@
 ##  (2025-01-07)
 
+* feat(layout): add Block and Message components with examples and documentation : Documentation ([b30ba7e](https://github.com/RedonAlla/flexnative/commit/b30ba7e))
+
+
+
+##  (2025-01-07)
+
 * docs(layout): add detailed documentation for Block component properties ([b6a08f4](https://github.com/RedonAlla/flexnative/commit/b6a08f4))
 
 
