@@ -2,11 +2,42 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://redonalla.github.io/flexnative/changelog</id>
     <title>FlexNative Blog</title>
-    <updated>2024-12-29T00:00:00.000Z</updated>
+    <updated>2025-01-07T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://redonalla.github.io/flexnative/changelog"/>
     <subtitle>FlexNative Blog</subtitle>
     <icon>https://redonalla.github.io/flexnative/img/logo.svg</icon>
+    <entry>
+        <title type="html"><![CDATA[✨ Layout 0.0.6]]></title>
+        <id>https://redonalla.github.io/flexnative/changelog/6f1abf1</id>
+        <link href="https://redonalla.github.io/flexnative/changelog/6f1abf1"/>
+        <updated>2025-01-07T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[feat(layout) enhance Block component with default flex and padding support]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-version-006">✨ Version 0.0.6<a href="https://redonalla.github.io/flexnative/changelog/6f1abf1#-version-006" class="hash-link" aria-label="Direct link to ✨ Version 0.0.6" title="Direct link to ✨ Version 0.0.6">​</a></h2>
+<p><strong><a href="https://github.com/RedonAlla/flexnative/commit/6f1abf1" target="_blank" rel="noopener noreferrer">#6f1abf1</a> feat(layout): enhance Block component with default flex and padding support</strong></p>
+<p>Updated the <code>Block</code> component to include a default flex value of 1 and added a new padding property. This change simplifies the use of the Block component by providing sensible defaults, reducing the need for explicit style definitions. Additionally, the module entry point was specified in package.json, which is now aligned with modern module resolution practices.</p>]]></content>
+        <author>
+            <name>Redon Alla</name>
+            <uri>https://github.com/RedonAlla</uri>
+        </author>
+        <category label="Layout 0.0.6" term="Layout 0.0.6"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[📕 Layout]]></title>
+        <id>https://redonalla.github.io/flexnative/changelog/b6a08f4</id>
+        <link href="https://redonalla.github.io/flexnative/changelog/b6a08f4"/>
+        <updated>2025-01-06T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[docs(layout) add detailed documentation for Block component properties]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-documentation">📕 Documentation<a href="https://redonalla.github.io/flexnative/changelog/b6a08f4#-documentation" class="hash-link" aria-label="Direct link to 📕 Documentation" title="Direct link to 📕 Documentation">​</a></h2>
+<p><strong><a href="https://github.com/RedonAlla/flexnative/commit/b6a08f4" target="_blank" rel="noopener noreferrer">#b6a08f4</a> docs(layout): add detailed documentation for Block component properties</strong></p>
+<p>This commit introduces a comprehensive documentation block for the <code>Block</code> component, detailing its purpose, usage example, and all props available. This enhancement aims to improve code readability and facilitate developers' understanding of the component's functionality and customization options.</p>]]></content>
+        <author>
+            <name>Redon Alla</name>
+            <uri>https://github.com/RedonAlla</uri>
+        </author>
+        <category label="JSDoc" term="JSDoc"/>
+        <category label="Layout 0.0.6" term="Layout 0.0.6"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[✨ Messages 0.0.11]]></title>
         <id>https://redonalla.github.io/flexnative/changelog/c2569d7</id>
