@@ -9,10 +9,6 @@ import Button from '@flexnative/buttons';
 import { DEMO_COMPONENT_GAP } from '@/constants/layout';
 import { useThemeContext } from '@flexnative/theme-context';
 
-// import avatar1 from require('../../../assets/icons/avatar-1.jpg');
-// import avatar2 from require('../../../assets/icons/avatar-2.jpg');
-// import avatar3 from require('../../../assets/icons/avatar-3.jpg');
-
 
 function ChatScreen() {
   const navigation = useNavigation();
@@ -20,12 +16,16 @@ function ChatScreen() {
   
   return (
     <ScrollView style={styles.container}>
-      {/* Chat header */}
       <View style={[styles.header, { backgroundColor: theme.colors.secondary }]}>
-        <Button size='large' iconLeft='menu' radius='full' color='secondary' type='text' onPress={() => navigation.dispatch(DrawerActions.openDrawer())} /> <Text style={[styles.headerText]}>Chats</Text>
+        <Button size='large'
+                iconLeft='menu'
+                radius='full'
+                color='secondary'
+                type='text'
+                onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
+        <Text style={styles.headerText}>Chats</Text>
       </View>
-
-      {/* Chat items */}
+      
       {chatItems.map((item, index) => (
         <View key={index} style={styles.chatItem}>
           <Image source={item.avatar} style={styles.avatar} />
@@ -37,7 +37,6 @@ function ChatScreen() {
         </View>
       ))}
     </ScrollView>
-
   );
 }
 

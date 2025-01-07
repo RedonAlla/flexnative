@@ -9,7 +9,7 @@ import Button from "@flexnative/buttons";
 import { DEMO_COMPONENT_GAP } from "@/constants/layout";
 
 
-function ModalScreen(props: any) {
+function HomeScreen(props: any) {
 
   const navigation = useNavigation();
   
@@ -38,4 +38,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default withFancyDrawer(ModalScreen);
+export default withFancyDrawer(HomeScreen);

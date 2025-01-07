@@ -22,13 +22,16 @@ export default class DrawerScreen extends PureComponent {
             width: 250,
             backgroundColor: this.context.colors.primary
           },
+          sceneStyle: {
+            backgroundColor: this.context.colors.primary
+          },
           drawerInactiveTintColor: 'white',
           drawerActiveTintColor: 'white',
           drawerActiveBackgroundColor: '#ffffff30',
           overlayColor: 'transparent',
           headerTitleStyle: {
             fontFamily: 'fontRegular',
-          },
+          }
         }}
         initialRouteName={'Home'}
         drawerContent={DrawerContent}>
