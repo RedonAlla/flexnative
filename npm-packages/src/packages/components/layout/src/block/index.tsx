@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-12-16 22:06:38
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-01-05 22:57:00
+ * @ Modified time: 2025-01-06 22:38:30
  * @ Description: This code defines a `Block` component in TypeScript using React and React Native. The `Block` component extends `React.PureComponent`, which optimizes the component by preventing unnecessary re-renders when the props haven't changed.
  */
 
@@ -11,6 +11,40 @@ import { BlockProps } from "./block.props";
 import { StyleProp, View, ViewStyle } from "react-native";
 
 
+/**
+ * A `Block` component in TypeScript using React and React Native.
+ * 
+ * This component extends `React.PureComponent`, which optimizes the component by preventing unnecessary re-renders when the props haven't changed.
+ * 
+ * @component
+ * @example
+ * ```tsx
+ * <Block flex={1} row justify="center" align="center" backgroundColor="blue">
+ *   <Text>Example Block</Text>
+ * </Block>
+ * ```
+ * 
+ * @extends {React.PureComponent<BlockProps>}
+ * 
+ * @prop {number} [flex] - Defines how a flex item will grow relative to the rest of the flex items inside the same container.
+ * @prop {boolean} [row] - If true, sets the flex direction to row.
+ * @prop {string} [justify] - Defines the alignment along the main axis.
+ * @prop {string} [justifyContent] - Defines the alignment along the main axis.
+ * @prop {string} [align] - Defines the default behavior for how flex items are laid out along the cross axis on the current line.
+ * @prop {string} [alignItems] - Defines the default behavior for how flex items are laid out along the cross axis on the current line.
+ * @prop {string} [content] - Defines the alignment of the flex container's lines within when there is extra space in the cross-axis.
+ * @prop {string} [alignContent] - Defines the alignment of the flex container's lines within when there is extra space in the cross-axis.
+ * @prop {string} [wrap] - Defines whether the flex container is single-line or multi-line.
+ * @prop {number|string} [width] - Sets the width of the block.
+ * @prop {number|string} [height] - Sets the height of the block.
+ * @prop {string} [backgroundColor] - Sets the background color of the block.
+ * @prop {number} [gap] - Sets the gap between items.
+ * @prop {number} [rowGap] - Sets the gap between rows.
+ * @prop {number} [columnGap] - Sets the gap between columns.
+ * @prop {number|string} [padding] - Sets the padding inside the block.
+ * @prop {StyleProp<ViewStyle>} [style] - Additional styles to apply to the block.
+ * @prop {React.ReactNode} [children] - The content to be displayed inside the block.
+ */
 export default class Block extends React.PureComponent<BlockProps> {
   render(): React.ReactNode {
     const {
