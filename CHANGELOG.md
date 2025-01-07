@@ -1,3 +1,9 @@
+##  (2025-01-07)
+
+* docs(layout): add detailed documentation for Block component properties ([b6a08f4](https://github.com/RedonAlla/flexnative/commit/b6a08f4))
+
+
+
 ##  (2025-01-06)
 
 * Merge branch 'main' of https://github.com/RedonAlla/flexnative ([76647b8](https://github.com/RedonAlla/flexnative/commit/76647b8))
