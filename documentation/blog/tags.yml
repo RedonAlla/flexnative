@@ -23,6 +23,11 @@ inputs_v0.0.4:
   permalink: /inputs_v0.0.4
   description: Inputs 0.0.4. Use this tag to filter all changes about Inputs version 0.0.4.
 
+inputs_v0.0.9:
+  label: Inputs 0.0.9
+  permalink: /inputs_v0.0.9
+  description: Inputs 0.0.9. Use this tag to filter all changes about Inputs version 0.0.9.
+
 badges_v0.0.4:
   label: Badges 0.0.4
   permalink: /badges_v0.0.4
