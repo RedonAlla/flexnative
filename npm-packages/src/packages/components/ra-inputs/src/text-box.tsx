@@ -160,7 +160,7 @@ export default class TextBox extends React.PureComponent<BaseInputProps, State> 
     );
     
     return (
-      <View style={styles.wrapper}>
+      <View style={[styles.wrapper, !material ? {flex: 1} : undefined]}>
         <FalsyComponent
           shouldRender={Boolean(label && !material)}
           style={[styles.label, getStyle<TextStyle>(labelStyle, this.state.isFocused)]}

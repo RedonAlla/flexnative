@@ -94,7 +94,6 @@ export function createStyles(props: ContainerProps) {
   
   return StyleSheet.create({
     wrapper: {
-      flex: 1,
       display: 'flex',
       overflow: 'hidden',
       flexDirection: 'column',
