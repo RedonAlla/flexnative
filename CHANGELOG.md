@@ -1,5 +1,11 @@
 ##  (2025-01-30)
 
+* docs(blog): add post for inputs refactor and update tags ([f517e73](https://github.com/RedonAlla/flexnative/commit/f517e73))
+
+
+
+##  (2025-01-30)
+
 * Merge branch 'main' of https://github.com/RedonAlla/flexnative ([b7a1d5b](https://github.com/RedonAlla/flexnative/commit/b7a1d5b))
 
 
