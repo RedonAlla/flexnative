@@ -157,10 +157,10 @@ export default class extends React.PureComponent<NumberTextBoxProps, State> {
 
     const styles = createStyles(
       {
-        type: type,
+        type: type!,
         color: color!,
-        size: size,
-        radius: radius,
+        size: size!,
+        radius: radius!,
         borderWidth: borderWidth,
         disabled: disabled,
         readOnly: readOnly,
@@ -233,8 +233,8 @@ export default class extends React.PureComponent<NumberTextBoxProps, State> {
             isMaterial={material!}
             showActions={actions}
             disabled={Boolean(disabled || readOnly)}
-            size={size}
-            borderRadius={radius}
+            size={size!}
+            borderRadius={radius!}
             theme={this.context}
             onIncrement={this.handleIncrement}
             onDecrement={this.handleDecrement}

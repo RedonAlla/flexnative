@@ -142,10 +142,10 @@ export default class TextBox extends React.PureComponent<BaseInputProps, State> 
 
     const styles = createStyles(
       {
-        type: type,
+        type: type!,
         color: color!,
-        size: size,
-        radius: radius,
+        size: size!,
+        radius: radius!,
         borderWidth: borderWidth,
         disabled: disabled,
         readOnly: readOnly,

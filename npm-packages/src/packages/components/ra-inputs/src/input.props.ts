@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-06-17 22:55:53
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-27 22:18:17
+ * @ Modified time: 2025-02-01 23:50:28
  * @ Description: Defines interfaces and types commonly used for input components, specifically tailored for a UI library or framework based on React Native. It provides a structured way to define the properties that these components will accept.
  */
 
@@ -38,19 +38,19 @@ export interface BaseInputProps extends TextInputProps {
    * 
    * @default 'outlined'
   */
-  type: InputType;
+  type?: InputType;
 
   /**
    * Defines the size of the input field.
    * @default 'normal'
   */
-  size: Sizes;
+  size?: Sizes;
 
   /** Sets the border radius of the input
    * 
   * @default 'medium'
   */
-  radius: BorderRadius;
+  radius?: BorderRadius;
 
   /**
    * Optional property to specify the width of the input borders.
