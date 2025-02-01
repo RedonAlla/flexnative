@@ -1,5 +1,11 @@
 ##  (2025-02-01)
 
+* docs(blog): update refactor inputs post and tags ([385d420](https://github.com/RedonAlla/flexnative/commit/385d420))
+
+
+
+##  (2025-02-01)
+
 * refactor(inputs): make certain props optional and handle non-null assertions ([93429af](https://github.com/RedonAlla/flexnative/commit/93429af))
 
 
