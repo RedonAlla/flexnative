@@ -28,6 +28,7 @@ type ContainerProps = {
   color: Color;
   size: Sizes;
   radius: BorderRadius;
+  isError?: boolean;
   borderWidth?: BorderWidth;
   disabled?: boolean;
   readOnly?: boolean;
@@ -118,6 +119,7 @@ export function createStyles(props: ContainerProps) {
       fontSize: iconSize,
       textAlign: 'center',
       verticalAlign: 'middle',
+      color: props.isError ? props.theme.colors.isError : props.theme.colors.text,
     },
     container: {
       flexDirection: 'row',
@@ -136,10 +138,12 @@ export function createStyles(props: ContainerProps) {
     },
     containerFocus: {
       backgroundColor: props.activeBackgroundColor ?? backgroundColor,
-      borderColor: focusBorderColor,
+      borderColor: props.isError ? props.theme.colors.error : focusBorderColor,
     },
     containerNotFocus: {
-      borderColor: props.disabled ? 'transparent' : props.borderColor || themeColor,
+      borderColor: props.isError
+        ? props.theme.colors.error
+        : props.disabled ? 'transparent' : props.borderColor || themeColor,
       backgroundColor:
         props.disabled
           ? props.theme.colors.default
@@ -151,7 +155,7 @@ export function createStyles(props: ContainerProps) {
     },
     label: {
       fontFamily: 'Regular',
-      color: props.theme.colors.text,
+      color: props.isError ? props.theme.colors.isError : props.theme.colors.text,
       marginBottom: TEXT_HELPER_MARGIN_TOP_MULTIPLIER * paddingVertical,
       fontSize: props.material ? TEXT_HELPER_MULTIPLIER * fontSize : fontSize,
     },

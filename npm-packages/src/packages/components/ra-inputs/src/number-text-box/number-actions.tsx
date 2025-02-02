@@ -28,7 +28,7 @@ type ActionProps = {
   /**
    * Indicates if the action is disabled.
    */
-  disabled: boolean;
+  disabled?: boolean;
 
   /**
    * Specifies the icon type.

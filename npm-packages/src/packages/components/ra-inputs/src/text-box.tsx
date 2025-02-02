@@ -78,13 +78,13 @@ export default class TextBox extends React.PureComponent<BaseInputProps, State> 
       this.setState({isFocused: false});
 
     this.props.onBlur?.(e);
-  };
+  }
 
   /**
    * Handles focus event and updates focus state. It also calls a parent's onFocus callback.
    * @param {NativeSyntheticEvent<TextInputFocusEventData>} e 
    */
-  private handleFocus = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
+  public handleFocus = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
     if(!this.props.disabled)
       this.setState({isFocused: true});
 
@@ -109,6 +109,7 @@ export default class TextBox extends React.PureComponent<BaseInputProps, State> 
       type,
       size,
       radius,
+      isError,
       borderWidth,
       borderColor,
       activeBackgroundColor,
@@ -146,6 +147,7 @@ export default class TextBox extends React.PureComponent<BaseInputProps, State> 
         color: color!,
         size: size!,
         radius: radius!,
+        isError: isError!,
         borderWidth: borderWidth,
         disabled: disabled,
         readOnly: readOnly,
