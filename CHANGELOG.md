@@ -1,3 +1,9 @@
+##  (2025-02-02)
+
+* chore(inputs): bump version to 0.0.11 ([b46a7ff](https://github.com/RedonAlla/flexnative/commit/b46a7ff))
+
+
+
 ##  (2025-02-01)
 
 * docs(blog): update refactor inputs post and tags ([385d420](https://github.com/RedonAlla/flexnative/commit/385d420))
