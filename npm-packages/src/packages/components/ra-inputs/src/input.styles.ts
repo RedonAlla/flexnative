@@ -119,7 +119,7 @@ export function createStyles(props: ContainerProps) {
       fontSize: iconSize,
       textAlign: 'center',
       verticalAlign: 'middle',
-      color: props.isError ? props.theme.colors.isError : props.theme.colors.text,
+      color: props.isError ? props.theme.colors.error : props.theme.colors.text,
     },
     container: {
       flexDirection: 'row',
@@ -155,7 +155,7 @@ export function createStyles(props: ContainerProps) {
     },
     label: {
       fontFamily: 'Regular',
-      color: props.isError ? props.theme.colors.isError : props.theme.colors.text,
+      color: props.isError ? props.theme.colors.error : props.theme.colors.text,
       marginBottom: TEXT_HELPER_MARGIN_TOP_MULTIPLIER * paddingVertical,
       fontSize: props.material ? TEXT_HELPER_MULTIPLIER * fontSize : fontSize,
     },
