@@ -1,5 +1,11 @@
 ##  (2025-02-02)
 
+* fix(inputs): correct theme color reference for error state ([76ff988](https://github.com/RedonAlla/flexnative/commit/76ff988))
+
+
+
+##  (2025-02-02)
+
 * chore(inputs): bump version to 0.0.11 ([b46a7ff](https://github.com/RedonAlla/flexnative/commit/b46a7ff))
 
 
