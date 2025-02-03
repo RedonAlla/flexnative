@@ -159,7 +159,7 @@ export default class extends React.PureComponent<NumberTextBoxProps, State> {
     const styles = createStyles(
       {
         type: type!,
-        color: color!,
+        color: color,
         size: size!,
         radius: radius!,
         isError: isError!,

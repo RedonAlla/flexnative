@@ -25,7 +25,7 @@ import {
  */
 type ContainerProps = {
   type: InputType;
-  color: Color;
+  color?: Color;
   size: Sizes;
   radius: BorderRadius;
   isError?: boolean;
@@ -56,7 +56,9 @@ export function createStyles(props: ContainerProps) {
   /**
    * Set theme color using provided color or fallback to the specified prop color.
    */
-  const themeColor = props.theme.colors[props.color] ?? props.color;
+  const themeColor = props.color === undefined
+    ? props.theme.colors.border
+    : props.theme.colors[props.color!] ?? props.color;
 
   /**
    * Use specified background color or default to transparent.
