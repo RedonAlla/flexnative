@@ -1,3 +1,9 @@
+##  (2025-02-04)
+
+* refactor(inputs): update version and adjust input styles ([889e164](https://github.com/RedonAlla/flexnative/commit/889e164))
+
+
+
 ##  (2025-02-02)
 
 * fix(inputs): correct theme color reference for error state ([76ff988](https://github.com/RedonAlla/flexnative/commit/76ff988))
