@@ -208,8 +208,6 @@ export default class extends React.PureComponent<NumberTextBoxProps, State> {
             labelStyle={[styles.label, getStyle<TextStyle>(labelStyle, this.state.isFocused)]}
           >
             <TextInput
-              onBlur={this.handleBlur}
-              onFocus={this.handleFocus}
               style={[styles.input, style]}
               maxLength={maxLength}
               readOnly={readOnly || disabled}
@@ -218,6 +216,8 @@ export default class extends React.PureComponent<NumberTextBoxProps, State> {
               placeholderTextColor={placeholderTextColor || this.context.colors.border}
               inputMode='numeric'
               {...restProps}
+              onBlur={this.handleBlur}
+              onFocus={this.handleFocus}
               onChangeText={this.handleChangeText}
               value={this.state.value}
             />

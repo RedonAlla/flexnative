@@ -1,6 +1,6 @@
 {
   "name": "@flexnative/inputs",
-  "version": "0.0.13",
+  "version": "0.0.21",
   "description": "React Native Inputs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

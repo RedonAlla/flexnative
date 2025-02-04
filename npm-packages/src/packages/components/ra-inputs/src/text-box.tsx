@@ -183,9 +183,6 @@ export default class TextBox extends React.PureComponent<BaseInputProps, State> 
 
           <InputContainer material={material} label={label} labelStyle={[styles.label, getStyle<TextStyle>(labelStyle, this.state.isFocused)]}>
             <TextInput
-              onBlur={this.handleBlur}
-              onFocus={this.handleFocus}
-              onChangeText={this.handleChangeText}
               style={[styles.input, style]}
               maxLength={maxLength}
               readOnly={readOnly || disabled}
@@ -193,6 +190,9 @@ export default class TextBox extends React.PureComponent<BaseInputProps, State> 
               selectionColor={selectionColor || this.context.colors.primary}
               placeholderTextColor={placeholderTextColor || this.context.colors.border}
               {...restProps}
+              onBlur={this.handleBlur}
+              onFocus={this.handleFocus}
+              onChangeText={this.handleChangeText}
             />
           </InputContainer>
           

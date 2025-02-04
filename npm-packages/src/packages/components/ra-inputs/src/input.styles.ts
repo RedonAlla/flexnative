@@ -98,7 +98,6 @@ export function createStyles(props: ContainerProps) {
   return StyleSheet.create({
     wrapper: {
       display: 'flex',
-      overflow: 'hidden',
       flexDirection: 'column',
       justifyContent: 'center',
       backgroundColor: 'transparent'
@@ -106,8 +105,12 @@ export function createStyles(props: ContainerProps) {
     input: {
       flex: 1,
       outlineWidth: 0,
+      paddingHorizontal: 0,
+      paddingBottom: 0,
+      paddingTop: TEXT_HELPER_MARGIN_TOP_MULTIPLIER * paddingVertical,
       //@ts-ignore
       minWidth: 'inherit',
+      lineHeight: fontSize,
       outlineStyle: "none",
       fontSize: fontSize,
       fontFamily: 'Regular',

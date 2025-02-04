@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-06-17 22:55:53
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-02-02 19:23:08
+ * @ Modified time: 2025-02-04 00:30:27
  * @ Description: Defines interfaces and types commonly used for input components, specifically tailored for a UI library or framework based on React Native. It provides a structured way to define the properties that these components will accept.
  */
 
