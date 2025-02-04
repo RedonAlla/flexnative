@@ -1,5 +1,11 @@
 ##  (2025-02-04)
 
+* docs(blog): update blog posts and tags for input changes ([8128430](https://github.com/RedonAlla/flexnative/commit/8128430))
+
+
+
+##  (2025-02-04)
+
 * refactor(inputs): update version and adjust input styles ([889e164](https://github.com/RedonAlla/flexnative/commit/889e164))
 
 
