@@ -1,6 +1,6 @@
 /**
-  Helper method to format data for List to dispaly on colums.
-  @param data oreginal data to dispaly on grid
+  Helper method to format data for List to display on column.
+  @param data original data to display on grid
   @param numColumns number of grid's columns
   @param defaultValue default value to add on data
   @return array of {Type}
