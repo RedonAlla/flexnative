@@ -1,5 +1,11 @@
 ##  (2025-02-15)
 
+* chore(icons): bump version to 0.0.6 ([8aa3fef](https://github.com/RedonAlla/flexnative/commit/8aa3fef))
+
+
+
+##  (2025-02-15)
+
 * chore(flexnative-demo): update package-lock.json and refine .gitignore ([217c41b](https://github.com/RedonAlla/flexnative/commit/217c41b))
 
 
