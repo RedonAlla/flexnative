@@ -1,0 +1,42 @@
+{
+  "name": "@flexnative/authentication",
+  "version": "0.0.3",
+  "description": "A package to implement almost full authentication and protect routes with Expo Router.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.js",
+  "exports": {
+    "./hooks": "./dist/hooks.js",
+    "./context": "./dist/context.js",
+    "./context/props": "./dist/props.js"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RedonAlla/flexnative.git",
+    "directory": "npm-packages/src/packages/authentication"
+  },
+  "keywords": [
+    "expo-router",
+    "authentication",
+    "protected",
+    "react",
+    "react-native"
+  ],
+  "author": "Redon Alla <redon.alla@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RedonAlla/flexnative/issues"
+  },
+  "homepage": "https://redonalla.github.io/flexnative/",
+  "devDependencies": {
+    "expo-secure-store": "*"
+  }
+}

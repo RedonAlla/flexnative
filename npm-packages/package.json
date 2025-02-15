@@ -16,7 +16,8 @@
     "src/shared/ui-constants",
     "src/packages/components/navigation",
     "src/packages/components/layout",
-    "src/packages/components/messages"
+    "src/packages/components/messages",
+    "src/packages/authentication"
   ],
   "version": "0.0.1",
   "description": "React Native Framework",
@@ -43,12 +44,14 @@
   },
   "dependencies": {
     "@babel/core": "^7.24.7",
+    "@flexnative/authentication": "^0.0.2",
     "@types/react": "^18.3.3",
     "@types/react-native": "^0.73.0",
     "babel-plugin-module-resolver": "^5.0.2",
     "expo": "^51.0.14",
     "expo-image": "~1.0.2",
     "expo-router": "^4.0.11",
+    "expo-secure-store": "~13.0.2",
     "react-native": "^0.74.2",
     "react-native-gesture-handler": "^2.16.2",
     "react-native-unimodules": "^0.14.10",
