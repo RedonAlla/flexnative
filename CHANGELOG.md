@@ -1,3 +1,9 @@
+##  (2025-02-15)
+
+* chore(flexnative-demo): update package-lock.json and refine .gitignore ([217c41b](https://github.com/RedonAlla/flexnative/commit/217c41b))
+
+
+
 ##  (2025-02-04)
 
 * Merge branch 'main' of https://github.com/RedonAlla/flexnative ([41ccd7c](https://github.com/RedonAlla/flexnative/commit/41ccd7c))
