@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-10-27 14:25:26
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-12-29 21:52:35
+ * @ Modified time: 2025-02-15 22:56:12
  * @ Description: Props for Icon component.
  */
 
@@ -15,6 +15,9 @@ import { Color, FontSize } from '@flexnative/theme-context';
  * These names can be used to access the corresponding Unicode value from the `icons` object.
  */
 export interface IconName {
+  readonly "rocket": string;
+  readonly "shield-lock": string;
+  readonly "fingerprint": string;
   readonly "layout": string;
   readonly "sort-number-desc": string;
   readonly "sort-number-asc": string;
@@ -62,6 +65,7 @@ export interface IconName {
   readonly "spinner-3": string;
   readonly "sort-alt": string;
   readonly "spinner": string;
+  readonly "spinner-ios": string;
   readonly "file-pdf": string;
   readonly "paint-brush": string;
   readonly "trash": string;
@@ -72,6 +76,9 @@ export interface IconName {
  * These icons can be used throughout the application for various UI elements.
  */
 export const icons = {
+  "rocket": "\ue931",
+  "shield-lock": "\ue92f",
+  "fingerprint": "\ue930",
   "layout": "\ue92e",
   "sort-number-desc": "\ue90a",
   "sort-number-asc": "\ue90b",
@@ -119,6 +126,7 @@ export const icons = {
   "spinner-3": "\ue983",
   "sort-alt": "\ue904",
   "spinner": "\ue905",
+  "spinner-ios": "\ue97c",
   "file-pdf": "\ue90f",
   "paint-brush": "\ue909",
   "trash": "\ue906"
