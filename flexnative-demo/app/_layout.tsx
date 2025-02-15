@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-12-09 15:27:55
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-12-29 00:37:26
+ * @ Modified time: 2025-02-09 23:34:26
  * @ Description: Layout page for Home page of Demo App.
  */
 
@@ -34,6 +34,17 @@ let customFonts: Record<string, any> = {
   'ItalicSemiBold': Roboto_500Medium_Italic,
   'Icons': require('../assets/fonts/icons.ttf')
 };
+
+/* #region Fake HTTP Call Server */
+import { makeServer } from '@/services/fake.server';
+
+// if (process.env.NODE_ENV === "development") {
+  if ((window as any).server) {
+    (window as any).server.shutdown();
+  }
+  (window as any).server = makeServer();
+// }
+/* #endregion */
 
 /**
  * Prevent splash screen from auto-hiding during font loading
