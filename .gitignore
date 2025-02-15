@@ -33,3 +33,7 @@ documentation/.history
 npm-packages/dist
 text-app/.history
 documentation/package-lock.json
+npm-packages/src/packages/authentication/dist
+npm-packages/package-lock.json
+flexnative-demo/.vscode/settings.json
+flexnative-demo/package-lock.json
