@@ -2,11 +2,177 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://redonalla.github.io/flexnative/changelog</id>
     <title>FlexNative Blog</title>
-    <updated>2025-01-07T00:00:00.000Z</updated>
+    <updated>2025-02-18T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://redonalla.github.io/flexnative/changelog"/>
     <subtitle>FlexNative Blog</subtitle>
     <icon>https://redonalla.github.io/flexnative/img/logo.svg</icon>
+    <entry>
+        <title type="html"><![CDATA[📕 Authentication]]></title>
+        <id>https://redonalla.github.io/flexnative/changelog/8105fdb</id>
+        <link href="https://redonalla.github.io/flexnative/changelog/8105fdb"/>
+        <updated>2025-02-18T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[refactor(authentication) update AuthContextProps type description]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-version-003">✨ Version 0.0.3<a href="https://redonalla.github.io/flexnative/changelog/8105fdb#-version-003" class="hash-link" aria-label="Direct link to ✨ Version 0.0.3" title="Direct link to ✨ Version 0.0.3">​</a></h2>
+<p><strong><a href="https://github.com/RedonAlla/flexnative/commit/8105fdb" target="_blank" rel="noopener noreferrer">#8105fdb</a> refactor(authentication): update AuthContextProps type description</strong></p>
+<p>Updated the comment for the <code>AuthContextProps</code> type to provide a clearer explanation of its intended purpose. The new description focuses on the use of properties to store authentication-related state, replacing the previous note about generic parameter usage for <code>onLogin</code>. This clarification aims to enhance maintainability and comprehensibility of the code for future developers.</p>]]></content>
+        <author>
+            <name>Redon Alla</name>
+            <uri>https://github.com/RedonAlla</uri>
+        </author>
+        <category label="JSDoc" term="JSDoc"/>
+        <category label="Authentication 0.0.3" term="Authentication 0.0.3"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[✨ Icons]]></title>
+        <id>https://redonalla.github.io/flexnative/changelog/ddf3362</id>
+        <link href="https://redonalla.github.io/flexnative/changelog/ddf3362"/>
+        <updated>2025-02-18T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[feat(icons) add new icons and update package version]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-features">✨ Features<a href="https://redonalla.github.io/flexnative/changelog/ddf3362#-features" class="hash-link" aria-label="Direct link to ✨ Features" title="Direct link to ✨ Features">​</a></h2>
+<p><strong><a href="https://github.com/RedonAlla/flexnative/commit/ddf3362" target="_blank" rel="noopener noreferrer">#ddf3362</a> feat(icons): add new icons and update package version</strong></p>
+<p>Added new icons including <code>lock</code>, <code>unlock</code>, <code>filet-jsx</code>, <code>filet-tsx</code>, <code>file-code</code>, and <code>folder-open</code> to the IconName interface and corresponding Unicode values in the icons object. Updated the package version from <code>0.0.6</code> to <code>0.0.7</code> to reflect these additions. This enhancement expands the available icon set, providing more options for users without impacting existing functionality.</p>]]></content>
+        <author>
+            <name>Redon Alla</name>
+            <uri>https://github.com/RedonAlla</uri>
+        </author>
+        <category label="Feature" term="Feature"/>
+        <category label="New Version" term="New Version"/>
+        <category label="Icons 0.0.6" term="Icons 0.0.6"/>
+        <category label="Icons" term="Icons"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[✨ Authentication 0.0.3]]></title>
+        <id>https://redonalla.github.io/flexnative/changelog/1634009</id>
+        <link href="https://redonalla.github.io/flexnative/changelog/1634009"/>
+        <updated>2025-02-15T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[feat(authentication) add new `@flexnative/authentication` package]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-version-003">✨ Version 0.0.3<a href="https://redonalla.github.io/flexnative/changelog/1634009#-version-003" class="hash-link" aria-label="Direct link to ✨ Version 0.0.3" title="Direct link to ✨ Version 0.0.3">​</a></h2>
+<p><strong><a href="https://github.com/RedonAlla/flexnative/commit/1634009" target="_blank" rel="noopener noreferrer">#1634009</a> feat(authentication): integrate new authentication package</strong></p>
+<p>Introduced the new <code>@flexnative/authentication</code> package to handle user authentication and protecting routes using Expo Router. The package includes React context, custom hooks, type definitions, and utilizes <code>expo-secure-store</code> for secure token storage. This integration enhances the security and manageability of authentication processes across the application.</p>]]></content>
+        <author>
+            <name>Redon Alla</name>
+            <uri>https://github.com/RedonAlla</uri>
+        </author>
+        <category label="Authentication 0.0.3" term="Authentication 0.0.3"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[✨ Icons]]></title>
+        <id>https://redonalla.github.io/flexnative/changelog/4cb6052</id>
+        <link href="https://redonalla.github.io/flexnative/changelog/4cb6052"/>
+        <updated>2025-02-15T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[feat(icons) add new icons]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-features">✨ Features<a href="https://redonalla.github.io/flexnative/changelog/4cb6052#-features" class="hash-link" aria-label="Direct link to ✨ Features" title="Direct link to ✨ Features">​</a></h2>
+<p><strong><a href="https://github.com/RedonAlla/flexnative/commit/4cb6052" target="_blank" rel="noopener noreferrer">#4cb6052</a> feat(icons): add new icons</strong></p>
+<p>Added three new icons: <code>rocket</code>, <code>shield-lock</code>, and <code>fingerprint</code> to the IconName interface and icons object.
+Also added a new variant <code>spinner-ios</code>.
+These updates expand the icon library and address minor typing errors for consistency.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-version-006">✨ Version 0.0.6<a href="https://redonalla.github.io/flexnative/changelog/4cb6052#-version-006" class="hash-link" aria-label="Direct link to ✨ Version 0.0.6" title="Direct link to ✨ Version 0.0.6">​</a></h2>
+<p><strong><a href="https://github.com/RedonAlla/flexnative/commit/8aa3fef" target="_blank" rel="noopener noreferrer">#8aa3fef</a> chore(icons): bump version to <code>0.0.6</code></strong></p>
+<p>Update the package version from <code>0.0.5</code> to <code>0.0.6</code> in preparation for a new release with improvements or patches. No other changes were made to the package configuration.</p>]]></content>
+        <author>
+            <name>Redon Alla</name>
+            <uri>https://github.com/RedonAlla</uri>
+        </author>
+        <category label="feature new_version" term="feature new_version"/>
+        <category label="Icons 0.0.6" term="Icons 0.0.6"/>
+        <category label="Icons" term="Icons"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[🛠️ Inputs refactor]]></title>
+        <id>https://redonalla.github.io/flexnative/changelog/8.89e+166</id>
+        <link href="https://redonalla.github.io/flexnative/changelog/8.89e+166"/>
+        <updated>2025-02-04T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[refactor(inputs) update version and adjust input styles]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="️-inputs-refactor">🛠️ Inputs refactor<a href="https://redonalla.github.io/flexnative/changelog/8.89e+166#%EF%B8%8F-inputs-refactor" class="hash-link" aria-label="Direct link to 🛠️ Inputs refactor" title="Direct link to 🛠️ Inputs refactor">​</a></h2>
+<p><strong><a href="https://github.com/RedonAlla/flexnative/commit/889e164" target="_blank" rel="noopener noreferrer">#889e164</a> refactor(inputs): update version and adjust input styles</strong></p>
+<p>Updated package version from 0.0.13 to 0.0.21 reflecting significant changes that include style adjustments and reordering of event handlers in the TextInput components within ra-inputs. Specifically, removed 'overflow: hidden' from wrapper styles and added padding and lineHeight properties to input styles. Also modified onBlur, onFocus, and onChangeText event handler positions to ensure consistent execution order. These changes improve styling flexibility and ensure better event handling in input components.</p>]]></content>
+        <author>
+            <name>Redon Alla</name>
+            <uri>https://github.com/RedonAlla</uri>
+        </author>
+        <category label="Inputs 0.0.21" term="Inputs 0.0.21"/>
+        <category label="Inputs" term="Inputs"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[🪲 Inputs fix]]></title>
+        <id>https://redonalla.github.io/flexnative/changelog/76ff988</id>
+        <link href="https://redonalla.github.io/flexnative/changelog/76ff988"/>
+        <updated>2025-02-03T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[fix(inputs) correct theme color reference for error state]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-inputs-fix">🪲 Inputs fix<a href="https://redonalla.github.io/flexnative/changelog/76ff988#-inputs-fix" class="hash-link" aria-label="Direct link to 🪲 Inputs fix" title="Direct link to 🪲 Inputs fix">​</a></h2>
+<p><strong><a href="https://github.com/RedonAlla/flexnative/commit/76ff988" target="_blank" rel="noopener noreferrer">#76ff988</a> fix(inputs): correct theme color reference for error state</strong></p>
+<p>Updated the color property in input and label styles to use 'props.theme.colors.error' instead of the incorrect 'props.theme.colors.isError'. This ensures that the appropriate error color is applied when 'isError' is true, maintaining consistency across the component's error styling. Additionally, incremented the package version from 0.0.11 to 0.0.12 to reflect this change.</p>]]></content>
+        <author>
+            <name>Redon Alla</name>
+            <uri>https://github.com/RedonAlla</uri>
+        </author>
+        <category label="Inputs 0.0.12" term="Inputs 0.0.12"/>
+        <category label="Inputs" term="Inputs"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[🛠️ Inputs refactor]]></title>
+        <id>https://redonalla.github.io/flexnative/changelog/fce5c91</id>
+        <link href="https://redonalla.github.io/flexnative/changelog/fce5c91"/>
+        <updated>2025-02-03T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[refactor(inputs) make color prop optional and update fallback logic]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="️-inputs-refactor">🛠️ Inputs refactor<a href="https://redonalla.github.io/flexnative/changelog/fce5c91#%EF%B8%8F-inputs-refactor" class="hash-link" aria-label="Direct link to 🛠️ Inputs refactor" title="Direct link to 🛠️ Inputs refactor">​</a></h2>
+<p><strong><a href="https://github.com/RedonAlla/flexnative/commit/fce5c91" target="_blank" rel="noopener noreferrer">#fce5c91</a> refactor(inputs): make color prop optional and update fallback logic</strong></p>
+<p>This commit updates the <code>ContainerProps</code> type definition in <code>input.styles.ts</code>, making the <code>color</code> property optional. Additionally, it modifies the <code>createStyles</code> function to provide a default theme color when <code>color</code> is not specified. In <code>number-text-box/index.tsx</code>, the usage of the <code>color</code> prop is updated to accommodate this change. The version in <code>package.json</code> is incremented from 0.0.12 to 0.0.13 to reflect these non-breaking changes.</p>]]></content>
+        <author>
+            <name>Redon Alla</name>
+            <uri>https://github.com/RedonAlla</uri>
+        </author>
+        <category label="Inputs 0.0.13" term="Inputs 0.0.13"/>
+        <category label="Inputs" term="Inputs"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[🛠️ Inputs refactor]]></title>
+        <id>https://redonalla.github.io/flexnative/changelog/b3713dd</id>
+        <link href="https://redonalla.github.io/flexnative/changelog/b3713dd"/>
+        <updated>2025-02-02T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[feat(inputs) add isError prop to enhance error handling]]></summary>
+        <content type="html"><![CDATA[<p><strong><a href="https://github.com/RedonAlla/flexnative/commit/b3713dd" target="_blank" rel="noopener noreferrer">#b3713dd</a> feat(inputs): add isError prop to enhance error handling</strong></p>
+<p>Added the <code>isError</code> property to the input components within the ra-inputs package, allowing for improved error state management. This change updates the component styles to display error-specific colors when <code>isError</code> is true, ensuring consistent visual feedback. Additionally, certain optional properties like <code>borderWidth</code> and <code>disabled</code> are now explicitly marked as optional in the TypeScript interfaces, increasing flexibility in their usage. These enhancements collectively improve the user experience by providing clearer input validation feedback. Additionally, incremented package version from 0.0.10 to 0.0.11.</p>]]></content>
+        <author>
+            <name>Redon Alla</name>
+            <uri>https://github.com/RedonAlla</uri>
+        </author>
+        <category label="Inputs 0.0.11" term="Inputs 0.0.11"/>
+        <category label="Inputs" term="Inputs"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[🛠️ Inputs refactor]]></title>
+        <id>https://redonalla.github.io/flexnative/changelog/93429af</id>
+        <link href="https://redonalla.github.io/flexnative/changelog/93429af"/>
+        <updated>2025-02-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[refactor(inputs) make certain props optional and handle non-null assertions]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="️-inputs-refactor">🛠️ Inputs refactor<a href="https://redonalla.github.io/flexnative/changelog/93429af#%EF%B8%8F-inputs-refactor" class="hash-link" aria-label="Direct link to 🛠️ Inputs refactor" title="Direct link to 🛠️ Inputs refactor">​</a></h2>
+<p><strong><a href="https://github.com/RedonAlla/flexnative/commit/93429af" target="_blank" rel="noopener noreferrer">#93429af</a> refactor(inputs): make certain props optional and handle non-null assertions</strong></p>
+<p>Changed <code>type</code>, <code>size</code>, and <code>radius</code> in <code>BaseInputProps</code> from required to optional by using '?' modifier. Updated TypeScript code in <code>number-text-box</code> and <code>text-box</code> components to use non-null assertion operator for these properties where necessary. This change provides more flexibility when using the input components, allowing for default values to be applied if these attributes are not specified explicitly. Additionally, incremented package version from 0.0.9 to 0.0.10.</p>]]></content>
+        <author>
+            <name>Redon Alla</name>
+            <uri>https://github.com/RedonAlla</uri>
+        </author>
+        <category label="Inputs 0.0.10" term="Inputs 0.0.10"/>
+        <category label="Inputs" term="Inputs"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[🛠️ Inputs refactor]]></title>
+        <id>https://redonalla.github.io/flexnative/changelog/1f75cdd</id>
+        <link href="https://redonalla.github.io/flexnative/changelog/1f75cdd"/>
+        <updated>2025-01-30T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[refactor(inputs) update version and adjust layout styles]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="️-inputs-refactor">🛠️ Inputs refactor<a href="https://redonalla.github.io/flexnative/changelog/1f75cdd#%EF%B8%8F-inputs-refactor" class="hash-link" aria-label="Direct link to 🛠️ Inputs refactor" title="Direct link to 🛠️ Inputs refactor">​</a></h2>
+<p><strong><a href="https://github.com/RedonAlla/flexnative/commit/1f75cdd" target="_blank" rel="noopener noreferrer">#1f75cdd</a> refactor(inputs): update version and adjust layout styles</strong></p>
+<p>Bump the package version from 0.0.4 to 0.0.9 in preparation for a new release. Removed the 'flex: 1' style from the wrapper in <code>input.styles.ts</code> to allow for better flexibility. Applied conditional styling in <code>text-box.tsx</code> to maintain 'flex: 1' only when the 'material' prop is not present, improving layout behavior based on component props.</p>]]></content>
+        <author>
+            <name>Redon Alla</name>
+            <uri>https://github.com/RedonAlla</uri>
+        </author>
+        <category label="Inputs 0.0.9" term="Inputs 0.0.9"/>
+        <category label="Inputs" term="Inputs"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[📕 Layout]]></title>
         <id>https://redonalla.github.io/flexnative/changelog/b6a08f4</id>
@@ -45,7 +211,7 @@
         <updated>2024-12-29T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[feat(messages) add new MessageBox component]]></summary>
         <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-version-0011">✨ Version 0.0.11<a href="https://redonalla.github.io/flexnative/changelog/c2569d7#-version-0011" class="hash-link" aria-label="Direct link to ✨ Version 0.0.11" title="Direct link to ✨ Version 0.0.11">​</a></h2>
-<p><strong>feat(messages): add new MessageBox component</strong></p>
+<p>**<a href="https://github.com/RedonAlla/flexnative/commit/c2569d7" target="_blank" rel="noopener noreferrer">#c2569d7</a> <strong>feat(messages): add new MessageBox component</strong></p>
 <p>Introduced the MessageBox component in the <code>@flexnative/messages</code> package, designed to display warning messages with customizable appearance. This includes default props for styling and support for different fill modes like <code>ghost</code> and <code>solid</code>.</p>]]></content>
         <author>
             <name>Redon Alla</name>
@@ -164,149 +330,6 @@ No functional changes were made, but this ensures that downstream dependencies c
             <uri>https://github.com/RedonAlla</uri>
         </author>
         <category label="Inputs 0.0.4" term="Inputs 0.0.4"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[📕 Inputs Documentation]]></title>
-        <id>https://redonalla.github.io/flexnative/changelog/5bb307f</id>
-        <link href="https://redonalla.github.io/flexnative/changelog/5bb307f"/>
-        <updated>2024-11-30T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[docs(inputs) add comprehensive JSDoc comments]]></summary>
-        <content type="html"><![CDATA[<p><strong><a href="https://github.com/RedonAlla/flexnative/commit/5bb307f" target="_blank" rel="noopener noreferrer">#5bb307f</a> docs(inputs): add comprehensive JSDoc comments</strong></p>
-<p>This commit adds detailed JSDoc comments to the inputs components, enhancing code readability and developer understanding.
-These comments describe the purpose of components, types, interfaces, props, methods, and provide information on styling and behavior.
-By including this documentation, the codebase becomes more maintainable and easier for new developers to understand, facilitating a better development workflow and more efficient onboarding.</p>]]></content>
-        <author>
-            <name>Redon Alla</name>
-            <uri>https://github.com/RedonAlla</uri>
-        </author>
-        <category label="Inputs 0.0.4" term="Inputs 0.0.4"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[🛠️ Inputs refactor]]></title>
-        <id>https://redonalla.github.io/flexnative/changelog/80ff097</id>
-        <link href="https://redonalla.github.io/flexnative/changelog/80ff097"/>
-        <updated>2024-11-29T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[refactor(inputs) update theme handling and optimize component imports]]></summary>
-        <content type="html"><![CDATA[<p><strong><a href="https://github.com/RedonAlla/flexnative/commit/80ff097" target="_blank" rel="noopener noreferrer">#80ff097</a> refactor(inputs): update theme handling and optimize component imports</strong></p>
-<p>This commit includes the following changes:</p>
-<ul>
-<li>Theme context usage updated to simplify access to theming properties by removing <code>.colors</code> where applicable.</li>
-<li>Reorganized and optimized import paths and component structures, including moving <code>input-adornment.tsx</code> logic to <code>input-icon.tsx</code> for better cohesion.</li>
-<li>Introduction of new components such as <code>InputIcon</code>, <code>HelperText</code>, and <code>ActionContainer</code> to enhance code modularity and readability.</li>
-<li>Improved styling logic through adjustments to constants and styles definitions, focusing on consistency across components.</li>
-<li>Deletion of obsolete components that have been refactored elsewhere in the project.
-These updates aim to streamline the codebase, reduce redundancy, and improve the overall maintainability of the input components.</li>
-</ul>]]></content>
-        <author>
-            <name>Redon Alla</name>
-            <uri>https://github.com/RedonAlla</uri>
-        </author>
-        <category label="JSDoc" term="JSDoc"/>
-        <category label="Inputs 0.0.3" term="Inputs 0.0.3"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[🛠️ Inputs refactor]]></title>
-        <id>https://redonalla.github.io/flexnative/changelog/7834392</id>
-        <link href="https://redonalla.github.io/flexnative/changelog/7834392"/>
-        <updated>2024-11-28T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[refactor(inputs) update default size and theme structure]]></summary>
-        <content type="html"><![CDATA[<p><strong><a href="https://github.com/RedonAlla/flexnative/commit/7834392" target="_blank" rel="noopener noreferrer">#7834392</a> refactor(inputs): update default size and theme structure</strong></p>
-<p>Changed the default size from <code>default</code> to <code>medium</code> using nullish coalescing for improved clarity.
-Refactored the theme structure by removing redundant <code>isDark</code> context, now relying solely on <code>colors</code>.
-Import paths for <code>BorderRadius</code>, <code>BorderWidth</code>, and <code>Sizes</code> are updated to use <code>@flexnative/theme-context</code> for better modularity and alignment with the project architecture.
-These changes streamline the component's configuration and enhance maintainability.</p>]]></content>
-        <author>
-            <name>Redon Alla</name>
-            <uri>https://github.com/RedonAlla</uri>
-        </author>
-        <category label="Inputs 0.0.3" term="Inputs 0.0.3"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[📕 BottomSheet Documentation]]></title>
-        <id>https://redonalla.github.io/flexnative/changelog/b409a8c</id>
-        <link href="https://redonalla.github.io/flexnative/changelog/b409a8c"/>
-        <updated>2024-11-27T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[docs(bottom-sheet) enhance documentation strings for components and types]]></summary>
-        <content type="html"><![CDATA[<p><strong><a href="https://github.com/RedonAlla/flexnative/commit/b409a8c" target="_blank" rel="noopener noreferrer">#b409a8c</a> docs(bottom-sheet): enhance documentation strings for components and types</strong></p>
-<p>Updated the JSDoc comments in the <code>BottomSheet</code> component files to improve clarity and provide detailed descriptions of each method and property.
-The changes include adding more explicit type declarations, refining existing descriptions, and ensuring consistency throughout the documentation.
-These updates aim to facilitate better understanding and usability of the code for future developers and maintainers.
-No functional logic was altered.</p>]]></content>
-        <author>
-            <name>Redon Alla</name>
-            <uri>https://github.com/RedonAlla</uri>
-        </author>
-        <category label="JSDoc" term="JSDoc"/>
-        <category label="BottomSheet 0.0.3" term="BottomSheet 0.0.3"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[🛠️ Skeleton Loading refactor]]></title>
-        <id>https://redonalla.github.io/flexnative/changelog/23fa66a</id>
-        <link href="https://redonalla.github.io/flexnative/changelog/23fa66a"/>
-        <updated>2024-11-27T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[refactor(skeleton-loading) improve documentation and restructure imports]]></summary>
-        <content type="html"><![CDATA[<p><strong><a href="https://github.com/RedonAlla/flexnative/commit/23fa66a" target="_blank" rel="noopener noreferrer">#23fa66a</a> refactor(skeleton-loading): improve documentation and restructure imports</strong></p>
-<p>Updated the <code>skeleton-loading</code> package to version 0.0.2, enhancing the documentation for better clarity and understanding.
-Moved dev dependencies from peerDependencies in <code>package.json</code>.
-Clarified comments and added detailed JSDoc annotations throughout the code to make it more maintainable and comprehensible.
-This refactor does not introduce any breaking changes or affect functionality but improves code readability and developer experience.</p>]]></content>
-        <author>
-            <name>Redon Alla</name>
-            <uri>https://github.com/RedonAlla</uri>
-        </author>
-        <category label="JSDoc" term="JSDoc"/>
-        <category label="Skeleton loading 0.0.2" term="Skeleton loading 0.0.2"/>
-        <category label="New Version" term="New Version"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[🛠️ Inputs refactor]]></title>
-        <id>https://redonalla.github.io/flexnative/changelog/8c52c02</id>
-        <link href="https://redonalla.github.io/flexnative/changelog/8c52c02"/>
-        <updated>2024-11-27T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[refactor(inputs) update default size and theme structure]]></summary>
-        <content type="html"><![CDATA[<p><strong><a href="https://github.com/RedonAlla/flexnative/commit/8c52c02" target="_blank" rel="noopener noreferrer">#8c52c02</a> refactor(inputs): update default size and theme structure</strong></p>
-<p>Aligned <code>inputs</code> with the latest updates in <code>@flexnative/theme-context</code> and <code>@flexnative/icons</code>.
-Replaced previous dependencies, utility methods, and constants with new ones from the updated libraries.
-Updated component styles and logic according to new props and theming guidelines, ensuring consistency across the input components.
-This includes changes to border radius definitions, color handling, and input styling.
-Transitioned peer dependencies to devDependencies where applicable, reflecting the updated package structure.
-The focus was to enhance maintainability and leverage improved theming capabilities from the upgraded dependencies.</p>]]></content>
-        <author>
-            <name>Redon Alla</name>
-            <uri>https://github.com/RedonAlla</uri>
-        </author>
-        <category label="Inputs 0.0.3" term="Inputs 0.0.3"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[✨ Tags 0.0.2]]></title>
-        <id>https://redonalla.github.io/flexnative/changelog/a65ea4c</id>
-        <link href="https://redonalla.github.io/flexnative/changelog/a65ea4c"/>
-        <updated>2024-11-26T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[chore(tags) bump version to `0.0.2`]]></summary>
-        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-version-002">✨ Version 0.0.2<a href="https://redonalla.github.io/flexnative/changelog/a65ea4c#-version-002" class="hash-link" aria-label="Direct link to ✨ Version 0.0.2" title="Direct link to ✨ Version 0.0.2">​</a></h2>
-<p><strong><a href="https://github.com/RedonAlla/flexnative/commit/a65ea4c" target="_blank" rel="noopener noreferrer">#a65ea4c</a> chore(tags): bump version to <code>0.0.2</code></strong></p>
-<p>Updated the package version from 0.0.1 to 0.0.2 to reflect changes made since the initial release.
-This minor version increment suggests backward-compatible enhancements or bug fixes have been implemented.</p>]]></content>
-        <author>
-            <name>Redon Alla</name>
-            <uri>https://github.com/RedonAlla</uri>
-        </author>
-        <category label="Tag 0.0.2" term="Tag 0.0.2"/>
-        <category label="New Version" term="New Version"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[🛠️ Tags refactor]]></title>
-        <id>https://redonalla.github.io/flexnative/changelog/d5a4ed7</id>
-        <link href="https://redonalla.github.io/flexnative/changelog/d5a4ed7"/>
-        <updated>2024-11-26T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[refactor(tags) remove ui-constants dependency and refactor type definitions]]></summary>
-        <content type="html"><![CDATA[<p><strong><a href="https://github.com/RedonAlla/flexnative/commit/d5a4ed7" target="_blank" rel="noopener noreferrer">#d5a4ed7</a> refactor(tags): remove ui-constants dependency and refactor type definitions</strong></p>
-<p>This commit removes the <code>@flexnative/ui-constants</code> dependency from the <code>tags</code> component, replacing hardcoded values and constants with locally defined equivalents for padding and action elements. It also refactors type definitions by aligning them more closely with <code>@flexnative/theme-context</code>, ensuring consistency across different parts of the application.</p>
-<p>The removal of <code>ui-constants</code> simplifies the dependencies and allows for more flexibility and maintainability within the module. Additionally, it updates the logic in utility functions to improve clarity and reusability of color handling within tags. This refactoring might require testing to ensure compatibility with existing themes and styles.</p>]]></content>
-        <author>
-            <name>Redon Alla</name>
-            <uri>https://github.com/RedonAlla</uri>
-        </author>
-        <category label="Tag 0.0.1" term="Tag 0.0.1"/>
+        <category label="Inputs" term="Inputs"/>
     </entry>
 </feed>
