@@ -1,0 +1,204 @@
+---
+title: Example
+sidebar_position: 4
+last_update:
+  date: 2025-02-16
+  author: Redon Alla
+tags: [react, react-native, expo, framework, authentication]
+---
+
+import FileStructure, { FileItem, FileItemRight } from '@site/src/components/FileStructure';
+
+This guide provides an example that demonstrates how to implement authentication and protect routes with Expo Router using `@flexnative/authentication`.
+
+This example it is based on [Authentication in Expo Router](https://docs.expo.dev/router/reference/authentication/#using-react-context-and-route-groups)
+form expo officially documentation by using the technique of [**Using React Context and Route Groups**](https://docs.expo.dev/router/reference/authentication/#using-react-context-and-route-groups).
+
+:::tip
+For a full example in a real case fallow this [repository](https://github.com/RedonAlla/flexnative/tree/main/flexnative-demo/app/app-demo).
+:::
+
+Consider the following project structure that has a `/sign-in` route that is always accessible and a `(app)` group that requires authentication:
+
+
+<FileStructure>
+  <FileItem icon='icon-folder-open' name='app' level={0} />
+  <FileItem icon='icon-layout' name='_layout.tsx' level={1} />
+  <FileItem icon='icon-file-code' name='sign-in.tsx' level={1} separator right={<FileItemRight text='Always accessible' icon='icon-unlock' />} />
+  <FileItem icon='icon-folder-open' name='(app)' level={1} />
+  <FileItem icon='icon-layout' name='_layout.tsx' level={2} separator right={<FileItemRight text='Protects child routes' />} />
+  <FileItem icon='icon-file-code' name='index.tsx' level={2} separator right={<FileItemRight text='Requires authorization' icon='icon-lock' />} />
+  <FileItem icon='icon-folder-open' name='contexts' level={0} />
+  <FileItem icon='icon-file-code' name='AuthProvider.tsx' level={1} />
+</ FileStructure>
+
+## AuthProvider
+To follow the above example, set up a [React Context provider](https://react.dev/reference/react/createContext)
+that can expose an authentication session to the entire app.
+You can implement your custom authentication session provider or use the one from the example below.
+
+```jsx title='contexts/AuthProvider.tsx'
+import React from "react";
+import { Alert } from "react-native";
+import * as LocalAuthentication from "expo-local-authentication";
+// highlight-next-line
+import { AuthContext, useAuthState } from "@flexnative/authentication";
+
+
+const SESSION_KEY = 'token';
+
+const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
+  const [[isLoading, session], setSession] = useAuthState(SESSION_KEY);
+
+  const handleAuthenticate = async () => {
+    const hasHardware = await LocalAuthentication.hasHardwareAsync();
+
+    if (!hasHardware) {
+      Alert.alert("Error", "No biometric data is enrolled on this device.");
+      return;
+    }
+
+    const enrolled = await LocalAuthentication.isEnrolledAsync();
+
+    if (!enrolled) {
+      Alert.alert("Error", "No biometric data is enrolled on this device.");
+      return;
+    }
+
+    const result = await LocalAuthentication.authenticateAsync({
+      promptMessage: "Authenticate with fingerprint",
+      fallbackLabel: "Use passcode",
+    });
+
+    if (result.success) {
+      // here you can can get the email from SecureStore
+      // and get token from authorization server.
+      setSession('SESSION_ID');
+    } else {
+      Alert.alert("Error", "Authentication failed.");
+    }
+  };
+
+  const handleLogin = async (loginForm: LoginProps) => {
+    // here you can call your authorization server.
+    setSession(token);
+  }
+
+  const handleLogout = async () => {
+    setSession(null);
+  }
+
+  return (
+    // highlight-next-line
+    <AuthContext.Provider value={{
+      state: {
+        session: session!,
+        authenticated: session !== null
+      },
+      onLogin: handleLogin,
+      onLogout: handleLogout,
+      onAuthentication: handleAuthenticate,
+    }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+export default AuthProvider;
+```
+
+## app/_layout.tsx
+
+Use the `AuthProvider` in the root layout to provide the authentication context to the entire app.
+It's imperative that the `<Slot />` is mounted before any navigation events are triggered.
+Otherwise, a runtime error will be thrown.
+
+```jsx title='app/_layout.tsx'
+import { Slot } from 'expo-router';
+// highlight-next-line
+import AuthProvider from '/contexts/AuthProvider';
+
+export default function Root() {
+  return (
+    <AuthProvider>
+      <Slot />
+    </AuthProvider>
+  );
+}
+```
+
+## app/(app)/_layout.tsx
+Create a nested [layout route](https://docs.expo.dev/router/layouts/) that checks whether users are authenticated before rendering the child route components.
+This layout route redirects users to the sign-in screen if they are not authenticated.
+
+```jsx title='app/(app)/_layout.tsx'
+import { Redirect, Slot } from 'expo-router';
+// highlight-next-line
+import { useAuthContext } from '@flexnative/authentication';
+
+
+export default function AppLayout() {
+  // highlight-next-line
+  const { state } = useAuthContext();
+
+  if (!state.authenticated) {
+    return <Redirect href="/login" />;
+  }
+
+  return (
+    <Slot />
+  );
+}
+```
+
+## app/sign-in.tsx
+
+Create the `/sign-in` screen.
+It can toggle the authentication using `onLogin`.
+Since this screen is outside the `(app)` group, the group's layout and authentication check do not run when rendering this screen.
+This lets logged-out users see this screen.
+
+```jsx title='app/sign-in.tsx'
+import { router } from 'expo-router';
+import { Text, View } from 'react-native';
+// highlight-next-line
+const auth = useAuthContext();
+
+export default function SignIn() {
+  const { signIn } = useSession();
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text
+        onPress={() => {
+          auth.onLogin(loginForm);
+          // Navigate after signing in. You may want to tweak this to ensure sign-in is
+          // successful before navigating.
+          router.replace('/');
+        }}>
+        Sign In
+      </Text>
+    </View>
+  );
+}
+```
+## app/(app)/index.tsx
+Implement an authenticated screen that lets users sign out.
+
+```jsx title='app/(app)/index.tsx'
+export default function Index() {
+  // highlight-next-line
+  const { auth } = useAuthContext();
+
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text
+        onPress={() => {
+          // The `app/(app)/_layout.tsx` will redirect to the sign-in screen.
+          auth.onLogout();
+        }}>
+        Sign Out
+      </Text>
+    </View>
+  );
+}
+```

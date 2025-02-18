@@ -1,0 +1,27 @@
+.file-structure {
+  width: 100%;
+  color: var(--prism-color);
+  background-color: var(--ifm-code-background);
+  padding: var(--ifm-pre-padding);
+  border-radius: var(--ifm-code-border-radius);
+
+  .file-item {
+    display: flex;
+    flex-direction: row;
+    margin: 0.5rem 0;
+    gap: 0.5rem;
+
+    span {
+      line-height: normal;
+    }
+
+    [class^="icon-"] {
+      font-size: 1.2rem;
+    }
+
+    .separator {
+      flex: 1;
+      border-bottom: 1px dotted var(--ifm-color-emphasis-300);
+    }
+  }
+}

@@ -3,7 +3,7 @@ slug: d5a4ed7
 title: 🛠️ Tags refactor
 description: refactor(tags) remove ui-constants dependency and refactor type definitions
 authors: RedonAlla
-tags: [tag_v0.0.1]
+tags: [tag, tag_v0.0.1]
 ---
 
 **[#d5a4ed7](https://github.com/RedonAlla/flexnative/commit/d5a4ed7) refactor(tags): remove ui-constants dependency and refactor type definitions**

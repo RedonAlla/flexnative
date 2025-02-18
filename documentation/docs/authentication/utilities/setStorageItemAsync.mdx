@@ -1,0 +1,50 @@
+---
+title: setStorageItemAsync
+sidebar_position: 3
+last_update:
+  date: 2025-02-16
+  author: Redon Alla
+tags: [react, react-native, expo, framework, authentication]
+---
+
+This function is designed to abstract away the complexities of environment-specific storage management, allowing for consistent storage operations across various platforms.
+
+## API
+
+```jsx
+import { setStorageItemAsync } from "@flexnative/authentication";
+```
+
+## Definition
+An asynchronous function named setStorageItemAsync that manages storage operations depending on the environment (web or non-web) and the provided value.
+
+**setStorageItemAsync**
+Type: `async function setStorageItemAsync(key: string, value: string | null): Promise<void>`
+
+## Parameters
+|  Name   | Type | Required | Default Value | Description |
+| -- | -- | -- | -- | -- |
+| key | `string` | **true** | `undefined` | Representing the identifier for the storage item. |
+| value | `string` | **false** | `null` |  Representing the data to be stored or a command to remove the item if `null` |
+
+## Returns
+A `Promise<void>`, indicating the asynchronous nature of the function with no return value upon resolution.
+
+## Function Body
+1. Environment Check:
+    * The function begins by checking if the current execution environment is the web.
+
+2. Web Environment Logic:
+    * Try-Catch Block:
+A `try-catch` block is used to safely handle any potential errors during local storage operations.
+    * Value Check:
+      * If `value` is `null`, the function attempts to remove the item associated with the `key` from `localStorage` using `localStorage.removeItem(key)`.
+      * If `value` is not `null`, it stores the `key-value` pair in `localStorage` using `localStorage.setItem(key, value)`.
+    * Error Handling:
+      * If an error occurs during these operations, it logs an error message to the console indicating that local storage is unavailable.
+
+3. Non-Web Environment Logic:
+    * For environments other than the web, it uses a secure storage mechanism, likely for mobile or server environments, represented by [`SecureStore`](https://docs.expo.dev/versions/latest/sdk/securestore/).
+    * Value Check:
+        * If `value` is `null`, it removes the item associated with `key` using `await SecureStore.deleteItemAsync(key)`.
+        * If `value` is not `null`, it saves the `key-value` pair using `await SecureStore.setItemAsync(key, value)`.

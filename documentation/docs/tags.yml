@@ -17,14 +17,30 @@ component:
   label: Component
   permalink: /component
   description: Create user interfaces from components.
+tag:
+  label: Tags
+  permalink: /tags
+  description: Tag component is used to categorize content.
 utilities:
   label: Utilities
   permalink: /utilities
   description: FlexNative Utilities is part of FlexNative witch provides some utilities packages.
+icons:
+  label: Icons
+  permalink: /icons
+  description: Icon fonts are fonts which contain vector glyphs instead of letters and numbers. You can style them with CSS by using all styling properties that can be applied to a regular text in a modern browser.
+inputs:
+  label: Inputs
+  permalink: /inputs
+  description: A foundational component for inputting text into the app via a keyboard. Props provide configurability for several features, such as auto-correction, auto-capitalization, placeholder text, and different keyboard types, such as a numeric keypad.
 avatar:
   label: Avatar
   permalink: /avatars
   description: Avatars can be used to represent people or objects. It supports images, Icons, or letters.
+skeleton:
+  label: Skeleton Loading
+  permalink: /skeleton
+  description: Skeleton is a placeholder to display instead of the actual content.
 badge:
   label: Badge
   permalink: /badges
@@ -49,3 +65,9 @@ navigation:
   label: Navigation
   permalink: /navigation
   description: Useful components for navigation.
+authentication:
+  label: Authentication
+  permalink: /authentication
+  description: > 
+    A package to implement almost full authentication and protect routes with Expo Router.
+    `@flexnative/authentication` handles user authentication and protecting routes using Expo Router. The package includes React context, custom hooks, type definitions, and utilizes `expo-secure-store` for secure token storage. This integration enhances the security and manageability of authentication processes across the application.

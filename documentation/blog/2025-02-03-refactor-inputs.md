@@ -3,7 +3,7 @@ slug: fce5c91
 title: 🛠️ Inputs refactor
 description: refactor(inputs) make color prop optional and update fallback logic
 authors: RedonAlla
-tags: [inputs_v0.0.13]
+tags: [inputs_v0.0.13, inputs]
 ---
 
 ## 🛠️ Inputs refactor

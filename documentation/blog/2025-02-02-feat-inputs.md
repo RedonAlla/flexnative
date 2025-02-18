@@ -3,7 +3,7 @@ slug: b3713dd
 title: 🛠️ Inputs refactor
 description: feat(inputs) add isError prop to enhance error handling
 authors: RedonAlla
-tags: [inputs_v0.0.11]
+tags: [inputs_v0.0.11, inputs]
 ---
 
 **[#b3713dd](https://github.com/RedonAlla/flexnative/commit/b3713dd) feat(inputs): add isError prop to enhance error handling**

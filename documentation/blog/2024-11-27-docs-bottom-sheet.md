@@ -3,7 +3,7 @@ slug: b409a8c
 title: 📕 BottomSheet Documentation
 description: docs(bottom-sheet) enhance documentation strings for components and types
 authors: RedonAlla
-tags: [JSDoc, bottom-sheet_v0.0.3]
+tags: [JSDoc, bottomSheet, bottom-sheet_v0.0.3]
 ---
 
 **[#b409a8c](https://github.com/RedonAlla/flexnative/commit/b409a8c) docs(bottom-sheet): enhance documentation strings for components and types**

@@ -3,7 +3,7 @@ slug: 1f75cdd
 title: 🛠️ Inputs refactor
 description: refactor(inputs) update version and adjust layout styles
 authors: RedonAlla
-tags: [inputs_v0.0.9]
+tags: [inputs_v0.0.9, inputs]
 ---
 
 ## 🛠️ Inputs refactor

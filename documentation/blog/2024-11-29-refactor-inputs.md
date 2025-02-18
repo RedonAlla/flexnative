@@ -3,7 +3,7 @@ slug: 80ff097
 title: 🛠️ Inputs refactor
 description: refactor(inputs) update theme handling and optimize component imports
 authors: RedonAlla
-tags: [JSDoc, inputs_v0.0.3]
+tags: [JSDoc, inputs_v0.0.3, inputs]
 ---
 
 **[#80ff097](https://github.com/RedonAlla/flexnative/commit/80ff097) refactor(inputs): update theme handling and optimize component imports**

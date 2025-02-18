@@ -5,11 +5,9 @@
   font-style: normal;
 }
 
-
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icons' !important;
-  speak: never;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -21,6 +19,33 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-lock:before {
+  content: "\e936";
+}
+.icon-unlock:before {
+  content: "\e937";
+}
+.icon-filet-jsx:before {
+  content: "\e932";
+}
+.icon-filet-tsx:before {
+  content: "\e933";
+}
+.icon-file-code:before {
+  content: "\e934";
+}
+.icon-folder-open:before {
+  content: "\e935";
+}
+.icon-rocket:before {
+  content: "\e931";
+}
+.icon-shield-lock:before {
+  content: "\e92f";
+}
+.icon-fingerprint:before {
+  content: "\e930";
+}
 .icon-layout:before {
   content: "\e92e";
 }
@@ -137,6 +162,7 @@
 }
 .icon-android:before {
   content: "\e927";
+  color: #09244b;
 }
 .icon-apple:before {
   content: "\e928";
@@ -161,6 +187,9 @@
 }
 .icon-spinner:before {
   content: "\e905";
+}
+.icon-spinner-ios:before {
+  content: "\e97c";
 }
 .icon-file-pdf:before {
   content: "\e90f";

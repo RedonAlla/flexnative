@@ -1,0 +1,49 @@
+---
+sidebar_position: 1
+title: AuthContext
+last_update:
+  date: 2025-02-16
+  author: Redon Alla
+tags: [react, react-native, expo, framework, authentication]
+---
+
+**`AuthContext`**, set up a [React Context](https://react.dev/reference/react/createContext)
+provider that expose an authentication session to the entire app.
+You can implement your custom authentication session provider.
+
+## API
+
+```jsx
+import { AuthContext } from "@flexnative/authentication";
+```
+
+## Component
+A React component that represents a group of avatar items.
+
+**AuthContext**
+Type: `React.Context<AuthContextProps<any, any>>`
+
+## AuthContextProps
+Type aliases that outline the structure and expected properties for an authentication context in a React application. 
+This is a generic type alias used to define the properties expected in an authentication context.
+
+It accepts a generic type parameter `TLoginRequest`,
+which allows the `onLogin` method to be defined with a specific login request type.
+
+|  Name   | Type | Required | Default Value | Description |
+| -- | -- | -- | -- | -- |
+| state | [`AuthStateProps`](#authstateprops) | **true** | <code>{ JSON.stringify({authenticated: false}) }</code> | Define the properties expected used to store authentication-related state properties. |
+| onRegister | `(registerForm: TRegisterForm) => Promise<void>` | **false** | `undefined` | An optional function that handles user registration.<br/> It takes a `registerForm` parameter of type `TRegisterForm` and returns a `Promise<void>`. |
+| onLogout | `() => Promise<void>` | **false** | `undefined` | An optional function for handling user logout, returning a `Promise<void>`. |
+| onLogin | `(loginForm: TLoginRequest) => Promise<void>` | **true** | `undefined` | A required function that handles user login. <br/> It takes a `loginForm` parameter of type `TLoginRequest` (specified by the consumer of this type), and it returns a `Promise<void>` |
+| onAuthentication | `() => Promise<void>` | **true** | `undefined` | A required function that triggers authentication logic, returning a `Promise<void>`. |
+
+These type definitions help ensure that the components interacting with authentication logic within the application have well-defined interfaces, improving type safety and readability across the codebase.
+
+### AuthStateProps
+Defines the structure of the state object to store authentication-related state properties.
+
+|  Name   | Type | Required | Default Value | Description |
+| -- | -- | -- | -- | -- |
+| session | `string` | **false** | `undefined` | An optional string that may store session information or identifiers. |
+| authenticated | `boolean` | **true** | `undefined` | A boolean indicating whether the user is currently authenticated. |

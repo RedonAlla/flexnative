@@ -3,7 +3,7 @@ slug: 23fa66a
 title: 🛠️ Skeleton Loading refactor
 description: refactor(skeleton-loading) improve documentation and restructure imports
 authors: RedonAlla
-tags: [JSDoc, skeleton-loading_v0.0.2, new_version]
+tags: [JSDoc, skeleton, skeleton-loading_v0.0.2, new_version]
 ---
 
 **[#23fa66a](https://github.com/RedonAlla/flexnative/commit/23fa66a) refactor(skeleton-loading): improve documentation and restructure imports**

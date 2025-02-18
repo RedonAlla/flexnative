@@ -3,7 +3,7 @@ slug: 889e164
 title: 🛠️ Inputs refactor
 description: refactor(inputs) update version and adjust input styles
 authors: RedonAlla
-tags: [inputs_v0.0.21]
+tags: [inputs_v0.0.21, inputs]
 ---
 
 ## 🛠️ Inputs refactor

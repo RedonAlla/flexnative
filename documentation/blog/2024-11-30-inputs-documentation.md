@@ -3,7 +3,7 @@ slug: 5bb307f
 title: 📕 Inputs Documentation
 description: docs(inputs) add comprehensive JSDoc comments
 authors: RedonAlla
-tags: [inputs_v0.0.4]
+tags: [inputs, inputs_v0.0.4]
 ---
 
 **[#5bb307f](https://github.com/RedonAlla/flexnative/commit/5bb307f) docs(inputs): add comprehensive JSDoc comments**

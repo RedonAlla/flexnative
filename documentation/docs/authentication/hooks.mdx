@@ -1,0 +1,34 @@
+---
+sidebar_position: 2
+title: useAuthState
+last_update:
+  date: 2025-02-16
+  author: Redon Alla
+tags: [react, react-native, expo, framework, authentication]
+---
+
+**`useAuthState`** is a basic hook that persists tokens securely on native with [`expo-secure-store`](https://docs.expo.dev/versions/latest/sdk/securestore/) and in local storage on web.
+
+## API
+
+```jsx
+import { useAuthState } from "@flexnative/authentication";
+```
+
+## Component
+Custom hook to manage authentication state.
+
+**useAuthState**
+Type: <code>useAuthState(key: string): [UseStateHook](#output)\<string\></code>
+
+## Props
+|  Name   | Type | Required | Default Value | Description |
+| -- | -- | -- | -- | -- |
+| key | `string` | **true** | `undefined` | The key of the authentication state item. |
+
+## Output
+Type definition for the useState hook.
+
+| Type | Description |
+| ---- | ----------- |
+| `UseStateHook<T>` | Type definition for the useState hook. <br/> `T` - The type of the state value.|

@@ -1,0 +1,42 @@
+---
+title: getStorageItemAsync
+sidebar_position: 3
+last_update:
+  date: 2025-02-16
+  author: Redon Alla
+tags: [react, react-native, expo, framework, authentication]
+---
+
+This function abstracts away the complexities of fetching stored items differently based on the execution context, providing a simple and unified API for retrieving data across different environments.
+
+## API
+The function asynchronously retrieves an item from storage based on a given key.
+
+```jsx
+import { getStorageItemAsync } from "@flexnative/authentication";
+```
+
+## Definition
+The function asynchronously retrieves an item from storage based on a given key.
+
+**setStorageItemAsync**
+Type: `function getStorageItemAsync(key: string): string | null`
+
+## Parameters
+|  Name   | Type | Required | Default Value | Description |
+| -- | -- | -- | -- | -- |
+| key | `string` | **true** | `undefined` | Representing the identifier for the item you wish to retrieve from storage. |
+
+## Returns
+It returns either a string representing the value of the item if it exists, or null if the item does not exist.
+
+## Function Body
+1. Environment Check:
+    * The function begins by checking if the current execution environment is the web.
+
+2. Web Environment Logic:
+    * If the environment is web, the function attempts to retrieve the item from `localStorage` using the key provided `localStorage.getItem(key)`.
+    * `localStorage.getItem(key)` will return the item's value as a string or `null` if the item cannot be found.
+    
+3. Non-Web Environment Logic:
+    * If the environment is not web the function retrieves the item from a secure storage mechanism called [`SecureStore`](https://docs.expo.dev/versions/latest/sdk/securestore/).

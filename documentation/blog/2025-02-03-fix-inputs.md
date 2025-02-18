@@ -3,7 +3,7 @@ slug: 76ff988
 title: 🪲 Inputs fix
 description: fix(inputs) correct theme color reference for error state
 authors: RedonAlla
-tags: [inputs_v0.0.12]
+tags: [inputs_v0.0.12, inputs]
 ---
 
 ## 🪲 Inputs fix

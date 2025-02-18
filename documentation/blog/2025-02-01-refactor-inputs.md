@@ -3,7 +3,7 @@ slug: 93429af
 title: 🛠️ Inputs refactor
 description: refactor(inputs) make certain props optional and handle non-null assertions
 authors: RedonAlla
-tags: [inputs_v0.0.10]
+tags: [inputs_v0.0.10, inputs]
 ---
 
 ## 🛠️ Inputs refactor

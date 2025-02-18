@@ -3,7 +3,7 @@ slug: 7834392
 title: 🛠️ Inputs refactor
 description: refactor(inputs) update default size and theme structure
 authors: RedonAlla
-tags: [inputs_v0.0.3]
+tags: [inputs_v0.0.3, inputs]
 ---
 
 **[#7834392](https://github.com/RedonAlla/flexnative/commit/7834392) refactor(inputs): update default size and theme structure**

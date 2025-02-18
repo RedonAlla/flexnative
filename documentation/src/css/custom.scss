@@ -54,6 +54,10 @@
   --docusaurus-highlighted-code-line-bg: #042642;
 }
 
+.cardContainer_fWXF {
+  box-shadow: none !important;
+}
+
 ::-moz-selection {
   color: #f8f8f8;
   background: var(--ifm-color-primary);
@@ -136,7 +140,7 @@ li {
   &.nav_session.getting_started {
     & > div {
       & > a::before {
-        content: "🚀";
+        content: "\e931";
       }
     }
   }
@@ -161,6 +165,14 @@ li {
     & > div {
       & > a::before {
         content: "\e92b";
+      }
+    }
+  }
+
+  &.nav_session.authentication {
+    & > div {
+      & > a::before {
+        content: "\e92f";
       }
     }
   }
