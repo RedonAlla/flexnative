@@ -1,5 +1,11 @@
 ##  (2025-02-18)
 
+* Merge branch 'main' of https://github.com/RedonAlla/flexnative ([891feb2](https://github.com/RedonAlla/flexnative/commit/891feb2))
+
+
+
+##  (2025-02-18)
+
 * feat(tags): update tag lists and add new components ([32f6776](https://github.com/RedonAlla/flexnative/commit/32f6776))
 
 
