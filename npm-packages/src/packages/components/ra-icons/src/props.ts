@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-10-27 14:25:26
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-02-15 22:56:12
+ * @ Modified time: 2025-02-17 23:52:03
  * @ Description: Props for Icon component.
  */
 
@@ -15,6 +15,12 @@ import { Color, FontSize } from '@flexnative/theme-context';
  * These names can be used to access the corresponding Unicode value from the `icons` object.
  */
 export interface IconName {
+  readonly "lock": string;
+  readonly "unlock": string;
+  readonly "filet-jsx": string;
+  readonly "filet-tsx": string;
+  readonly "file-code": string;
+  readonly "folder-open": string;
   readonly "rocket": string;
   readonly "shield-lock": string;
   readonly "fingerprint": string;
@@ -77,6 +83,12 @@ export interface IconName {
  */
 export const icons = {
   "rocket": "\ue931",
+  "lock": "\ue936",
+  "unlock": "\ue937",
+  "filet-jsx": "\ue932",
+  "filet-tsx": "\ue933",
+  "file-code": "\ue934",
+  "folder-open": "\ue935",
   "shield-lock": "\ue92f",
   "fingerprint": "\ue930",
   "layout": "\ue92e",
