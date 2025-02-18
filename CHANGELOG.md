@@ -1,5 +1,11 @@
 ##  (2025-02-18)
 
+* docs(utilities): add JsDoc comments for utility functions ([f806442](https://github.com/RedonAlla/flexnative/commit/f806442))
+
+
+
+##  (2025-02-18)
+
 * Merge branch 'main' of https://github.com/RedonAlla/flexnative ([891feb2](https://github.com/RedonAlla/flexnative/commit/891feb2))
 
 
