@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2025-02-13 21:21:15
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-02-13 21:42:14
+ * @ Modified time: 2025-02-16 20:12:13
  * @ Description: The provided TypeScript code defines several type aliases that outline the structure and expected properties for an authentication context in a React application. 
  */
 
@@ -15,8 +15,7 @@
  */
 export type AuthContextProps<TLoginRequest, TRegisterForm> = {
   /**
-   * It accepts a generic type parameter `TLoginRequest`,
-   * which allows the `onLogin` method to be defined with a specific login request type.
+   * Define the properties expected used to store authentication-related state properties.
    */
   state: AuthStateProps;
 
