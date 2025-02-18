@@ -1,3 +1,9 @@
+##  (2025-02-18)
+
+* refactor(authentication): update AuthContextProps type description ([8105fdb](https://github.com/RedonAlla/flexnative/commit/8105fdb))
+
+
+
 ##  (2025-02-15)
 
 * chore(icons): bump version to 0.0.6 ([8aa3fef](https://github.com/RedonAlla/flexnative/commit/8aa3fef))
