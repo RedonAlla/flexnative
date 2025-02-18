@@ -1,5 +1,11 @@
 ##  (2025-02-18)
 
+* feat(tags): update tag lists and add new components ([32f6776](https://github.com/RedonAlla/flexnative/commit/32f6776))
+
+
+
+##  (2025-02-18)
+
 * refactor(authentication): update AuthContextProps type description ([8105fdb](https://github.com/RedonAlla/flexnative/commit/8105fdb))
 
 
