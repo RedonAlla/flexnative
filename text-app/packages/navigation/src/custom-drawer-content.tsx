@@ -13,7 +13,7 @@ import { View, StyleSheet } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 
-const profilePic = require("../../../assets/demo-navigations/Profile1.png");
+//const profilePic = require("../../../assets/demo-navigations/Profile1.png");
 
 /**
  * The drawer itself
@@ -21,7 +21,7 @@ const profilePic = require("../../../assets/demo-navigations/Profile1.png");
 export default (props: DrawerContentComponentProps) => {
   return (
     <DrawerContentScrollView {...props} >
-      <Avatar source={profilePic} />
+      {/* <Avatar source={profilePic} /> */}
       <DrawerItemList {...props} />
       <Separator />
       <DrawerItem

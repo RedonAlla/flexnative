@@ -8,6 +8,7 @@ import { Drawer } from 'expo-router/drawer';
 import { Ionicons } from '@expo/vector-icons';
 
 import DrawerContent from '../packages/navigation/src/custom-drawer-content';
+import ThemeContext, { createTheme, FontSize } from '@flexnative/theme-context';
 
 
 
@@ -20,6 +21,8 @@ const MyTheme = {
     primary: 'rgb(255, 45, 85)',
   },
 };
+
+
 
 export default class DrawerScreen extends PureComponent<{}, {}> {
   render(): ReactNode {
