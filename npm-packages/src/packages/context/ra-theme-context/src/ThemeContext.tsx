@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2023-06-04 21:29:02
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-10 13:17:53
+ * @ Modified time: 2025-03-02 20:22:41
  * @ Description: Theme Context.
  */
 
@@ -19,7 +19,10 @@ import { defaultTheme } from './utilities';
  * 
  * @property {ThemeContextProps<any>} defaultValue - The default value for the theme context, initialized with the default theme.
  */
-const ThemeContext = React.createContext<ThemeContextProps<any>>(defaultTheme());
+const ThemeContext: React.Context<ThemeContextProps<any>> =
+  React.createContext<ThemeContextProps<any>>({
+    state: defaultTheme()
+  });
 
 /**
  * Custom hook to access the current theme context.
@@ -29,6 +32,13 @@ const ThemeContext = React.createContext<ThemeContextProps<any>>(defaultTheme())
  *
  * @returns {ThemeContextType} The current theme context value.
  */
-export const useThemeContext = () => React.useContext(ThemeContext);
+export function useThemeContext<TColors>(): ThemeContextProps<TColors> {
+  const value = React.useContext(ThemeContext);
+  if (!value) {
+    throw new Error('useThemeContext must be wrapped in a <ThemeProvider />');
+  }
+
+  return value;
+}
 
 export default ThemeContext;

@@ -1,94 +1,177 @@
 /**
- * @ Author: Redon Alla
- * @ Create Time: 2023-06-04 21:29:02
- * @ Modified by: Redon Alla
- * @ Modified time: 2024-12-08 21:32:11
- * @ Description: Theme Provider
+ * @file ThemeProvider.tsx
+ * @author Redon Alla <redon.alla@gmail.com>
+ * @createDate 2023-06-04 21:29:02
+ * @modifyDate 2025-03-02 18:36:42
+ * @description Provides theming capabilities to the application through a React Context.
+ *
+ * This file defines the `ThemeProvider` component, which is responsible for
+ * managing the application's theme and making it available to child components
+ * via a React Context. It allows for dynamic theme switching, color scheme
+ * management, and persisting theme preferences.
  */
 
 import React from 'react';
-import { Appearance, ColorSchemeName } from 'react-native';
+import { ColorSchemeName } from 'react-native';
 
 import ThemeContext from './ThemeContext';
 import { BaseColors, BaseTheme, ThemeProviderProps } from './props';
-import { createTheme, defaultColors } from './utilities';
+import { defaultTheme } from './utilities';
 
-/**
- * Retrieve the current color scheme (e.g., 'light' or 'dark') from the device's appearance settings.
- * This method is typically used to apply different styles depending on the user's preferred theme.
- */
-const scheme = Appearance.getColorScheme();
-
-/**
- * Represents the state properties for the theme provider.
- *
- * @template TColors - A type representing additional theme colors.
- *
- * @property {BaseColors & TColors} colors - Default theme colors. You can add whatever values you want to the theme, and they will be merged with the default.
- * @property {ColorSchemeName} [scheme] - Theme color scheme.
- */
 interface StateProps<TColors> {
-  /**
-   * Default theme colors.
-   * You can add whatever values you want to the theme, and they will be merged with the default.
-  */
-  colors: BaseColors & TColors;
-
-  /** Theme colorScheme {@link ColorSchemeName} */
-  scheme?: ColorSchemeName;
+  theme?: BaseTheme<TColors>;
 };
 
 
-/** ThemeContext for handling colors and scheme change.
- * @template TColors
- * @author Redon Alla <redon.alla@gmail.com>
+/**
+ * ThemeProvider Component
+ *
+ * Provides a React Context for managing the application's theme. This component
+ * allows you to define, switch, and persist themes and color schemes.
+ *
+ * @template TColors - An optional type to extend the base colors with custom color properties.
+ * @extends React.PureComponent<ThemeProviderProps<TColors>, StateProps<TColors>>
+ * @example
+ * ```typescript
+ * // Example of extending the BaseColors
+ * interface MyColors {
+ *   myCustomColor: ColorValue;
+ * }
+ *
+ * // Example of using the ThemeProvider
+ * <ThemeProvider<MyColors>
+ *  onLoad={async () => {
+ *      // Implement your logic to load the theme from storage
+ *      const savedTheme = await AsyncStorage.getItem('theme');
+ *      if (savedTheme) {
+ *          this.setState({ theme: JSON.parse(savedTheme) });
+ *      }
+ *      return Promise.resolve();
+ *  }}
+ *  onChangeColorScheme={async (scheme) => {
+ *      // Implement your logic to persist the color scheme
+ *      await AsyncStorage.setItem('colorScheme', scheme);
+ *      console.log('colorScheme saved:', scheme);
+ *      return Promise.resolve();
+ *  }}
+ *  onChangeTheme={async (theme) => {
+ *      // Implement your logic to persist the theme
+ *      await AsyncStorage.setItem('theme', JSON.stringify(theme));
+ *      console.log('Theme saved:', theme);
+ *      return Promise.resolve();
+ *  }}
+ *  setColors={async (colors) => {
+ *      //Implement your logic to update only the colors of the theme.
+ *      const newTheme = {...this.state.theme, colors}
+ *      this.onChangeTheme(newTheme)
+ *      return Promise.resolve()
+ *  }}
+ * >
+ *   <MyApp />
+ * </ThemeProvider>
+ * ```
  */
 export default abstract class ThemeProvider<TColors> extends React.PureComponent<ThemeProviderProps<TColors>, StateProps<TColors>> {
   constructor(props: ThemeProviderProps<TColors>) {
     super(props)
     
     this.state = {
-      scheme: props?.theme?.scheme ?? scheme,
-      colors: props?.theme?.colors ?? defaultColors(props?.theme?.scheme ?? scheme)
+      theme: props.theme ?? defaultTheme() as BaseTheme<TColors>
     }
   }
 
   async componentDidMount() {
     await this.onLoad();
   }
-
-  /**
-  * This method it is called on `componentDidMount`.
-    You can store your themes in a database, local storage, or any other storage.
-    and this method it is used to write the logic for reading the theme from your storage and render on your app.
-    @see Example <https://redonalla.github.io/flexnative/docs/theme/examples>
-  * @return Promise of type void {Promise<void>}
-  */
+  
+ /**
+   * onLoad - Lifecycle method called when the component is mounted.
+   *
+   * This abstract method should be implemented to load the theme from storage.
+   * It allows you to fetch and apply a previously saved theme.
+   * 
+   * @see Example <https://redonalla.github.io/flexnative/docs/theme/examples>
+   *
+   * @abstract
+   * @returns {Promise<void>} A promise that resolves when the theme has been loaded.
+   * @example
+   * ```typescript
+   *  async onLoad() {
+   *      const savedTheme = await AsyncStorage.getItem('theme');
+   *      if (savedTheme) {
+   *          this.setState({ theme: JSON.parse(savedTheme) });
+   *      }
+   * }
+   * ```
+   */
   abstract onLoad(): Promise<void>;
 
   /**
-  * This method it is used to change ColorSchemeName of your app.
-  * @param colorScheme
-  * Returns a Promise so you can write the logic for storing your ColorSchemeName in your storage.
-  */
+   * onChangeColorScheme - Method to change the color scheme.
+   *
+   * This abstract method should be implemented to handle changes in the color scheme
+   * (e.g., 'light' or 'dark'). It allows you to update the color scheme and persist
+   * the user's preference.
+   *
+   * @abstract
+   * @param {ColorSchemeName} colorScheme - The new color scheme to apply.
+   * @returns {Promise<void>} A promise that resolves when the color scheme has been changed.
+   * @example
+   * ```typescript
+   *  async onChangeColorScheme(colorScheme: ColorSchemeName) {
+   *      await AsyncStorage.setItem('colorScheme', colorScheme);
+   *      console.log('colorScheme saved:', colorScheme);
+   * }
+   * ```
+   */
   abstract onChangeColorScheme(colorScheme: ColorSchemeName): Promise<void>;
 
   /**
-   * This method it is used to change theme of your app.
-   * @param {BaseColors & TColors} theme
-   * Returns a Promise so you can write the logic for storing your theme in your preferred storage.
-   */
+  * onChangeTheme - Method to change the theme.
+  *
+  * This abstract method should be implemented to handle changes in the theme.
+  * It enables you to update the entire theme object and persist the user's
+  * chosen theme.
+  *
+  * @abstract
+  * @param {BaseTheme<TColors>} theme - The new theme to apply.
+  * @returns {Promise<void>} A promise that resolves when the theme has been changed.
+  * @example
+  * ```typescript
+  *  async onChangeTheme(theme: BaseTheme<TColors>) {
+  *    await AsyncStorage.setItem('theme', JSON.stringify(theme));
+  *    console.log('Theme saved:', theme);
+  *  }
+  * ```
+  */
   abstract onChangeTheme(theme: BaseTheme<TColors>): Promise<void>;
+
+  /**
+   * setColors - Method to update only the colors of the current theme.
+   *
+   * This abstract method should be implemented to allow dynamic updates
+   * to the color palette without changing other theme properties.
+   *
+   * @abstract
+   * @param {BaseColors & TColors} colors - The new set of colors to apply to the theme.
+   * @returns {Promise<void>} A promise that resolves when the colors have been updated.
+   * @example
+   * ```typescript
+   *  async setColors(colors: BaseColors & TColors) {
+   *      //Implement your logic to update only the colors of the theme.
+   *      const newTheme = {...this.state.theme, colors}
+   *      this.onChangeTheme(newTheme)
+   *  }
+   * ```
+   */
+  abstract setColors(colors: BaseColors & TColors): Promise<void>;
 
   render() {
     return (
       <ThemeContext.Provider value={{
-        ...createTheme<TColors>({
-          ...this.props?.theme ?? {} as BaseTheme<TColors>,
-          scheme: this.state.scheme,
-          colors: this.state.colors as BaseColors & TColors,
-        }),
+        state: this.state.theme as BaseTheme<TColors>,
         setTheme: this.onChangeTheme.bind(this),
+        setColors: this.setColors.bind(this),
         setColorScheme: this.onChangeColorScheme.bind(this),
       }}>
         {this.props.children}

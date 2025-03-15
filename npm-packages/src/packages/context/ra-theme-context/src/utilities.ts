@@ -1,96 +1,84 @@
 /**
- * @ Author: Redon Alla
- * @ Create Time: 2024-11-05 22:13:28
- * @ Modified by: Redon Alla
- * @ Modified time: 2024-12-08 21:33:00
- * @ Description: Utility functions for creating themes.
+ * @file utilities.ts
+ * @author Redon Alla <redon.alla@gmail.com>
+ * @createDate 2024-11-05 22:13:28
+ * @modifyDate 2025-03-02 17:44:56
+ * @description Utility functions for creating and managing themes within the FlexNative framework.
+ *              This file provides functions to generate default themes, merge custom themes,
+ *              and handle color schemes, ensuring a consistent and flexible theming system.
  */
 
 import { Appearance, ColorSchemeName } from "react-native";
 import { BaseColors, BaseTheme } from "./props";
 import { dark, light } from "./colors";
 import {
-  BASE_SIZE,
   BORDER_RADIUS,
   BORDER_WIDTH,
-  DISABLED_OPACITY,
   FONT_SIZE,
-  GHOST_TRANSPARENCY,
-  PADDING_HORIZONTAL_MULTIPLIER,
-  PADDING_VERTICAL_MULTIPLIER
+  SPACING
 } from "./constants";
 
 
 /**
- * Returns the default color scheme based on the provided scheme name.
- *
- * @param scheme - The name of the color scheme, either 'dark' or 'light'.
- * @returns The base colors corresponding to the specified color scheme.
+ * @function defaultColors
+ * @template TColors
+ * @description Determines the default color palette based on the user's preferred color scheme or the system's appearance.
+ *              It returns either the `dark` or `light` color scheme.
+ * @param {ColorSchemeName} [userScheme] - Optional. The user's preferred color scheme ('light' or 'dark'). If not provided, the system's appearance is used.
+ * @returns {BaseColors & TColors} The default color palette for the specified or detected color scheme, extended with any custom colors.
+ * @example
+ * // Returns the dark color scheme if the system is in dark mode.
+ * const darkColors = defaultColors();
+ * 
+ * // Returns the light color scheme.
+ * const lightColors = defaultColors('light');
  */
-export function defaultColors<TColors>(scheme: ColorSchemeName): BaseColors & TColors {
+export function defaultColors<TColors>(userScheme? : ColorSchemeName): BaseColors & TColors {
+  const scheme = userScheme ?? Appearance.getColorScheme();
   return (scheme === 'dark' ? dark : light) as BaseColors & TColors;
 }
 
 /**
- * Generates the default theme configuration based on the current color scheme.
- *
- * @returns {BaseTheme<BaseColors>} The default theme object containing colors, scheme, border width, border radius, font size, and various metrics.
+ * @function defaultTheme
+ * @description Generates the default theme object with predefined colors, border configurations, and font sizes.
+ *              It determines the initial color scheme based on the system's appearance or the user's preference.
+ * @returns {BaseTheme<BaseColors>} The default theme object.
+ * @example
+ * 
  */
 export function defaultTheme(): BaseTheme<BaseColors> {
   const scheme = Appearance.getColorScheme();
   return {
-    colors: defaultColors(scheme),
+    isDark: scheme === 'dark',
+    colors: defaultColors(),
     scheme: scheme,
-    borderWidth: BORDER_WIDTH,
-    borderRadius: BORDER_RADIUS,
     fontSize: FONT_SIZE,
-    metrics: {
-      baseSize: BASE_SIZE,
-      disabledOpacity: DISABLED_OPACITY,
-      ghostOpacity: GHOST_TRANSPARENCY,
-      verticalMultiplier: PADDING_VERTICAL_MULTIPLIER,
-      horizontalMultiplier: PADDING_HORIZONTAL_MULTIPLIER
+    spaces: SPACING,
+    borders: {
+      width: BORDER_WIDTH,
+      radius: BORDER_RADIUS
     }
   }
 }
 
-/**
- * Creates a theme object by merging the provided properties with default values.
- *
- * @template TColors - The type of the colors object.
- * @param {BaseTheme<TColors>} props - The base theme properties.
- * @returns {BaseTheme<TColors>} The created theme object.
- *
- * @property {TColors} colors - The color scheme for the theme.
- * @property {string} scheme - The color scheme name.
- * @property {number} borderWidth - The width of the borders.
- * @property {number} borderRadius - The radius of the borders.
- * @property {number} fontSize - The font size.
- * @property {object} metrics - Various metrics used in the theme.
- * @property {number} metrics.baseSize - The base size.
- * @property {number} metrics.disabledOpacity - The opacity for disabled elements.
- * @property {number} metrics.ghostOpacity - The opacity for ghost elements.
- * @property {number} metrics.verticalMultiplier - The vertical padding multiplier.
- * @property {number} metrics.horizontalMultiplier - The horizontal padding multiplier.
- */
-export function createTheme<TColors>(props: BaseTheme<TColors>): BaseTheme<TColors> {
-  const scheme = props.scheme ?? Appearance.getColorScheme() ?? 'light';
+export function createTheme<TColors>(props: Partial<BaseTheme<TColors>>): BaseTheme<TColors> {
+  const theme = defaultTheme();
 
   return {
-    colors: props.colors ?? defaultColors(scheme),
-    scheme: scheme,
-    borderWidth: props.borderWidth ?? BORDER_WIDTH,
-    borderRadius: props.borderRadius ?? BORDER_RADIUS,
-    fontSize: props.fontSize ?? FONT_SIZE,
-    metrics: Object.assign({},
-      {
-        baseSize: BASE_SIZE,
-        disabledOpacity: DISABLED_OPACITY,
-        ghostOpacity: GHOST_TRANSPARENCY,
-        verticalMultiplier: PADDING_VERTICAL_MULTIPLIER,
-        horizontalMultiplier: PADDING_HORIZONTAL_MULTIPLIER
-      },
-      props.metrics
-    )
+    isDark: theme.isDark,
+    colors: {
+      ...theme.colors,
+      ...(props.colors ?? {})
+    } as BaseColors & TColors,
+    spaces: {
+      ...theme.spaces,
+      ...(props.spaces! ?? {})
+    },
+    scheme: theme.scheme,
+    fontSize: props.fontSize ?? theme.fontSize,
+    borders: {
+      ...theme.borders,
+      ...(props.borders ?? {})
+    }
   }
 }
