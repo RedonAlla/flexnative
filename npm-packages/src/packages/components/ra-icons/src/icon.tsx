@@ -2,13 +2,13 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-10-27 14:25:26
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-08 20:26:00
+ * @ Modified time: 2025-03-16 22:34:28
  * @ Description: Icon component used to display icons using text characters.
  */
 
 import React from 'react';
 import { Text } from 'react-native';
-import { useThemeContext } from '@flexnative/theme-context';
+import { useThemeState } from '@flexnative/theme-context';
 
 import { icons, IconProps } from './props';
 import createStyles from './styles';
@@ -26,19 +26,23 @@ import createStyles from './styles';
  * 
  * @returns {JSX.Element} The rendered icon component.
  */
-const IconComponent = (props: IconProps) => {
-  const theme = useThemeContext();
-  const { name, size = 'default', color = 'text', style, ...otherProps } = props;
+const IconComponent = (props: IconProps): JSX.Element => {
+  const theme = useThemeState();
+  const { name, size = 'md', color = 'text', style, ...otherProps } = props;
 
   const styleProps = {
-    color: (theme.colors[color] ?? color) || theme.colors.text,
-    size: (theme.fontSize[size] ?? size) || theme.fontSize.default
+    color: ((theme.colors[color as keyof typeof theme.colors] ?? color) || theme.colors.text),
+    size: (theme.fontSize[size] ?? size) || theme.fontSize.md
   };
 
   const styles = createStyles(styleProps);
 
   return (
-    <Text style={[styles.icon, style]} {...otherProps} >
+    <Text numberOfLines={1}
+          adjustsFontSizeToFit
+          style={[styles.icon, style]}
+          {...otherProps}
+    >
       {icons[name]}
     </Text>
   );

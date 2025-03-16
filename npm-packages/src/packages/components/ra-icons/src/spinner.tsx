@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-10-27 14:25:26
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-08 20:43:52
+ * @ Modified time: 2025-03-16 22:35:31
  * @ Description: Spinner component used to display a spinning icon.
  */
 
@@ -22,18 +22,13 @@ import { IconProps, icons } from './props';
 import createStyles from './styles';
 
 
-/**
- * The value to which the spinner animation will rotate.
- * This constant represents the total degrees of rotation for the spinner animation.
- */
-const TO_VALUE_ANIMATION = 360;
 
 /**
  * The duration of the spinner animation in milliseconds.
  * @constant
  * @type {number}
  */
-const ANIMATION_DURATION = 700;
+const ANIMATION_DURATION: number = 700;
 
 
 /**
@@ -74,7 +69,7 @@ const Spinner = (props: IconProps) => {
 
   React.useEffect(() => {
     rotation.value = withRepeat(
-      withTiming(TO_VALUE_ANIMATION, {
+      withTiming(360, {
         duration: ANIMATION_DURATION,
         easing: Easing.linear,
       }),
@@ -83,17 +78,19 @@ const Spinner = (props: IconProps) => {
     return () => cancelAnimation(rotation);
   }, [rotation]);
 
-  const { name, size = 'default', color = 'text', style, ...otherProps } = props;
+  const { name, size = 'md', color = 'text', style, ...otherProps } = props;
 
   const styleProps = {
-    color: (theme.colors[color] ?? color) || theme.colors.text,
-    size: (theme.fontSize[size] ?? size) || theme.fontSize.default
+    color: (theme.state.colors[color as keyof typeof theme.state.colors] ?? color) || theme.state.colors.text,
+    size: (theme.state.fontSize[size] ?? size) || theme.state.fontSize.md
   };
 
   const styles = createStyles(styleProps);
   
   return (
     <Animated.Text
+      numberOfLines={1}
+      adjustsFontSizeToFit
       style={[styles.icon, style, animatedStyles]}
       {...otherProps}
     >
