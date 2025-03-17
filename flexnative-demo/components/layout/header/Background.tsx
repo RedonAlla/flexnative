@@ -2,21 +2,24 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-12-13 20:56:56
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-12-15 20:30:19
+ * @ Modified time: 2025-03-02 21:23:00
  * @ Description: A Blur component use to header navigation.
  */
 
 import React from "react";
-import { BlurView } from "expo-blur";
 import { StyleSheet } from "react-native";
+import { BlurView, BlurViewProps } from "expo-blur";
 import { HEADER_BLUR_INTENSITY } from "@/constants/layout";
 
 
 /**
- * Describes the shape of props accepted by the HeaderBackground component, specifically a boolean isLight.
+ * @interface HeaderBackgroundProps
+ * @description Extends the `BlurViewProps` from `expo-blur` to include a flag indicating if the dark mode is enabled.
+ * @property {boolean} isDark - A boolean indicating whether the application is in dark mode.
+ * @extends {BlurViewProps}
  */
-interface HeaderBackgroundProps {
-  isDark: boolean;
+interface HeaderBackgroundProps extends BlurViewProps {
+  isDark?: boolean;
 }
 
 /**
@@ -26,8 +29,8 @@ interface HeaderBackgroundProps {
  * @param {HeaderBackgroundProps} param 
  * @returns {React.FC<HeaderBackgroundProps>} HeaderBackground
  */
-export const HeaderBackground: React.FC<HeaderBackgroundProps> = ({ isDark }) => {
-  
+export const HeaderBackground: React.FC<HeaderBackgroundProps> = ({ isDark, tint }) => {
+
   const tintStyle = React.useMemo(
     () => ( isDark ? 'systemChromeMaterialDark' : 'systemThickMaterialLight' ),
     [isDark]
@@ -45,12 +48,11 @@ export const HeaderBackground: React.FC<HeaderBackgroundProps> = ({ isDark }) =>
 };
 
 /**
- * Importing StyleSheet from 'react-native' to create a centralized stylesheet.
+ * Defines the styles for the HeaderBackground component's blur effect.
  */
 const styles = StyleSheet.create({
   blurView: {
     zIndex: -100,
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'transparent',
-  },
+    ...StyleSheet.absoluteFillObject
+  }
 });

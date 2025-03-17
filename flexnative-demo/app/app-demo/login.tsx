@@ -8,8 +8,12 @@ import {
   SafeAreaView,
   Alert,
   KeyboardAvoidingView,
-  Platform
+  Platform,
+  StatusBar
 } from 'react-native';
+import Constants from 'expo-constants';
+
+import * as Device from 'expo-device';
 
 import { Formik, FormikHelpers } from "formik";
 import * as Yup from "yup";
@@ -72,6 +76,9 @@ const LoginScreen = () => {
         setSubmitting(false);
       });
   }
+
+  console.log('Constants: ', Constants.statusBarHeight)
+  console.log('StatusBar: ', StatusBar.currentHeight)
   
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: theme.colors.background}}>
@@ -88,7 +95,7 @@ const LoginScreen = () => {
         >
           {({ handleSubmit }) => (
             <>
-              <KeyboardAvoidingView style={[styles.inputWrapper]} behavior={'position'}>
+              <KeyboardAvoidingView style={[styles.inputWrapper]} behavior='padding'>
                 
                 {
                   status === ActionStatus.Error &&
@@ -96,6 +103,9 @@ const LoginScreen = () => {
                 }
 
                 <View style={styles.formField}>
+                <Text>
+        {Device.manufacturer}: {Device.modelName}
+      </Text>
                   <FieldTextBox
                     name="email"
                     label='Email'
@@ -132,11 +142,11 @@ const LoginScreen = () => {
         </Formik>
 
         <View style={styles.fingerPrint}>
-          <Icon name="avatar" size={62} color='secondary' />
+          <Icon name="fingerprint" size={62} color='secondary' />
         </View>
 
         <View style={styles.footer}>
-          <Button text='Register' type='text' borderWidth='none' color='secondary' style={styles.registerButton} />
+          <Button text='Register' type='text' size='medium' borderWidth='none' color='secondary' style={styles.registerButton} />
         </View>
 
       </View>
