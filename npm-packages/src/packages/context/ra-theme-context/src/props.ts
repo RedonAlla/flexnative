@@ -204,8 +204,8 @@ export interface BaseTheme<TColors> {
  * ```
  */
 export interface Borders {
-  width?: Record<BorderWidth, number>;
-  radius?: Record<BorderRadius, number>;
+  width: Record<BorderWidth, number>;
+  radius: Record<BorderRadius, number>;
 }
 
 /**
