@@ -2,15 +2,15 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-10-27 14:25:26
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-03-15 20:07:55
+ * @ Modified time: 2025-03-17 23:24:40
  * @ Description: Styles applied in to Button component.
  */
 
 import { ColorValue, StyleSheet } from 'react-native';
 
-import { getTextColor, getTextColorPressed } from './utilities';
+import { getBoxShadowWidth, getIconSize, getTextColor, getTextColorPressed } from './utilities';
 import { BaseButtonProps, ButtonType } from './props';
-import { HORIZONTAL_PADDING_MULTIPLIER, DISABLED_OPACITY, WHITE_COLOR } from './constants';
+import { HORIZONTAL_PADDING_MULTIPLIER, DISABLED_OPACITY, WHITE_COLOR, GAP_MULTIPLIER } from './constants';
 import { BaseTheme } from '@flexnative/theme-context';
 
 
@@ -26,8 +26,10 @@ import { BaseTheme } from '@flexnative/theme-context';
  */
 export default function createStyles(props: BaseButtonProps, theme: BaseTheme<any>)
 {
+  const iconSize = theme.fontSize[getIconSize(props.size)];
   const themeColor = theme.colors[props.color] ?? props.color;
   const textColor = getTextColor(theme.isDark, props.color, themeColor, props.type, theme.colors.black);
+  const boxShadow = props.pressedBoxShadow ?? `0 0 0px ${getBoxShadowWidth(props.size)} ${theme.colors[`${props.color as string}SubtleActive`]}`;
 
   return StyleSheet.create({
     container: {
@@ -36,24 +38,24 @@ export default function createStyles(props: BaseButtonProps, theme: BaseTheme<an
       alignItems: 'center',
       overflow: 'hidden',
       justifyContent: 'center',
-      borderRadius: theme.borders.radius[props?.radius!] ?? props.radius,
-      borderWidth: theme.borders?.width[props.borderWidth!] ?? props.borderWidth,
+      borderRadius: theme.borders?.radius![props?.radius!] ?? props.radius,
+      borderWidth: theme.borders?.width![props.borderWidth!] ?? props.borderWidth,
     },
     block: {
       alignSelf: "stretch"
     },
     sizeSmall: {
-      gap: theme.spaces.xxs,
+      gap: Math.round(theme.spaces.xxs * GAP_MULTIPLIER),
       paddingVertical: theme.spaces.xxs,
       paddingHorizontal: theme.spaces.xxs * HORIZONTAL_PADDING_MULTIPLIER,
     },
     sizeMedium: {
-      gap: theme.spaces.xs,
+      gap: Math.round(theme.spaces.xs * GAP_MULTIPLIER),
       paddingVertical: theme.spaces.xs,
       paddingHorizontal: theme.spaces.xs * HORIZONTAL_PADDING_MULTIPLIER,
     },
     sizeLarge: {
-      gap: theme.spaces.sm,
+      gap: Math.round(theme.spaces.sm * GAP_MULTIPLIER),
       paddingVertical: theme.spaces.sm,
       paddingHorizontal: theme.spaces.sm * HORIZONTAL_PADDING_MULTIPLIER,
     },
@@ -62,27 +64,27 @@ export default function createStyles(props: BaseButtonProps, theme: BaseTheme<an
       borderColor: props.borderColor ?? themeColor,
     },
     typeDefaultPressed: {
+      boxShadow,
       backgroundColor: props.activeColor ?? theme.colors[`${props.color as string}Active`],
       borderColor: props.activeBorderColor ?? props.borderColor ?? themeColor,
-      boxShadow: `0 0 0px 2px ${theme.colors[`${props.color as string}SubtleActive`]}`
     },
     typeGhost: {
       backgroundColor: theme.colors[`${props.color as string}Subtle`],
       borderColor: props.borderColor ?? 'transparent',
     },
     typeGhostPressed: {
+      boxShadow,
       backgroundColor: props.activeColor ?? theme.colors[`${props.color as string}SubtleHover`],
       borderColor: props.activeBorderColor ?? 'transparent',
-      boxShadow: `0 0 0px 2px ${theme.colors[`${props.color as string}SubtleActive`]}`
     },
     typeInverse: {
       backgroundColor: 'transparent',
       borderColor: props.borderColor ?? 'transparent',
     },
     typeInversePressed: {
+      boxShadow,
       backgroundColor: props.activeColor ?? themeColor,
       borderColor: props.activeBorderColor ?? props.borderColor ?? themeColor,
-      boxShadow: `0 0 0px 2px ${theme.colors[`${props.color as string}SubtleActive`]}`
     },
     typeText: {
       backgroundColor: 'transparent',
@@ -107,7 +109,6 @@ export default function createStyles(props: BaseButtonProps, theme: BaseTheme<an
       alignSelf: "stretch",
       marginTop: "auto",
       marginBottom: "auto",
-      color: textColor,
       textAlign: 'center',
       userSelect: 'none',
       fontFamily: 'Regular',
@@ -134,12 +135,18 @@ export default function createStyles(props: BaseButtonProps, theme: BaseTheme<an
       fontSize: theme.fontSize.lg
     },
     icon: {
+      alignSelf: "stretch",
       marginTop: "auto",
       marginBottom: "auto",
       textAlign: 'center',
       userSelect: 'none',
-      color: textColor
-    }
+      width: iconSize,
+      height: iconSize,
+      fontSize: iconSize
+    },
+    iconSmall: {
+      fontSize: iconSize
+    },
   })
 }
 

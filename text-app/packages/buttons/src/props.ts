@@ -2,13 +2,13 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-10-27 14:25:26
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-03-09 20:04:53
+ * @ Modified time: 2025-03-17 23:07:19
  * @ Description: Button props to change the component behavior.
  */
 
 import { IconName } from "@flexnative/icons";
 import { BorderRadius, BorderWidth, Color, Sizes } from "@flexnative/theme-context";
-import { ColorValue, PressableProps, TextProps } from "react-native";
+import { ColorValue, PressableProps, StyleProp, TextStyle } from "react-native";
 
 
 /**
@@ -89,6 +89,12 @@ export interface BaseButtonProps {
    * Create responsive stacks of full-width, `buttons`.
    */
   block?: boolean;
+
+  /**
+   * Adds a shadow effect to the button, when the button it is pressed.
+   * For more details read the {@link https://reactnative.dev/docs/view-style-props#boxshadow documentation}. 
+   */
+  pressedBoxShadow?: string;
 }
 
 /**
@@ -112,6 +118,15 @@ export interface IButtonProps extends BaseButtonProps, PressableProps {
    * If children is set, the `text` property will be ignored.
    */
   text?: string;
+
+  /**
+   * Either text styles or a function that receives a boolean reflecting whether
+   * the button is pressed and returns text styles.
+   */
+  textStyle?:
+    | StyleProp<TextStyle>
+    | ((pressed: boolean) => StyleProp<TextStyle>)
+    | undefined;
   
   /**
    * If true, the icon it is displayed on right size of text.
@@ -124,4 +139,13 @@ export interface IButtonProps extends BaseButtonProps, PressableProps {
    * If children is set, the `icon` property will be ignored.
    */
   icon?: keyof IconName | React.ReactElement;
+
+  /**
+   * Either text styles or a function that receives a boolean reflecting whether
+   * the button is pressed and returns text styles.
+   */
+  iconStyle?:
+    | StyleProp<TextStyle>
+    | ((pressed: boolean) => StyleProp<TextStyle>)
+    | undefined;
 }

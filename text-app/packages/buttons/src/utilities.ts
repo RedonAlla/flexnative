@@ -2,12 +2,12 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-10-27 14:25:26
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-03-15 20:01:31
+ * @ Modified time: 2025-03-17 23:22:15
  * @ Description: Utilities functions used for Button component.
  */
 
-import { ColorValue } from "react-native";
-import { Color } from "@flexnative/theme-context";
+import { ColorValue, StyleProp, TextStyle } from "react-native";
+import { Color, FontSize, Sizes } from "@flexnative/theme-context";
 
 import { ButtonType } from "./props";
 import { WHITE_COLOR } from "./constants";
@@ -32,12 +32,40 @@ export function getTextColorPressed(isDark: boolean, color: Color, colorValue: C
     : (color === 'default' || color === 'light') ? colorValue : WHITE_COLOR
 }
 
-/**
- * Check if a value it is a string or not.
- * 
- * @param value 
- * @returns true if value it is string otherwise false.
- */
-export function isString<Type>(value?: Type): boolean {
-  return typeof value === 'string';
+export function getStyle(
+  style:
+    | StyleProp<TextStyle>
+    | ((pressed: boolean) => StyleProp<TextStyle>)
+    | undefined,
+    pressed: boolean): StyleProp<TextStyle> {
+    if(style === undefined)
+      return undefined;
+    else
+      return (typeof style === 'function') ? style(pressed) : style
+}
+
+export function getIconSize(size: Sizes): FontSize {
+  switch (size) {
+    case 'small':
+      return 'md';
+    case 'medium':
+      return 'lg';
+    case 'large':
+      return 'xxl'
+    default:
+      return size;
+  }
+}
+
+export function getBoxShadowWidth(size: Sizes): string {
+  switch (size) {
+    case 'small':
+      return '2px';
+    case 'medium':
+      return '3px';
+    case 'large':
+      return '4px'
+    default:
+      return '2px';
+  }
 }

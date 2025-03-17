@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { PureComponent, ReactNode } from 'react';
+import { useFonts } from 'expo-font';
+import { SplashScreen, Slot } from "expo-router";
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 //import { createDrawerNavigator } from '@react-navigation/drawer';
 
@@ -10,6 +12,15 @@ import { Ionicons } from '@expo/vector-icons';
 import DrawerContent from '../packages/navigation/src/custom-drawer-content';
 import ThemeContext, { createTheme, FontSize } from '@flexnative/theme-context';
 
+import {
+  Roboto_700Bold,
+  Roboto_400Regular,
+  Roboto_500Medium,
+  Roboto_400Regular_Italic,
+  Roboto_500Medium_Italic
+} from '@expo-google-fonts/roboto';
+
+SplashScreen.preventAutoHideAsync();
 
 
 //const Drawer = createDrawerNavigator();
@@ -22,10 +33,43 @@ const MyTheme = {
   },
 };
 
+let customFonts: Record<string, any> = {
+  'Bold': Roboto_700Bold,
+  'Regular': Roboto_400Regular,
+  'Medium': Roboto_500Medium,
+  'Italic': Roboto_400Regular_Italic,
+  'ItalicSemiBold': Roboto_500Medium_Italic,
+  'Icons': require('../assets/fonts/icons.ttf')
+};
 
 
-export default class DrawerScreen extends PureComponent<{}, {}> {
-  render(): ReactNode {
+
+export default function Layout() {
+  const [fontsLoaded, fontsError] = useFonts(customFonts);
+  /**
+   * Handle font loading errors using an effect
+   */
+  useEffect(() => {
+    if (fontsError)
+      throw fontsError;
+    
+  }, [fontsError]);
+
+  /**
+   * Hide the splash screen when fonts are loaded
+   */
+  useEffect(() => {
+    if (fontsLoaded)
+      SplashScreen.hideAsync();
+    
+  }, [fontsLoaded]);
+
+  /**
+   * Return null while waiting for fonts to load to prevent rendering issues
+   */
+  if (!fontsLoaded)
+    return null;
+
     return (
       // <NavigationContainer ref={navigationRef} theme={MyTheme}>
         <Drawer
@@ -85,4 +129,3 @@ export default class DrawerScreen extends PureComponent<{}, {}> {
       // </NavigationContainer>
     );
   }
-}
