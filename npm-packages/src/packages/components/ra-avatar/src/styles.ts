@@ -2,34 +2,23 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-06-07 23:29:01
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-10 21:22:33
+ * @ Modified time: 2025-03-19 22:21:01
  * @ Description: Styles applied in to Avatar component.
  */
 
 import { ColorValue, StyleSheet } from 'react-native';
-import { Sizes } from '@flexnative/theme-context';
+import { BaseTheme, BorderRadius, BorderWidth, Sizes } from '@flexnative/theme-context';
 
+import { FillMode } from './props';
 import { AVATAR_SIZES } from './constants';
+import { getBackgroundColor, getTextColor } from './utilities';
 
-
-/**
- * Properties for styling an avatar item.
- * 
- * @typedef {Object} AvatarItemStyleProps
- * @property {Sizes} size - The size of the avatar.
- * @property {ColorValue} color - The color of the avatar.
- * @property {number} radius - The border radius of the avatar.
- * @property {number} [borderWidth] - The width of the border around the avatar.
- * @property {ColorValue} [borderColor] - The color of the border around the avatar.
- * @property {ColorValue} [backgroundColor] - The background color of the avatar.
- * @property {ColorValue} [textColor] - The color of the text inside the avatar.
- * @property {ColorValue} [iconColor] - The color of the icon inside the avatar.
- */
 type AvatarItemStyleProps = {
   size: Sizes;
   color: ColorValue;
-  radius: number;
-  borderWidth?: number;
+  radius: BorderRadius;
+  fillMode: FillMode;
+  borderWidth?: BorderWidth;
   borderColor?: ColorValue;
   backgroundColor?: ColorValue;
   textColor?: ColorValue;
@@ -58,22 +47,9 @@ type AvatarGroupStyleProps = {
   itemBorderColor?: ColorValue;
 }
 
-/**
- * Applies styles to an avatar component based on the provided properties.
- *
- * @param {AvatarItemStyleProps} props - The properties to apply styles.
- * @param {string | number} props.size - The size of the avatar, either a predefined size key or a custom size.
- * @param {string} props.backgroundColor - The background color of the avatar.
- * @param {string} [props.borderColor] - The border color of the avatar. Defaults to the value of `props.color` if not provided.
- * @param {string} props.color - The default color used for the border if `props.borderColor` is not provided.
- * @param {number} props.radius - The border radius of the avatar.
- * @param {number} props.borderWidth - The border width of the avatar.
- * @param {string} props.textColor - The color of the text inside the avatar.
- * @param {string} props.iconColor - The color of the icon inside the avatar.
- * @returns {object} The styles object to be used with a StyleSheet.
- */
-export default function applyStyle(props: AvatarItemStyleProps) {
+export default function applyStyle(props: AvatarItemStyleProps, theme: BaseTheme<any>) {
   const size = AVATAR_SIZES[props.size] ?? props.size;
+  const themeColor = theme.colors[props.color] ?? props.color!
   
   return StyleSheet.create({
     container: {
@@ -82,39 +58,29 @@ export default function applyStyle(props: AvatarItemStyleProps) {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: props.backgroundColor,
+      backgroundColor: props.backgroundColor ?? getBackgroundColor(props.fillMode, themeColor, theme.colors[`${props.color as string}Subtle`]),
       borderColor: props.borderColor || props.color,
-      borderRadius: props.radius,
-      borderWidth: props.borderWidth,
+      borderRadius: theme.borders.radius![props.radius] ?? props.radius,
+      borderWidth: theme.borders.width![props.borderWidth!] ?? props.borderWidth,
       borderStyle: 'solid'
     },
     text: {
       fontFamily: 'Medium',
       textAlign: 'center',
       verticalAlign: 'middle',
-      color: props.textColor
+      color: props.textColor ?? getTextColor(theme.isDark, props.color, themeColor, props.fillMode, theme.colors.black),
+      fontSize: size
     },
     icon: {
       fontFamily: 'Icons',
       textAlign: 'center',
       verticalAlign: 'middle',
-      color: props.iconColor,
+      color: props.iconColor ?? getTextColor(theme.isDark, props.color, themeColor, props.fillMode, theme.colors.black),
       fontSize: size / 2
     },
   });
 }
 
-/**
- * Applies styles to an avatar group.
- *
- * @param props - The properties used to style the avatar group.
- * @returns The styles for the avatar group.
- *
- * @typedef {Object} AvatarGroupStyleProps
- * @property {number} itemPadding - The padding between avatar items.
- * @property {string} itemBorderColor - The border color of avatar items.
- * @property {number} itemBorderWidth - The border width of avatar items.
- */
 export function applyGroupStyle(props: AvatarGroupStyleProps) {
   return StyleSheet.create({
     container: {

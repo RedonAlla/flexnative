@@ -2,14 +2,14 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-06-07 23:29:01
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-07 19:23:22
+ * @ Modified time: 2025-03-19 22:13:08
  * @ Description: Avatar props to change the component behavior.
  */
 
+import { ColorValue, TextProps, ViewProps } from "react-native";
+import { ImageProps } from 'expo-image';
 import { IconName } from "@flexnative/icons";
 import { BorderRadius, BorderWidth, Sizes } from "@flexnative/theme-context";
-import { ImageProps } from 'expo-image';
-import { ColorValue, TextProps, ViewProps } from "react-native";
 
 /**
  * Defines the type of avatar to be displayed.
@@ -29,51 +29,30 @@ export type Type = 'image' | 'icon' | 'text';
  */
 export type FillMode = 'solid' | 'none' | 'ghost';
 
-
-/**
- * Properties for the Avatar component.
- * 
- * @interface AvatarProps
- * @extends {ImageProps}
- * @extends {Omit<TextProps, 'style'>}
- * 
- * @property {FillMode} fillMode - Fill Mode. Defaults to 'solid'.
- * @property {BorderRadius} radius - Avatar border radius. Defaults to 'medium'.
- * @property {Sizes} size - Avatar Size. Defaults to 'normal'.
- * @property {Type} type - Avatar type. Defaults to 'image'.
- * @property {ColorValue} [color] - Color by theme or a custom color according to `react-native` ColorValue. Defaults to 'default'.
- * @property {BorderWidth} [borderWidth] - Optional avatar borders width. Defaults to 'none'.
- * @property {ColorValue} [borderColor] - Borders color according to `react-native` ColorValue.
- * @property {ColorValue} [backgroundColor] - Background color according to `react-native` ColorValue.
- * @property {string} [text] - Text to display on avatar for type `Type = 'text'`.
- * @property {ColorValue} [textColor] - Text color according to `react-native` ColorValue. Available for `Type = 'text'`.
- * @property {keyof IconName} [icon] - Name of icon. Icon props for `Avatar Type = 'icon'`.
- * @property {ColorValue} [iconColor] - Icon color according to `react-native` ColorValue. Available for `Type = 'icon'`.
- */
-export interface AvatarProps extends ImageProps, Omit<TextProps, 'style'>
+export interface AvatarProps extends ImageProps, Omit<TextProps, 'style' | 'tabIndex'>
 {
   /**
    * Fill Mode
    * @default solid
   */
-  fillMode: FillMode;
+  fillMode?: FillMode;
 
   /** Avatar border radius.
   * @default 'medium'
   */
-  radius: BorderRadius;
+  radius?: BorderRadius;
 
   /**
    * Avatar Size.
    * @default normal
   */
-  size: Sizes;
+  size?: Sizes;
 
   /**
    * Avatar type.
    * @default 'image'
   */
-  type: Type;
+  type?: Type;
   
   /** Color by theme or a custom color according `react-native` ColorValue.
    * @default 'default'
