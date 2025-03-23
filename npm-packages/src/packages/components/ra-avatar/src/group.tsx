@@ -2,14 +2,14 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-06-07 23:29:01
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-03-19 22:10:59
- * @ Description: Avatar Group component used to represent a list ov Avatar components.
+ * @ Modified time: 2025-03-22 23:25:17
+ * @ Description: AvatarGroup Component - A React component that displays a group of `Avatar` components.
  */
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import { View } from 'react-native';
 
-import ThemeContext from '@flexnative/theme-context';
+import { BaseColors, useThemeState } from '@flexnative/theme-context';
 
 import Avatar from './avatar';
 import { AvatarGroupProps } from './props';
@@ -18,26 +18,28 @@ import { ITEM_PADDING } from './constants';
 
 
 /**
- * A React component that represents a group of avatar items.
- * This component extends `React.PureComponent` and uses `ThemeContext` for theming.
+ * AvatarGroup Component
+ *
+ * A React component that displays a group of `Avatar` components. It allows customization of the
+ * sorting order, border properties, and padding of the individual avatars within the group.
  *
  * @component
- * @extends React.PureComponent<AvatarGroupProps, {}>
+ * @param {AvatarGroupProps} props - The properties passed to the AvatarGroup component.
+ * @returns {React.ReactElement} An AvatarGroup component instance.
+ *
  * @example
  * ```typescript jsx
- * <AvatarGroup sortIndex="desc" itemBorderWidth="medium" itemBorderColor="primary" itemPadding={8}>
+ * <AvatarGroup sortIndex="desc" itemBorderWidth="hairline" itemBorderColor="primary" itemPadding={8}>
  *   <Avatar type="image" source={{ uri: 'https://example.com/image1.jpg' }} />
  *   <Avatar type="icon" icon="user" />
  *   <Avatar type="text" text="RA" />
  * </AvatarGroup>
  * ```
  *
- * @property {AvatarGroupProps} props - The properties passed to the AvatarGroup component.
- *
  * @property {('asc' | 'desc')} [props.sortIndex='asc'] - The sorting order of the avatar items. 'asc' for ascending (default), 'desc' for descending. This affects the z-index of the avatars, allowing them to overlap in a specific order.
  * @property {string} [props.itemBorderWidth='thick'] - The border width of each avatar item. It can be a predefined value from the theme's border widths (e.g., 'thin', 'medium', 'thick') or a custom string value. Defaults to 'thick'.
  * @property {React.ReactNode} props.children - The `Avatar` components to be displayed in the group. Only `Avatar` components are allowed as children.
- * @property {object} [props.style] - Additional styles to be applied to the container `View` of the group.
+ * @property {StyleProp<ViewStyle>} [props.style] - Additional styles to be applied to the container `View` of the group.
  * @property {number} [props.itemPadding=13] - The padding around each avatar item, in pixels. Default is 13.
  * @property {string} [props.itemBorderColor] - The border color for each avatar item. It can be a color name from the theme (e.g., 'primary', 'secondary') or a custom color string (e.g., '#FF0000'). If not provided, it defaults to the 'card' color from the theme.
  * @property {object} [props.restProps] - Additional props to be passed to the container `View`.
@@ -45,39 +47,37 @@ import { ITEM_PADDING } from './constants';
  * @throws {Error} Throws an error if a child is not a valid `Avatar` component.
  *
  * @context {ThemeContext} - The theme context used for theming. Provides access to theme colors and border widths.
- *
- * @method render() - Renders the AvatarGroup component.
- *
- * @static @property {object} defaultProps - Default values for the component's props.
- * @static @property {('asc' | 'desc')} defaultProps.sortIndex - Default sorting order is 'asc'.
- * @static @property {string} defaultProps.itemBorderWidth - Default border width is 'thick'.
- * @static @property {React.Context<any>} contextType - Specifies the context type for the component, allowing it to subscribe to the nearest `ThemeContext` provider.
- * @static @property {React.ContextType<typeof ThemeContext>} context - Declares a context variable of the type inferred from the `ThemeContext`.
  */
-export default class extends React.PureComponent<AvatarGroupProps, {}> {
-  static defaultProps = {
-    sortIndex: 'asc',
-    itemBorderWidth: 'thick'
-  };
+const AvatarGroup: React.FC<AvatarGroupProps> = ({
+  sortIndex = 'asc',
+  itemBorderWidth = 'thick',
+  children,
+  style,
+  itemPadding = ITEM_PADDING,
+  itemBorderColor,
+  ...restProps
+}) => {
+  const theme = useThemeState();
 
-  static contextType = ThemeContext;
-  declare context: React.ContextType<typeof ThemeContext>;
+  const groupContext = useMemo(() => ({
+    theme,
+    itemPadding,
+    itemBorderColor,
+    itemBorderWidth,
+  }), [theme, itemPadding, itemBorderColor, itemBorderWidth]);
 
-  private getStyles = () => {
-    const theme = this.context.state;
-    const { itemPadding, itemBorderColor, itemBorderWidth } = this.props;
-
+  const styles = useMemo(() => {
+    const { itemPadding, itemBorderColor, itemBorderWidth, theme } = groupContext;
     return applyGroupStyle({
-      itemPadding: itemPadding || ITEM_PADDING,
+      itemPadding: itemPadding,
       itemBorderWidth: theme.borders.width![itemBorderWidth!] ?? itemBorderWidth,
-      itemBorderColor: (theme.colors[itemBorderColor!] ?? itemBorderColor) ?? theme.colors.card
+      itemBorderColor: (theme.colors[itemBorderColor! as keyof BaseColors] ?? itemBorderColor) ?? theme.colors.card,
     });
-  };
+  }, [groupContext]);
 
-  private renderChildren = (styles: ReturnType<typeof applyGroupStyle>) => {
-    const { children, sortIndex } = this.props;
+  const renderChildren = () => {
     return React.Children.map(children, (child, index) => {
-      if (!(React.isValidElement(child) && child.type === Avatar)) {
+      if (!React.isValidElement(child) || child.type !== Avatar) {
         throw new Error(`child ${child} "it is not a valid Avatar item`);
       }
       return (
@@ -88,23 +88,12 @@ export default class extends React.PureComponent<AvatarGroupProps, {}> {
     });
   };
 
-  public render() {
-    const { style, ...restProps } = this.props;
-    const styles = React.useMemo(this.getStyles, [
-      this.props.itemPadding,
-      this.props.itemBorderColor,
-      this.props.itemBorderWidth,
-      this.context.state.borders.width,
-      this.context.state.colors
-    ]);
-
-    return (
-      <View style={[styles.container, style]} {...restProps}>
-        {this.renderChildren(styles)}
-      </View>
-    );
-  }
-}
+  return (
+    <View style={[styles.container, style]} {...restProps}>
+      {renderChildren()}
+    </View>
+  );
+};
 
 /**
  * Calculates the z-index for an avatar item based on its index and the sorting order.
@@ -114,8 +103,7 @@ export default class extends React.PureComponent<AvatarGroupProps, {}> {
  * @returns {number} The calculated z-index.
  */
 function getIndex(index: number, sortIndex: 'asc' | 'desc'): number {
-  if(sortIndex === 'asc')
-    return index;
-  else
-    return -1 * index;
+  return sortIndex === 'asc' ? index : -1 * index;
 }
+
+export default AvatarGroup;

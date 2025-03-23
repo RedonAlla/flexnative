@@ -2,8 +2,9 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-06-07 23:29:01
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-03-19 22:21:01
- * @ Description: Styles applied in to Avatar component.
+ * @ Modified time: 2025-03-23 17:48:45
+ * @ Description: Defines the styling functions for the `Avatar` and `AvatarGroup` components.
+ *              This module provides functions to generate style objects based on the provided props and theme.
  */
 
 import { ColorValue, StyleSheet } from 'react-native';
@@ -13,20 +14,62 @@ import { FillMode } from './props';
 import { AVATAR_SIZES } from './constants';
 import { getBackgroundColor, getTextColor } from './utilities';
 
+
+/**
+ * Properties used to style an individual `Avatar` component.
+ * 
+ * @typedef {Object} AvatarItemStyleProps
+ * */
 type AvatarItemStyleProps = {
+  /**
+   * Size of the avatar.
+   */
   size: Sizes;
+  
+  /**
+   * Color of the avatar.
+   */
   color: ColorValue;
+
+  /**
+   * Border radius of the avatar.
+   */
   radius: BorderRadius;
+
+  /**
+   * The fill mode of the avatar.
+   */
   fillMode: FillMode;
+
+  /**
+   * Width of the border around the avatar.
+   */
   borderWidth?: BorderWidth;
+
+  /**
+   * Color of the border around the avatar.
+   */
   borderColor?: ColorValue;
+
+  /**
+   * Background color of the avatar.
+   */
   backgroundColor?: ColorValue;
-  textColor?: ColorValue;
+
+  /**
+   * Text color of the avatar.
+   */
+  textColor?: ColorValue;\
+
+  /**
+   * Icon color of the avatar.
+   */
   iconColor?: ColorValue;
 }
 
 /**
- * Properties for styling an avatar group component.
+ * Properties used to style an `AvatarGroup` component.
+ * @typedef {Object} AvatarGroupStyleProps
  */
 type AvatarGroupStyleProps = {
   /**
@@ -47,7 +90,21 @@ type AvatarGroupStyleProps = {
   itemBorderColor?: ColorValue;
 }
 
-export default function applyStyle(props: AvatarItemStyleProps, theme: BaseTheme<any>) {
+/**
+ * Generates a `StyleSheet` object for an `Avatar` component based on the provided props and theme.
+ * 
+ * @function applyStyle
+ * @param {AvatarItemStyleProps} props - The properties used to style the avatar.
+ * @param {BaseTheme<any>} theme - The current theme object.
+ * @returns {StyleSheet.NamedStyles<any>} A `StyleSheet` object containing the styles for the avatar.
+ *
+ * @example
+ * ```typescript
+ * const theme = useThemeState();
+ * const styles = applyStyle({ size: 'medium', color: 'primary', radius: 'medium', fillMode: 'solid' }, theme);
+ * ```
+ */
+export default function applyStyle(props: AvatarItemStyleProps, theme: BaseTheme<any>): StyleSheet.NamedStyles<any> {
   const size = AVATAR_SIZES[props.size] ?? props.size;
   const themeColor = theme.colors[props.color] ?? props.color!
   
@@ -81,6 +138,18 @@ export default function applyStyle(props: AvatarItemStyleProps, theme: BaseTheme
   });
 }
 
+/**
+ * Generates a `StyleSheet` object for an `AvatarGroup` component based on the provided props.
+ * 
+ * @function applyGroupStyle
+ * @param {AvatarGroupStyleProps} props - The properties used to style the avatar group.
+ * @returns {StyleSheet.NamedStyles<any>} A `StyleSheet` object containing the styles for the avatar group.
+ *
+ * @example
+ * ```typescript
+ * const styles = applyGroupStyle({ itemPadding: 8, itemBorderWidth: 2, itemBorderColor: 'primary' });
+ * ```
+ */
 export function applyGroupStyle(props: AvatarGroupStyleProps) {
   return StyleSheet.create({
     container: {

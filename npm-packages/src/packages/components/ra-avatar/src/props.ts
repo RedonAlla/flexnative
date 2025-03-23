@@ -2,8 +2,8 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-06-07 23:29:01
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-03-19 22:13:08
- * @ Description: Avatar props to change the component behavior.
+ * @ Modified time: 2025-03-23 17:42:57
+ * @ Description: Defines the properties for the `Avatar` and `AvatarGroup` components.
  */
 
 import { ColorValue, TextProps, ViewProps } from "react-native";
@@ -14,9 +14,9 @@ import { BorderRadius, BorderWidth, Sizes } from "@flexnative/theme-context";
 /**
  * Defines the type of avatar to be displayed.
  * 
- * - 'image': An avatar that displays an image.
- * - 'icon': An avatar that displays an icon.
- * - 'text': An avatar that displays text.
+ * - `image`: An avatar that displays an image.
+ * - `icon`: An avatar that displays an icon.
+ * - `text`: An avatar that displays text.
  */
 export type Type = 'image' | 'icon' | 'text';
 
@@ -29,104 +29,114 @@ export type Type = 'image' | 'icon' | 'text';
  */
 export type FillMode = 'solid' | 'none' | 'ghost';
 
+
+/**
+ * @interface AvatarProps
+ * @description Properties for the `Avatar` component.
+ * @extends ImageProps
+ * @extends Omit<TextProps, 'style' | 'tabIndex'>
+ * 
+ * @example
+ * ```typescript jsx
+ * <Avatar type="image" source={{ uri: 'https://example.com/image.jpg' }} />
+ * <Avatar type="icon" icon="user" color="primary" />
+ * <Avatar type="text" text="RA" textColor="white" backgroundColor="blue" />
+ * ```
+ */
 export interface AvatarProps extends ImageProps, Omit<TextProps, 'style' | 'tabIndex'>
 {
   /**
-   * Fill Mode
+   * The fill mode of the avatar.
    * @default solid
   */
   fillMode?: FillMode;
 
-  /** Avatar border radius.
+  /** The border radius of the avatar.
   * @default 'medium'
   */
   radius?: BorderRadius;
 
   /**
-   * Avatar Size.
+   * The size of the avatar.
    * @default normal
   */
   size?: Sizes;
 
   /**
-   * Avatar type.
+   * The type of the avatar.
    * @default 'image'
   */
   type?: Type;
   
-  /** Color by theme or a custom color according `react-native` ColorValue.
+  /** The type of the avatar.
    * @default 'default'
   */
   color?: ColorValue;
 
-  /** Optional avatar borders width.
+  /** The border width of the avatar.
    * @default 'none'
   */
   borderWidth?: BorderWidth;
   
-  /** Borders color according `react-native` ColorValue. */
+  /** The border color of the avatar. */
   borderColor?: ColorValue;
 
-  /** Background color according `react-native` ColorValue. */
+  /** The background color of the avatar. */
   backgroundColor?: ColorValue;
 
   /**
-   * Text to display on avatar for type `Type = 'text'`
+   * The text to display on the avatar (for `type='text'`).
    */
   text?: string;
 
   /**
-   * Text color according `react-native` ColorValue.
-   * Available for `Type = 'text'`
+   * The text color of the avatar (for `type='text'`).
   */
   textColor?: ColorValue;
 
   /**
-   * Name of icon.
-   * Icon props for `Avatar Type = 'icon'`
+   * The name of the icon to display (for `type='icon'`).
    */
   icon?: keyof IconName
 
   /**
-   * Icon color according `react-native` ColorValue.
-   * Available for `Type = 'icon'`
+   * The color of the icon (for `type='icon'`).
   */
   iconColor?: ColorValue;
 };
 
 /**
  * Properties for the AvatarGroup component.
- * 
+ * @interface AvatarGroupProps
  * @extends ViewProps
- * 
- * @property {'asc' | 'desc'} sortIndex - The sorting order of the avatars.
- * 
- * @property {number} [itemPadding=13] - Padding between avatar items.
- * 
- * @property {BorderWidth} [itemBorderWidth='thick'] - Optional avatar borders width.
- * 
- * @property {ColorValue} [itemBorderColor='theme.colors.card'] - Borders color according to `react-native` ColorValue.
- * 
- * @property {Array<React.ReactElement<AvatarProps>>} children - Array of Avatar components.
  */
 export interface AvatarGroupProps extends ViewProps {
+  /**
+   * The sorting order of the avatars within the group.
+   * - `asc` for ascending order,
+   * - `desc` for descending order.
+   * @default 'asc'
+  */
   sortIndex: 'asc' | 'desc';
 
   /**
-   * Padding between avatar items.
+   * The padding between each avatar item in the group.
    * @default '13'
    */
   itemPadding?: number;
   
-  /** Optional avatar borders width.
+  /** The border width of each avatar item..
    * @default 'thick'
   */
   itemBorderWidth?: BorderWidth;
   
-  /** Borders color according `react-native` ColorValue.
-   * @default 'theme.colors.card'
+  /** The border color of each avatar item. Defaults to the `card` color from the theme.
+   * @default 'theme.state.colors.card'
   */
   itemBorderColor?: ColorValue;
 
+  /**
+   * An array of `Avatar` components to be displayed in the group.
+   */
   children: Array<React.ReactElement<AvatarProps>>;
 }
