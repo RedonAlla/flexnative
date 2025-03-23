@@ -7,6 +7,7 @@ import PrimaryButton from '../packages/buttons/src/PrimaryButton';
 import ThemeContext, { BaseColors, BaseTheme, Borders, dark, defaultTheme, FontSize, light, Spaces } from '@flexnative/theme-context';
 import Button from '../packages/buttons/src/button';
 import Icon from '@flexnative/icons';
+import Avatar, { AvatarGroup } from '../packages/avatar/src';
 
 // import MessageText from '../tests/components/messages/border-color';
 
@@ -20,6 +21,8 @@ const fontSize: Record<FontSize, number> = {
   'xxl': 24,
 }
 
+export const LOGO_PATH = require('../assets/favicon.png');
+
 const theme = createTheme<{}>({colors: light, fontSize});
 theme.scheme = 'light'
 
@@ -31,83 +34,51 @@ function App() {
   <ThemeContext.Provider value={{state: theme}}>
     <View style={[styles.container, {flexDirection: "row", backgroundColor: theme.colors.background}]}>
       <View style={styles.container}>
-        <Button text='default' type='default' color='default' icon='star' iconRight iconStyle={styles.buttonText} />
-        <Button text='default' type='default' color='primary'icon='star' iconRight iconStyle={textStyles()} borderWidth='thick' />
-        <Button text='default' type='default' color='secondary' icon='star' pressedBoxShadow="5px 5px red, -1em 0 0.4em olive;" />
-        <Button text='default' type='default' color='info' icon='star'/>
-        <Button text='default' type='default' color='success'icon='star' />
-        <Button text='default' type='default' color='warning' icon='star'/>
-        <Button text='default' type='default' color='error' icon='star'/>
-        <Button text='default' type='default' color='dark' icon='star'/>
-        <Button text='default' type='default' color='light' icon='star'/>
-        <Button text='default' type='default' color='blue' icon='star'/>
 
-        <SecondaryButton label='Button' />
-        <PrimaryButton text="Button" />
+      <Avatar type="icon" icon="star" size='small' />
+          <Avatar type="icon" icon="star" size='medium' />
+          <Avatar type="icon" icon="star" size='large' />
+          <Avatar type="icon" icon="star" size={120} />
+        </View>
+
+      <View style={styles.container}>
+        <Avatar type="icon" icon="star"   fillMode='none' color='primary'/>
+          <Avatar type="icon" icon='star' fillMode='none' color='secondary'/>
+          <Avatar type="icon" icon="star" fillMode='none' color='success'/>
+          <Avatar type="icon" icon="star" fillMode='none' color='info'/>
+          <Avatar type="icon" icon="star" fillMode='none' color='warning' />
+          <Avatar type="icon" icon="star" fillMode='none' color='error'/>
+          <Avatar type="icon" icon="star" fillMode='none' color='default'/>
+          <Avatar type="icon" icon="star" fillMode='none' color='dark'/>
+          <Avatar type="icon" icon="star" fillMode='none' color='light'/>
+          
+          <Avatar type="icon" icon="star" fillMode='none' color='crimson'/>
+          <Avatar type="icon" icon="star" fillMode='none' color='#ed143d'/>
+          <Avatar type="icon" icon="star" fillMode='none' color='rgb(237, 20, 61)'/>
+          <Avatar type="icon" icon="star" fillMode='none' color='rgba(237, 20, 61, 0.5)'/>
       </View>
 
       <View style={styles.container}>
-        <Button text='ghost' type='ghost' color='default' icon='star'/>
-        <Button text='ghost' type='ghost'  color='primary'icon='star'/>
-        <Button text='ghost' type='ghost' color='secondary' icon='star'/>
-        <Button text='ghost' type='ghost' color='info' icon='star'/>
-        <Button text='ghost' type='ghost' color='success' icon='star'/>
-        <Button text='ghost' type='ghost' color='warning' icon='star'/>
-        <Button text='ghost' type='ghost' color='error' icon='star'/>
-        <Button text='ghost' type='ghost' color='dark' icon='star'/>
-        <Button text='ghost' type='ghost' color='light' icon='star'/>
-        <Button text='ghost' type='ghost' color='blue' icon='star'/>
-
-        <SecondaryButton label='Button' />
-        <PrimaryButton text="Button" />
-      </View>
-
-      <View style={styles.container}>
-        <Button text='inverse' type='inverse' color='default' icon='star'/>
-        <Button text='inverse' type='inverse' color='primary'icon='star'/>
-        <Button text='inverse' type='inverse' color='secondary' icon='star'/>
-        <Button text='inverse' type='inverse' color='info' icon='star'/>
-        <Button text='inverse' type='inverse' color='success' icon='star'/>
-        <Button text='inverse' type='inverse' color='warning' icon='star'/>
-        <Button text='inverse' type='inverse' color='error' icon='star'/>
-        <Button text='inverse' type='inverse' color='dark' icon='star'/>
-        <Button text='inverse' type='inverse' color='light' icon='star'/>
-        <Button text='inverse' type='inverse' color='blue' icon='star'/>
-
-        <SecondaryButton label='Button' />
-        <PrimaryButton text="Button" />
+      <Avatar type="icon" icon="star"     fillMode='ghost' color='primary'/>
+          <Avatar type="icon" icon="star" fillMode='ghost' color='secondary'/>
+          <Avatar type="icon" icon="star" fillMode='ghost' color='success'/>
+          <Avatar type="icon" icon="star" fillMode='ghost' color='info'/>
+          <Avatar type="icon" icon="star" fillMode='ghost' color='warning' />
+          <Avatar type="icon" icon="star" fillMode='ghost' color='error'/>
+          <Avatar type="icon" icon="star" fillMode='ghost' color='default'/>
+          <Avatar type="icon" icon="star" fillMode='ghost' color='dark'/>
+          <Avatar type="icon" icon="star" fillMode='ghost' color='light'/>
+          
+          <Avatar type="icon" icon="star" fillMode='ghost' color='crimson'/>
+          <Avatar type="icon" icon="star" fillMode='ghost' color='#ed143d'/>
+          <Avatar type="icon" icon="star" fillMode='ghost' color='rgb(237, 20, 61)'/>
+          <Avatar type="icon" icon="star" fillMode='ghost' color='rgba(237, 20, 61, 0.5)'/>
       </View>
       
       <View style={styles.container}>
-        <Button text='link' type='link' color='default' icon='star'/>
-        <Button text='link' type='link' color='primary' icon='star'/>
-        <Button text='link' type='link' color='secondary' icon='star'/>
-        <Button text='link' type='link' color='info' icon='star'/>
-        <Button text='link' type='link' color='success' icon='star'/>
-        <Button text='link' type='link' color='warning'icon='star'/>
-        <Button text='link' type='link' color='error' icon='star'/>
-        <Button text='link' type='link' color='dark' icon='star'/>
-        <Button text='link' type='link' color='light' icon='star'/>
-        <Button text='link' type='link' color='blue' icon='star'/>
-
-        <SecondaryButton label='Button' />
-        <PrimaryButton text="Button" />
       </View>
 
       <View style={styles.container}>
-        <Button text='text' type='text' color='default' icon='star'/>
-        <Button text='text' type='text' color='primary'icon='star'/>
-        <Button text='text' type='text' color='secondary' icon='star'/>
-        <Button text='text' type='text' color='info' icon='star'/>
-        <Button text='text' type='text' color='success' icon='star'/>
-        <Button text='text' type='text' color='warning' icon='star'/>
-        <Button text='text' type='text' color='error' icon='star'/>
-        <Button text='text' type='text' color='dark' icon='star'/>
-        <Button text='text' type='text' color='light' icon='star'/>
-        <Button text='text' type='text' color='blue' icon='star'/>
-
-        <SecondaryButton label='Button' />
-        <PrimaryButton text="Button" />
       </View>
     </View>
   
