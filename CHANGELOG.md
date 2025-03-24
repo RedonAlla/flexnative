@@ -1,3 +1,9 @@
+##  (2025-03-24)
+
+* refactor(avatar): improve typing and resolve style type assertion ([a99e522](https://github.com/RedonAlla/flexnative/commit/a99e522))
+
+
+
 ##  (2025-03-23)
 
 * Merge branch 'main' of https://github.com/RedonAlla/flexnative ([1c91f6c](https://github.com/RedonAlla/flexnative/commit/1c91f6c))
