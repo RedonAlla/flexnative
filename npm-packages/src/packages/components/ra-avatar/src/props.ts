@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-06-07 23:29:01
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-03-23 17:42:57
+ * @ Modified time: 2025-03-24 20:50:49
  * @ Description: Defines the properties for the `Avatar` and `AvatarGroup` components.
  */
 

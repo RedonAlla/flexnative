@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2023-11-03 21:50:51
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-03-22 22:41:52
+ * @ Modified time: 2025-03-24 21:09:21
  * @ Description: Avatar component used to represent users or things, supporting the display of images, icons, or characters.
  */
 
@@ -146,7 +146,7 @@ const Avatar: React.FC<AvatarProps> = (props) => {
     case 'image':
       return (
         <Image
-          style={[styles.container, style as ImageStyle]}
+          style={[styles.container as ImageStyle, style as ImageStyle]}
           contentFit="fill"
           transition={1000}
           {...restProps}
