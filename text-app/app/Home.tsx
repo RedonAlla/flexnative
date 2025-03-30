@@ -8,6 +8,7 @@ import ThemeContext, { BaseColors, BaseTheme, Borders, dark, defaultTheme, FontS
 import Button from '../packages/buttons/src/button';
 import Icon from '@flexnative/icons';
 import Avatar, { AvatarGroup } from '../packages/avatar/src';
+import Message from '../packages/messages/src';
 
 // import MessageText from '../tests/components/messages/border-color';
 
@@ -35,44 +36,21 @@ function App() {
     <View style={[styles.container, {flexDirection: "row", backgroundColor: theme.colors.background}]}>
       <View style={styles.container}>
 
-      <Avatar type="icon" icon="star" size='small' />
-          <Avatar type="icon" icon="star" size='medium' />
-          <Avatar type="icon" icon="star" size='large' />
-          <Avatar type="icon" icon="star" size={120} />
+      <Message borderWidth={1} text='Success Description Success Description Success Description' title='Success Text'  />
+      <Message borderWidth={1} type='info' text='Success Description Success Description Success Description' title='Success Text'  />
+      <Message borderWidth={1} type='warning' text='Success Description Success Description Success Description' title='Success Text'  />
+      <Message borderWidth={1} type='error' text='Success Description Success Description Success Description' title='Success Text'  />
+      <Message borderWidth={1} type='success' text='Success Description Success Description Success Description' title='Success Text'  />
+      
+
         </View>
 
       <View style={styles.container}>
-        <Avatar type="icon" icon="star"   fillMode='none' color='primary'/>
-          <Avatar type="icon" icon='star' fillMode='none' color='secondary'/>
-          <Avatar type="icon" icon="star" fillMode='none' color='success'/>
-          <Avatar type="icon" icon="star" fillMode='none' color='info'/>
-          <Avatar type="icon" icon="star" fillMode='none' color='warning' />
-          <Avatar type="icon" icon="star" fillMode='none' color='error'/>
-          <Avatar type="icon" icon="star" fillMode='none' color='default'/>
-          <Avatar type="icon" icon="star" fillMode='none' color='dark'/>
-          <Avatar type="icon" icon="star" fillMode='none' color='light'/>
-          
-          <Avatar type="icon" icon="star" fillMode='none' color='crimson'/>
-          <Avatar type="icon" icon="star" fillMode='none' color='#ed143d'/>
-          <Avatar type="icon" icon="star" fillMode='none' color='rgb(237, 20, 61)'/>
-          <Avatar type="icon" icon="star" fillMode='none' color='rgba(237, 20, 61, 0.5)'/>
+        
       </View>
 
       <View style={styles.container}>
-      <Avatar type="icon" icon="star"     fillMode='ghost' color='primary'/>
-          <Avatar type="icon" icon="star" fillMode='ghost' color='secondary'/>
-          <Avatar type="icon" icon="star" fillMode='ghost' color='success'/>
-          <Avatar type="icon" icon="star" fillMode='ghost' color='info'/>
-          <Avatar type="icon" icon="star" fillMode='ghost' color='warning' />
-          <Avatar type="icon" icon="star" fillMode='ghost' color='error'/>
-          <Avatar type="icon" icon="star" fillMode='ghost' color='default'/>
-          <Avatar type="icon" icon="star" fillMode='ghost' color='dark'/>
-          <Avatar type="icon" icon="star" fillMode='ghost' color='light'/>
-          
-          <Avatar type="icon" icon="star" fillMode='ghost' color='crimson'/>
-          <Avatar type="icon" icon="star" fillMode='ghost' color='#ed143d'/>
-          <Avatar type="icon" icon="star" fillMode='ghost' color='rgb(237, 20, 61)'/>
-          <Avatar type="icon" icon="star" fillMode='ghost' color='rgba(237, 20, 61, 0.5)'/>
+        
       </View>
       
       <View style={styles.container}>
