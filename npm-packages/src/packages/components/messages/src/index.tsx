@@ -1,69 +1,78 @@
+/**
+ * @ Author: Redon Alla
+ * @ Create Time: 2024-12-17 22:02:06
+ * @ Modified by: Redon Alla
+ * @ Modified time: 2025-03-31 00:12:33
+ * @ Description: This module exports the Message component.
+ */
+
 import React from "react";
 import { Text, View } from "react-native";
+import { useThemeState } from "@flexnative/theme-context";
+import Icon from "@flexnative/icons";
+
 import { MessageBoxProps } from "./props";
-import ThemeContext from "@flexnative/theme-context";
 import createStyles from "./styles";
+import { getIcon } from "./utilities";
 
 
 /**
- * Represents a message box component.
+ * A customizable Message component for displaying various types of messages.
  * 
- * The message box component is used to display messages to the user.
- * 
- * @extends React.PureComponent
+ * @param {MessageBoxProps} props - The properties for the Message component.
+ * @returns {JSX.Element} The Message component.
  */
-export default class Message extends React.PureComponent<MessageBoxProps> {
-  /**
-   * Default properties for the message box component.
-   * 
-   * @property {string} radius - The border radius of the message box. Default is 'medium'.
-   * @property {boolean} loading - Indicates if the message box is in a loading state. Default is false.
-   * @property {string} size - The size of the message box. Default is 'default'.
-   * @property {string} color - The color of the message box. Default is 'default'.
-   * @property {string} type - The type of the message box. Default is 'default'.
-   * @property {string} borderWidth - The width of the message box's border. Default is 'hairline'.
-   */
-  static defaultProps = {
-    radius: 'medium',
-    borderWidth: 'none',
-    fill: 'ghost',
-    size: 'default',
-    color: 'default',
-  }
+const Message: React.FC<MessageBoxProps> = ({
+  radius = "medium",
+  borderWidth = "none",
+  fill = "ghost",
+  size = "medium",
+  type = "default",
+  icon = undefined,
+  title,
+  children,
+  text,
+  style,
+  ...rest
+}) => {
+  const theme = useThemeState();
 
-  /**
-   * Specifies the context type for the component.
-   * This allows the component to subscribe to the nearest 
-   * ThemeContext provider and access its value.
-   */
-  
-  static contextType = ThemeContext;
-
-  /**
-   * Declares a context variable of the type inferred from the ThemeContext.
-   * This context is used to access the current theme settings within the component.
-   */
-  declare context: React.ContextType<typeof ThemeContext>;
-
-  public render() {
-    const { radius, borderWidth, fill, size, color, borderColor, children, text, style, ...rest } = this.props;
-    const styles = createStyles({
-        radius,
-        borderWidth,
-        fill,
-        size,
-        color,
-        borderColor
-    }, this.context);
-        
-    return (
-      <View style={[styles.container, style]} {...rest}>
+  // Memoize styles to avoid recalculating on every render if props haven't changed
+  const styles = React.useMemo(
+    () =>
+      createStyles(
         {
-          Boolean(children) 
-            ? children
-            : <Text style={styles.text}>{text}</Text>
+          radius,
+          borderWidth,
+          fill,
+          size,
+          type,
+        },
+        theme
+      ),
+    [radius, borderWidth, fill, size, type, theme]
+  );
+
+  const hasIcon = icon !== null;
+
+  return (
+    <View style={[
+      styles.container,
+      { flexDirection: hasIcon ? 'row' : 'column' },
+      style
+      ]} {...rest}>
+      {
+        children ??
+          <>
+            {hasIcon && <Icon name={getIcon(icon!, type)} style={styles.icon} />}
+            <View style={styles.messageContainer}>
+                { title && <Text style={[styles.text, styles.title]}>{title}</Text> }
+              <Text style={styles.text}>{text}</Text>
+            </View>
+          </>
         }
-      </View>
-    );
-  }
-}
+    </View>
+  );
+};
+
+export default Message;

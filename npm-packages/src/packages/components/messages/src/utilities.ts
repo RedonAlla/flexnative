@@ -1,46 +1,134 @@
-import { ColorValue } from "react-native";
-import { FillMode } from "./props";
-import { WHITE_COLOR } from "./constants";
-import { Color } from "@flexnative/theme-context";
+/**
+ * @ Author: Redon Alla
+ * @ Create Time: 2024-12-17 22:02:06
+ * @ Modified by: Redon Alla
+ * @ Modified time: 2025-03-31 00:02:33
+ * @ Description: Utility functions used in the Message component.
+ */
+
+import { Type } from "./props";
+import { FontSize, Sizes, Spaces } from "@flexnative/theme-context";
+import { IconName } from "@flexnative/icons";
+
 
 /**
- * Returns the appropriate background color based on the Message Fill mode.
- *
- * @param colorValue - The base color value.
- * @param ghostOpacity - The opacity value to be applied for fill mode ghost.
- * @param fillMode - The fill mode of the Message Box. Can be 'solid', or 'ghost'.
- * @returns The background color value based on the fill mode.
+ * Returns the theme space key based on the provided size.
+ * 
+ * @param {Sizes} [size='medium'] - The size of the message box. 
+ * @returns {Spaces} The theme space key from {@link BaseTheme}.
  */
-export function getBackgroundColor(colorValue: ColorValue, ghostOpacity: string, fillMode: FillMode): ColorValue {
-  if(fillMode === 'ghost')
-    return `${colorValue.toString()}${ghostOpacity}`;
+export function getThemeSpaceKey(size?: Sizes): Spaces
+{
+  switch (size) {
+    case 'small':
+      return 'sm';
+    
+    case 'medium':
+      return 'md';
+      
+    case 'large':
+      return 'lg';
   
-  return colorValue;
+    default:
+      return 'md';
+  }
 }
 
 /**
-* Determines the text color based on the provided parameters.
-*
-* @param {boolean} isLight - Indicates if the theme is light.
-* @param {Color} color - The color type of the message component.
-* @param {ColorValue} colorValue - The color value to be used.
-* @param {FillMode} fill - Fill mode of component.
-* @param {ColorValue} blackColor - The color value representing black.
-* @returns {ColorValue} - The determined text color value.
-*/
-export function getTextColor(isLight: boolean, color: Color, colorValue: ColorValue, fill: FillMode, blackColor: ColorValue): ColorValue {
-  if(!isLight && (color === 'default' || color === 'secondary' || color === 'dark' || color === 'light'))
-    return WHITE_COLOR;
+ * Returns the theme font size key based on the provided size.
+ * 
+ * @param {Sizes} [size='medium'] - The size of the message box.
+ * @returns {FontSize} The theme font size key.
+ */
+export function getThemeFontSizeKey(size?: Sizes): FontSize
+{
+  switch (size) {
+    case 'small':
+      return 'sm';
+    
+    case 'medium':
+      return 'md';
+      
+    case 'large':
+      return 'lg';
+  
+    default:
+      return 'md';
+  }
+}
 
-  if (color === 'light' || color === 'default')
-    return blackColor;
 
-  if (fill === 'solid' && Boolean(color === 'secondary'))
-    return WHITE_COLOR;
+/**
+ * Returns the theme color key based on the provided message type.
+ * 
+ * @param {Type} type - The type of the message.
+ * @returns {string} The theme color key.
+ */
 
-  return Boolean(isLight && color === 'default')
-    ? blackColor
-    : fill === 'solid'
-        ? WHITE_COLOR
-        : colorValue;
+export function getThemeColorKey(type: Type): string
+{
+  switch (type) {
+    case 'info':
+      return 'info';
+      
+    case 'warning':
+        return 'warning';
+
+    case 'warning':
+        return 'warning';
+      
+    case 'error':
+      return 'error';
+      
+    case 'success':
+      return 'success';
+  
+    default:
+      return 'secondary';
+  }
+}
+
+/**
+ * Returns the icon size based on the provided message size.
+ * 
+ * @param {Sizes} size - The size of the message box.
+ * @returns {FontSize} The icon size.
+ */
+export function getIconSize(size: Sizes): FontSize {
+  switch (size) {
+    case 'small':
+      return 'md';
+    case 'medium':
+      return 'lg';
+    case 'large':
+      return 'xxl'
+    default:
+      return size;
+  }
+}
+
+/**
+ * Returns the icon name based on the provided icon and message type.
+ * 
+ * @param {keyof IconName | null} icon - The custom icon name or null.
+ * @param {Type} messageType - The type of the message.
+ * @returns {keyof IconName} The icon name.
+ */
+export function getIcon(icon: keyof IconName | null, messageType: Type): keyof IconName
+{
+  if(icon !== undefined)
+    return icon!;
+  
+  switch (messageType) {
+    case 'info':
+      return 'info-circle';
+    case "warning":
+      return 'warning-circle';
+    case "error":
+      return 'close-circle';
+    case "success":
+      return 'check-circle';
+    case "default":
+      return 'info-circle';
+  }
 }

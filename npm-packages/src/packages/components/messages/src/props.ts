@@ -2,12 +2,13 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-12-17 22:02:06
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-12-18 23:28:04
- * @ Description: This code defines a TypeScript interface for `MessageBox` component. This particular interface is intended to specify the properties that can be passed to a `MessageBox` component, which likely is part of a UI library or application.
+ * @ Modified time: 2025-03-30 23:55:11
+ * @ Description: This module defines the interfaces and types for the properties of the Message component.
  */
 
-import { ColorValue, ViewProps } from "react-native";
-import { BorderRadius, BorderWidth, Color, Sizes } from "@flexnative/theme-context";
+import { ViewProps } from "react-native";
+import { BorderRadius, BorderWidth, Sizes } from "@flexnative/theme-context";
+import { IconName } from "@flexnative/icons";
 
 
 /**
@@ -18,8 +19,34 @@ import { BorderRadius, BorderWidth, Color, Sizes } from "@flexnative/theme-conte
  */
 export type FillMode = 'ghost' | 'solid';
 
+/**
+ * Represents the different types of messages available in the application.
+ * 
+ * - `info`: Information message.
+ * - `warning`: Warning message.
+ * - `error`: Error message.
+ * - `success`: Success message.
+ * - `default`: Default message.
+ */
+export type Type = 'info' | 'warning' | 'error' | 'success' | 'default';
 
+/**
+ * Interface for the base properties of the Message component.
+ */
 export interface BaseMessageProps {
+  /**
+   * Specifies the message box type.
+   * 
+   * - `info`: Information message.
+   * - `warning`: Warning message.
+   * - `error`: Error message.
+   * - `success`: Success message.
+   * - `default`: Default message.
+   * 
+   * @default 'default'
+   */
+  type?: Type;
+
   /**
    * Message box border radius.
    * Specifies the roundness of the message box corners.
@@ -39,7 +66,9 @@ export interface BaseMessageProps {
   /**
    * Fill Mode of the message box.
    * Determines the appearance of the message box.
-   * To have appearance for 'ghost' with custom color you should use hex colors.
+   * 
+   * - `ghost`: Message box with a transparent background.
+   * - `solid`: Message Box with a solid background color.
    * 
    * @default 'ghost'
    */
@@ -54,18 +83,28 @@ export interface BaseMessageProps {
   size?: Sizes;
 
   /**
-   * Color by theme or a custom color according to `react-native` ColorValue.
-   * Sets the primary color of the message box, either by theme or a specified color code.
-   * 
-   * @default 'default'
+   * Title of the message box.
+   * Specifies the title of the message box.
    */
-  color?: Color;
+  title?: string;
 
   /**
-   * Specifies the color of the message box borders.
-   * Borders color according to `react-native` ColorValue.
+   * Specifies the name of the icon to display in the message box.
+   * The icon name should be one of the available icons in the application.
+   * 
+   * If you do not want the icon to me be displayed just set the value to `null`.
+   * 
+   * If no icon is specified, the default icon for the message type will be displayed.
+   * @default 
+   *  - `type='info'` is `info-circle`,
+   *  - `type='warning'` is 'warning-circle',
+   *  - `type='error'` is 'close-circle', 
+   *  - `type='success'` is 'check-circle',
+   *  - `type='default'` is 'info-circle'.
+   * 
+   * @see IconName
    */
-  borderColor?: ColorValue;
+  icon?: keyof IconName | null;
 }
 
 /**
