@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-10-27 14:25:26
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-02-17 23:52:03
+ * @ Modified time: 2025-03-30 23:10:31
  * @ Description: Props for Icon component.
  */
 
@@ -75,6 +75,9 @@ export interface IconName {
   readonly "file-pdf": string;
   readonly "paint-brush": string;
   readonly "trash": string;
+  readonly "check-circle": string;
+  readonly "info-circle": string;
+  readonly "warning-circle": string;
 } 
 
 /**
@@ -141,7 +144,10 @@ export const icons = {
   "spinner-ios": "\ue97c",
   "file-pdf": "\ue90f",
   "paint-brush": "\ue909",
-  "trash": "\ue906"
+  "trash": "\ue906",
+  "check-circle": "\ue938",
+  "info-circle": "\ue939",
+  "warning-circle": "\ue93a"
 }
 
 /**
