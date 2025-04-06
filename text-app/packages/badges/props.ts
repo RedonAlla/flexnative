@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-06-01 00:00:43
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-04-06 17:31:53
+ * @ Modified time: 2025-04-06 17:53:33
  * @ Description: Defines the properties for the Badged component.
  */
 
@@ -34,6 +34,7 @@ export type Position = {
   /**
    * @property {number} [right] - The distance from the right edge.
    */
+  right?: number;
 }
 
 /**

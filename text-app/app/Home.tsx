@@ -10,6 +10,7 @@ import Icon from '@flexnative/icons';
 import Avatar, { AvatarGroup } from '../packages/avatar/src';
 import Message from '../packages/messages/src';
 import Badge from '../packages/badges';
+import SkeletonLoader, { Circle, Rect } from '../packages/skeleton-loading';
 
 // import MessageText from '../tests/components/messages/border-color';
 
@@ -37,25 +38,14 @@ function App() {
     <View style={[styles.container, {flexDirection: "row", backgroundColor: theme.colors.background}]}>
       <View style={styles.container}>
 
-      <Badge text="Important" style={{ fontWeight: 'bold' }} >
-          <Button text="none"/>
-        </Badge>
-
-        <Badge text="Important" style={{ fontWeight: 'bold' }}>
-          <Button text="none"/>
-        </Badge>
-
-        <Badge
- text="Sale"
-radius="small"
-size="large"
-type="solid"
-color="primary"
-borderWidth="thin"
-position="bottom-left"
-style={{ fontSize: 16 }}
-><Button text="none"/>
-</Badge>
+      <SkeletonLoader width={'100%'} height={650} backgroundColor='crimson' foregroundColor='#FFC436'>
+          <Rect x="48" y="8" rx="3" ry="3" width="88" height="10" />
+          <Rect x="48" y="26" rx="3" ry="3" width="52" height="6" />
+          <Rect x="0" y="56" rx="3" ry="3" width="100%" height="6" />
+          <Rect x="0" y="72" rx="3" ry="3" width="100%" height="6" />
+          <Rect x="0" y="88" rx="3" ry="3" width="178" height="6" />
+          <Circle cx="20" cy="20" r="20" />
+        </SkeletonLoader>
       
 
         </View>
