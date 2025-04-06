@@ -9,6 +9,7 @@ import Button from '../packages/buttons/src/button';
 import Icon from '@flexnative/icons';
 import Avatar, { AvatarGroup } from '../packages/avatar/src';
 import Message from '../packages/messages/src';
+import Badge from '../packages/badges';
 
 // import MessageText from '../tests/components/messages/border-color';
 
@@ -36,11 +37,25 @@ function App() {
     <View style={[styles.container, {flexDirection: "row", backgroundColor: theme.colors.background}]}>
       <View style={styles.container}>
 
-      <Message borderWidth={1} text='Success Description Success Description Success Description' title='Success Text'  />
-      <Message borderWidth={1} type='info' text='Success Description Success Description Success Description' title='Success Text'  />
-      <Message borderWidth={1} type='warning' text='Success Description Success Description Success Description' title='Success Text'  />
-      <Message borderWidth={1} type='error' text='Success Description Success Description Success Description' title='Success Text'  />
-      <Message borderWidth={1} type='success' text='Success Description Success Description Success Description' title='Success Text'  />
+      <Badge text="Important" style={{ fontWeight: 'bold' }} >
+          <Button text="none"/>
+        </Badge>
+
+        <Badge text="Important" style={{ fontWeight: 'bold' }}>
+          <Button text="none"/>
+        </Badge>
+
+        <Badge
+ text="Sale"
+radius="small"
+size="large"
+type="solid"
+color="primary"
+borderWidth="thin"
+position="bottom-left"
+style={{ fontSize: 16 }}
+><Button text="none"/>
+</Badge>
       
 
         </View>
