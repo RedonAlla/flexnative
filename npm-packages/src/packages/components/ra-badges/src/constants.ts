@@ -2,25 +2,25 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-06-01 00:00:43
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-11 22:27:34
- * @ Description: Constants used in Badges component.
+ * @ Modified time: 2025-04-06 17:22:13
+ * @ Description: Defines constants used within the Badge component for styling and positioning.
  */
 
+import { ColorValue } from "react-native";
 import { BadgePosition, Position } from "./props";
 
 
 /**
- * Multiplier used to calculate padding for badges.
- * This constant is used to scale the padding proportionally.
+ * Represents the color white in hexadecimal format.
+ * This constant is used for styling components where a white color is needed, such as text or borders.
  */
-export const PADDING_MULTIPLIER = 0.4;
+export const WHITE_COLOR: ColorValue = '#FFFFFF';
 
 /**
- * Represents the color white in hexadecimal format.
- * This constant can be used for styling components where a white color is needed.
+ * Defines the positioning offsets for badges relative to their parent element.
+ * Each key represents a corner position (e.g., 'top-left', 'bottom-right'), and the value is an object
+ * specifying the `top`, `bottom`, `left`, and `right` offsets.
  */
-export const WHITE_COLOR = '#FFFFFF';
-
 export const POSITION: Record<BadgePosition, Position> = {
   'top-left': { top: -10, left: -10 },
   'top-right': { top: -10, right: -10 },

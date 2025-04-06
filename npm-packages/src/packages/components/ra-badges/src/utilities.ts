@@ -2,36 +2,28 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-06-01 00:00:43
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-12 21:45:58
+ * @ Modified time: 2025-04-06 16:22:42
  * @ Description: Utilities functions use for Badge component.
  */
 
 import { ColorValue } from "react-native";
-import { Color } from "@flexnative/theme-context";
+import { Color, FontSize, Sizes, Spaces } from "@flexnative/theme-context";
 
 import { BadgeType } from "./props";
 import { WHITE_COLOR } from "./constants";
 
 
-/**
- * Determines the appropriate text color based on the provided parameters.
- *
- * @param color - The color type of the badge.
- * @param colorValue - The color value to be used if conditions are met.
- * @param type - The type of the badge (e.g., solid).
- * @param blackColor - The color value to be used for black text.
- * @param isLight - A boolean indicating if the background is light.
- * @returns The appropriate color value for the text.
- */
-export function getTextColor(color: Color, colorValue: ColorValue, type: BadgeType, blackColor: ColorValue, isLight: boolean, ): ColorValue {
-  if(Boolean(color === 'light' || color === 'secondary'))
-    return blackColor;
-
-  return Boolean(isLight && color === 'default')
-    ? blackColor
-    : type === 'solid'
-      ? WHITE_COLOR
-      : colorValue
+export function getTextColor(isDark: boolean, color: Color, colorValue: ColorValue, fillMode: BadgeType, blackColor: ColorValue): ColorValue {
+  if(Boolean(fillMode === 'solid')) {
+    if((!isDark && (color === 'light' || color === 'default')) || (isDark && (color === 'secondary' || color === 'light')))
+      return blackColor;
+    else
+      return WHITE_COLOR;
+  }
+  
+  return isDark
+    ? (color === 'default' || color === 'light' || color === 'dark') ? WHITE_COLOR : colorValue
+    : (color === 'default' || color === 'light') ? blackColor : colorValue;
 }
 
 /**
@@ -63,4 +55,50 @@ export function getBackgroundColor(color: Color, ghostOpacity: string, type?: Ba
  */
 export function isString(myVar: any): boolean {
   return (typeof myVar === 'string' || myVar instanceof String)
+}
+
+/**
+ * Returns the theme space key based on the provided size.
+ * 
+ * @param {Sizes} [size='medium'] - The size of the message box. 
+ * @returns {Spaces} The theme space key from {@link BaseTheme}.
+ */
+export function getThemeSpaceKey(size?: Sizes): Spaces
+{
+  switch (size) {
+    case 'small':
+      return 'xxs';
+    
+    case 'medium':
+      return 'xs';
+      
+    case 'large':
+      return 'sm';
+  
+    default:
+      return 'xs';
+  }
+}
+
+/**
+ * Returns the theme font size key based on the provided size.
+ * 
+ * @param {Sizes} [size='medium'] - The size of the message box.
+ * @returns {FontSize} The theme font size key.
+ */
+export function getThemeFontSizeKey(size?: Sizes): FontSize
+{
+  switch (size) {
+    case 'small':
+      return 'sm';
+    
+    case 'medium':
+      return 'md';
+      
+    case 'large':
+      return 'lg';
+  
+    default:
+      return 'md';
+  }
 }
