@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2023-06-28 19:37:05
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-12 22:25:40
+ * @ Modified time: 2025-04-06 17:47:33
  * @ Description: Bottom sheets show secondary content anchored to the bottom of the screen.
  */
 
@@ -232,7 +232,7 @@ class BottomSheet extends React.PureComponent<BottomSheetProps, BottomSheetState
     } = this.props;
     const { animatedHeight, pan, modalVisible } = this.state;
 
-    const styles = createStyleSheet(this.context.colors);
+    const styles = createStyleSheet(this.context.state.colors);
 
     return (
       <Modal
@@ -247,7 +247,7 @@ class BottomSheet extends React.PureComponent<BottomSheetProps, BottomSheetState
           enabled={keyboardAvoidingViewEnabled}
           style={[styles.wrapper, wrapperStyle]}
         >
-          <Background maskMode={getMasKMode(this.context.scheme === 'dark', maskMode)!} onPress={this.closeOnPressMask} />
+          <Background maskMode={getMasKMode(this.context.state.isDark, maskMode)!} onPress={this.closeOnPressMask} />
           <Animated.View
             {...(!dragFromTopOnly && this.panResponder.panHandlers)}
             style={[styles.container, { transform: pan.getTranslateTransform() }, { height: animatedHeight }, containerStyle]}
