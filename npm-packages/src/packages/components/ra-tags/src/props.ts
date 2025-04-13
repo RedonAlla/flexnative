@@ -2,48 +2,44 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-05-31 00:42:57
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-24 22:42:40
- * @ Description: Prop for Tag component.
+ * @ Modified time: 2025-04-13 17:18:50
+ * @ Description: Defines the properties and types for the Tag component, including styling, content, and behavior.
  */
 
-import { BorderRadius, BorderWidth, Color, Sizes } from "@flexnative/theme-context";
 import { TextProps, ColorValue, ViewProps } from "react-native";
+import { BorderRadius, BorderWidth, Color, Sizes } from "@flexnative/theme-context";
 
 /**
  * Represents the type of a Tag component.
  * 
- * - `default`: The standard Tag type.
- * - `text`: A Tag that displays text.
- * - `ghost`: A Tag with a ghost style.
+ * **Tag Types:**
+ * 
+ * - `solid`: The standard Tag type with a filled background.
+ * - `text`: A Tag that primarily displays text, often with minimal styling.
+ * - `ghost`: A Tag with a transparent background and a border, giving it a "ghost" appearance.
  */
-export type TagType = 'default' | 'text' | 'ghost';
+export type TagType = 'solid' | 'text' | 'ghost';
 
-export default interface TagProps extends ViewProps {
+/**
+ * Base properties for the Tag component, defining its core styling and behavior.
+ */
+export interface BaseTagProps {
   /**
-   * Text to display on tag.
-   */
-  text?: string;
-
-  /**
-   * Text Color.
+   * The color of the text within the Tag. Defaults to the theme's default text color.
    * 
-   * @default theme.color.default
+   * @default theme.state.color.default
    */
   textColor?: ColorValue;
 
   /**
-   * Background Color.
+   * The background color of the Tag. Defaults to the theme's default background color.
    * 
-   * @default theme.color.default
+   * @default theme.state.color.default
    */
   backgroundColor?: ColorValue;
 
-  /**
-   * ReactNode to render custom react element.
-   */
-  children?: React.ReactNode;
-
-  /** Optional borders width.
+  /** 
+   * The width of the Tag's border. Defaults to no border (none).
    * @default none
   */
   borderWidth?: BorderWidth;
@@ -51,33 +47,58 @@ export default interface TagProps extends ViewProps {
   /** Borders color color according `react-native` ColorValue. */
   borderColor?: ColorValue;
 
-   /** If provided, will render a Delete icon button, which will call this callback
-   * on press
-   */
-   onDelete?: (event: React.BaseSyntheticEvent) => void;
-
-  /** Tag Size variable.
-  * @default default
+  /**
+   * The size of the Tag, influencing its padding and font size. Defaults to 'medium'.
+   * 
+   * @default medium
   */
   size?: Sizes;
 
   /**
-   * Tag type.
+   * The visual style of the Tag. Defaults to `solid`.
    * 
-   * @default 'default'
+   * @default 'solid'
   */
   type?: TagType;
 
-  /** Tag border radius.
+  /** The border radius of the Tag's corners. Defaults to 'medium'.
   * @default 'medium'
   */
-  radius: BorderRadius;
+  radius?: BorderRadius;
 
-  /** Color by theme or a custom color according `react-native` ColorValue.
+  /**
+   * Color by theme or a custom color according `react-native` ColorValue.
    * @default 'default'
   */
-  color: Color;
-
-  /** Props to pass to the inner `Text` component */
-  textProps?: TextProps;
+  color?: Color;
 }
+
+
+/**
+ * Properties for the Tag component, extending `BaseTagProps` with content and interaction options.
+ * 
+ * @extends BaseTagProps
+ * @extends ViewProps
+ */
+export default interface TagProps extends BaseTagProps, ViewProps {
+  /**
+   * Text to display on tag.
+   */
+  text?: string;
+
+  /** 
+   * Additional props to pass to the inner `Text` component.
+  */
+  textProps?: TextProps;
+
+  /**
+   * Custom React elements to render within the Tag, allowing for flexible content.
+   */
+  children?: React.ReactNode;
+
+   /**
+    * A callback function that is called when the delete icon button is pressed.
+    * If provided, a delete icon will be rendered.
+   */
+   onDelete?: (event: React.BaseSyntheticEvent) => void;
+};
