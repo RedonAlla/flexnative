@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, StyleProp, TextStyle } from "react-native";
+import { View, Text, StyleSheet, StyleProp, TextStyle } from "react-native";
 import Chat from '../packages/navigation/screens/Chat';
 import { withFancyDrawer } from '../packages/navigation/src/with-fancy-drawer';
 import { SecondaryButton } from '../packages/buttons/src/SecondaryButton';
@@ -11,6 +11,7 @@ import Avatar, { AvatarGroup } from '../packages/avatar/src';
 import Message from '../packages/messages/src';
 import Badge from '../packages/badges';
 import SkeletonLoader, { Circle, Rect } from '../packages/skeleton-loading';
+import Tag from '../packages/ra-tags/src';
 
 // import MessageText from '../tests/components/messages/border-color';
 
@@ -38,15 +39,14 @@ function App() {
     <View style={[styles.container, {flexDirection: "row", backgroundColor: theme.colors.background}]}>
       <View style={styles.container}>
 
-      <SkeletonLoader width={'100%'} height={650} backgroundColor='crimson' foregroundColor='#FFC436'>
-          <Rect x="48" y="8" rx="3" ry="3" width="88" height="10" />
-          <Rect x="48" y="26" rx="3" ry="3" width="52" height="6" />
-          <Rect x="0" y="56" rx="3" ry="3" width="100%" height="6" />
-          <Rect x="0" y="72" rx="3" ry="3" width="100%" height="6" />
-          <Rect x="0" y="88" rx="3" ry="3" width="178" height="6" />
-          <Circle cx="20" cy="20" r="20" />
-        </SkeletonLoader>
-      
+        <Tag text="Basic Tag" />
+        <Tag text="Solid Tag" type="solid" color="primary" />
+        <Tag text="Deletable Tag" onDelete={() => console.log("Tag deleted")} />
+        <Tag>
+          <Text>Custom Content</Text>
+        </Tag>
+        <Tag text="Styled Tag" style={{ padding: 10, margin: 5 }} />
+        <Tag text="Styled Text Tag" textProps={{ style: { fontWeight: 'bold' } }} />
 
         </View>
 

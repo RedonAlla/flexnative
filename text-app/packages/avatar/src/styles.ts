@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-06-07 23:29:01
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-03-23 17:48:45
+ * @ Modified time: 2025-04-12 22:46:05
  * @ Description: Defines the styling functions for the `Avatar` and `AvatarGroup` components.
  *              This module provides functions to generate style objects based on the provided props and theme.
  */
@@ -59,7 +59,7 @@ type AvatarItemStyleProps = {
   /**
    * Text color of the avatar.
    */
-  textColor?: ColorValue;\
+  textColor?: ColorValue;
 
   /**
    * Icon color of the avatar.
