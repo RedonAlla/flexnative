@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, StyleProp, TextStyle } from "react-native";
+import { View, Text, StyleSheet, StyleProp, TextStyle, ColorValue } from "react-native";
 import Chat from '../packages/navigation/screens/Chat';
 import { withFancyDrawer } from '../packages/navigation/src/with-fancy-drawer';
 import { SecondaryButton } from '../packages/buttons/src/SecondaryButton';
@@ -12,6 +12,10 @@ import Message from '../packages/messages/src';
 import Badge from '../packages/badges';
 import SkeletonLoader, { Circle, Rect } from '../packages/skeleton-loading';
 import Tag from '../packages/ra-tags/src';
+import CheckBox from '../packages/inputs/src/check-box';
+import { NumericTextBox, StateCallbackType, TextBox } from '../packages/inputs/src';
+import CheckBoxListDefault from '../packages/inputs/src/check-box-list/CheckBoxListDefault';
+import CheckBoxListDemo from '../components/CheckBoxListDemo';
 
 // import MessageText from '../tests/components/messages/border-color';
 
@@ -28,40 +32,23 @@ const fontSize: Record<FontSize, number> = {
 export const LOGO_PATH = require('../assets/favicon.png');
 
 const theme = createTheme<{}>({colors: light, fontSize});
-theme.scheme = 'light'
+theme.scheme = 'light';
 
 function App() {
+  const [value, setValue] = React.useState(false); 
   return (
     // <Chat />
   //  <MessageText />
   
   <ThemeContext.Provider value={{state: theme}}>
     <View style={[styles.container, {flexDirection: "row", backgroundColor: theme.colors.background}]}>
-      <View style={styles.container}>
-
-        <Tag text="Basic Tag" />
-        <Tag text="Solid Tag" type="solid" color="primary" />
-        <Tag text="Deletable Tag" onDelete={() => console.log("Tag deleted")} />
-        <Tag>
-          <Text>Custom Content</Text>
-        </Tag>
-        <Tag text="Styled Tag" style={{ padding: 10, margin: 5 }} />
-        <Tag text="Styled Text Tag" textProps={{ style: { fontWeight: 'bold' } }} />
-
+      <View style={{display: "flex", flexDirection: "row"}}>
+        <View ><Button text='Button' onPress={() => {}} color='primary' type='default' /></View>
+        
+        <View style={{flexDirection:'column', height:'auto', flex: 1, backgroundColor: 'white'}}>
+          <CheckBoxListDemo />
         </View>
-
-      <View style={styles.container}>
         
-      </View>
-
-      <View style={styles.container}>
-        
-      </View>
-      
-      <View style={styles.container}>
-      </View>
-
-      <View style={styles.container}>
       </View>
     </View>
   
@@ -69,15 +56,15 @@ function App() {
   );
 }
 
-const textStyles = () => {
-  return (pressed: boolean): StyleProp<TextStyle> => {
+const labelStyles = (defaultColor: ColorValue, activeColor: ColorValue) => {
+  return (state: StateCallbackType): StyleProp<TextStyle> => {
     return [
       {
-        color: pressed ? '#FFC300' : 'white'
+        color: state.focused ? activeColor : defaultColor
       }
     ]
   }
-} 
+}
 
 export default withFancyDrawer(App);
 
@@ -91,6 +78,9 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#FFC300'
+  },
+  label: {
+    fontSize: 32
   }
 });
 

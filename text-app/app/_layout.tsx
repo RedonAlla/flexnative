@@ -102,6 +102,14 @@ export default function Layout() {
             }}
           />
           <Drawer.Screen
+            name="Chat"
+            // component={ModalScreen}
+            options={{
+              title: "Chat",
+              drawerIcon: (props) => <Ionicons name="chatbox" size={props.size} color={props.color}/> 
+            }}
+          />
+          <Drawer.Screen
             name="Components"
             // component={withFancyDrawer(ComponentsNavigator)}
             options={{
