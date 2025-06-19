@@ -1,3 +1,9 @@
+##  (2025-06-19)
+
+* (test-app) feat: Add TextBox component with multiple styles (default, material, inline) ([2d7382e](https://github.com/RedonAlla/flexnative/commit/2d7382e))
+
+
+
 ##  (2025-03-24)
 
 * refactor(avatar): improve typing and resolve style type assertion ([a99e522](https://github.com/RedonAlla/flexnative/commit/a99e522))
