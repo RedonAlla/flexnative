@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2023-10-08 12:56:54
  * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-27 17:01:13
+ * @ Modified time: 2025-07-12 17:15:11
  * @ Description: Prop for SkeletonLoader component.
  */
 
@@ -20,7 +20,7 @@ import { SvgProps } from "react-native-svg";
  * @property {number} [speed=1.2] - Animation speed.
  * @property {number} [interval=0.25] - Animation interval.
  * @property {string} [uniqueKey] - Used for unique key for <Rect fill='' clipPath='' />.
- * @property {JSX.Element} [beforeMask] - JSX.Element to render as mask on loading indicator.
+ * @property {React.ReactElement} [beforeMask] - React.ReactElement to render as mask on loading indicator.
  */
 export interface IContentLoaderProps extends SvgProps {
   /**
@@ -60,7 +60,7 @@ export interface IContentLoaderProps extends SvgProps {
   uniqueKey?: string;
 
   /**
-   * JSX.Element to render as mask on loading indicator.
+   * React.ReactElement to render as mask on loading indicator.
    */
-  beforeMask?: JSX.Element;
+  beforeMask?: React.ReactElement;
 }
