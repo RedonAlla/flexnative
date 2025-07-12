@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-10-27 14:25:26
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-03-16 22:34:28
+ * @ Modified time: 2025-07-12 17:01:30
  * @ Description: Icon component used to display icons using text characters.
  */
 
@@ -24,9 +24,9 @@ import createStyles from './styles';
  * @param {object} [props.style] - Additional styles to be applied to the icon.
  * @param {object} [props.otherProps] - Any other properties to be passed to the Text component.
  * 
- * @returns {JSX.Element} The rendered icon component.
+ * @returns {React.ReactElement} The rendered icon component.
  */
-const IconComponent = (props: IconProps): JSX.Element => {
+const IconComponent = (props: IconProps): React.ReactElement => {
   const theme = useThemeState();
   const { name, size = 'md', color = 'text', style, ...otherProps } = props;
 
