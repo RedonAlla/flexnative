@@ -1,5 +1,11 @@
 ##  (2025-07-12)
 
+* Merge branch 'main' of https://github.com/RedonAlla/flexnative ([141e7b5](https://github.com/RedonAlla/flexnative/commit/141e7b5))
+
+
+
+##  (2025-07-12)
+
 * Refactors input components for modularity and theme support ([28ace6c](https://github.com/RedonAlla/flexnative/commit/28ace6c))
 
 
