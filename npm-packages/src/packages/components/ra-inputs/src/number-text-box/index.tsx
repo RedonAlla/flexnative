@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2025-04-13 18:17:38
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-05-11 18:18:24
+ * @ Modified time: 2025-07-12 17:07:49
  * @ Description: The NumericTextBox component provides a numeric input field with various styling options. It supports different looks (default, material, inline), increment/decrement buttons, and customizable properties.
  */
 
@@ -24,7 +24,7 @@ const COMPONENTS = {
  *
  * @component
  * @param {NumberTextBoxProps} props - The properties for configuring the NumericTextBox.
- * @returns {JSX.Element} A React element representing the NumericTextBox.
+ * @returns {React.ReactElement} A React element representing the NumericTextBox.
  *
  * @example
  * // Example usage:
@@ -36,7 +36,7 @@ const COMPONENTS = {
  *   step={2}
  * />
  */
-const NumericTextBox = (props: NumberTextBoxProps): JSX.Element => {
+const NumericTextBox = (props: NumberTextBoxProps): React.ReactElement => {
   const Component = COMPONENTS[props.look || 'default'] || NumericTextBoxDefault;
   return <Component {...props} />;
 };

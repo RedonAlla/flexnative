@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2025-05-11 21:17:45
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-05-25 21:36:22
+ * @ Modified time: 2025-07-12 17:11:17
  * @ Description: This component renders a label for an input field. It can accept a string or a React element as the label content.
  *                It also handles styling based on whether the input is focused.
  */
@@ -52,14 +52,14 @@ type Props = {
  * It also handles styling based on whether the input is focused.
  * 
  * @param {Props} props - The component props.
- * @returns {JSX.Element | null} The rendered label element, or null if the label is undefined.
+ * @returns {React.ReactElement | null} The rendered label element, or null if the label is undefined.
  */
-const Label = ({ label, style, labelStyle, isFocused }: Props ): JSX.Element | null => {
+const Label = ({ label, style, labelStyle, isFocused }: Props ): React.ReactElement | null => {
   return label
     ? (
         React.isValidElement(label)
           ? label
-          : <Text style={[ style, getStyle<TextStyle>(labelStyle, isFocused) ]}>
+          : <Text style={[ style, getStyle<TextStyle>(labelStyle, isFocused!) ]}>
               {label}
             </Text>
       )

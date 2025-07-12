@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2025-05-11 21:17:45
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-05-24 20:49:43
+ * @ Modified time: 2025-07-12 17:10:30
  * @ Description: This component renders a adornment for an input field. It can accept a string or a React element as the adornment content.
  *                It also handles styling based on whether the input is focused.
  */
@@ -58,9 +58,9 @@ type Props = {
  * of an associated input field.
  *
  * @param {Props} props - The component props.
- * @returns {JSX.Element | null} The rendered adornment element, or null if the `adornment` prop is undefined.
+ * @returns {React.ReactElement | null} The rendered adornment element, or null if the `adornment` prop is undefined.
  */
-const Adornment = ({ adornment, style, adornmentStyle, isFocused }: Props ): JSX.Element | null => {
+const Adornment = ({ adornment, style, adornmentStyle, isFocused }: Props ): React.ReactElement | null => {
   return adornment
     ? (
         React.isValidElement(adornment)

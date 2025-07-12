@@ -6,9 +6,7 @@
 
 import { ColorValue, StyleSheet } from "react-native";
 import { BaseTheme, BorderRadius, BorderWidth, Color, Sizes } from "@flexnative/theme-context";
-
-import { InputType } from "./input.props";
-import { getBorders } from "./input.utilities";
+import { InputType } from "./shared/input.props";
 
 
 /**
@@ -75,7 +73,7 @@ export function createStyles(props: ContainerProps) {
       //@ts-ignore
       minWidth: 'inherit',
       //lineHeight: fontSize,
-      outlineStyle: "none",
+      outlineStyle: undefined,
       //fontSize: fontSize,
       fontFamily: 'Regular',
       backgroundColor: 'transparent',

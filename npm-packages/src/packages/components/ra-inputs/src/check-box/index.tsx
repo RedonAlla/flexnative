@@ -27,7 +27,7 @@ import FalsyComponent from "../shared/components/FalsyComponent";
  * 
  * @param {CheckProps<T>} props - The properties for the CheckBox component.
  * @param {T} props.value - The current value of the checkbox. Determines whether it is checked or unchecked.
- * @returns {JSX.Element} The rendered CheckBox component.
+ * @returns {React.ReactElement} The rendered CheckBox component.
  */
 const CheckBox = <T extends unknown>({
   value,
@@ -48,7 +48,7 @@ const CheckBox = <T extends unknown>({
   style,
   onValueChange,
   ...other
-}: CheckProps<T>): JSX.Element => {
+}: CheckProps<T>): React.ReactElement => {
   const theme = useThemeState<BaseColors>();
 
   const styles = createStyles({

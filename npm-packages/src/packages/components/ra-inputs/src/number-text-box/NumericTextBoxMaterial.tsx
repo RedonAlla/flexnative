@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2025-05-11 12:56:44
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-05-19 21:03:37
+ * @ Modified time: 2025-07-12 17:09:53
  * @ Description: The NumericTextBox component provides a versatile numeric input field with a range of styling options to fit various design needs. It allows users to input numeric values and offers features like increment/decrement buttons for easy value adjustment.
  */
 
@@ -125,7 +125,8 @@ export default class NumericTextBoxMaterial extends BaseNumericTextBox {
               <Actions
                 disabled={Boolean(readOnly || disabled)}
                 activeColor={theme.colors.defaultHover}
-                size={styles.input.height}
+                //size={styles.input.height}
+                size={styles.input.fontSize}
                 radius={styles.wrapper.borderRadius}
                 onDecrement={this.handleDecrement}
                 onIncrement={this.handleIncrement}
