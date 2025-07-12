@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2023-10-26 00:35:01
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-04-06 17:18:03
+ * @ Modified time: 2025-07-12 16:58:21
  * @ Description: A versatile Badge component for displaying text labels or indicators..
  */
 
@@ -42,16 +42,31 @@ import badgeStyle from './styles';
  *   style={{ fontSize: 16 }}
  * />
  */
-const Badge: React.FC<BadgedProps> = (props) => {
-  const {
+const Badge: React.FC<BadgedProps> = ({
+  text,
+  style,
+  children,
+  radius = 'full',
+  size = 'medium',
+  type = 'solid',
+  color = 'primary',
+  borderWidth = 'none',
+  position = 'top-right',
+  ...resProps
+})  => {
+  const theme = useThemeState<BaseColors>();
+  const styles = badgeStyle(theme, {
     text,
     style,
     children,
-    ...resProps
-  } = props;
-
-  const theme = useThemeState<BaseColors>();
-  const styles = badgeStyle(theme, props);
+    radius,
+    size,
+    type,
+    color,
+    borderWidth,
+    position,
+    ...resProps,
+  });
 
   return (
     <View style={styles.container}>
@@ -64,15 +79,6 @@ const Badge: React.FC<BadgedProps> = (props) => {
       </Text>
     </View>
   );
-};
-
-Badge.defaultProps = {
-  radius: 'full',
-  size: 'medium',
-  type: 'solid',
-  color: 'primary',
-  borderWidth: 'none',
-  position: 'top-right',
 };
 
 export default Badge;
