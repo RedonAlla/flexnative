@@ -1,3 +1,9 @@
+##  (2025-07-12)
+
+* Refactors input components for modularity and theme support ([28ace6c](https://github.com/RedonAlla/flexnative/commit/28ace6c))
+
+
+
 ##  (2025-06-19)
 
 * (test-app) feat: Add TextBox component with multiple styles (default, material, inline) ([2d7382e](https://github.com/RedonAlla/flexnative/commit/2d7382e))
