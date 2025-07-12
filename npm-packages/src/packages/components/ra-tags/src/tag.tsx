@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-12-28 12:13:51
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-04-13 17:21:06
+ * @ Modified time: 2025-07-12 17:13:45
  * @ Description: A versatile component for displaying tags with customizable styles and optional delete functionality.
  */
 
@@ -20,7 +20,7 @@ import createStyles from "./styles";
  * Tag component for displaying tags with customizable styles.
  *
  * @param {TagProps} props - The properties for the Tag component.
- * @returns {JSX.Element} The rendered Tag component.
+ * @returns {React.ReactElement} The rendered Tag component.
  * 
  * @example
  * // Basic tag
@@ -67,7 +67,7 @@ const Tag: React.FC<TagProps> = ({
   onDelete,
   textProps = {},
   ...restProps
-}: TagProps): JSX.Element => {
+}: TagProps): React.ReactElement => {
   const themeState = useThemeState();
 
   // Memoize styles to avoid recalculating on every render
