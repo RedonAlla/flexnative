@@ -2,8 +2,8 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-06-17 22:55:53
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-02-04 00:30:27
- * @ Description: Defines interfaces and types commonly used for input components, specifically tailored for a UI library or framework based on React Native. It provides a structured way to define the properties that these components will accept.
+ * @ Modified time: 2025-05-11 19:10:12
+ * @ Description: The file defines the core interface, BaseInputProps, for input components within a React Native UI library. This interface standardizes the properties that can be passed to these input components, ensuring consistency and predictability in their behavior and appearance. It also includes supporting types like InputType to constrain input styles and StateCallbackType for managing focus state. By centralizing these definitions, the file promotes code reusability and simplifies the development of various input field variations (e.g., text inputs, number inputs) within the library.
  */
 
 import { ColorValue, StyleProp, TextStyle, TextInputProps, ViewStyle } from 'react-native';
@@ -29,7 +29,7 @@ export interface StateCallbackType {
 export type InputType = 'outlined' | 'underlined';
 
 /**
- * Interface defining the properties for a base input component, extending TextInputProps.
+ * Interface defining the properties for a base input component, extending {@link TextInputProps}.
  */
 export interface BaseInputProps extends TextInputProps {
   /**
@@ -39,6 +39,16 @@ export interface BaseInputProps extends TextInputProps {
    * @default 'outlined'
   */
   type?: InputType;
+
+  /**
+   * Specifies the look of the input.
+   *  - `default` Default look as standard input. With label outside input box if present.
+   *  - `material` Input box with material design look.
+   *  - `inline` Input box when the label and input are inline.
+   * 
+   * @default 'default'
+  */
+  look?: 'default' | 'material' | 'inline'
 
   /**
    * Defines the size of the input field.
@@ -52,6 +62,18 @@ export interface BaseInputProps extends TextInputProps {
   */
   radius?: BorderRadius;
   
+  /**
+   * Adds a shadow effect to the button, when the button it is pressed.
+   * For more details read the {@link https://reactnative.dev/docs/view-style-props#boxshadow documentation}. 
+   */
+  pressedBoxShadow?: string;
+
+  /**
+   * Boolean value indicating wether to show or not {@link pressedBoxShadow}.
+   * 
+   * @default false
+   */
+  withoutPressedBoxShadow?: boolean;
 
   /** Indicates if the input has an error state.
   * @default false
@@ -97,13 +119,6 @@ export interface BaseInputProps extends TextInputProps {
   activeBackgroundColor?: ColorValue;
 
   /**
-   * Indicates if the input should resemble a Material design look.
-   * 
-   * @default false
-   */
-  material?: boolean;
-
-  /**
    * Provides helper text relating to the input.
   */
   helperText?: string;
@@ -123,7 +138,7 @@ export interface BaseInputProps extends TextInputProps {
     | undefined;
 
   /**
-   * Allows you to add icon form `ra-icon` package or any custom items as prefix adornments.
+   * Allows you to add icon form `@flexnative/icons` package or any custom items as prefix adornments.
   */
   prefix?: keyof IconName | React.ReactElement;
 
@@ -144,7 +159,7 @@ export interface BaseInputProps extends TextInputProps {
     | undefined;
 
   /**
-   * Allows you to add icon form `ra-icon` package or any custom items as suffix adornments.
+   * Allows you to add icon form `@flexnative/icons` package or any custom items as suffix adornments.
   */
   suffix?: keyof IconName | React.ReactElement;
 
@@ -164,25 +179,3 @@ export interface BaseInputProps extends TextInputProps {
     | ((state: StateCallbackType) => StyleProp<ViewStyle | TextStyle>)
     | undefined;
 }
-
-export interface NumberTextBoxProps extends BaseInputProps {
-  /**
-   * Boolean to determinate wether to show or not increment and decrement actions.
-   * 
-   * @default true
-  */
-  actions: boolean;
-
-  /**
-   * Increments and decrement step.
-   * 
-   * @default 1
-   */
-  step: number;
-}
-
-/**
- * Interface defining the properties for a TextBox component.
- * It extends from BaseInputProps, thereby inheriting all its properties.
- */
-export interface TextBoxProps extends BaseInputProps {};

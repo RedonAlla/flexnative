@@ -10,15 +10,6 @@ import { BaseTheme, BorderRadius, BorderWidth, Color, Sizes } from "@flexnative/
 import { InputType } from "./input.props";
 import { getBorders } from "./input.utilities";
 
-import {
-  ICON_MULTIPLIER,
-  ICON_SEPARATOR_WIDTH,
-  MAT_ICON_MULTIPLIER,
-  PADDING_HORIZONTAL_MULTIPLIER,
-  PADDING_VERTICAL_MULTIPLIER,
-  TEXT_HELPER_MARGIN_TOP_MULTIPLIER,
-  TEXT_HELPER_MULTIPLIER
-} from "./input.constants";
 
 /**
  * Defines the properties for styling a container element, specifically used for input components.
@@ -48,10 +39,6 @@ type ContainerProps = {
  * @returns - Set of styles for a Input components.
  */
 export function createStyles(props: ContainerProps) {
-  /**
-   * Determine font size based on props size or use default if not provided.
-   */
-  const fontSize = props.theme.fontSize[props.size] ?? props.theme.fontSize.default;
 
   /**
    * Set theme color using provided color or fallback to the specified prop color.
@@ -64,29 +51,6 @@ export function createStyles(props: ContainerProps) {
    * Use specified background color or default to transparent.
    */
   const backgroundColor = props.backgroundColor ?? 'transparent';
-
-  /**
-   * Calculate vertical padding as a multiplier of the font size.
-   */
-  const paddingVertical = PADDING_VERTICAL_MULTIPLIER * fontSize;
-
-  /**
-   * Calculate horizontal padding similarly
-   */
-  const paddingHorizontal = PADDING_HORIZONTAL_MULTIPLIER * fontSize;
-
-  /**
-   * Determine border radius from theme settings or use directly from props.
-   */
-  const borderRadius = props.theme.borderRadius[props.radius] ?? props.radius;
-
-  /**
-   * Compute icon size differently for material design versus default.
-   */
-  const iconSize =
-    props.material
-      ? fontSize * MAT_ICON_MULTIPLIER
-      : fontSize * ICON_MULTIPLIER;
 
   /**
    * Decide focus border color based on readonly status and other conditions.
@@ -107,21 +71,21 @@ export function createStyles(props: ContainerProps) {
       outlineWidth: 0,
       paddingHorizontal: 0,
       paddingBottom: 0,
-      paddingTop: TEXT_HELPER_MARGIN_TOP_MULTIPLIER * paddingVertical,
+      //paddingTop: TEXT_HELPER_MARGIN_TOP_MULTIPLIER * paddingVertical,
       //@ts-ignore
       minWidth: 'inherit',
-      lineHeight: fontSize,
+      //lineHeight: fontSize,
       outlineStyle: "none",
-      fontSize: fontSize,
+      //fontSize: fontSize,
       fontFamily: 'Regular',
       backgroundColor: 'transparent',
       color: props.theme.colors.text,
       alignVertical: 'center'
     },
     icon: {
-      width: iconSize,
+      //width: iconSize,
       height: '100%',
-      fontSize: iconSize,
+      //fontSize: iconSize,
       textAlign: 'center',
       verticalAlign: 'middle',
       color: props.isError ? props.theme.colors.error : props.theme.colors.text,
@@ -130,16 +94,16 @@ export function createStyles(props: ContainerProps) {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
-      columnGap: paddingVertical,
-      borderColor: props.borderColor || themeColor,
-      paddingVertical: paddingVertical,
-      borderRadius: props.type === 'underlined' ? 0 : borderRadius,
-      paddingHorizontal: props.type === 'underlined'
-        ? 0
-        : (props.radius === 'full' && props.material)
-          ? 2 * paddingHorizontal
-          : paddingHorizontal,
-      ...getBorders(props.type, props.theme.borderWidth[props.borderWidth!] ?? props.borderWidth),
+      //columnGap: paddingVertical,
+      borderColor: 'red'//props.borderColor || themeColor,
+      //paddingVertical: paddingVertical,
+      //borderRadius: props.type === 'underlined' ? 0 : borderRadius,
+      // paddingHorizontal: props.type === 'underlined'
+      //   ? 0
+      //   : (props.radius === 'full' && props.material)
+      //     ? 2 * paddingHorizontal
+      //     : paddingHorizontal,
+      // ...getBorders(props.type, props.theme.borderWidth[props.borderWidth!] ?? props.borderWidth),
     },
     containerFocus: {
       backgroundColor: props.activeBackgroundColor ?? backgroundColor,
@@ -161,36 +125,36 @@ export function createStyles(props: ContainerProps) {
     label: {
       fontFamily: 'Regular',
       color: props.isError ? props.theme.colors.error : props.theme.colors.text,
-      marginBottom: TEXT_HELPER_MARGIN_TOP_MULTIPLIER * paddingVertical,
-      fontSize: props.material ? TEXT_HELPER_MULTIPLIER * fontSize : fontSize,
+      //marginBottom: TEXT_HELPER_MARGIN_TOP_MULTIPLIER * paddingVertical,
+      //fontSize: props.material ? TEXT_HELPER_MULTIPLIER * fontSize : fontSize,
     },
     helpTextContainer: {
       display: 'flex',
       flexDirection: 'row',
       backgroundColor: 'transparent',
       justifyContent: 'space-between',
-      marginTop: TEXT_HELPER_MARGIN_TOP_MULTIPLIER * fontSize,
-      paddingHorizontal: borderRadius,
+      // marginTop: TEXT_HELPER_MARGIN_TOP_MULTIPLIER * fontSize,
+      // paddingHorizontal: borderRadius,
     },
     helpText: {
       fontStyle: 'italic',
-      fontSize: TEXT_HELPER_MULTIPLIER * fontSize,
+      // fontSize: TEXT_HELPER_MULTIPLIER * fontSize,
     },
     txtCounter: {
       fontStyle: 'italic',
       marginLeft: 'auto',
-      fontSize: TEXT_HELPER_MULTIPLIER * fontSize,
+      // fontSize: TEXT_HELPER_MULTIPLIER * fontSize,
     },
     prefixSeparator: {
       textAlign: 'left',
-      width: paddingVertical + iconSize,
-      borderRightWidth: ICON_SEPARATOR_WIDTH,
+      // width: paddingVertical + iconSize,
+      // borderRightWidth: ICON_SEPARATOR_WIDTH,
       borderRightColor: props.theme.colors.border,
     },
     suffixSeparator: {
       textAlign: 'right',
-      width: paddingVertical + iconSize,
-      borderLeftWidth: ICON_SEPARATOR_WIDTH,
+      // width: paddingVertical + iconSize,
+      // borderLeftWidth: ICON_SEPARATOR_WIDTH,
       borderLeftColor: props.theme.colors.border,
     }
   });

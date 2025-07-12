@@ -11,9 +11,8 @@ export type RenderFCProp<Props> = (props?: Props) => React.ReactElement;
 export type RenderProp<Props> = RenderFCProp<Props> | React.ReactElement;
 
 export type FalsyFCProps<Props> = Props & {
-  shouldRender: boolean;
-  component?: RenderProp<Props>;
-  fallback?: React.ReactElement;
+  component?: React.ReactElement;
+  reactElement?: React.ReactElement;
 };
 
 /**
@@ -49,17 +48,12 @@ export default class FalsyComponent<Props> extends React.PureComponent<FalsyFCPr
   }
 
   public render() {
-    const { component, fallback, shouldRender, ...props } = this.props;
+    const { component, reactElement, ...props } = this.props;
 
-    if(!shouldRender)
-      return null;
+    if (reactElement) {
+      return reactElement;
+    }
 
-    if (!component)
-      return fallback;
-
-    if (React.isValidElement(component))
-      return React.cloneElement(component, props);
-
-    return React.createElement(component as React.FunctionComponent | React.ComponentClass, props);
+    return component ? React.cloneElement(component as React.ReactElement, props) : null;
   }
 }
