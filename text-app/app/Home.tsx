@@ -46,7 +46,38 @@ function App() {
         <View ><Button text='Button' onPress={() => {}} color='primary' type='default' /></View>
         
         <View style={{flexDirection:'column', height:'auto', flex: 1, backgroundColor: 'white'}}>
-          <CheckBoxListDemo />
+          <NumericTextBox
+            label="Enter a number"
+            onChangeText={(text) => console.log(text)}
+            actions={true}
+            step={2}
+            size='small'
+            suffix='star'
+            prefix='star'
+            helperText='This is a helper text'
+          />
+
+          <NumericTextBox
+            label="Enter a number"
+            onChangeText={(text) => console.log(text)}
+            size='medium'
+            actions={true}
+            step={2}
+            suffix='star'
+            prefix='star'
+            helperText='This is a helper text'
+          />
+
+          <NumericTextBox
+            label="Enter a number"
+            onChangeText={(text) => console.log(text)}
+            actions={true}
+            step={2}
+            size='large'
+            suffix='star'
+            prefix='star'
+            helperText='This is a helper text'
+          />
         </View>
         
       </View>

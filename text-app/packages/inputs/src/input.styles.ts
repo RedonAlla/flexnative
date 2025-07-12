@@ -6,9 +6,7 @@
 
 import { ColorValue, StyleSheet } from "react-native";
 import { BaseTheme, BorderRadius, BorderWidth, Color, Sizes } from "@flexnative/theme-context";
-
-import { InputType } from "./input.props";
-import { getBorders } from "./input.utilities";
+import { InputType } from "./shared/input.props";
 
 
 /**
@@ -71,21 +69,16 @@ export function createStyles(props: ContainerProps) {
       outlineWidth: 0,
       paddingHorizontal: 0,
       paddingBottom: 0,
-      //paddingTop: TEXT_HELPER_MARGIN_TOP_MULTIPLIER * paddingVertical,
       //@ts-ignore
       minWidth: 'inherit',
-      //lineHeight: fontSize,
-      outlineStyle: "none",
-      //fontSize: fontSize,
+      outlineStyle: undefined,
       fontFamily: 'Regular',
       backgroundColor: 'transparent',
       color: props.theme.colors.text,
       alignVertical: 'center'
     },
     icon: {
-      //width: iconSize,
       height: '100%',
-      //fontSize: iconSize,
       textAlign: 'center',
       verticalAlign: 'middle',
       color: props.isError ? props.theme.colors.error : props.theme.colors.text,
@@ -94,16 +87,6 @@ export function createStyles(props: ContainerProps) {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
-      //columnGap: paddingVertical,
-      borderColor: 'red'//props.borderColor || themeColor,
-      //paddingVertical: paddingVertical,
-      //borderRadius: props.type === 'underlined' ? 0 : borderRadius,
-      // paddingHorizontal: props.type === 'underlined'
-      //   ? 0
-      //   : (props.radius === 'full' && props.material)
-      //     ? 2 * paddingHorizontal
-      //     : paddingHorizontal,
-      // ...getBorders(props.type, props.theme.borderWidth[props.borderWidth!] ?? props.borderWidth),
     },
     containerFocus: {
       backgroundColor: props.activeBackgroundColor ?? backgroundColor,
@@ -125,36 +108,26 @@ export function createStyles(props: ContainerProps) {
     label: {
       fontFamily: 'Regular',
       color: props.isError ? props.theme.colors.error : props.theme.colors.text,
-      //marginBottom: TEXT_HELPER_MARGIN_TOP_MULTIPLIER * paddingVertical,
-      //fontSize: props.material ? TEXT_HELPER_MULTIPLIER * fontSize : fontSize,
     },
     helpTextContainer: {
       display: 'flex',
       flexDirection: 'row',
       backgroundColor: 'transparent',
       justifyContent: 'space-between',
-      // marginTop: TEXT_HELPER_MARGIN_TOP_MULTIPLIER * fontSize,
-      // paddingHorizontal: borderRadius,
     },
     helpText: {
       fontStyle: 'italic',
-      // fontSize: TEXT_HELPER_MULTIPLIER * fontSize,
     },
     txtCounter: {
       fontStyle: 'italic',
       marginLeft: 'auto',
-      // fontSize: TEXT_HELPER_MULTIPLIER * fontSize,
     },
     prefixSeparator: {
       textAlign: 'left',
-      // width: paddingVertical + iconSize,
-      // borderRightWidth: ICON_SEPARATOR_WIDTH,
       borderRightColor: props.theme.colors.border,
     },
     suffixSeparator: {
       textAlign: 'right',
-      // width: paddingVertical + iconSize,
-      // borderLeftWidth: ICON_SEPARATOR_WIDTH,
       borderLeftColor: props.theme.colors.border,
     }
   });
