@@ -2,9 +2,9 @@
 sidebar_position: 2
 title: Customizing Themes
 last_update:
-  date: 2024-09-24
+  date: 2025-07-12
   author: Redon Alla
-tags: [react, react-native, expo, framework, component]
+tags: [react, react-native, expo, framework, component, theme]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -13,9 +13,8 @@ import CodeBlock from '@theme/CodeBlock';
 import DocCardList from '@theme/DocCardList';
 
 
-**[BaseTheme\<TColors\>](./default-theme#basethemetcolors)** 
-is where you define your application's color palette, type scale, borders, border radius values, and more.
-If you need to customize the default theme to match your design requirements you should implement **BaseTheme** from `@flexnative/theme-context`.
+You can customize the theme by providing a different theme object to the ThemeProvider.
+This allows you to easily switch between different themes or modify the existing theme based on user preferences.
 
 
 ## Example
@@ -25,7 +24,7 @@ Example of using custom theme values.
 <Tabs>
   <TabItem value="javascript" label="Javascript" default>
 
-    ```jsx showLineNumbers
+    ```typescript showLineNumbers
     // highlight-next-line
     import ThemeContext from '@flexnative/theme-context';
 

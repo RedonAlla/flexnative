@@ -28,7 +28,7 @@ import TabItem from '@theme/TabItem';
 <Tabs>
 <TabItem value="CustomDrawerContent" label="CustomDrawerContent">
 
-```jsx title="/src/components/CustomDrawerContent.js"
+```typescript title="/src/components/CustomDrawerContent.js"
 import React from 'react';
 import {
   DrawerContentComponentProps,
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
 </TabItem>
 <TabItem value="_layout" label="_layout">
 
-```jsx title="/app/_layout.jsx"
+```typescript title="/app/_layout.jsx"
 import React from 'react';
 import { PureComponent, ReactNode } from 'react';
 import { Drawer } from 'expo-router/drawer';
@@ -152,7 +152,7 @@ export default class DrawerScreen extends PureComponent {
 </TabItem>
 <TabItem value="ModalScreen" label="ModalScreen">
 
-```jsx title="/app/Modal.jsx"
+```typescript title="/app/Modal.jsx"
 import React from "react";
 import { View, Text, StyleSheet} from "react-native";
 import {
@@ -199,7 +199,7 @@ export default withFancyDrawer(ModalScreen);
 
 <TabItem value="ChatScreen" label="ChatScreen">
 
-```jsx title="/app/Chat.jsx"
+```typescript title="/app/Chat.jsx"
 import React from 'react';
 import { View, Text, Image, ScrollView, StyleSheet } from 'react-native';
 import {

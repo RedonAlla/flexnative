@@ -1,0 +1,150 @@
+---
+sidebar_position: 5
+title: Themes Utilities
+last_update:
+  date: 2025-07-13
+  author: Redon Alla
+tags: [react, react-native, expo, framework, component, theme]
+---
+
+# Theme Utilities Guide
+
+
+This guide explains how to use the utility functions provided in `utilities.ts` for creating and managing themes in the **FlexNative** framework.
+These functions are designed to help you create, customize, and manage themes within your application.
+
+
+## Overview
+
+The theming utilities provide a simple yet powerful way to handle visual consistency across your app. The core features include:
+
+*   **Automatic Dark/Light Mode**: Retrieve default color palettes based on system or user preference.
+*   **Default Theme**: A pre-configured base theme with sensible defaults for colors, spacing, fonts, and borders.
+*   **Deep Customization**: Easily override any part of the default theme or extend it with your own custom values.
+
+## API Reference
+
+### defaultColors
+Determines the default color palette (either `light` or `dark`) based on the system's appearance setting or a user-specified scheme.
+
+
+```typescript
+function defaultColors<TColors>(userScheme?: ColorSchemeName): BaseColors & TColors;
+```
+
+#### Parameters:
+
+|  Name   | Type | Required | Default Value | Description |
+| -- | -- | -- | -- | -- |
+| `userScheme` | `ColorSchemeName` | **false** | `undefined` | Specifies the color scheme to use. If not provided, it defaults to the system's current appearance setting. |
+
+#### Returns:
+
+*  `BaseColors & TColors` object representing the default color palette for the specified or detected color scheme, extended with any custom colors.
+
+**Example:**
+
+```typescript
+import { defaultColors } from './utilities';
+
+// Get colors based on the system's current theme (light or dark)
+const systemColors = defaultColors();
+
+// Force the light color scheme
+const lightColors = defaultColors('light');
+
+console.log(systemColors.primary);
+```
+
+---
+
+### [defaultTheme](./default-theme)
+
+Generates the default theme `BaseTheme<BaseColors>` object with predefined colors, borders, font sizes, and spacing.
+This function is the foundation upon which custom themes are built. It uses `defaultColors()` internally to set the initial color palette.
+
+```typescript
+function defaultTheme(): BaseTheme<BaseColors>;
+```
+
+#### Returns:
+
+*  `BaseColors & TColors` containing the base colors for the selected scheme.
+
+#### Example:
+
+```typescript
+import { defaultTheme } from './utilities';
+
+const theme = defaultTheme();
+
+console.log(theme.isDark); // true if system is in dark mode
+console.log(theme.spaces.md); // Access default spacing
+```
+
+---
+
+### createTheme
+
+The primary function for theme creation. It takes a partial theme object and merges it with the `defaultTheme()`, allowing you to customize only the parts you need.
+The `createTheme` function merges the provided properties with the default theme. If a property is not provided, the default value is used.
+When using `createTheme`, you can extend the BaseColors type by providing a custom TColors type to add your own color definitions.
+
+```typescript
+function createTheme<TColors>(props: Partial<BaseTheme<TColors>>): BaseTheme<TColors>;
+```
+
+#### Parameters:
+
+|  Name   | Type | Required | Default Value | Description |
+| -- | -- | -- | -- | -- |
+| `props` | `Partial<BaseTheme<TColors>>` | **true** | `{}` | A partial theme object containing your custom values. You can override `colors`, `spaces`, `fontSize`, and `borders`. |
+
+#### Returns:
+
+*   A new, complete theme object `BaseTheme<TColors>` with your customizations applied.
+
+## Usage Examples
+
+### Creating a Basic Custom Theme
+
+Here, we override the primary color and adjust some spacing values.
+
+```typescript
+import { createTheme } from './utilities';
+
+const myTheme = createTheme({
+  colors: {
+    primary: '#007bff', // Override the default primary color
+  },
+  spaces: {
+    xl: 48, // Override a specific spacing value
+  },
+});
+```
+
+### Defining and Using Custom Colors
+
+You can extend the theme with your own color definitions and get full TypeScript support by passing a type generic.
+
+```typescript
+import { createTheme } from './utilities';
+
+// 1. Define your custom color types
+interface MyCustomColors {
+  specialAccent: string;
+  success: string;
+}
+
+// 2. Create the theme, passing your type to createTheme
+const myTypedTheme = createTheme<MyCustomColors>({
+  colors: {
+    primary: 'purple',
+    specialAccent: '#ffc107',
+    success: '#28a745',
+  },
+});
+
+// 3. Now your custom colors are type-safe!
+console.log(myTypedTheme.colors.specialAccent); // Autocompletes and is type-checked
+```

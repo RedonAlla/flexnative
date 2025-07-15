@@ -1,10 +1,10 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 title: Example
 last_update:
-  date: 2024-09-24
+  date: 2025-07-12
   author: Redon Alla
-tags: [react, react-native, expo, framework, component]
+tags: [react, react-native, expo, framework, component, theme]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -20,7 +20,7 @@ and implement `onChangeTheme` method or you can create you own *ThemeContext*.
 <Tabs>
   <TabItem value="colors-file" label="colors">
 
-    ```jsx title="/src/theme/colors.ts" showLineNumbers
+    ```typescript title="/src/theme/colors.ts" showLineNumbers
     import { ColorValue } from 'react-native';
     import { light, BaseTheme } from '@flexnative/theme-context';
 
@@ -61,7 +61,7 @@ and implement `onChangeTheme` method or you can create you own *ThemeContext*.
   </TabItem>
   <TabItem value="themprovider-file" label="MyThemeProvider">
 
-    ```jsx title="/src/theme/MyThemeProvider.tsx" showLineNumbers
+    ```typescript title="/src/theme/MyThemeProvider.tsx" showLineNumbers
     import React from 'react';
     import { ColorSchemeName, Appearance } from 'react-native';
 
@@ -197,7 +197,7 @@ and implement `onChangeTheme` method or you can create you own *ThemeContext*.
 
   <TabItem value="app-file" label="App">
 
-  ```jsx title="/App.ts" showLineNumbers
+  ```typescript title="/App.ts" showLineNumbers
   import React from 'react';
 
   import ThemeSettings from './src/screens/ThemeSettings.tsx';

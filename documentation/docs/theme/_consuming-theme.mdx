@@ -2,9 +2,9 @@
 sidebar_position: 3
 title: Consuming Themes
 last_update:
-  date: 2024-09-24
+  date: 2025-07-12
   author: Redon Alla
-tags: [react, react-native, expo, framework, component]
+tags: [react, react-native, expo, framework, component, theme]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -14,7 +14,7 @@ import TabItem from '@theme/TabItem';
 This section show how to consume (use) theme colors for your components.
 For more details about ***React Context*** or how to consume ***React Context*** please read  this **[link](https://reactjs.org/docs/context.html)**.
 
-```jsx showLineNumbers
+```typescript showLineNumbers
 import React from 'react';
 import { Text } from 'react-native';
 // highlight-next-line
@@ -38,7 +38,7 @@ export default class extends React.Component {
 <Tabs>
   <TabItem value="function-component" label="Function Component" default>
 
-    ```jsx showLineNumbers
+    ```typescript showLineNumbers
     import { Pressable, StyleSheet, Text } from 'react-native';
     // highlight-next-line
     import { useThemeContext } from '@flexnative/theme-context';
@@ -68,7 +68,7 @@ export default class extends React.Component {
   </TabItem>
   <TabItem value="class-component" label="Class Component">
 
-    ```jsx showLineNumbers
+    ```typescript showLineNumbers
     import React from 'react';
     import { Pressable, StyleSheet, Text } from 'react-native';
     // highlight-next-line

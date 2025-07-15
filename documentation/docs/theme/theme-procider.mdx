@@ -1,0 +1,354 @@
+---
+sidebar_position: 3
+title: ThemeProvider
+last_update:
+  date: 2025-07-13
+  author: Redon Alla
+tags: [react, react-native, expo, framework, component, theme]
+---
+
+This document will walk you through setting up, using, and customizing the theme provider for your React Native application.
+`ThemeProvider` is a powerful, context-based theming solution that supports dynamic theme switching, light/dark mode, and custom color extensions.
+
+
+## Introduction
+
+`ThemeProvider` is a React Context Provider that enables you to define a global theme for your application or specific parts of it, built on React's Context API.
+By wrapping your components with `ThemeProvider`, you can ensure that all nested components have access to a consistent set of styling variables, such as colors, typography, spacing, and more.
+This promotes design consistency and simplifies theme management across your application.
+
+**Key Features:**
+
+*   **Centralized Theming:** Provide a consistent theme across all components.
+*   **Dynamic Switching:** Change themes or color schemes on the fly.
+*   **Persistence:** Abstract methods (`onLoad`, `onChangeTheme`, etc.) to easily integrate with storage solutions like `AsyncStorage`.
+*   **typescript showLineNumbers Support:** Strongly typed for better developer experience and safety.
+*   **Extensible:** Easily add your own custom colors to the theme.
+*   **Easy to Consume:** Simple hooks (`useThemeState`, `useThemeColors`) make it easy to access theme values.
+
+## Installation
+
+Before using `ThemeProvider`, ensure you have installed the necessary dependencies.
+Typically, this context is part of a larger UI library, such as `@flexnative/theme-context`.
+You can install it using your preferred package manager:
+
+
+```bash
+npm install @flexnative/theme-context
+# or
+yarn add @flexnative/theme-context
+```
+
+## API
+
+```typescript showLineNumbers
+import { ThemeProvider } from '@flexnative/theme-context';
+```
+
+### Component
+**`ThemeProvider<TColors>`**
+This is the abstract class you must extend to create your own theme provider.
+
+Type: 
+```typescript showLineNumbers
+export default abstract class ThemeProvider<TColors> extends React.PureComponent<ThemeProviderProps<TColors>, StateProps<TColors>>
+```
+
+### Generics
+*   `TColors` (optional): An object type to extend the theme's `colors` property.
+
+### Properties
+
+|  Name   | Type | Required | Default Value | Description |
+| -- | -- | -- | -- | -- |
+| theme | `BaseTheme<TColors>` | false |  | An initial theme to use, bypassing the `onLoad` logic on first render. |
+| children | `React.ReactNode` | true |  | Your application's components. |
+
+### Abstract Methods to Implement
+
+You must provide an implementation for these methods in your subclass.
+
+*  `onLoad(): Promise<void>`:
+    Called on `componentDidMount`. Use this to load a saved theme from persistent storage.
+
+*   `onChangeTheme(theme: BaseTheme<TColors>): Promise<void>`:
+    Called when the entire theme object should be changed and saved.
+
+*   `onChangeColorScheme(colorScheme: ColorSchemeName): Promise<void>`:
+    Called to update the current color scheme (e.g., 'light', 'dark') and persist the change.
+
+*   `setColors(colors: BaseColors & TColors): Promise<void>`:
+    Called to update only the colors of the current theme and persist the change.
+
+## Getting Started
+Follow these three steps to integrate `ThemeProvider` into your application.
+
+### Step 1: Create Your Custom ThemeProvider
+
+Since `ThemeProvider` is an abstract class, you need to create your own implementation.
+This is where you'll define how themes are loaded and saved. For this example, we'll use `AsyncStorage`.
+
+First, ensure you have `@react-native-async-storage/async-storage` installed.
+
+```typescript showLineNumbers
+// src/theme/MyThemeProvider.tsx
+import { ColorSchemeName } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { ThemeProvider, BaseTheme, BaseColors, defaultTheme } from '@flexnative/theme-context';
+
+// This is our concrete implementation of the abstract ThemeProvider
+export class MyThemeProvider extends ThemeProvider<{}> {
+
+  // Load theme from AsyncStorage when the app starts
+  async onLoad(): Promise<void> {
+    try {
+      const savedTheme = await AsyncStorage.getItem('app-theme');
+      if (savedTheme) {
+        this.setState({ theme: JSON.parse(savedTheme) });
+        console.log('Theme loaded from storage.');
+      } else {
+        // If no theme is saved, use the default
+        this.setState({ theme: defaultTheme() });
+      }
+    } catch (error) {
+      console.error('Failed to load theme:', error);
+      // Fallback to default theme on error
+      this.setState({ theme: defaultTheme() });
+    }
+  }
+
+  // Save the new color scheme and update the theme
+  async onChangeColorScheme(colorScheme: ColorSchemeName): Promise<void> {
+    if (this.state.theme) {
+      const newTheme = { ...this.state.theme, colorScheme };
+      this.setState({ theme: newTheme });
+      await this.onChangeTheme(newTheme);
+      console.log('ColorScheme changed and saved:', colorScheme);
+    }
+  }
+
+  // Save the entire theme object to AsyncStorage
+  async onChangeTheme(theme: BaseTheme<{}>): Promise<void> {
+    try {
+      this.setState({ theme });
+      await AsyncStorage.setItem('app-theme', JSON.stringify(theme));
+      console.log('Theme saved to storage.');
+    } catch (error) {
+      console.error('Failed to save theme:', error);
+    }
+  }
+
+  // Update only the colors of the current theme
+  async setColors(colors: BaseColors & {}): Promise<void> {
+    if (this.state.theme) {
+      const newTheme: BaseTheme<{}> = { ...this.state.theme, colors };
+      // `onChangeTheme` handles both state update and persistence
+      await this.onChangeTheme(newTheme);
+      console.log('Theme colors updated and saved.');
+    }
+  }
+}
+```
+
+### Step 2: Wrap Your App
+Wrap your root component (e.g., `App.tsx`) with the `MyThemeProvider` you just created. This makes the theme context available to all child components.
+
+The power of ThemeProvider lies in its ability to accept an object `BaseTheme<TColors>` as a theme.
+You can define a comprehensive theme object that includes colors, spacing, component-specific styles, or any other design tokens you need.
+
+```typescript showLineNumbers
+// App.tsx
+import React from 'react';
+import { MyThemeProvider } from './src/theme/MyThemeProvider';
+import { MainScreen } from './src/screens/MainScreen';
+
+const App = () => {
+  return (
+    <MyThemeProvider>
+      <MainScreen />
+    </MyThemeProvider>
+  );
+};
+
+export default App;
+```
+
+### Step 3: Use the Theme in Components
+Now you can access the theme's colors and properties in any component using the provided hooks.
+
+#### Hooks
+Use these hooks in your functional components to consume the theme context.
+
+##### `useThemeContext<TColors>()`
+Returns the full context object, giving you access to both the state and the methods to change it.
+*   **Returns**: `ThemeContextProps<TColors>` which is `{ state, setTheme, setColors, setColorScheme }`.
+
+```typescript showLineNumbers
+import { View, Text } from 'react-native';
+// highlight-next-line
+import { useThemeContext } from '@flexnative/theme-context';
+  
+const MyComponent = () => {
+  const { state, setTheme, setColors, setColorScheme } = useThemeContext<MyColors>();
+  // Use the theme data and functions here
+  return (
+    <View>
+      <Text>Current theme name: {state.name}</Text>
+    </View>
+  );
+};
+```
+
+##### `useThemeState<TColors>()`
+A convenience hook that returns just the `state` object from the theme context.
+*   **Returns**: `BaseTheme<TColors>` - The complete theme object (`{ name, colorScheme, colors, ... }`).
+
+```typescript showLineNumbers
+import { View, Text } from 'react-native';
+// highlight-next-line
+import { useThemeState } from '@flexnative/theme-context';
+ 
+const MyComponent = () => {
+  const themeState = useThemeState<MyColors>();
+  // Use the theme state here (e.g., themeState.colors.primary)
+  return (
+    <View>
+      <Text>Current Color Primary: {themeState.colors.primary}</Text>
+    </View>
+  );
+};
+```
+
+##### `useThemeColors<TColors>()`
+A convenience hook that returns just the `colors` object from the theme state. This is the most commonly used hook for styling.
+*   **Returns**: `BaseColors & TColors` - An object containing all theme colors.
+
+```typescript showLineNumbers
+// src/screens/MainScreen.tsx
+import React from 'react';
+import { View, Text, StyleSheet, Button } from 'react-native';
+import { useThemeColors, useThemeContext } from '@flexnative/theme-context';
+
+export const MainScreen = () => {
+  const colors = useThemeColors();
+  const { setColorScheme, state } = useThemeContext();
+
+  const toggleScheme = () => {
+    const newScheme = state.colorScheme === 'light' ? 'dark' : 'light';
+    setColorScheme(newScheme);
+  };
+
+  return (
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
+      <Text style={[styles.text, { color: colors.text }]}>
+        Current Color Scheme: {state.colorScheme}
+      </Text>
+      <Button title="Toggle Light/Dark Mode" onPress={toggleScheme} />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  text: {
+    fontSize: 20,
+    marginBottom: 20,
+  },
+});
+```
+
+
+
+## Advanced Usage
+
+The ThemeProvider is highly flexible and does not enforce a specific theme structure.
+You can define your theme object in any way that makes sense for your application.
+However, a common practice is to categorize design tokens logically.
+
+### Extending with Custom Colors
+
+You can easily add your own colors to the theme.
+
+1.  **Define your custom color interface.**
+
+```typescript showLineNumbers
+// src/theme/types.ts
+import { ColorValue } from 'react-native';
+
+export interface MyCustomColors {
+  brandPrimary: ColorValue;
+  success: ColorValue;
+}
+```
+
+#### 2. Use the generic in your `ThemeProvider` implementation.
+
+```typescript showLineNumbers
+// src/theme/MyThemeProvider.tsx
+import { MyCustomColors } from './types';
+
+// Pass the custom type as a generic
+export class MyThemeProvider extends ThemeProvider<MyCustomColors> {
+  // ... implement abstract methods, using BaseTheme<MyCustomColors>
+}
+```
+
+#### 3. Access the custom colors in a component.
+
+```typescript showLineNumbers
+// src/components/MyButton.tsx
+import { useThemeColors } from '@flexnative/theme-context';
+import { MyCustomColors } from '../theme/types';
+
+const MyButton = () => {
+  // Pass the custom type to the hook
+  const colors = useThemeColors<MyCustomColors>();
+
+  return (
+    <TouchableOpacity style={{ backgroundColor: colors.brandPrimary }}>
+      <Text style={{ color: colors.white }}>Press Me</Text>
+    </TouchableOpacity>
+  );
+};
+```
+
+### Switching Themes
+
+You can create multiple theme objects and switch between them using the `setTheme` function from the context.
+
+```typescript showLineNumbers showLineNumbers
+// In some component...
+import { useThemeContext, createTheme } from '@flexnative/theme-context';
+
+const ThemeSwitcher = () => {
+  const { setTheme, state } = useThemeContext();
+
+  // Assume `darkTheme` and `lightTheme` are fully defined BaseTheme objects
+  const darkTheme = createTheme({
+    // ... other properties
+  });
+
+  const lightTheme = createTheme({
+    // ... other properties
+  });
+
+  const applyDarkTheme = () => {
+    setTheme(darkTheme);
+  };
+
+  const applyLightTheme = () => {
+    setTheme(lightTheme);
+  };
+
+  return (
+    <View>
+      <Button title="Apply Dark Theme" onPress={applyDarkTheme} disabled={state.name === 'dark'}/>
+      <Button title="Apply Light Theme" onPress={applyLightTheme} disabled={state.name === 'light'}/>
+    </View>
+  );
+}
+```

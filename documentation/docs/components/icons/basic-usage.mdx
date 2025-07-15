@@ -35,7 +35,7 @@ import ColorProps from '@site/src/components/Docs/Colors/Props';
 <Tabs>
   <TabItem value="app-file" label="App" default>
 
-    ```jsx title="/src/app.jsx" showLineNumbers
+    ```typescript title="/src/app.jsx" showLineNumbers
     import React from 'react';
     import { StatusBar } from 'expo-status-bar';
     import { StyleSheet, View } from 'react-native';
@@ -84,7 +84,7 @@ import ColorProps from '@site/src/components/Docs/Colors/Props';
   </TabItem>
   <TabItem value="useCachedResources-file" label="useCachedResources" default>
 
-    ```jsx title="/src/hooks/useCachedResources.jsx" showLineNumbers
+    ```typescript title="/src/hooks/useCachedResources.jsx" showLineNumbers
     // highlight-start
     /*
     Example of pre-loading and caching icons.
@@ -153,7 +153,7 @@ These names can be used to access the corresponding Unicode value from the `icon
 ## Using `Icon` component
 Example ouf usecase with `Icon` component.
 
-```jsx
+```typescript
 import Icon from '@flexnative/icons';
 
 <Icon name='sun' color='rgb(255, 174, 16)' size={32} />
@@ -162,7 +162,7 @@ import Icon from '@flexnative/icons';
 ## Using with Plain text
 You can use icons through **Icon** Component from `@flexnative/icons` or as a usual text with **Text** component from `react-native` as the following examples:
 
-```jsx
+```typescript
 import { StyleSheet, Text } from 'react-native';
 
 <Text style={styles.text}>{'\u0053'}</Text>
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
 
 
 ## Spinner
-```jsx
+```typescript
 import { Spinner } from '@flexnative/icons';
 
 <Spinner name='sun' color='rgb(255, 174, 16)' size={32} />

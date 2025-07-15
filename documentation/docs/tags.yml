@@ -17,6 +17,10 @@ component:
   label: Component
   permalink: /component
   description: Create user interfaces from components.
+theme:
+  label: Theme
+  permalink: /theme
+  description: FlexNative Theme is a powerful theming solution that allows you to customize the look and feel of your application. It provides a set of default themes and allows you to create custom themes.
 tag:
   label: Tags
   permalink: /tags
