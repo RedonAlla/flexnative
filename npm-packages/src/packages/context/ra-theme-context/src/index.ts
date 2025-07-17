@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2023-06-04 21:29:02
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-03-16 21:42:19
+ * @ Modified time: 2025-07-17 21:53:22
  * @ Description: Exports necessary props, classes for Theme Context. 
  */
 
@@ -29,6 +29,6 @@ export type {
   ThemeContextProps
 } from './props';
 
-export { createTheme, defaultTheme } from './utilities';
+export { createTheme, defaultTheme, defaultColors } from './utilities';
 
 export * from './colors';
