@@ -506,7 +506,4 @@ export interface ThemeContextProps<TColors> {
 
   /** @property {(scheme: ColorSchemeName) => void} [setColorScheme] - Function to update the color scheme. */
   setColorScheme?: (scheme: ColorSchemeName) => void;
-
-  /** @property {(colors: BaseColors & TColors) => void} [setColors] - Function to update only the theme colors. */
-  setColors?: (colors: BaseColors & TColors) => void;
 }

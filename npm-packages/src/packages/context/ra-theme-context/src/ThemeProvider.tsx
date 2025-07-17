@@ -147,9 +147,7 @@ export default abstract class ThemeProvider<TColors> extends React.PureComponent
   abstract onChangeTheme(theme: BaseTheme<TColors>): Promise<void>;
 
   /**
-   * setColors - Method to update only the colors of the current theme.
-   *
-   * This abstract method should be implemented to allow dynamic updates
+   * setColors - Method to update to allow dynamic updates
    * to the color palette without changing other theme properties.
    *
    * @abstract
@@ -164,14 +162,19 @@ export default abstract class ThemeProvider<TColors> extends React.PureComponent
    *  }
    * ```
    */
-  abstract setColors(colors: BaseColors & TColors): Promise<void>;
+  public setColors(colors: BaseColors & TColors): void {
+    this.setState({
+        theme: Object.assign({}, this.state.theme, {
+          colors
+      })
+    });
+  }
 
   render() {
     return (
       <ThemeContext.Provider value={{
         state: this.state.theme as BaseTheme<TColors>,
         setTheme: this.onChangeTheme.bind(this),
-        setColors: this.setColors.bind(this),
         setColorScheme: this.onChangeColorScheme.bind(this),
       }}>
         {this.props.children}
