@@ -504,8 +504,8 @@ export interface ThemeContextProps<TColors> {
   /** @property {BaseTheme<TColors>} state - The current theme state. */
   state: BaseTheme<TColors>;
 
-  /** @property {(theme: BaseTheme<TColors>) => void} [setTheme] - Function to update the theme. */
-  setTheme?: (theme: BaseTheme<TColors>) => void;
+  /** @property {(arg: T) => void} [setTheme] - Function to update the theme. */
+  setTheme?: <T>(arg: T) => void;
 
   /** @property {(scheme: ColorSchemeName) => void} [setColorScheme] - Function to update the color scheme. */
   setColorScheme?: (scheme: ColorSchemeName) => void;
