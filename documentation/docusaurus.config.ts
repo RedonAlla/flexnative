@@ -136,18 +136,6 @@ const config: Config = {
         },
       }
     ],
-    () => ({
-      name: 'react-native-web-alias',
-      configureWebpack() {
-        return {
-          resolve: {
-            alias: {
-              'react-native': 'react-native-web',
-            },
-          },
-        };
-      },
-    }),
   ],
 
   clientModules: [
