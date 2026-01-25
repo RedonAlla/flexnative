@@ -1,0 +1,20 @@
+import { ReactNode } from "react";
+
+import { LoginUser } from "@/core/models/LoginUser";
+
+
+export type AuthContextProps = {
+  state: AuthStateProps;
+  onRegister?: (registerForm: any) => Promise<void>;
+  onLogout?: () => Promise<void>;
+  onAuthentication: () => Promise<void>;
+};
+
+export type AuthStateProps = {
+  user?: LoginUser;
+  authenticated: boolean;
+}
+
+export type AuthProviderProps = {
+  children: ReactNode;
+}

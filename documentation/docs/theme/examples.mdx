@@ -1,8 +1,8 @@
 ---
-sidebar_position: 6
+sidebar_position: 5
 title: Example
 last_update:
-  date: 2025-07-12
+  date: 2025-07-23
   author: Redon Alla
 tags: [react, react-native, expo, framework, component, theme]
 ---
@@ -11,191 +11,267 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-Below example shows a full example how to extend **ThemeProvider** and implement `setColorScheme` method to support to dark mode
+Below example shows a full example how to extend and implement your own [**ThemeProvider**](./theme-provider.mdx) to support to dark mode
 and using multiple themes.
 
-To support multipe themes you must extend **[ThemeProvider](/docs/getting-started/setup-@flexnative/theme-provider#using-themeprovider)**
-and implement `onChangeTheme` method or you can create you own *ThemeContext*.
-
 <Tabs>
-  <TabItem value="colors-file" label="colors">
+  <TabItem value="props-file" label="props.ts">
+  ```typescript title="/src/theme/props.ts" showLineNumbers
+  import { ColorSchemeName, ColorValue } from 'react-native';
+  // highlight-next-line
+  import { BaseColors } from '@flexnative/theme-context';
+
+  export interface MyExtraColorsProps {
+    color1: ColorValue,
+    color2: ColorValue
+  };
+
+  export interface ThemeStoreProps {
+    themeName: string,
+    colorScheme: ColorSchemeName
+  };
+
+  export type MyThemeColors = BaseColors & MyExtraColorsProps;
+  ```
+  </TabItem>
+  <TabItem value="constants-file" label="constants.ts">
+  ```typescript title="/src/theme/constants.ts" showLineNumbers
+  import { Appearance } from "react-native";
+  import { darkBlueTheme, darkRedTheme, lightBlueTheme, lightRedTheme } from "./colors";
+  import { ThemeStoreProps } from "./props";
+
+  //Key to access the theme in storage
+  //You can change it to whatever you want
+  //but make sure to use the same key in your ThemeProvider
+  export const APP_THEME = 'app-theme';
+
+  export const themes = {
+    lightRedTheme,
+    lightBlueTheme,
+    darkRedTheme,
+    darkBlueTheme
+  };
+
+  export const defaultThemeStored: ThemeStoreProps = { 
+    themeName: 'RedTheme',
+    colorScheme: Appearance.getColorScheme()
+  };
+  ```
+  </TabItem>
+  <TabItem value="colors-file" label="colors.ts">
 
     ```typescript title="/src/theme/colors.ts" showLineNumbers
-    import { ColorValue } from 'react-native';
-    import { light, BaseTheme } from '@flexnative/theme-context';
+    import { light, dark } from '@flexnative/theme-context';
+    import { MyExtraColorsProps, MyThemeColors } from './props';
 
-    export interface MyExtraColorsProps {
-      color1: ColorValue,
-      color2: ColorValue
+    const extraColors: MyExtraColorsProps = {
+      color1: '#C51162',
+      color2: '#7B1FA2',
     };
 
-    export const lightRedTheme: BaseTheme<MyExtraColorsProps> = {
+    export const lightRedTheme: MyThemeColors = {
       ...light,
+      
+      // highlight-start
+      // override primary color
       primary: '#FF0000',
-      color1: '#C51162',
-      color2: '#7B1FA2',
+
+      // additional custom colors
+      ...extraColors,
+      // highlight-end
     }
 
-    export const lightBlueTheme: BaseTheme<MyExtraColorsProps> = {
+    export const lightBlueTheme: MyThemeColors = {
       ...light,
+      // highlight-start
+      // override primary color
       primary: '#00008B',
-      color1: '#C51162',
-      color2: '#7B1FA2',
+
+      // additional custom colors
+      ...extraColors,
+      // highlight-end
     }
 
-    export const darkRedTheme: BaseTheme<MyExtraColorsProps> = {
+    export const darkRedTheme: MyThemeColors = {
       ...dark,
+      // highlight-start
+      // override primary color
       primary: '#FF0000',
-      color1: '#C51162',
-      color2: '#7B1FA2',
+
+      // additional custom colors
+      ...extraColors,
+      // highlight-end
     }
 
-    export const darkBlueTheme: BaseTheme<MyExtraColorsProps> = {
+    export const darkBlueTheme: MyThemeColors = {
       ...dark,
+      // highlight-start
+      // override primary color
       primary: '#00008B',
-      color1: '#C51162',
-      color2: '#7B1FA2',
+
+      // additional custom colors
+      ...extraColors,
+      // highlight-end
     }
     ```
-
   </TabItem>
-  <TabItem value="themprovider-file" label="MyThemeProvider">
+  <TabItem value="themprovider-file" label="MyThemeProvider.tsx">
 
     ```typescript title="/src/theme/MyThemeProvider.tsx" showLineNumbers
-    import React from 'react';
     import { ColorSchemeName, Appearance } from 'react-native';
+    import { Storage } from '@flexnative/utilities';
 
-    // highlight-start
-    import { ThemeProvider } from '@flexnative/theme-context';
-    // highlight-end
-    import { MyExtraColorsProps } from './colors';
+    // highlight-next-line
+    import { BaseTheme, ThemeProvider } from '@flexnative/theme-context';
+    import { MyThemeColors, ThemeStoreProps } from './props';
+    import { APP_THEME, defaultThemeStored, themes } from './constants';
 
+    const getThemeColors = (themeStored: ThemeStoreProps): MyThemeColors => {
+      const colorScheme = themeStored.colorScheme ?? 'light';
+      const themeName = colorScheme + themeStored.themeName;
+      const themeColors = themes[themeName as keyof typeof themes];
 
-    export default class MyThemeProvider extends ThemeProvider<MyExtraColorsProps> {
+      if (!themeColors) {
+        throw new Error(`Theme ${themeStored.themeName} not found`);
+      }
+      return themeColors;
+    }
+
+    export default class MyThemeProvider extends ThemeProvider<MyThemeColors, ThemeStoreProps> {
       // Here you can implement your logic to get inital theme
       // if you are storing your theme in persistent memory (db or local storage).
       async onLoad(): Promise<void> {
-        const appThemeStorage = await Storage.getItem(APP_THEME, defaultTheme);
+        const appThemeStorage = await Storage.getItem(APP_THEME, defaultThemeStored);
         Appearance.addChangeListener(this.onAppearanceChange);
 
         this.setState({
-          scheme: appThemeStorage.scheme,
-          colors: getThemeColors(appThemeStorage.primaryColor, appThemeStorage.scheme)
+          themeName: appThemeStorage.themeName,
+          colorScheme: appThemeStorage.colorScheme,
+          theme: {
+            ...this.state.theme,
+            colors: getThemeColors(appThemeStorage)
+          } as BaseTheme<MyThemeColors>
         });
+
+        //In this example we are change only the colors
+        // but you can change the whole theme object use:
+        //this.onChangeTheme(appThemeStorage);
       }
 
-      onAppearanceChange = (scheme: Appearance.AppearancePreferences) => {
-        if(this.state.scheme === null) {
+      onAppearanceChange = async (scheme: Appearance.AppearancePreferences) => {
+        if(this.state.theme?.scheme === null) {
           this.setState({ ...this.state });
         }
         else {
+          let appThemeStorage = await Storage.getItem(APP_THEME, defaultThemeStored);
+          appThemeStorage.colorScheme = scheme.colorScheme;
+          await Storage.saveItem(APP_THEME, appThemeStorage);
+
           this.setState({
-            scheme: scheme.scheme,
-            colors: getThemeColors(this.state.colors.primary, scheme.scheme)
+            colorScheme: appThemeStorage.colorScheme,
+            theme: {
+              ...this.state.theme,
+              colors: getThemeColors(appThemeStorage)
+            } as BaseTheme<MyThemeColors>
           });
         }
       }
 
-      onChangeTheme = async (theme: BaseTheme): Promise<void> => {
-        await Storage.saveItem(APP_THEME, { scheme: this.state.scheme, primaryColor: theme.primary });
-        this.setState({ colors: theme });
-      }
-
       onChangeColorScheme = async (scheme: ColorSchemeName): Promise<void>  => {
-        await Storage.saveItem(APP_THEME, { scheme: scheme, primaryColor: this.state.colors.primary });
+        let appThemeStorage = await Storage.getItem(APP_THEME, defaultThemeStored);
+        appThemeStorage.colorScheme = scheme;
+        await Storage.saveItem(APP_THEME, appThemeStorage);
 
         this.setState({
-          scheme: scheme ?? Appearance.getColorScheme(),
-          colors: getThemeColors(this.state.colors.primary, scheme)
+          colorScheme: appThemeStorage.colorScheme,
+          theme: {
+            ...this.state.theme,
+            colors: getThemeColors(appThemeStorage)
+          } as BaseTheme<MyThemeColors>
+        });
+      }
+
+      onChangeTheme = async (themeName: any): Promise<void> => {
+        let appThemeStorage = await Storage.getItem(APP_THEME, defaultThemeStored);
+        appThemeStorage.themeName = themeName;
+        await Storage.saveItem(APP_THEME, appThemeStorage);
+
+        this.setState({
+          themeName: appThemeStorage.themeName,
+          theme: {
+            ...this.state.theme,
+            colors: getThemeColors(appThemeStorage)
+          } as BaseTheme<MyThemeColors>
         });
       }
     }
     ```
   </TabItem>
 
-  <TabItem value="theme-settings-file" label="ThemeSettings">
+  <TabItem value="theme-settings-file" label="ThemeSettings.tsx">
 
   ```tsx title="/src/screens/ThemeSettings.tsx" showLineNumbers
-  import React from 'react';
-  import { StyleSheet, Pressable, View, Text, ColorValue } from 'react-native';
-
-  // highlight-start
+  import { Button, Text, View } from "react-native";
   import { useThemeContext } from '@flexnative/theme-context';
-  import { lightRedTheme, lightBlueTheme, darkRedTheme, darkBlueTheme, MyExtraColorsProps } from './colors';
-  // highlight-end
+  import { useState } from "react";
 
-  type BtnToggleProps = {
-    title: string,
-    backgroundColor: ColorValue,
-    theme: 'red' | 'blue'
+  export default function ThemeSettings() {
+   const { state: theme, setTheme, setColorScheme } = useThemeContext();
+   const [isToggleOn, setIsToggleOn] = useState(false);
+
+   const handlePressColorScheme = () => {
+    setIsToggleOn(!isToggleOn);
+    setColorScheme!(isToggleOn ? 'light' : 'dark');
   }
 
-  const BtnColorToggle = React.memo((props: BtnToggleProps) => {
-    const theme = useThemeContext();
-
-    const onTheme = async (): Promise<void>  => {
-      let newColors: BaseTheme<MyExtraColorsProps>;
-
-      if(theme.scheme === 'dark')
-        newColors = props.theme 'red' ? darkRedTheme : darkBlueTheme;
-      else
-        newColors = props.theme 'red' ? lightRedTheme : lightBlueTheme;
-
-      await theme.setTheme!(props.theme);
-    };
-
     return (
-      <Pressable onPress={onTheme} style={[styles.btn, {backgroundColor: props.backgroundColor}]}>
-        <Text style={styles.btnTitle}>
-          {props.title}
-        </Text>
-      </Pressable>
-    );
-  });
+      <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
+        <View style={styles.main}><Text style={[styles.title, { color: theme.colors.text }]}>Hello World</Text>
+          <Text style={[styles.subtitle, { color: theme.colors.text }]}>Current Theme:</Text>
+          
+          <View style={{ height: 20, width: '100%', backgroundColor: theme.colors.primary }} />
 
-  export default React.memo(() => {
-    const theme = useThemeContext();
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 20, justifyContent: 'space-between' }}>
+            <Text style={{ color: theme.colors.text, marginRight: 10, fontSize: 16 }}>Dark Mode</Text>
+            <Button onPress={handlePressColorScheme} color={theme.colors.light} title="Switch Light" />
+            <Button onPress={handlePressColorScheme} color={theme.colors.dark} title="Switch Dark" />
+          </View>
 
-    return (
-      <View style={[styles.container, {backgroundColor: theme.colors.primary}]}>
-        <Text style={styles.title}>Theme Settings</Text>
-        <BtnColorToggle title='Set Red Theme' backgroundColor='#FF0000' theme={redTheme} />
-        <BtnColorToggle title='Set Blue Theme' backgroundColor='#00008B' theme={blueTheme} />
+          <Button onPress={() => setTheme!('BlueTheme')} color={'blue'} title="Switch Theme Blue" />
+          <View style={{ height: 10 }} />
+          <Button onPress={() => setTheme!('RedTheme')} color={'red'} title="Switch Theme Red" />
+          <View style={{ height: 10 }} />
+        </View>
       </View>
     );
-  });
-
+  }
 
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      padding: 15
+      alignItems: "center",
+      padding: 24,
+    },
+    main: {
+      flex: 1,
+      justifyContent: "center",
+      maxWidth: 960,
+      marginHorizontal: "auto",
     },
     title: {
-      fontSize: 32,
-      fontWeight: 'bold',
-      paddingVertical: 18,
-      color: '#ffffff'
+      fontSize: 64,
+      fontWeight: "bold",
     },
-    btn: {
-      width: '100%',
-      borderStyle: 'solid',
-      borderWidth: 1,
-      paddingVertical: 15,
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginVertical: 15
-    },
-    btnTitle: {
-      fontSize: 18,
-      color: '#ffffff'
+    subtitle: {
+      fontSize: 36,
+      color: "#38434D",
     },
   });
   ```
 
   </TabItem>
 
-  <TabItem value="app-file" label="App">
+  <TabItem value="app-file" label="App.tsx">
 
   ```typescript title="/App.ts" showLineNumbers
   import React from 'react';

@@ -2,7 +2,7 @@
 sidebar_position: 1
 title: Default Theme
 last_update:
-  date: 2025-07-12
+  date: 2025-07-21
   author: Redon Alla
 tags: [react, react-native, expo, framework, component,theme]
 ---
@@ -10,91 +10,74 @@ tags: [react, react-native, expo, framework, component,theme]
 
 import LightColors from '@site/src/components/Docs/Colors/LightColors';
 
-The [theme object](#basethemetcolors) is where you define your application's color palette, type scale, borders, border radius values, and more.
+The [`BaseTheme<TColors>`](./theme-provider.mdx#basethemetcolors) theme object is where you define your application's color palette, type scale, borders, border radius values, and more.
 
 :::info
 First of all you need to install `@flexnative/theme-context`.
 Fallow instructions here on **[how to install and how to use](../getting-started/installation.mdx)** `@flexnative/theme-context`.
 :::
 
-## Properties
-
-
-### BaseTheme\<TColors\>
-Interface representing the base theme structure.
-TColors - @template for Custom colors that extend the base colors.
-
-|  Name   | Type | Required | Default Value | Description |
-| -- | -- | -- | -- | -- |
-| colors | <code>[BaseColors](#basecolors) & TColors</code> | ***true*** | [`BaseColors`](#basecolors) | Default theme colors. You can add whatever values you want to the theme, and they will be merged with the default. |
-| scheme  | [`ColorSchemeName`](https://reactnative.dev/docs/usecolorscheme#supported-color-schemes) | **false** | Device color scheme. | Theme color scheme. [`ColorSchemeName`](https://reactnative.dev/docs/usecolorscheme#supported-color-schemes)  |
-| borderWidth | [`Record<BorderWidth, number>`](#borderwidth) | ***true*** | [`BorderWidth`](#borderwidth) | Border width used by components. |
-| borderRadius | [`Record<BorderRadius, number>`](#borderradius) | ***true*** | [`BorderRadius`](#borderradius) | Border radius used by components. |
-| fontSize | [`Record<FontSize, number>`](#fontsize) | ***true*** | [`FontSize`](#fontsize) | Font size used by components. |
-| metrics | [`object`](#metrics) | ***true*** | [`metrics`](#metrics) | Base constants values used by components. |
-
-### BaseColors
-Default theme colors.
-You can add whatever values you want to the theme, and they will be merged with the default.
-
-#### Color
-Represents the possible color options for a component.
-The available color options are:
-<code>'default' | 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error' | 'dark' | 'light' | [ColorValue](https://reactnative.dev/docs/colors)</code>
+## Colors
+Default theme colors. You can extend the `BaseColors` with your own color properties.
 
 <LightColors />
 
-### BorderWidth
-Border width used by components.
-One of `'none' | 'hairline' | 'thin' | 'base' | 'thick' | number`
+## Spaces
+Spacing values for layout, such as margins and paddings. This is a key part of the theme that helps maintain consistent spacing across components.
 
-|  Name  | Type | Value |
-| ------- | ---- | ----- |
-| none | `number` | 0 |
-| hairline | `number` | This is defined as the width of a thin line on the platform. It can be used as the thickness of a border or division between two elements. [`StyleSheet.hairlineWidth`](https://reactnative.dev/docs/stylesheet#hairlinewidth) |
-| thin | `number` | 1 |
-| base | `number` | 2 |
-| thick | `number` | 3 |
+|  Name  | Type | Value | Description |
+| ------ | ---- | ----- | ----------- |
+| none | `number` | 0 | No spacing. |
+| xxxs | `number` | 2 | Spacing of 2 units. |
+| xxs | `number` | 4 | Spacing of 4 units. |
+| xs | `number` | 6 | Spacing of 6 units. |
+| sm | `number` | 8 | Spacing of 8 units. |
+| md | `number` | 12 | Spacing of 12 units. |
+| default | `number` | 16 | Spacing of 16 units. |
+| lg | `number` | 18 | Spacing of 18 units. |
+| xl | `number` | 24 | Spacing of 24 units. |
+| xxl | `number` | 32 | Spacing of 32 units. |
+| xxxl | `number` | 36 | Spacing of 36 units. |
+| `number` | `number` |  | A custom numeric spacing value. |
+
+## FontSize
+Represents the possible font sizes used for text elements.
+
+|  Name  | Type | Value | Description |
+| ------ | ---- | ----- | ----------- |
+| `xxs`| `number` | A small font size, 8 units. |
+| `xs` | `number` | The default font size, 12 units. |
+| `sm` | `number` | A medium font size, 14 units. |
+| `md` | `number` | A large font size, 16 units. |
+| `lg` | `number` | A large font size, 18 units. |
+| `xl` | `number` | A large font size, 20 units. |
+| `xxl`| `number` | A large font size, 24 units. |
+| `number` | `number` | A custom numeric font size. |
+
+### Borders
+Border styles for components. This can include border widths, radius to ensure a consistent look and feel across your UI components.
+
+### BorderWidth
+Represents the possible border width values.
+
+|  Name  | Type | Value | Description |
+| ------ | ---- | ----- | ----------- |
+| `none` | `number` | No border width (0). |
+| `hairline` |`number` | A hairline border width, typically the thinnest possible line on the device. See [StyleSheet.hairlineWidth](https://reactnative.dev/docs/stylesheet#hairlinewidth). |
+| `thin` | `number` | A thin border width, 1 unit. |
+| `base` | `number` | A base border width, 2 unit2. |
+| `thick` | `number` | A thick border width, 3 unit. |
+| `number` | `number` | A custom numeric border width. |
+
 
 ### BorderRadius
-Border radius used by components.
-One of `'none' | 'small' | 'medium' | 'large' | 'full' | number`
+Represents the possible border radius values.
 
-|  Name   | Type | Value |
-| ------- | ---- | ----- |
-| none | `number` | 0 |
-| small | `number` | 2 |
-| medium | `number` | 4 |
-| large | `number` | 6 |
-| full | `number` | 99999 |
-
-### FontSize
-Font size used by components.
-One of `'small' | 'default' | 'medium' | 'large' | number`
-
-|  Name   | Type | Value |
-| ------- | ---- | ----- |
-| small | `number` | [metrics.baseSize](#basesize) * 0.75 |
-| default | `number` | [metrics.baseSize](#basesize) |
-| medium | `number` | [metrics.baseSize](#basesize) * 1.25 |
-| large | `number` | [metrics.baseSize](#basesize) * 1.5 |
-
-### metrics
-Base constants values used by components.
-
-|  Name   | Type | Value | Description |
-| ------- | ---- | ----- | ----------- |
-| <span id='basesize'>baseSize</span> | `number` | 16 | Base size used in fontSize. |
-| disabledOpacity | `number` | 0.4 | Opacity style property value for disabled components. |
-| ghostOpacity | `string` | 40 | Color opacity for components with 'ghost' appearance. |
-| verticalMultiplier | `number` | 0.6 | A constant multiplayer for components vertical padding. |
-| horizontalMultiplier | `number` | 1 | A constant multiplayer for components horizontal padding. |
-
-### Sizes
-Represents the possible sizes for a component.
-One of `'small' | 'medium' | 'large' | number`
-
-:::note
-Sizes are used by components to define their size.
-In different components, the size values may have different values.
-:::
+|  Name  | Type | Value | Description |
+| ------ | ---- | ----- | ----------- |
+| `none` | `number` | No border radius (0). |
+| `small` | `number` | A small border radius (2). |
+| `medium` | `number` | A medium border radius (4). |
+| `large` | `number` | A large border radius (6). |
+| `full` | `number` | A fully rounded border radius (99999). |
+| `number` | `number` | A custom numeric border radius. |

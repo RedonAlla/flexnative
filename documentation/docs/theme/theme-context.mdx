@@ -2,7 +2,7 @@
 sidebar_position: 2
 title: ThemeContext
 last_update:
-  date: 2025-07-13
+  date: 2025-07-20
   author: Redon Alla
 tags: [react, react-native, expo, framework, component, theme]
 ---
@@ -15,7 +15,7 @@ This should help users quickly understand and implement theme management in thei
 The `ThemeContext` provides a way to manage and share theme configurations across your application.
 It allows you to easily switch between different themes and ensure a consistent look and feel throughout your UI.
 
-The `ThemeContext `provides a flexible and efficient way to manage themes in your application.
+The `ThemeContext` provides a flexible and efficient way to manage themes in your application.
 By using the `ThemeProvider` and `useContext` hook, you can easily apply and switch themes, ensuring a consistent and visually appealing user experience.
 
 ## Installation
@@ -31,7 +31,7 @@ yarn add @flexnative/theme-context
 
 ## API
 
-```typescript showLineNumbers
+```typescript
 import { ThemeContext } from '@flexnative/theme-context';
 ```
 
@@ -39,7 +39,7 @@ import { ThemeContext } from '@flexnative/theme-context';
 **ThemeContext**
 
 Type: 
-```typescript showLineNumbers
+```typescript
 const ThemeContext: React.Context<ThemeContextProps<any>> =
   React.createContext<ThemeContextProps<any>>({
     state: defaultTheme()
@@ -50,10 +50,9 @@ const ThemeContext: React.Context<ThemeContextProps<any>> =
 
 |  Name   | Type | Required | Default Value | Description |
 | -- | -- | -- | -- | -- |
-| `state` | `BaseTheme<TColors>` | **true** | `defaultTheme()` | The current theme state, which includes colors, font sizes, borders, and other theme-related properties. |
+| `state` | [`BaseTheme<TColors>`](./default-theme.mdx#basethemetcolors) | **true** | [`defaultTheme()`](./default-theme.mdx) | The current theme state, which includes colors, font sizes, borders, and other theme-related properties. |
 | `setColorScheme` | `(scheme: ColorSchemeName) => void` | **false** | `undefined` | Function to set the color scheme (light or dark). This allows dynamic switching between themes based on user preference or system settings. |
 | `onChangeTheme` | `(theme: BaseTheme<TColors>) => void` | **false** | `undefined` | Callback function that is called when the theme changes. This can be used to trigger side effects or update other parts of the application when the theme is switched. |
-| `theme` | `BaseTheme<TColors>` | **true** | `defaultTheme()` | The current theme object that contains all the theme properties. This is the main object you will use to access theme values in your components. |
 
 
 ## Usage
@@ -61,7 +60,7 @@ const ThemeContext: React.Context<ThemeContextProps<any>> =
 ### 1. Importing the Context
 First, import the `ThemeContext` and `ThemeProvider` from the `@flexnative/theme-context` package:
 
-```typescript showLineNumbers
+```typescript
 import { ThemeContext, ThemeProvider } from '@flexnative/theme-context';
 ```
 
@@ -76,23 +75,11 @@ Any attempt to use the theme hooks outside of a `ThemeProvider` will result in a
 ```typescript showLineNumbers
 import React from 'react';
 // highlight-next-line
-import { ThemeProvider } from '@flexnative/theme-context';
+import { ThemeProvider, defaultTheme } from '@flexnative/theme-context';
 
 const App = () => {
-  const theme = {
-    palette: {
-      primary: {
-        main: '#3f51b5',
-      },
-      secondary: {
-        main: '#f50057',
-      },
-    },
-    // ... other theme configurations
-  };
-
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={{state: defaultTheme()}}>
       {/* Your application content here */}
       <Content />
     </ThemeProvider>
@@ -152,29 +139,26 @@ export default Content;
 ```
 
 ### 4. Customizing the Theme
-You can customize the theme by providing a different theme object to the `ThemeProvider`.
+You can customize the theme by providing a different theme object to the `ThemeProvider` by providing values required in [`BaseTheme<TColors>`](./default-theme.mdx#basethemetcolors).
+Or you can use the [`createTheme<TColors>(props: Partial<BaseTheme<TColors>>)`](./utilities.mdx#createTheme) function to get the default theme and modify it as needed.
 This allows you to easily switch between different themes or modify the existing theme based on user preferences.
 
 ```typescript showLineNumbers
 import React from 'react';
 // highlight-next-line
-import { ThemeProvider } from '@flexnative/theme-context';
+import { ThemeProvider, createTheme } from '@flexnative/theme-context';
 
-const DarkTheme = {
-  palette: {
-    primary: {
-      main: '#212121',
-    },
-    secondary: {
-      main: '#9e9e9e',
-    },
-  },
-  // ... other dark theme configurations
+const colors = {
+  primary: '#6200ee',
+  secondary: '#03dac4',
+  background: '#f5f5f5',
+  text: '#000000',
+  // ... other color definitions
 };
 
 const App = () => {
   return (
-    <ThemeProvider theme={DarkTheme}>
+    <ThemeProvider theme={{state: createTheme({ colors })}}>
       {/* Your application content here */}
       <Content />
     </ThemeProvider>
@@ -186,61 +170,6 @@ export default App;
 
 For more details on how to customize the theme, refer to the [Customizing Theme](./customizing-theme) documentation.
 
-### 5. Updating the Theme Dynamically
-
-To update the theme dynamically, you can use a state variable to hold the current theme and update it using useState.
-Pass this state variable to the `ThemeProvider`.
-
-```typescript showLineNumbers
-import React, { useState } from 'react';
-import { View, Text } from 'react-native';
-import Button from '@flexnative/buttons';
-// highlight-next-line
-import { ThemeProvider } from '@flexnative/theme-context';
-
-const LightTheme = {
-  palette: {
-    primary: {
-      main: '#3f51b5',
-    },
-    secondary: {
-      main: '#f50057',
-    },
-  },
-  // ... other light theme configurations
-};
-
-const DarkTheme = {
-  palette: {
-    primary: {
-      main: '#212121',
-    },
-    secondary: {
-      main: '#9e9e9e',
-    },
-  },
-  // ... other dark theme configurations
-};
-
-const App = () => {
-  const [theme, setTheme] = useState(LightTheme);
-
-  const toggleTheme = () => {
-    setTheme(theme === LightTheme ? DarkTheme : LightTheme);
-  };
-
-  return (
-    <ThemeProvider theme={theme}>
-      <Button onClick={toggleTheme}>Toggle Theme</Button>
-      {/* Your application content here */}
-      <Content />
-    </ThemeProvider>
-  );
-};
-
-export default App;
-```
-
 ## Available Hooks
 
 We provide several custom hooks to interact with the theme context. Using these hooks is the recommended way to access theme data and functions.
@@ -250,10 +179,12 @@ We provide several custom hooks to interact with the theme context. Using these 
 This is the primary hook for interacting with the theme. It gives you access to the complete theme state object and the functions to update it.
 
 **Returns:** An object containing:
-- `state`: The current theme object (`{ name, colors, fontSize, ... }`).
-- `setTheme`: A function to switch the entire theme.
-- `setColors`: A function to update the theme's colors.
-- `setColorScheme`: A function to change the color scheme (e.g., 'light' or 'dark').
+
+|  Name   | Type | Required | Default Value | Description |
+| -- | -- | -- | -- | -- |
+| `state` | [`BaseTheme<TColors>`] | **true** | `defaultTheme()` | The current theme state, which includes colors, font sizes, borders, and other theme-related properties. |
+| `setColorScheme` | `(scheme: ColorSchemeName) => void` | **false** | `undefined` | A function to update the theme's colors. |
+| `setTheme` | `(theme: BaseTheme<TColors>) => void` | **false** | `undefined` | Function to update the color scheme. |
 
 **Example:**
 
@@ -270,7 +201,7 @@ type MyColors = {
 
 const ThemeControlPanel = () => {
   // Use the generic to get type safety on your custom colors
-  const { state, setTheme } = useThemeContext<MyColors>();
+  const { state, setColorScheme } = useThemeContext<MyColors>();
 
   return (
     <View>
@@ -278,7 +209,7 @@ const ThemeControlPanel = () => {
       <Text>Primary color: {state.colors.primary}</Text>
       {/* Your custom color is fully typed */}
       <Text>Special Accent: {state.colors.specialAccent}</Text>
-      <Button onClick={() => setTheme('dark')}>Switch to Dark Theme</Button>
+      <Button onClick={() => setColorScheme('dark')}>Switch to Dark Theme</Button>
     </View>
   );
 };
