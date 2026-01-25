@@ -87,11 +87,13 @@ const config: Config = {
   plugins: [
     'docusaurus-plugin-sass',
     '@docusaurus/theme-live-codeblock',
+    'docusaurus-plugin-module-alias',
     [ require.resolve('./customWebpack5Plugin.js'), {} ],
     [
       "@gorhom/docusaurus-react-native-plugin",
       {
         alias: {
+          'react-native': 'react-native-web',
           "expo-font": path.resolve(
             __dirname,
             "node_modules/@expo/vector-icons"
