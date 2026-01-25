@@ -93,7 +93,6 @@ const config: Config = {
       "@gorhom/docusaurus-react-native-plugin",
       {
         alias: {
-          'react-native': 'react-native-web',
           "expo-font": path.resolve(
             __dirname,
             "node_modules/@expo/vector-icons"
