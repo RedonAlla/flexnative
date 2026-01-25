@@ -41,3 +41,4 @@ text-app/package-lock.json
 text-app/package-lock.json
 npm-packages/package-lock.json
 documentation/docs/theme/theme-context.mdx
+documentation/build

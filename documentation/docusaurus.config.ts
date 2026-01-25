@@ -87,7 +87,6 @@ const config: Config = {
   plugins: [
     'docusaurus-plugin-sass',
     '@docusaurus/theme-live-codeblock',
-    'docusaurus-plugin-module-alias',
     [ require.resolve('./customWebpack5Plugin.js'), {} ],
     [
       "@gorhom/docusaurus-react-native-plugin",
