@@ -1,11 +1,3 @@
-/**
- * @ Author: Redon Alla
- * @ Create Time: 2023-06-04 21:29:02
- * @ Modified by: Redon Alla
- * @ Modified time: 2025-07-17 21:53:22
- * @ Description: Exports necessary props, classes for Theme Context. 
- */
-
 export {
   default, 
   useThemeContext,
@@ -29,6 +21,14 @@ export type {
   ThemeContextProps
 } from './props';
 
-export { createTheme, defaultTheme, defaultColors } from './utilities';
+export { createTheme, defaultTheme, defaultColors } from './theme-utilities';
+
+export {
+  applyHoverColor,
+  applyActiveColor,
+  subtleColor,
+  subtleHoverColor,
+  subtleActiveColor
+} from './colors-utilities';
 
 export * from './colors';

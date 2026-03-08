@@ -16,7 +16,7 @@ import { ColorSchemeName } from 'react-native';
 
 import ThemeContext from './ThemeContext';
 import { BaseTheme, ThemeProviderProps } from './props';
-import { defaultTheme } from './utilities';
+import { defaultTheme } from './theme-utilities';
 
 /**
  * Defines the state properties for the ThemeProvider component.

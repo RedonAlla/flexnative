@@ -1,6 +1,6 @@
 {
   "name": "@flexnative/theme-context",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "React ThemeContext",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -22,12 +22,18 @@
   ],
   "author": "Redon Alla",
   "license": "MIT",
-  "devDependencies": {},
+  "devDependencies": {
+    "color-bits": "*"
+  },
   "homepage": "https://redonalla.github.io/flexnative/",
   "bugs": "https://github.com/RedonAlla/flexnative/issues",
   "repository": {
     "type": "git",
     "url": "https://github.com/RedonAlla/flexnative.git",
     "directory": "npm-packages/src/packages/context/ra-theme-context"
+  },
+  "dependencies": {
+    "react": "*",
+    "react-dom": "*"
   }
 }

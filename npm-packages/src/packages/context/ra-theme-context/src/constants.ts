@@ -1,11 +1,3 @@
-/**
- * @file constants.ts
- * @author Redon Alla <redon.alla@gmail.com>
- * @createDate 2024-11-05 22:13:28
- * @modifyDate 2025-03-09 23:05:53
- * @description Constants used for theming and styling in the application.
- */
-
 import { StyleSheet } from "react-native";
 import { BorderRadius, BorderWidth, FontSize, Spaces } from "./props";
 

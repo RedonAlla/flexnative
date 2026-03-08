@@ -1,14 +1,3 @@
-/**
- * @file props.ts
- * @author Redon Alla <redon.alla@gmail.com>
- * @createDate 2023-06-04 21:29:02
- * @modifyDate 2025-03-02 17:37:04
- * @description This file defines the types and interfaces for the ThemeContext and ThemeProvider components.
- *              It includes type definitions for colors, border radius, border width, font sizes, and the overall
- *              structure of the theme object. It also provides the interfaces for the props of the ThemeProvider
- *              and ThemeContext components.
- */
-
 import { ColorSchemeName, ColorValue } from 'react-native';
 
 /**
@@ -99,7 +88,17 @@ export type FontSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | number
  * const rgbaColor: Color = 'rgba(0, 0, 0, 0.5)'; // Using an RGBA color value
  * ```
  */
-export type Color = 'default' | 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error' | 'dark' | 'light' | ColorValue;
+export type Color =
+  'default' |
+  'primary' |
+  'secondary' |
+  'info' |
+  'success' |
+  'warning' |
+  'error' |
+  'dark' |
+  'light' |
+  ColorValue;
 
 /**
  * Represents the possible spacing values used for margins, padding, etc.
@@ -218,61 +217,16 @@ export interface Borders {
  * @property {ColorValue} white - The default white color.
  * @property {ColorValue} black - The default black color.
  * @property {ColorValue} primary - The primary color used for key UI elements.
- * @property {ColorValue} primaryHover - The hover state color for the primary color, used for buttons and interactive elements.
- * @property {ColorValue} primaryActive - The active state color for the primary color, used for pressed buttons and active states.
- * @property {ColorValue} primarySubtle - A subtle variant of the primary color, used for backgrounds or less prominent elements.
- * @property {ColorValue} primarySubtleHover - The hover state color for the primary subtle color, used for interactive elements.
- * @property {ColorValue} primarySubtleActive - The active state color for the primary subtle color, used for pressed buttons and active states.
  * @property {ColorValue} info - The color used for informational messages and elements.
- * @property {ColorValue} infoHover - The hover state color for informational elements.
- * @property {ColorValue} infoActive - The active state color for informational elements.
- * @property {ColorValue} infoSubtle - A subtle variant of the info color, used for backgrounds or less prominent elements.
- * @property {ColorValue} infoSubtleHover - The hover state color for the info subtle color, used for interactive elements.
- * @property {ColorValue} infoSubtleActive - The active state color for the info subtle color, used for pressed buttons and active states.
  * @property {ColorValue} success - The color used for success messages and indicators.
- * @property {ColorValue} successHover - The hover state color for success elements.
- * @property {ColorValue} successActive - The active state color for success elements.
- * @property {ColorValue} successSubtle - A subtle variant of the success color, used for backgrounds or less prominent elements.
- * @property {ColorValue} successSubtleHover - The hover state color for the success subtle color, used for interactive elements.
- * @property {ColorValue} successSubtleActive - The active state color for the success subtle color, used for pressed buttons and active states.
  * @property {ColorValue} warning - The color used for warning messages and indicators.
- * @property {ColorValue} warningHover - The hover state color for warning elements.
- * @property {ColorValue} warningActive - The active state color for warning elements.
- * @property {ColorValue} warningSubtle - A subtle variant of the warning color, used for backgrounds or less prominent elements.
- * @property {ColorValue} warningSubtleHover - The hover state color for the warning subtle color, used for interactive elements.
- * @property {ColorValue} warningSubtleActive - The active state color for the warning subtle color, used for pressed buttons and active states.
  * @property {ColorValue} error - The color used for error messages and alerts.
- * @property {ColorValue} errorHover - The hover state color for error elements.
- * @property {ColorValue} errorActive - The active state color for error elements.
- * @property {ColorValue} errorSubtle - A subtle variant of the error color, used for backgrounds or less prominent elements.
- * @property {ColorValue} errorSubtleHover - The hover state color for the error subtle color, used for interactive elements.
- * @property {ColorValue} errorSubtleActive - The active state color for the error subtle color, used for pressed buttons and active states.
  * @property {ColorValue} dark - The dark color used for backgrounds and surfaces.
- * @property {ColorValue} darkHover - The hover state color for dark color.
- * @property {ColorValue} darkActive - The active state color for dark color.
- * @property {ColorValue} darkSubtle - A subtle variant of the dark color, used for backgrounds or less prominent elements. 
- * @property {ColorValue} darkSubtleHover - The hover state color for the dark subtle color, used for interactive elements.
- * @property {ColorValue} darkSubtleActive - The active state color for the dark subtle color, used for pressed buttons and active states in dark color.
  * @property {ColorValue} secondary - The secondary color used for accents and highlights.
- * @property {ColorValue} secondaryHover - The hover state color for the secondary color, used for buttons and interactive elements.
- * @property {ColorValue} secondaryActive - The active state color for the secondary color, used for pressed buttons and active states.
- * @property {ColorValue} secondarySubtle - The active state color for the secondary color, used for pressed buttons and active states.
- * @property {ColorValue} secondarySubtleHover - The hover state color for the secondary subtle color, used for interactive elements.
- * @property {ColorValue} secondarySubtleActive - The active state color for the secondary subtle color, used for pressed buttons and active states.
  * @property {ColorValue} light - The light color used for backgrounds and surfaces
- * @property {ColorValue} lightHover - The hover state color for light color.
- * @property {ColorValue} lightActive - The active state color for light color.
- * @property {ColorValue} lightSubtle - A subtle variant of the light color, used for backgrounds or less prominent elements.
- * @property {ColorValue} lightSubtleHover - The hover state color for the light subtle color, used for interactive elements 
- * @property {ColorValue} lightSubtleActive - The active state color for the light subtle color, used for interactive elements. 
  * @property {ColorValue} background - The default background color for screens and components. 
  * @property {ColorValue} card - The default color for card backgrounds.
  * @property {ColorValue} default - The default color used for text and icons.
- * @property {ColorValue} defaultHover - The hover state color for default elements. 
- * @property {ColorValue} defaultActive - The active state color for default elements.
- * @property {ColorValue} defaultSubtle - A subtle variant of the default color, used for backgrounds or less prominent elements.
- * @property {ColorValue} defaultSubtleHover - The hover state color for the default subtle color, used for interactive elements.
- * @property {ColorValue} defaultSubtleActive - The active state color for the default subtle color, used for pressed buttons and active states.
  * @property {ColorValue} text - The default text color for readability.
  * @property {ColorValue} border - The default border color for components.
  * @property {ColorValue} placeholder - The color used for placeholder text in inputs and other components.
@@ -301,167 +255,32 @@ export interface BaseColors {
   /** @property {ColorValue} primary - Primary color. */
   primary: ColorValue;
 
-  /** @property {ColorValue} primaryHover - Primary color on hover. */
-  primaryHover: ColorValue;
-
-  /** @property {ColorValue} primaryActive - Primary color on active. */
-  primaryActive: ColorValue;
-
-  /** @property {ColorValue} primarySubtle - Subtle primary color. */
-  primarySubtle: ColorValue;
-
-  /** @property {ColorValue} primarySubtleHover - Subtle primary color on hover. */
-  primarySubtleHover: ColorValue;
-
-  /** @property {ColorValue} primarySubtleActive - Subtle primary color on active. */
-  primarySubtleActive: ColorValue;
-
   /** @property {ColorValue} info - Info color. */
   info: ColorValue;
-
-  /** @property {ColorValue} infoHover - Info color on hover. */
-  infoHover: ColorValue;
-
-  /** @property {ColorValue} infoActive - Info color on active. */
-  infoActive: ColorValue;
-
-  /** @property {ColorValue} infoSubtle - Subtle info color. */
-  infoSubtle: ColorValue;
-
-  /** @property {ColorValue} infoSubtleHover - Subtle info color on hover. */
-  infoSubtleHover: ColorValue;
-
-  /** @property {ColorValue} infoSubtleActive - Subtle info color on active. */
-  infoSubtleActive: ColorValue;
 
   /** @property {ColorValue} success - Success color. */
   success: ColorValue;
 
-  /** @property {ColorValue} successHover - Success color on hover. */
-  successHover: ColorValue;
-
-  /** @property {ColorValue} successActive - Success color on active. */
-  successActive: ColorValue;
-
-  /** @property {ColorValue} successSubtle - Subtle success color. */
-  successSubtle: ColorValue;
-
-  /** @property {ColorValue} successSubtleHover - Subtle success color on hover. */
-  successSubtleHover: ColorValue;
-
-  /** @property {ColorValue} successSubtleActive - Subtle success color on active. */
-  successSubtleActive: ColorValue;
-
   /** @property {ColorValue} warning - Warning color. */
   warning: ColorValue;
-
-  /** @property {ColorValue} warningHover - Warning color on hover. */
-  warningHover: ColorValue;
-
-  /** @property {ColorValue} warningActive - Warning color on active. */
-  warningActive: ColorValue;
-
-  /** @property {ColorValue} warningSubtle - Subtle warning color. */
-  warningSubtle: ColorValue;
-
-  /** @property {ColorValue} warningSubtleHover - Subtle warning color on hover. */
-  warningSubtleHover: ColorValue;
-
-  /** @property {ColorValue} warningSubtleActive - Subtle warning color on active. */
-  warningSubtleActive: ColorValue;
 
   /** @property {ColorValue} error - Error color. */
   error: ColorValue;
 
-  /** @property {ColorValue} errorHover - Error color on hover. */
-  errorHover: ColorValue;
-
-  /** @property {ColorValue} errorActive - Error color on active. */
-  errorActive: ColorValue;
-
-  /** @property {ColorValue} errorSubtle - Subtle error color. */
-  errorSubtle: ColorValue;
-
-  /** @property {ColorValue} errorSubtleHover - Subtle error color on hover. */
-  errorSubtleHover: ColorValue;
-
-  /** @property {ColorValue} errorSubtleActive - Subtle error color on active. */
-  errorSubtleActive: ColorValue;
-
   /** @property {ColorValue} dark - Dark color. */
   dark: ColorValue;
-
-  /** @property {ColorValue} darkHover - Dark color on hover. */
-  darkHover: ColorValue;
-
-  /** @property {ColorValue} darkActive - Dark color on active. */
-  darkActive: ColorValue;
-
-  /** @property {ColorValue} darkSubtle - Subtle dark color. */
-  darkSubtle: ColorValue;
-
-  /** @property {ColorValue} darkSubtleHover - Subtle dark color on hover. */
-  darkSubtleHover: ColorValue;
-
-  /** @property {ColorValue} darkSubtleActive - Subtle dark color on active. */
-  darkSubtleActive: ColorValue;
 
   /** @property {ColorValue} secondary - Secondary color. */
   secondary: ColorValue;
 
-  /** @property {ColorValue} secondaryHover - Secondary color on hover. */
-  secondaryHover: ColorValue;
-
-  /** @property {ColorValue} secondaryActive - Secondary color on active. */
-  secondaryActive: ColorValue;
-
-  /** @property {ColorValue} secondarySubtle - Subtle secondary color. */
-  secondarySubtle: ColorValue;
-
-  /** @property {ColorValue} secondarySubtleHover - Subtle secondary color on hover. */
-  secondarySubtleHover: ColorValue;
-
-  /** @property {ColorValue} secondarySubtleActive - Subtle secondary color on active. */
-  secondarySubtleActive: ColorValue;
-
   /** @property {ColorValue} light - Light color. */
   light: ColorValue;
-
-  /** @property {ColorValue} lightHover - Light color on hover. */
-  lightHover: ColorValue;
-
-  /** @property {ColorValue} lightActive - Light color on active. */
-  lightActive: ColorValue;
-
-  /** @property {ColorValue} lightSubtle - Subtle light color. */
-  lightSubtle: ColorValue;
-
-  /** @property {ColorValue} lightSubtleHover - Subtle light color on hover. */
-  lightSubtleHover: ColorValue;
-
-  /** @property {ColorValue} lightSubtleActive - Subtle light color on active. */
-  lightSubtleActive: ColorValue;
 
   /** @property {ColorValue} background - Background color. */
   background: ColorValue;
 
   /** @property {ColorValue} card - Card color. */
   default: ColorValue;
-
-  /** @property {ColorValue} text - Text color. */
-  defaultHover: ColorValue;
-
-  /** @property {ColorValue} border - Border color. */
-  defaultActive: ColorValue;
-
-  /** @property {ColorValue} placeholder - Placeholder color. */
-  defaultSubtle: ColorValue;
-
-  /** @property {ColorValue} overlay - Overlay color. */
-  defaultSubtleHover: ColorValue;
-
-  /** @property {ColorValue} overlay - Overlay color. */
-  defaultSubtleActive: ColorValue;
 
   /** @property {ColorValue} overlay - Overlay color. */
   card: ColorValue;

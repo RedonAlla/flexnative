@@ -2,14 +2,14 @@
  * @ Author: Redon Alla
  * @ Create Time: 2023-06-04 21:29:02
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-07-22 23:11:35
+ * @ Modified time: 2026-03-08 22:31:03
  * @ Description: Defines the ThemeContext and related hooks for accessing theme data within the application.
  */
 
 import React from 'react';
 
 import { BaseColors, BaseTheme, ThemeContextProps } from './props';
-import { defaultTheme } from './utilities';
+import { defaultTheme } from './theme-utilities';
 
 /**
  * The theme context provides the current theme settings to all components in the application.
