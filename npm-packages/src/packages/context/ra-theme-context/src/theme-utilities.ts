@@ -1,13 +1,3 @@
-/**
- * @file utilities.ts
- * @author Redon Alla <redon.alla@gmail.com>
- * @createDate 2024-11-05 22:13:28
- * @modifyDate 2025-03-02 17:44:56
- * @description Utility functions for creating and managing themes within the FlexNative framework.
- *              This file provides functions to generate default themes, merge custom themes,
- *              and handle color schemes, ensuring a consistent and flexible theming system.
- */
-
 import { Appearance, ColorSchemeName } from "react-native";
 import { BaseColors, BaseTheme } from "./props";
 import { dark, light } from "./colors";
@@ -38,14 +28,6 @@ export function defaultColors<TColors>(userScheme? : ColorSchemeName): BaseColor
   return (scheme === 'dark' ? dark : light) as BaseColors & TColors;
 }
 
-/**
- * @function defaultTheme
- * @description Generates the default theme object with predefined colors, border configurations, and font sizes.
- *              It determines the initial color scheme based on the system's appearance or the user's preference.
- * @returns {BaseTheme<BaseColors>} The default theme object.
- * @example
- * 
- */
 export function defaultTheme(): BaseTheme<BaseColors> {
   const scheme = Appearance.getColorScheme();
   return {
