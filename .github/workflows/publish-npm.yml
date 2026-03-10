@@ -1,0 +1,72 @@
+name: Publish NPM Packages
+
+on:
+  push:
+    branches:
+      - main # Or your default branch
+    paths:
+      - 'npm-packages/src/packages/**'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # Fetch all history to compare commits
+          fetch-depth: 0
+
+      - name: Get changed package directories
+        id: changed-packages
+        run: |
+          CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} -- 'npm-packages/src/packages/**')
+          
+          DIRS_TO_PUBLISH=""
+          for file in ${CHANGED_FILES}; do
+            dir=$(dirname "$file")
+            # Walk up from the changed file's directory to find package.json
+            while [[ "$dir" != "." && "$dir" != "/" && ! -f "$dir/package.json" ]]; do
+              dir=$(dirname "$dir")
+            done
+
+            # Ensure we found a package.json and it's a package we want to publish
+            if [[ -f "$dir/package.json" && "$dir" == npm-packages/src/packages/* ]]; then
+              DIRS_TO_PUBLISH="$DIRS_TO_PUBLISH $dir"
+            fi
+          done
+          
+          UNIQUE_DIRS=$(echo "$DIRS_TO_PUBLISH" | tr ' ' '\n' | sort -u | tr '\n' ' ')
+          echo "changed_dirs=${UNIQUE_DIRS}" >> $GITHUB_OUTPUT
+          echo "Found changed packages in: ${UNIQUE_DIRS}"
+
+      - name: Setup Node.js
+        if: steps.changed-packages.outputs.changed_dirs != ''
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x' # Or your preferred LTS version
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies and Publish
+        if: steps.changed-packages.outputs.changed_dirs != ''
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          for dir in ${{ steps.changed-packages.outputs.changed_dirs }}; do
+            echo "--- Processing package in $dir ---"
+            cd "$dir"
+            PACKAGE_NAME=$(node -p "require('./package.json').name")
+            PACKAGE_VERSION=$(node -p "require('./package.json').version")
+            if npm view "$PACKAGE_NAME@$PACKAGE_VERSION" > /dev/null 2>&1; then
+              echo "$PACKAGE_NAME@$PACKAGE_VERSION is already published. Skipping."
+            else
+              echo "Publishing $PACKAGE_NAME@$PACKAGE_VERSION..."
+              npm ci
+              npm publish
+              echo "Successfully published $PACKAGE_NAME@$PACKAGE_VERSION"
+            fi
+            cd -
+          done
