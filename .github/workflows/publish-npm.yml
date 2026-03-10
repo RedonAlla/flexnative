@@ -64,7 +64,7 @@ jobs:
               echo "$PACKAGE_NAME@$PACKAGE_VERSION is already published. Skipping."
             else
               echo "Publishing $PACKAGE_NAME@$PACKAGE_VERSION..."
-              npm ci
+              npm install
               npm publish
               echo "Successfully published $PACKAGE_NAME@$PACKAGE_VERSION"
             fi
