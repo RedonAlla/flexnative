@@ -54,6 +54,7 @@ jobs:
         if: steps.changed-packages.outputs.changed_dirs != ''
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_ENV: development # Force development environment to ensure devDependencies are installed
         run: |
           for dir in ${{ steps.changed-packages.outputs.changed_dirs }}; do
             echo "--- Processing package in $dir ---"
