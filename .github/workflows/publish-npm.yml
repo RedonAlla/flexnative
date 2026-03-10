@@ -64,7 +64,8 @@ jobs:
               echo "$PACKAGE_NAME@$PACKAGE_VERSION is already published. Skipping."
             else
               echo "Publishing $PACKAGE_NAME@$PACKAGE_VERSION..."
-              npm install
+              # Install all dependencies, including devDependencies, needed for the build step.
+              npm install --production=false
               npm publish
               echo "Successfully published $PACKAGE_NAME@$PACKAGE_VERSION"
             fi
