@@ -5,7 +5,7 @@
     "src/packages/components/ra-icons",
     "src/packages/components/ra-bottom-sheet",
     "src/packages/components/ra-skeleton-loading",
-    "src/packages/context/ra-theme-context",
+    "src/packages/context/theme-context",
     "src/packages/demo",
     "src/packages/services/ra-local-storage",
     "src/packages/utilities",
