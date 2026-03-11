@@ -47,14 +47,14 @@ jobs:
         if: steps.changed-packages.outputs.changed_dirs != ''
         uses: actions/setup-node@v4
         with:
-          node-version: '18.x' # Or your preferred LTS version
+          node-version: '23.x' # Or your preferred LTS version
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies and Publish
         if: steps.changed-packages.outputs.changed_dirs != ''
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NODE_ENV: development # Force development environment to ensure devDependencies are installed
+          NODE_ENV: production
         run: |
           for dir in ${{ steps.changed-packages.outputs.changed_dirs }}; do
             echo "--- Processing package in $dir ---"
@@ -66,7 +66,7 @@ jobs:
             else
               echo "Publishing $PACKAGE_NAME@$PACKAGE_VERSION..."
               # Install all dependencies, including devDependencies, needed for the build step.
-              npm install --production=false
+              npm install --production=true
               npm publish
               echo "Successfully published $PACKAGE_NAME@$PACKAGE_VERSION"
             fi
