@@ -26,7 +26,9 @@
   "author": "Redon Alla",
   "license": "MIT",
   "devDependencies": {
-    "color-bits": "*"
+    "color-bits": "*",
+    "@types/react": "*",
+    "@types/react-native": "*"
   },
   "homepage": "https://redonalla.github.io/flexnative/",
   "bugs": "https://github.com/RedonAlla/flexnative/issues",
@@ -35,8 +37,7 @@
     "url": "https://github.com/RedonAlla/flexnative.git",
     "directory": "npm-packages/src/packages/context/theme-context"
   },
-  "dependencies": {
-    "react": "*",
-    "react-dom": "*"
+  "peerDependencies": {
+    "react": "*"
   }
 }
