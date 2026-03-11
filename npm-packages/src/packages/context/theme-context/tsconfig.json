@@ -3,6 +3,7 @@
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": "src",
+    "jsx": "react-native"
   },
   "include": ["src"]
 }
