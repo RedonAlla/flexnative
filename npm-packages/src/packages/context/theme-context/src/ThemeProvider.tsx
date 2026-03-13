@@ -49,37 +49,19 @@ type StateProps<TColors, TState = {}> = {
  *   myCustomColor: ColorValue;
  * }
  *
- * // Example of using the ThemeProvider
- * <ThemeProvider<MyColors>
- *  onLoad={async () => {
- *      // Implement your logic to load the theme from storage
- *      const savedTheme = await AsyncStorage.getItem('theme');
- *      if (savedTheme) {
- *          this.setState({ theme: JSON.parse(savedTheme) });
- *      }
- *      return Promise.resolve();
- *  }}
- *  onChangeColorScheme={async (scheme) => {
- *      // Implement your logic to persist the color scheme
- *      await AsyncStorage.setItem('colorScheme', scheme);
- *      console.log('colorScheme saved:', scheme);
- *      return Promise.resolve();
- *  }}
- *  onChangeTheme={async (theme) => {
- *      // Implement your logic to persist the theme
- *      await AsyncStorage.setItem('theme', JSON.stringify(theme));
- *      console.log('Theme saved:', theme);
- *      return Promise.resolve();
- *  }}
- *  setColors={async (colors) => {
- *      //Implement your logic to update only the colors of the theme.
- *      const newTheme = {...this.state.theme, colors}
- *      this.onChangeTheme(newTheme)
- *      return Promise.resolve()
- *  }}
- * >
+ * // Example of implementation
+ * class AppThemeProvider extends ThemeProvider<MyColors, {}> {
+ *   protected async onLoad() {
+ *     // Load theme from storage
+ *   }
+ *   protected async onChangeColorScheme(scheme) { ... }
+ *   protected async onChangeTheme(theme) { ... }
+ * }
+ *
+ * // Usage
+ * <AppThemeProvider>
  *   <MyApp />
- * </ThemeProvider>
+ * </AppThemeProvider>
  * ```
  */
 export default abstract class ThemeProvider<TColors, TState> extends React.PureComponent<ThemeProviderProps<TColors>, StateProps<TColors, TState>> {
@@ -101,7 +83,7 @@ export default abstract class ThemeProvider<TColors, TState> extends React.PureC
    * This abstract method should be implemented to load the theme from storage.
    * It allows you to fetch and apply a previously saved theme.
    * 
-   * @see Example <https://redonalla.github.io/flexnative/docs/theme/examples>
+   * @see Example <https://redonalla.github.io/flexnative/docs/theme/ThemeProvider>
    *
    * @abstract
    * @returns {Promise<void>} A promise that resolves when the theme has been loaded.

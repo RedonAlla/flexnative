@@ -1,5 +1,12 @@
 import { BaseColors } from './props';
 
+/**
+ * Defines the default dark color palette for the theme.
+ * This object implements the `BaseColors` interface and provides specific color values
+ * suitable for dark mode interfaces.
+ *
+ * @type {BaseColors}
+ */
 export const dark: BaseColors = {
   white: '#FFFFFF',
   black: '#1f1f1f',
@@ -19,6 +26,13 @@ export const dark: BaseColors = {
   light: "#E0E0E0",
 };
 
+/**
+ * Defines the default light color palette for the theme.
+ * This object implements the `BaseColors` interface and provides specific color values
+ * suitable for light mode interfaces.
+ *
+ * @type {BaseColors}
+ */
 export const light: BaseColors = {
   white: '#FFFFFF',
   black: '#3d3d3d',

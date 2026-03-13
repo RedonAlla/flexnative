@@ -1,6 +1,20 @@
 import { StyleSheet } from "react-native";
 import { BorderRadius, BorderWidth, FontSize, Spaces } from "./props";
 
+/**
+ * A constant object that maps different font sizes to their corresponding numeric values.
+ * 
+ * @constant
+ * @type {Record<FontSize, number>}
+ * 
+ * @property {number} xxs - Represents an extra extra small font size (8).
+ * @property {number} xs - Represents an extra small font size (12).
+ * @property {number} sm - Represents a small font size (14).
+ * @property {number} md - Represents a medium font size (16).
+ * @property {number} lg - Represents a large font size (18).
+ * @property {number} xl - Represents an extra large font size (20).
+ * @property {number} xxl - Represents an extra extra large font size (24).
+ */
 export const FONT_SIZE: Record<FontSize, number> = {
   'xxs': 8,
   'xs': 12,
@@ -51,6 +65,24 @@ export const BORDER_WIDTH: Record<BorderWidth, number> = {
   thick: 3,
 }
 
+/**
+ * A constant object that maps different spacing values to their corresponding numeric values.
+ * 
+ * @constant
+ * @type {Record<Spaces, number>}
+ * 
+ * @property {number} none - Represents no spacing (0).
+ * @property {number} xxxs - Represents an extra extra extra small spacing (2).
+ * @property {number} xxs - Represents an extra extra small spacing (4).
+ * @property {number} xs - Represents an extra small spacing (6).
+ * @property {number} sm - Represents a small spacing (8).
+ * @property {number} md - Represents a medium spacing (12).
+ * @property {number} default - Represents the default spacing (16).
+ * @property {number} lg - Represents a large spacing (18).
+ * @property {number} xl - Represents an extra large spacing (24).
+ * @property {number} xxl - Represents an extra extra large spacing (32).
+ * @property {number} xxxl - Represents an extra extra extra large spacing (36).
+ */
 export const SPACING: Record<Spaces, number> = {
   'none': 0,
   'xxxs': 2,

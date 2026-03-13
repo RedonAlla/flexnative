@@ -156,38 +156,34 @@ export type Spaces = 'none' | 'xxxs' | 'xxs' | 'xs' | 'sm' | 'md' | 'default' | 
  */
 export interface BaseTheme<TColors> {
   /**
-   * @property {BaseColors & TColors} colors - Default theme colors.
    * Default theme colors.
-   * You can add whatever values you want to the theme, and they will be merged with the default.
+   * Contains base colors merged with any custom TColors provided.
   */
   colors: BaseColors & TColors;
 
   /**
-   * @property {ColorSchemeName} [scheme]
-   * Theme colorScheme {@link ColorSchemeName}
+   * The current color scheme (e.g., 'light' or 'dark').
   */
   scheme: ColorSchemeName;
   
   /**
-   * @property {boolean} isDark
    * Indicates whether the current theme is a dark theme.
-   * This property should be set to `true` if the active theme is a dark theme, `false` otherwise.
    */
   isDark: boolean;
 
   /**
-   * @property {Borders} borders
    * Border configurations for the theme.
    */
   borders: Borders;
 
   /**
-   * @property {Record<Spaces, number>} spaces
-   * Represents the possible spacing values used for margins, padding, etc.
+   * Spacing values used for margins, padding, etc.
    */
   spaces: Record<Spaces, number>;
 
-  /** @property {Record<FontSize, number>} fontSize - Font size used by components. */
+  /**
+   * Font size values used by components. 
+   */
   fontSize: Record<FontSize, number>;
 }
 

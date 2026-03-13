@@ -28,6 +28,11 @@ export function defaultColors<TColors>(userScheme? : ColorSchemeName): BaseColor
   return (scheme === 'dark' ? dark : light) as BaseColors & TColors;
 }
 
+/**
+ * @function defaultTheme
+ * @description Creates the default theme object, including colors, font sizes, spacing, and borders, based on the system's appearance.
+ * @returns {BaseTheme<BaseColors>} The default theme configuration.
+ */
 export function defaultTheme(): BaseTheme<BaseColors> {
   const scheme = Appearance.getColorScheme();
   return {
@@ -43,6 +48,13 @@ export function defaultTheme(): BaseTheme<BaseColors> {
   }
 }
 
+/**
+ * @function createTheme
+ * @template TColors
+ * @description Generates a custom theme by merging provided properties with the default theme.
+ * @param {Partial<BaseTheme<TColors>>} props - The properties to override in the default theme.
+ * @returns {BaseTheme<TColors>} The complete custom theme.
+ */
 export function createTheme<TColors>(props: Partial<BaseTheme<TColors>>): BaseTheme<TColors> {
   const theme = defaultTheme();
 
