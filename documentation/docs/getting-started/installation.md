@@ -1,0 +1,47 @@
+---
+id: installation
+title: Installation
+sidebar_position: 1
+last_update:
+  date: 2026-03-12
+  author: Redon Alla
+tags: [react, react-native, expo, framework]
+---
+
+**FlexNative** is a component library that enables developers to build universal design systems.
+It is built on top of React Native, allowing you to develop apps for **Android**, **iOS**, and the **Web**.
+
+**FlexNative** is supported in **[Expo](https://docs.expo.dev/get-started/installation/)** or React Native CLI initiated apps.
+Web support is made possible by **[react-native-web](https://necolas.github.io/react-native-web/)**.
+
+## Stable
+Stable version of **FlexNative** are available on npm
+
+```bash npm2yarn
+npm install @flexnative/<package_name>
+```
+
+## Plain react-native project
+
+If you are using plain react-native project (without expo) you need to install `react-native-unimodules`.
+
+And you needs to follow [the additional installation directions here](https://docs.expo.dev/bare/installing-expo-modules/?redirected).
+
+Once that is finished, we’ll have a plain react-native project which can use expo dependencies.
+
+:::danger
+
+When running *npm add* on a local module, the whole `node_modules` folder of the local module gets pulled in.
+This means, before pulling in that local module, you might want to clear `node_modules`
+in the local module and run `npm install --production` so that your **devDependencies** (i.e. `react` and `react-native`) are not pulled in.
+
+:::
+
+## Web (plain react web project)
+
+**FlexNative** just like on mobile can be used in your web projects.
+This is possible using [react-native-web](https://github.com/necolas/react-native-web).
+
+If you are using plain react with `create-react-app` project (without expo) you need to install `react-native-web`.
+
+For more read **[Introduction to React Native for Web](https://necolas.github.io/react-native-web/docs/)**

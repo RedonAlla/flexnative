@@ -1,12 +1,18 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
-const path = require("path");
+
+// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
   title: 'FlexNative',
   tagline: 'FlexNative is a component library that enables developers to build universal design systems. It is built on top of React Native, allowing you to develop apps for Android, iOS, and the Web.',
   favicon: 'img/logo.svg',
+
+  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
+  future: {
+    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+  },
 
   // Set the production url of your site here
   url: 'https://redonalla.github.io/',
@@ -17,12 +23,9 @@ const config: Config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'RedonAlla', // Usually your GitHub org/user name.
-  projectName: 'flexnative/framework-docs', // Usually your repo name.
-  deploymentBranch: 'gh-pages',
-  trailingSlash: false,
-  
-  onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+  projectName: 'docusaurus', // Usually your repo name.
+
+  onBrokenLinks: 'throw',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -84,66 +87,9 @@ const config: Config = {
     ],
   ],
 
-  plugins: [
-    'docusaurus-plugin-sass',
-    '@docusaurus/theme-live-codeblock',
-    [ require.resolve('./customWebpack5Plugin.js'), {} ],
-    [
-      "@gorhom/docusaurus-react-native-plugin",
-      {
-        alias: {
-          "expo-font": path.resolve(
-            __dirname,
-            "node_modules/@expo/vector-icons"
-          ),
-          "expo-image": path.resolve(
-            __dirname,
-            "node_modules/expo-image"
-          ),
-          "expo-blur": path.resolve(
-            __dirname,
-            "node_modules/expo-blur"
-          ),
-          "@expo/vector-icons": path.resolve(
-            __dirname,
-            "node_modules/@expo/vector-icons"
-          ),
-          "@flexnative/icons": path.resolve(
-            __dirname,
-            "node_modules/@flexnative/icons"
-          ),
-          "@flexnative/buttons": path.resolve(
-            __dirname,
-            "node_modules/@flexnative/buttons"
-          ),
-          "@flexnative/avatar": path.resolve(
-            __dirname,
-            "node_modules/@flexnative/avatar"
-          ),
-          "@flexnative/bottom-sheet": path.resolve(
-            __dirname,
-            "node_modules/@flexnative/bottom-sheet"
-          ),
-          "react-native-reanimated": path.resolve(
-            __dirname,
-            "node_modules/react-native-reanimated"
-          ),
-          "react-native": path.resolve(
-            __dirname,
-            "node_modules/react-native"
-          )
-        },
-      }
-    ],
-  ],
-
-  clientModules: [
-    // add custom css
-  ],
-
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/logo.svg',
+    image: 'img/docusaurus-social-card.jpg',
 	  announcementBar: {
       id: 'work_in_progress',
       content: 'work in progress...'
@@ -236,7 +182,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Redon Alla, Inc. Built with Docusaurus.`,
     },
     prism: {
       additionalLanguages: [
@@ -255,6 +201,12 @@ const config: Config = {
       playgroundPosition: 'bottom',
     }
   } satisfies Preset.ThemeConfig,
+
+  plugins: [
+    'docusaurus-plugin-sass',
+    './plugins/react-native-webpack.js',
+    './plugins/transpile-jsx-webpack.js'
+  ],
 };
 
 export default config;

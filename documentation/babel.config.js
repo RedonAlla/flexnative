@@ -1,18 +1,14 @@
 module.exports = {
-  presets: [
-    require.resolve('@docusaurus/core/lib/babel/preset'),
-    ["@babel/preset-react", {"runtime": "automatic"}]
-  ],
-  "plugins": [
+  presets: ['@docusaurus/core/lib/babel/preset'],
+  plugins: [
     [
-      "module-resolver",
+      'module-resolver',
       {
-        "alias":
-        {
-          "^react-native$": "react-native-web",
-          'react-native/Libraries/Image/AssetRegistry$': 'react-native-web/dist/modules/AssetRegistry'
+        alias: {
+          'react-native$': 'react-native-web'
         }
       }
-    ]
+    ],
+    'react-native-reanimated/plugin'
   ]
 };

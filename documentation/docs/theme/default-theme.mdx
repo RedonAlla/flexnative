@@ -2,25 +2,56 @@
 sidebar_position: 1
 title: Default Theme
 last_update:
-  date: 2025-07-21
+  date: 2026-03-12
   author: Redon Alla
 tags: [react, react-native, expo, framework, component,theme]
 ---
 
 
-import LightColors from '@site/src/components/Docs/Colors/LightColors';
+import DefaultColors from '@site/src/components/Docs/Colors/DefaultColors';
 
-The [`BaseTheme<TColors>`](./theme-provider.mdx#basethemetcolors) theme object is where you define your application's color palette, type scale, borders, border radius values, and more.
+The [`BaseTheme<TColors>`](#base-theme-interface) theme object is where you define your application's color palette, type scale, borders, border radius values, and more.
 
 :::info
 First of all you need to install `@flexnative/theme-context`.
 Fallow instructions here on **[how to install and how to use](../getting-started/installation.mdx)** `@flexnative/theme-context`.
 :::
 
-## Colors
+## Base Theme Interface
+
+The `BaseTheme` interface acts as the contract for the theme object in FlexNative.
+It defines the structure of the data available through the `ThemeContext`, including colors, metrics, and configuration flags.
+
+## Definition
+
+The interface uses a generic `TColors` to support custom color extensions while maintaining type safety.
+
+```typescript
+export interface BaseTheme<TColors> {
+  colors: BaseColors & TColors;
+  scheme: ColorSchemeName;
+  isDark: boolean;
+  borders: Borders;
+  spaces: Record<Spaces, number>;
+  fontSize: Record<FontSize, number>;
+}
+```
+
+## Properties
+
+| Property | Type | Description |
+| :--- | :--- | :--- |
+| `colors` | [`BaseColors & TColors`](#base-theme-interface) | The active color palette. This includes standard semantic colors (primary, success, etc.) merged with any custom colors defined in `TColors`. |
+| `scheme` | `ColorSchemeName` | The current color scheme preference, usually `'light'` or `'dark'`. |
+| `isDark` | `boolean` | A convenient boolean flag derived from the scheme. Returns `true` if the theme is dark. |
+| `borders` | [`Borders`](#borders) | Contains configuration for border `width` and `radius`. |
+| `spaces` | [`Record<Spaces, number>`](#spaces) | A dictionary of spacing values (margins, paddings) keyed by size names (e.g., `sm`, `md`). |
+| `fontSize` | [`Record<FontSize, number>`](#fontsize) | A dictionary of font size values keyed by size names. |
+
+## BaseColors
 Default theme colors. You can extend the `BaseColors` with your own color properties.
 
-<LightColors />
+<DefaultColors />
 
 ## Spaces
 Spacing values for layout, such as margins and paddings. This is a key part of the theme that helps maintain consistent spacing across components.
@@ -45,29 +76,30 @@ Represents the possible font sizes used for text elements.
 
 |  Name  | Type | Value | Description |
 | ------ | ---- | ----- | ----------- |
-| `xxs`| `number` | A small font size, 8 units. |
-| `xs` | `number` | The default font size, 12 units. |
-| `sm` | `number` | A medium font size, 14 units. |
-| `md` | `number` | A large font size, 16 units. |
-| `lg` | `number` | A large font size, 18 units. |
-| `xl` | `number` | A large font size, 20 units. |
-| `xxl`| `number` | A large font size, 24 units. |
-| `number` | `number` | A custom numeric font size. |
+| `xxs`| `number` | 8 | A small font size, 8 units. |
+| `xs` | `number` | 12 | The default font size, 12 units. |
+| `sm` | `number` | 14 | A medium font size, 14 units. |
+| `md` | `number` | 16 | A large font size, 16 units. |
+| `lg` | `number` | 18 | A large font size, 18 units. |
+| `xl` | `number` | 20 | A large font size, 20 units. |
+| `xxl`| `number` | 24 | A large font size, 24 units. |
+| `number` | `number` |  | A custom numeric font size. |
 
-### Borders
-Border styles for components. This can include border widths, radius to ensure a consistent look and feel across your UI components.
+## Borders
+Border styles for components.
+This can include border widths, radius to ensure a consistent look and feel across your UI components.
 
 ### BorderWidth
 Represents the possible border width values.
 
 |  Name  | Type | Value | Description |
 | ------ | ---- | ----- | ----------- |
-| `none` | `number` | No border width (0). |
-| `hairline` |`number` | A hairline border width, typically the thinnest possible line on the device. See [StyleSheet.hairlineWidth](https://reactnative.dev/docs/stylesheet#hairlinewidth). |
-| `thin` | `number` | A thin border width, 1 unit. |
-| `base` | `number` | A base border width, 2 unit2. |
-| `thick` | `number` | A thick border width, 3 unit. |
-| `number` | `number` | A custom numeric border width. |
+| `none` | `number` | 0 | No border width (0). |
+| `hairline` |`number` |  | A hairline border width, typically the thinnest possible line on the device. See [StyleSheet.hairlineWidth](https://reactnative.dev/docs/stylesheet#hairlinewidth). |
+| `thin` | `number` | 1 | A thin border width, 1 unit. |
+| `base` | `number` | 2 | A base border width, 2 units. |
+| `thick` | `number` | 3 | A thick border width, 3 unit. |
+| `number` | `number` |  | A custom numeric border width. |
 
 
 ### BorderRadius
@@ -75,9 +107,38 @@ Represents the possible border radius values.
 
 |  Name  | Type | Value | Description |
 | ------ | ---- | ----- | ----------- |
-| `none` | `number` | No border radius (0). |
-| `small` | `number` | A small border radius (2). |
-| `medium` | `number` | A medium border radius (4). |
-| `large` | `number` | A large border radius (6). |
-| `full` | `number` | A fully rounded border radius (99999). |
-| `number` | `number` | A custom numeric border radius. |
+| `none` | `number` | 0 | No border radius (0). |
+| `small` | `number` | 2 | A small border radius (2 units). |
+| `medium` | `number` | 4 | A medium border radius (4 units). |
+| `large` | `number` | 6 | A large border radius (6 units). |
+| `full` | `number` | 99999 | A fully rounded border radius (99999 units). |
+| `number` | `number` |  | A custom numeric border radius. |
+
+## Usage Example
+
+When creating a custom theme, you conform to this interface. Typically, you start with the default theme and override specific properties.
+
+```typescript
+import { BaseTheme, defaultTheme } from '@flexnative/theme-context';
+
+// 1. Define your custom colors type
+interface MyCustomColors {
+  brand: string;
+  accent: string;
+}
+
+// 2. Create the theme object
+const myAppTheme: BaseTheme<MyCustomColors> = {
+  ...defaultTheme(),
+  colors: {
+    ...defaultTheme().colors,
+    brand: '#5E72E4',
+    accent: '#11CDEF',
+  },
+  // Overriding standard metrics
+  borders: {
+    width: { ...defaultTheme().borders.width, thin: 1 },
+    radius: { ...defaultTheme().borders.radius, small: 4 }
+  }
+};
+```
