@@ -2,6 +2,9 @@ import React from "react";
 import clsx from 'clsx';
 
 import './styles.scss';
+import MobileShowcase from './mobile-showcase';
+import TabletShowcase from './tablet-showcase';
+import DesktopShowcase from './desktop-showcase';
 import SegmentedControl from "@site/src/components/SegmentedControl";
 
 type DemoType = 'desktop' | 'tablet' | 'mobile';
@@ -15,63 +18,11 @@ type DemoProps = {
   handleDemoChange: (value: DemoType) => void;
 }
 
-const demoConfig = {
-  desktop: {
-    containerStyle: {
-      position: 'relative',
-      width: '100%',
-      maxWidth: '960px',
-      margin: '0 auto',
-      paddingBottom: '65%', // Aspect Ratio for the container
-    },
-    svgSrc: '/flexnative/img/desktop-showcase.svg',
-    iframeStyle: {
-      position: 'absolute',
-      top: '4.5%',
-      left: '2.5%',
-      width: '95%',
-      height: '82%',
-      borderRadius: '10px',
-      border: '0',
-    },
-  },
-  tablet: {
-    containerStyle: {
-      position: 'relative',
-      width: 657,
-      height: 904,
-      margin: '0 auto',
-    },
-    svgSrc: '/flexnative/img/tablet-showcase.svg',
-    iframeStyle: {
-      position: 'absolute',
-      top: 36,
-      left: 38,
-      width: 581,
-      height: 832,
-      borderRadius: 24,
-      border: 0,
-    },
-  },
-  mobile: {
-    containerStyle: {
-      position: 'relative',
-      width: '320px',
-      height: '650px',
-      margin: '0 auto',
-    },
-    svgSrc: '/flexnative/img/mobile-showcase.svg',
-    iframeStyle: {
-      position: 'absolute',
-      top: 68,
-      left: 17,
-      width: 286,
-      height: 565,
-      borderRadius: 24,
-      border: 0,
-    },
-  },
-};
+const DemoCase = {
+  'desktop': DesktopShowcase,
+  'tablet': TabletShowcase,
+  'mobile': MobileShowcase,
+}
 
 type BtnPros = {
   icon: string;
@@ -113,8 +64,7 @@ class DownloadBtn extends React.PureComponent<BtnPros, {}> {
 
 class DemoApp extends React.PureComponent<DemoProps> {
   render() {
-    const { demoType } = this.props;
-    const config = demoConfig[demoType];
+    const Showcase = DemoCase[this.props.demoType];
     return (
       <>
         <div
@@ -128,26 +78,7 @@ class DemoApp extends React.PureComponent<DemoProps> {
             animationName: "fadeInRightBig"
           }}
         >
-          <div style={config.containerStyle} >
-            {/* 1. The SVG is just the background frame */}
-            <img
-              src={config.svgSrc}
-              alt={`${demoType} frame`}
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-              }}
-            />
-            {/* 2. The iframe is an HTML element positioned on top of the SVG's screen area */}
-            <iframe
-              src="https://flexnative.netlify.app/"
-              frameBorder="0"
-              style={config.iframeStyle}
-            />
-          </div>
+          <Showcase title="Demo app" className="image" />
           <div className="download-shape-1" />
           <div className="download-shape-2">
             <img
