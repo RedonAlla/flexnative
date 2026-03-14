@@ -13,7 +13,7 @@ You can customize these values globally to align with your design requirements.
 ## [Understanding TColors](./default-theme#basecolors)
 
 The `TColors` generic allows you to define the shape of your color palette.
-By default, the theme uses [`BaseColors`](/default-theme#basecolors).
+By default, the theme uses [`BaseColors`](./default-theme#basecolors).
 When you provide a `TColors` interface, the theme's color object becomes an intersection of `BaseColors & TColors`.
 
 ```typescript

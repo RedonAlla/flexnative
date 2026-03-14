@@ -33,7 +33,8 @@ const services: Array<ServiceProps> = [
     wowDuration: "1.3s",
     icon: "icon-puzzle",
     description: `Up to ${TOTAL_COMPONENTS} general-purpose components designed to save development time while providing a smooth app experience.`,
-    link: "/flexnative/docs/components",
+    //link: "/flexnative/docs/components",
+    link: "/flexnative",
   },
   {
     title: "Easy to use",
