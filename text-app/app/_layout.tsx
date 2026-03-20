@@ -9,7 +9,6 @@ import { Drawer } from 'expo-router/drawer';
 
 import { Ionicons } from '@expo/vector-icons';
 
-import DrawerContent from '../packages/navigation/src/custom-drawer-content';
 import ThemeContext, { createTheme, FontSize } from '@flexnative/theme-context';
 
 import {
@@ -92,7 +91,8 @@ export default function Layout() {
             },
           }}
           initialRouteName={'Home'}
-          drawerContent={DrawerContent}>
+          // drawerContent={DrawerContent}
+          >
           <Drawer.Screen
             name="Home"
             // component={ModalScreen}

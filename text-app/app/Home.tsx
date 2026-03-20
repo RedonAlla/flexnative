@@ -1,21 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet, StyleProp, TextStyle, ColorValue } from "react-native";
-import Chat from '../packages/navigation/screens/Chat';
-import { withFancyDrawer } from '../packages/navigation/src/with-fancy-drawer';
-import { SecondaryButton } from '../packages/buttons/src/SecondaryButton';
-import PrimaryButton from '../packages/buttons/src/PrimaryButton';
-import ThemeContext, { BaseColors, BaseTheme, Borders, dark, defaultTheme, FontSize, light, Spaces } from '@flexnative/theme-context';
-import Button from '../packages/buttons/src/button';
-import Icon from '@flexnative/icons';
-import Avatar, { AvatarGroup } from '../packages/avatar/src';
-import Message from '../packages/messages/src';
-import Badge from '../packages/badges';
-import SkeletonLoader, { Circle, Rect } from '../packages/skeleton-loading';
-import Tag from '../packages/ra-tags/src';
-import CheckBox from '../packages/inputs/src/check-box';
-import { NumericTextBox, StateCallbackType, TextBox } from '../packages/inputs/src';
-import CheckBoxListDefault from '../packages/inputs/src/check-box-list/CheckBoxListDefault';
-import CheckBoxListDemo from '../components/CheckBoxListDemo';
+import { View, StyleSheet, StyleProp, TextStyle, ColorValue } from "react-native";
+import ThemeContext, { BaseColors, BaseTheme, defaultTheme, FontSize, light } from '@flexnative/theme-context';
+
 
 // import MessageText from '../tests/components/messages/border-color';
 
@@ -41,63 +27,14 @@ function App() {
   //  <MessageText />
   
   <ThemeContext.Provider value={{state: theme}}>
-    <View style={[styles.container, {flexDirection: "row", backgroundColor: theme.colors.background}]}>
-      <View style={{display: "flex", flexDirection: "row"}}>
-        <View ><Button text='Button' onPress={() => {}} color='primary' type='default' /></View>
-        
-        <View style={{flexDirection:'column', height:'auto', flex: 1, backgroundColor: 'white'}}>
-          <NumericTextBox
-            label="Enter a number"
-            onChangeText={(text) => console.log(text)}
-            actions={true}
-            step={2}
-            size='small'
-            suffix='star'
-            prefix='star'
-            helperText='This is a helper text'
-          />
-
-          <NumericTextBox
-            label="Enter a number"
-            onChangeText={(text) => console.log(text)}
-            size='medium'
-            actions={true}
-            step={2}
-            suffix='star'
-            prefix='star'
-            helperText='This is a helper text'
-          />
-
-          <NumericTextBox
-            label="Enter a number"
-            onChangeText={(text) => console.log(text)}
-            actions={true}
-            step={2}
-            size='large'
-            suffix='star'
-            prefix='star'
-            helperText='This is a helper text'
-          />
-        </View>
-        
-      </View>
-    </View>
+    
   
     </ThemeContext.Provider>
   );
 }
 
-const labelStyles = (defaultColor: ColorValue, activeColor: ColorValue) => {
-  return (state: StateCallbackType): StyleProp<TextStyle> => {
-    return [
-      {
-        color: state.focused ? activeColor : defaultColor
-      }
-    ]
-  }
-}
 
-export default withFancyDrawer(App);
+export default App;
 
 const styles = StyleSheet.create({
   container: {

@@ -186,7 +186,7 @@
 
 ##  (2024-12-29)
 
-* chore(ra-icons): bump version to 0.0.5 and fix icon definition typo ([455021b](https://github.com/RedonAlla/flexnative/commit/455021b))
+* chore(icons): bump version to 0.0.5 and fix icon definition typo ([455021b](https://github.com/RedonAlla/flexnative/commit/455021b))
 
 
 
