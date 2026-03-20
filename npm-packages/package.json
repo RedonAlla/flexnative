@@ -2,7 +2,7 @@
   "name": "ra-framework",
   "workspaces": [
     "src/packages/components/ra-buttons",
-    "src/packages/components/ra-icons",
+    "src/packages/components/icons",
     "src/packages/components/ra-bottom-sheet",
     "src/packages/components/ra-skeleton-loading",
     "src/packages/context/theme-context",

@@ -1,0 +1,41 @@
+{
+  "name": "@flexnative/icons",
+  "version": "0.1.0",
+  "description": "An extensible React Native icon library that allows projects to add custom icons.",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "react-native",
+    "icons"
+  ],
+  "author": "Redon Alla",
+  "license": "MIT",
+  "peerDependencies": {
+    "@expo/vector-icons": "^14.0.0",
+    "expo-font": "*",
+    "react": "*",
+    "react-native": "*",
+    "@flexnative/theme-context": "*",
+    "react-native-reanimated": "*"
+  },
+  "homepage": "https://redonalla.github.io/flexnative/",
+  "bugs": "https://github.com/RedonAlla/flexnative/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RedonAlla/flexnative.git",
+    "directory": "npm-packages/src/packages/context/icons"
+  }
+}
