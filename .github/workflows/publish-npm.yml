@@ -65,10 +65,17 @@ jobs:
               echo "$PACKAGE_NAME@$PACKAGE_VERSION is already published. Skipping."
             else
               echo "Publishing $PACKAGE_NAME@$PACKAGE_VERSION..."
-              # Install all dependencies, including devDependencies, needed for the build step.
+              # Install dependencies
               npm install --production=false
+              
+              # Install peer dependencies for building (only for @flexnative/icons)
+              if [[ "$PACKAGE_NAME" == "@flexnative/icons" ]]; then
+                echo "Installing peer dependencies for @flexnative/icons..."
+                npm install @flexnative/theme-context react-native-reanimated --save-dev
+              fi
+              
               npm publish
               echo "Successfully published $PACKAGE_NAME@$PACKAGE_VERSION"
-            fi
+              fi
             cd -
           done
