@@ -23,10 +23,11 @@
   ],
   "author": "Redon Alla",
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "@flexnative/theme-context": "*"
   },
   "peerDependencies": {
+    "@flexnative/theme-context": "*",
     "@expo/vector-icons": "^14.0.0",
     "expo-font": "*",
     "react": "*",
