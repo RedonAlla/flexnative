@@ -1,7 +1,7 @@
 import { ColorValue, TextProps } from "react-native";
 import { BorderRadius, Color, FontSize } from '@flexnative/theme-context';
 
-export interface IconProps extends TextProps{
+export interface IconProps extends TextProps {
   name: string;
   size?: FontSize;
   color?: Color;
