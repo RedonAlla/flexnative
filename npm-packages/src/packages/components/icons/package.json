@@ -26,13 +26,11 @@
   ],
   "author": "Redon Alla",
   "license": "MIT",
-  "peerDependencies": {
-    "@flexnative/theme-context": "*",
-    "react-native-reanimated": "*"
+  "dependencies": {
+    "@flexnative/theme-context": "workspace:*" 
   },
-  "devDependencies": {
-    "@flexnative/theme-context": "^0.0.16",
-    "typescript": "^5.0.0"
+  "peerDependencies": {
+    "react-native-reanimated": "*"
   },
   "homepage": "https://redonalla.github.io/flexnative/",
   "bugs": "https://github.com/RedonAlla/flexnative/issues",
