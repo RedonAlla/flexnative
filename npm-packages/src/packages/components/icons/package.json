@@ -26,10 +26,6 @@
   ],
   "author": "Redon Alla",
   "license": "MIT",
-  "devDependencies": {
-    "@flexnative/theme-context": "*",
-    "react-native-reanimated": "*"
-  },
   "peerDependencies": {
     "@flexnative/theme-context": "*",
     "react-native-reanimated": "*"
