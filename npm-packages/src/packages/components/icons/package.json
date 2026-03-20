@@ -23,12 +23,14 @@
   ],
   "author": "Redon Alla",
   "license": "MIT",
+  "dependencies": {
+    "@flexnative/theme-context": "*"
+  },
   "peerDependencies": {
     "@expo/vector-icons": "^14.0.0",
     "expo-font": "*",
     "react": "*",
     "react-native": "*",
-    "@flexnative/theme-context": "*",
     "react-native-reanimated": "*"
   },
   "homepage": "https://redonalla.github.io/flexnative/",
