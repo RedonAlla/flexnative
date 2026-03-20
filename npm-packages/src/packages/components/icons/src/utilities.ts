@@ -27,5 +27,3 @@ export default function  (config: IcoMoonConfig): Record<string, string> {
 
   return glyphMap;
 }
-
-const toHexZeroPad = (value: number, places: number) => value.toString(16).padStart(places, '0000');

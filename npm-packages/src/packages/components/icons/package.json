@@ -28,18 +28,10 @@
   "license": "MIT",
   "devDependencies": {
     "@flexnative/theme-context": "*",
-    "@types/react": "*",
-    "@types/react-native": "*",
-    "react": "*",
-    "react-native": "*",
     "react-native-reanimated": "*"
   },
   "peerDependencies": {
     "@flexnative/theme-context": "*",
-    "@expo/vector-icons": "*",
-    "expo-font": "*",
-    "react": "*",
-    "react-native": "*",
     "react-native-reanimated": "*"
   },
   "homepage": "https://redonalla.github.io/flexnative/",
