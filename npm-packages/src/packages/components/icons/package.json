@@ -30,11 +30,15 @@
     "@flexnative/theme-context": "*",
     "react-native-reanimated": "*"
   },
+  "devDependencies": {
+    "@flexnative/theme-context": "*",
+    "typescript": "^5.0.0"
+  },
   "homepage": "https://redonalla.github.io/flexnative/",
   "bugs": "https://github.com/RedonAlla/flexnative/issues",
   "repository": {
     "type": "git",
     "url": "https://github.com/RedonAlla/flexnative.git",
-    "directory": "npm-packages/src/packages/context/icons"
+    "directory": "npm-packages/src/packages/components/icons"
   }
 }
