@@ -54,8 +54,10 @@ jobs:
         if: steps.changed-packages.outputs.changed_dirs != ''
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NODE_ENV: production
         run: |
+          # Install all dependencies from the root to link workspaces correctly.
+          npm install
+
           for dir in ${{ steps.changed-packages.outputs.changed_dirs }}; do
             echo "--- Processing package in $dir ---"
             cd "$dir"
@@ -65,8 +67,6 @@ jobs:
               echo "$PACKAGE_NAME@$PACKAGE_VERSION is already published. Skipping."
             else
               echo "Publishing $PACKAGE_NAME@$PACKAGE_VERSION..."
-              # Install all dependencies, including devDependencies, needed for the build step.
-              npm install --production=false
               npm publish
               echo "Successfully published $PACKAGE_NAME@$PACKAGE_VERSION"
             fi
