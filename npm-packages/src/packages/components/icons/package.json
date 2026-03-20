@@ -27,7 +27,7 @@
   "author": "Redon Alla",
   "license": "MIT",
   "dependencies": {
-    "@flexnative/theme-context": "workspace:*" 
+    "@flexnative/theme-context": "*" 
   },
   "peerDependencies": {
     "react-native-reanimated": "*"
