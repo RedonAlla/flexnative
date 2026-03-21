@@ -17,11 +17,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "baseUrl": ".",
-    "paths": {
-      "@flexnative/theme-context": ["src/packages/context/theme-context/src"]
-    }
+    "resolveJsonModule": true
   },
   "exclude": [
     "node_modules",
