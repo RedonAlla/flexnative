@@ -1,37 +1,8 @@
 {
-  "compilerOptions": {
-    "declaration": true,
-    "isolatedModules": true,
-    "types": ["react", "react-native"],
-    "jsx": "react-native",
-    "strict": true,
-    "sourceMap": true,
-    "outDir": "dist",
-    "rootDir": "src",
-
-    "allowUnreachableCode": false,
-    "allowUnusedLabels": false,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "lib": ["esnext"],
-    "module": "esnext",
-    "moduleResolution": "node",
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
-    "noImplicitUseStrict": false,
-    "noStrictGenericChecks": false,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "target": "esnext"
-  },
-  "include": ["src"],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ],
-  "paths": {
-    "react": [ "./node_modules/@types/react" ]
-  }
+  "files": [],
+  "include": [],
+  "references": [
+    { "path": "./src/packages/context/theme-context" },
+    { "path": "./src/packages/components/icons" }
+  ]
 }

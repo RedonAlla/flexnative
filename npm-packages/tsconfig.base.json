@@ -4,6 +4,7 @@
     "module": "commonjs",
     "lib": ["esnext"],
     "allowJs": true,
+    "composite": true,
     "jsx": "react-native",
     "declaration": true,
     "declarationMap": true,
@@ -16,7 +17,11 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@flexnative/theme-context": ["src/packages/context/theme-context/src"]
+    }
   },
   "exclude": [
     "node_modules",
