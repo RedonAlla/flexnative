@@ -27,7 +27,7 @@
   "author": "Redon Alla",
   "license": "MIT",
   "dependencies": {
-    "@flexnative/theme-context": "0.0.16"
+    "@flexnative/theme-context": "^0.0.16"
   },
   "peerDependencies": {
     "react": ">=19.0.0",
