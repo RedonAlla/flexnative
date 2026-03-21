@@ -1,4 +1,12 @@
 {
   "files": [],
-  "include": []
+  "include": [],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@flexnative/theme-context": [
+        "../theme-context/src"
+      ]
+    }
+  }
 }

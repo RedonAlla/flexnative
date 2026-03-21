@@ -35,6 +35,7 @@
   "author": "Redon Alla",
   "license": "MIT",
   "dependencies": {
+    "@flexnative/theme-context": "*",
     "@flexnative/authentication": "^0.0.3",
     "expo": "^53.0.19",
     "expo-image": "~2.3.2",
