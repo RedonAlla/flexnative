@@ -6,7 +6,7 @@
     "jsx": "react-native",
     "baseUrl": ".",
     "paths": {
-      "@flexnative/theme-context": ["../../context/theme-context/src"]
+      "@flexnative/theme-context": ["../../context/theme-context"]
     }
   },
   "include": ["src"]
