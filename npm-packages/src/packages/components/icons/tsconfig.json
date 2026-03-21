@@ -3,7 +3,11 @@
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": "src",
-    "jsx": "react-native"
+    "jsx": "react-native",
+    "baseUrl": ".",
+    "paths": {
+      "@flexnative/theme-context": ["../../context/theme-context/src"]
+    }
   },
   "include": ["src"]
 }
