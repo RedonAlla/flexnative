@@ -1,6 +1,6 @@
 {
   "name": "@flexnative/icons",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An extensible React Native icon library that allows projects to add custom icons.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

@@ -16,7 +16,7 @@ type IcoMoonConfig = {
   };
 };
 
-export default function  (config: IcoMoonConfig): Record<string, string> {
+export function createIconSetFromIcoMoon (config: IcoMoonConfig): Record<string, string> {
   const glyphMap: Record<string, string> = {};
 
   config.icons.forEach((icon) => {

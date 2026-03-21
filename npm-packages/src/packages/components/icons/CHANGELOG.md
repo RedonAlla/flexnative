@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## Bump version to 0.1.1
+Enhance `IconProvider` with documentation, and refactor `createIconSetFromIcoMoon` function
+
 ## [Unreleased]
 
 ### Added

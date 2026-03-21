@@ -7,7 +7,7 @@
 [![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat&logo=github)](https://github.com/RedonAlla/flexnative/issues)
 [![npm unpacked size](https://img.shields.io/npm/unpacked-size/@flexnative/icons.svg?logo=npm)](https://www.npmjs.com/package/@flexnative/icons)
 [![language](https://img.shields.io/github/languages/top/RedonAlla/flexnative?logo=github)](https://github.com/RedonAlla/flexnative)
-[![npm last update](https://img.shields.io/npm/last-update/@flexnative/icons.svg?logo=npm&label=last%20publish)](https://www.npmjs.com/package/@flexnative/icons)[![npm bundle size](https://img.shields.io/bundlephobia/minzip/@flexnative/icons.svg)](https://bundlephobia.com/package/@flexnative/icons)
+[![npm last update](https://img.shields.io/npm/last-update/@flexnative/icons.svg?logo=npm&label=last%20publish)](https://www.npmjs.com/package/@flexnative/icons)
 [![npm license](https://img.shields.io/npm/l/@flexnative/icons?logo=opensourceinitiative)](https://www.npmjs.com/package/@flexnative/icons)
 
 
