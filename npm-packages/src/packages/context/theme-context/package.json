@@ -12,6 +12,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "clean": "rm -rf dist",
     "prepare": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -29,8 +30,9 @@
     "color-bits": "*"
   },
   "devDependencies": {
-    "@types/react": "*",
-    "@types/react-native": "*"
+    "@types/react": "^19.1.8",
+    "@types/react-native": "^0.73.0",
+    "typescript": "^5.8.3"
   },
   "homepage": "https://redonalla.github.io/flexnative/",
   "bugs": "https://github.com/RedonAlla/flexnative/issues",
@@ -40,6 +42,6 @@
     "directory": "npm-packages/src/packages/context/theme-context"
   },
   "peerDependencies": {
-    "react": "*"
+    "react": ">=19.0.0"
   }
 }

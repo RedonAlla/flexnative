@@ -1,23 +1,12 @@
 {
   "name": "ra-framework",
+  "private": true,
   "workspaces": [
-    "src/packages/components/ra-buttons",
-    "src/packages/components/icons",
-    "src/packages/components/ra-bottom-sheet",
-    "src/packages/components/ra-skeleton-loading",
-    "src/packages/context/theme-context",
-    "src/packages/demo",
-    "src/packages/services/ra-local-storage",
-    "src/packages/utilities",
-    "src/packages/components/ra-badges",
-    "src/packages/components/ra-avatar",
-    "src/packages/components/ra-tags",
-    "src/packages/components/ra-inputs",
-    "src/shared/ui-constants",
-    "src/packages/components/navigation",
-    "src/packages/components/layout",
-    "src/packages/components/messages",
-    "src/packages/authentication"
+    "src/packages/*",
+    "src/packages/components/*",
+    "src/packages/context/*",
+    "src/packages/services/*",
+    "src/shared/*"
   ],
   "version": "0.0.1",
   "description": "React Native Framework",
@@ -27,7 +16,10 @@
     "dist/**/*"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "npm run clean -ws",
+    "lint": "eslint .",
+    "format": "prettier --write ."
   },
   "keywords": [
     "react",
@@ -37,28 +29,26 @@
   ],
   "author": "Redon Alla",
   "license": "MIT",
-  "peerDependencies": {
-    "react": "^19.1.0",
-    "react-native-reanimated": "^3.12.0",
-    "react-native-svg": "^15.3.0"
-  },
   "dependencies": {
-    "@babel/core": "^7.28.0",
     "@flexnative/authentication": "^0.0.3",
-    "babel-plugin-module-resolver": "^5.0.2",
     "expo": "^53.0.19",
     "expo-image": "~2.3.2",
     "expo-router": "^5.1.3",
     "expo-secure-store": "~14.2.3",
     "react-native": "^0.80.1",
-    "react-native-gesture-handler": "^2.27.1",
-    "react-native-unimodules": "^0.14.10",
-    "typescript": "^5.8.3"
+    "react-native-gesture-handler": "^2.27.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.28.0",
+    "babel-plugin-module-resolver": "^5.0.2",
+    "eslint": "^8.57.0",
+    "eslint-config-expo": "^7.1.2",
+    "prettier": "^3.2.5",
     "expo-blur": "^14.1.5",
+    "react": "^19.1.0",
     "react-native-reanimated": "^3.18.0",
     "react-native-svg": "^15.12.0",
+    "typescript": "^5.8.3",
     "@types/react": "^19.1.8",
     "@types/react-native": "^0.73.0"
   }
