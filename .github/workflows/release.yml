@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-          cache-dependency-path: 'npm-packages/package-lock.json'
+          cache-dependency-path: 'npm-packages/**/package.json'
 
       - name: Install Dependencies
         run: npm install
