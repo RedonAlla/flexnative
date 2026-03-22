@@ -1,4 +1,5 @@
 module.exports = function transpileJsxWebpack() {
+  console.log('[FlexNative] transpile-jsx-webpack plugin loaded');
   return {
     name: 'custom-webpack-config',
     configureWebpack(config, isServer, utils) {
@@ -15,14 +16,19 @@ module.exports = function transpileJsxWebpack() {
         // Override the exclude pattern
         babelLoaderRule.exclude = (filepath) => {
           // Don't exclude our problematic package
-          if (filepath.includes('@flexnative/theme-context')) {
+          if (
+            filepath.includes('@flexnative/theme-context')
+          ) {
             return false;
           }
           // Use original exclude for everything else
           if (typeof originalExclude === 'function') {
             return originalExclude(filepath);
           }
-          return originalExclude;
+          if (originalExclude instanceof RegExp) {
+            return originalExclude.test(filepath);
+          }
+          return false;
         };
       }
 

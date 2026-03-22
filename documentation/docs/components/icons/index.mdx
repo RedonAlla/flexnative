@@ -10,6 +10,15 @@ tags: [react, react-native, expo, framework, component, icons]
 import Installation from '../../_installation.mdx';
 import DocCardList from '@theme/DocCardList';
 
+[![npm version](https://img.shields.io/npm/v/@flexnative/icons.svg?logo=npm)](https://www.npmjs.com/package/@flexnative/icons)
+[![npm downloads](https://img.shields.io/npm/dt/@flexnative/icons.svg?logo=npm)](https://www.npmjs.com/package/@flexnative/icons)
+[![GitHub source code](https://img.shields.io/badge/github-source%20code-blue?logo=github)](https://github.com/RedonAlla/flexnative/tree/main/npm-packages/src/packages/context/icons)
+[![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat&logo=github)](https://github.com/RedonAlla/flexnative/issues)
+[![npm unpacked size](https://img.shields.io/npm/unpacked-size/@flexnative/icons.svg?logo=npm)](https://www.npmjs.com/package/@flexnative/icons)
+[![language](https://img.shields.io/github/languages/top/RedonAlla/flexnative?logo=github)](https://github.com/RedonAlla/flexnative)
+[![npm last update](https://img.shields.io/npm/last-update/@flexnative/icons.svg?logo=npm&label=last%20publish)](https://www.npmjs.com/package/@flexnative/icons)
+[![npm license](https://img.shields.io/npm/l/@flexnative/icons?logo=opensourceinitiative)](https://www.npmjs.com/package/@flexnative/icons)
+
 A comprehensive collection of static and animated icons for React Native applications.
 This package leverages [`react-native-reanimated`](https://docs.swmansion.com/react-native-reanimated/) to provide smooth, high-performance animations for your icons.
 
@@ -69,11 +78,6 @@ export default function App() {
 
 ### Basic Icon
 
-
-import Icon from '@flexnative/icons';
-
-<Icon name="star" />
-
 Use the `Icon` component to display a static icon.
 It resolves styles (color, size) from the `@flexnative/icons`.
 
@@ -107,6 +111,15 @@ import { AnimatedIcon } from '@flexnative/icons';
 - [@types/react](https://www.npmjs.com/package/@types/react)
 - [@types/react-native](https://www.npmjs.com/package/@types/react-native)
 - [typescript](https://www.npmjs.com/package/typescript)
+
+
+import Icon, { AnimatedIcon, BounceIcon, HeartbeatIcon, IconProvider, Spinner } from '@flexnative/icons';
+
+      <Spinner name="star" size={160} n/>
+
+
+      <HeartbeatIcon name="star" pulseColor="#ff0000" size={160} n/>
+      <BounceIcon name='star' size={160} n/>
 
 ## API Reference & Guides
 Dive deeper into specific parts of the theme API.

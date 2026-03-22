@@ -1,5 +1,5 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
@@ -89,7 +89,7 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/social-card.jpg',
 	  announcementBar: {
       id: 'work_in_progress',
       content: 'work in progress...'
@@ -204,8 +204,10 @@ const config: Config = {
 
   plugins: [
     'docusaurus-plugin-sass',
+    '@docusaurus/theme-live-codeblock',
     './plugins/react-native-webpack.js',
-    './plugins/transpile-jsx-webpack.js'
+    './plugins/transpile-jsx-webpack.js',
+    require('./plugins/gorhom-react-native.js'),
   ],
 };
 

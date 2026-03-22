@@ -1,5 +1,6 @@
 ---
 title: IconProvider
+sidebar_position: 1
 last_update:
   date: 2026-03-21
   author: Redon Alla
