@@ -1,0 +1,114 @@
+---
+title: Icons
+sidebar_class_name: nav_session icons
+last_update:
+  date: 2026-03-21
+  author: Redon Alla
+tags: [react, react-native, expo, framework, component, icons]
+---
+
+import Installation from '../../_installation.mdx';
+import DocCardList from '@theme/DocCardList';
+
+A comprehensive collection of static and animated icons for React Native applications.
+This package leverages [`react-native-reanimated`](https://docs.swmansion.com/react-native-reanimated/) to provide smooth, high-performance animations for your icons.
+
+<Installation title="FlexNative icons" name='@flexnative/icons' />
+
+This package requires [`react-native-reanimated`](https://docs.swmansion.com/react-native-reanimated/) as a peer dependency for animated components.
+
+```bash
+npm install react-native-reanimated
+```
+
+## Key Features
+
+1. **Extensible Architecture**: Projects can add their own icons
+2. **TypeScript Support**: Full type definitions
+3. **Context-based Registry**: Icons are managed through React Context
+4. **Dynamic Registration**: Register icons at runtime
+5. **HOC for Custom Icons**: Easy creation of named icon components
+6. **Fallback Support**: Handle missing icons gracefully
+7. **SVG Props Support**: All standard SVG props are passed through
+
+This package provides a solid foundation for an extensible icon system that other projects can build upon and customize with their own icons.
+
+## Using Custom Fonts 
+You can use a custom icon font (like IcoMoon or Fontello) by loading the font file and mapping the characters.
+
+### 1. Load the Font
+Load your font file using [expo-font](https://docs.expo.dev/develop/user-interface/fonts/) or standard React Native linking.
+
+```tsx
+import { useFonts } from 'expo-font';
+// In your root component
+const [fontsLoaded] = useFonts({
+  'MyIcons': require('./assets/fonts/MyIcons.ttf')
+});
+```
+
+### 2. Add IconProvider
+Wrap your application (or the component tree where you intend to use icons) with the [`IconProvider`](./IconProvider.md).
+This allows you to map icon names to your actual icon assets (font characters).
+
+```tsx
+import React from 'react';
+import { IconProvider } from '@flexnative/icons';
+import { View } from 'react-native';
+
+export default function App() {
+  return (
+    <IconProvider icons={myIcons}>
+      <View style={{ flex: 1 }}>
+        {/* Your app content */}
+      </View>
+    </IconProvider>
+  );
+}
+```
+
+### Basic Icon
+
+
+import Icon from '@flexnative/icons';
+
+<Icon name="star" />
+
+Use the `Icon` component to display a static icon.
+It resolves styles (color, size) from the `@flexnative/icons`.
+
+```tsx
+import { Icon } from '@flexnative/icons';
+
+<Icon name="home" size="md" color="primary" />
+```
+
+### Animated Icon
+
+Use the `AnimatedIcon` component to display icons with built-in animations.
+You can switch animations using the `animation` prop.
+
+```tsx
+import { AnimatedIcon } from '@flexnative/icons';
+
+<AnimatedIcon 
+  name="heart" 
+  animation="heartbeat" 
+  size="xl" 
+  color="error" 
+  duration={1200} 
+/>
+```
+
+## Dependencies
+- [@flexnative/theme-context](https://www.npmjs.com/package/@flexnative/theme-context)
+
+## Dev Dependencies
+- [@types/react](https://www.npmjs.com/package/@types/react)
+- [@types/react-native](https://www.npmjs.com/package/@types/react-native)
+- [typescript](https://www.npmjs.com/package/typescript)
+
+## API Reference & Guides
+Dive deeper into specific parts of the theme API.
+
+<DocCardList />

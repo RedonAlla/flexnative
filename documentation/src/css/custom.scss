@@ -153,6 +153,14 @@ li {
     }
   }
 
+  &.nav_session.icons {
+    & > div {
+      & > a::before {
+        content: "\e91e";
+      }
+    }
+  }
+
   &.nav_session.components {
     & > div {
       & > a::before {
