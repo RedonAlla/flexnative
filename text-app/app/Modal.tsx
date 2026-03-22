@@ -15,21 +15,20 @@ function App() {
   return (
     // <ModalScreen />
     <IconProvider icons={icons}>
-      <Icon name="android" color='primary' backgroundColor='red' borderRadius={5} size='xl' />
       <Icon name="star" />
-      <Spinner name="star" />
+      <Spinner name="star" size={180} />
 
       <Text>TEST</Text>
 
-      <HeartbeatIcon name="star" pulseColor="#ff0000" />
-      <BounceIcon name='star' />
+      <HeartbeatIcon name="star" pulseColor="#ff0000"  size={180}/>
+      <BounceIcon name='star' size={180} />
 
       <AnimatedIcon 
         name="star" 
         animation="heartbeat" 
-        size="xl" 
         color="error" 
         duration={1200} 
+         size={180}
       />
 
     </IconProvider>
