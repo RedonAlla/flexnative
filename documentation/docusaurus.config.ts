@@ -91,7 +91,7 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     image: 'img/social-card.jpg',
-    metadata: [{name: 'algolia-site-verification', content: '523E47EEB39EC71C'}],
+    metadata: [{name: 'algolia-site-verification', content: '01EB78D3F3F1D817'}],
 	  announcementBar: {
       id: 'work_in_progress',
       content: 'work in progress...'
