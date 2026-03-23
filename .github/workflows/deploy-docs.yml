@@ -50,6 +50,10 @@ jobs:
       - name: Build
         run: npm run build
         working-directory: ./documentation
+        env:
+          # Maps the GitHub Secret to the process.env variable expected by Docusaurus
+          ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
+          ALGOLIA_API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

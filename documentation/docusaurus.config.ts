@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
@@ -90,6 +91,7 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     image: 'img/social-card.jpg',
+    metadata: [{name: 'algolia-site-verification', content: '523E47EEB39EC71C'}],
 	  announcementBar: {
       id: 'work_in_progress',
       content: 'work in progress...'
@@ -192,14 +194,45 @@ const config: Config = {
       theme: prismThemes.nightOwlLight,
       darkTheme: prismThemes.nightOwl,
     },
-    themes: ['@docusaurus/theme-live-codeblock'],
+    themes: [
+      '@docusaurus/theme-live-codeblock',
+    ],
     liveCodeBlock: {
       /**
        * The position of the live playground, above or under the editor
        * Possible values: "top" | "bottom"
        */
       playgroundPosition: 'bottom',
-    }
+    },
+    algolia: {
+      // The application ID provided by Algolia
+      appId: process.env.ALGOLIA_APP_ID as string,
+
+      // Public API key: it is safe to commit it
+      apiKey: process.env.ALGOLIA_API_KEY as string,
+
+      indexName: 'FlexNative',
+
+      // Optional: see doc section below
+      contextualSearch: true,
+
+      // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+      //externalUrlRegex: 'external\\.com|domain\\.com',
+
+      // Optional: Algolia search parameters
+      searchParameters: {},
+
+      // Optional: path for search page that enabled by default (`false` to disable it)
+      searchPagePath: false,
+
+      // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
+      insights: false,
+
+      // Optional: whether you want to use the new Ask AI feature (undefined by default)
+      //askAi: 'YOUR_ALGOLIA_ASK_AI_ASSISTANT_ID',
+
+      //... other Algolia params
+    },
   } satisfies Preset.ThemeConfig,
 
   plugins: [
