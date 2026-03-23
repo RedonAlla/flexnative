@@ -92,11 +92,7 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/social-card.jpg',
     metadata: [{name: 'algolia-site-verification', content: '01EB78D3F3F1D817'}],
-	  announcementBar: {
-      id: 'work_in_progress',
-      content: 'work in progress...'
-    },
-    docs: {
+	  docs: {
       sidebar: {
         hideable: true,
         autoCollapseCategories: true,
