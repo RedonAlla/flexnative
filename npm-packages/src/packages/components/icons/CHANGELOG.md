@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## Bump version to 0.1.3
+## Bump version to 0.1.4
 Improve `createIconSetFromIcoMoon` to support configurations for New IcoMoon App.
 
 ## Bump version to 0.1.1
