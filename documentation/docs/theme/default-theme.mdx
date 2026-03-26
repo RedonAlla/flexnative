@@ -48,12 +48,12 @@ export interface BaseTheme<TColors> {
 | `spaces` | [`Record<Spaces, number>`](#spaces) | A dictionary of spacing values (margins, paddings) keyed by size names (e.g., `sm`, `md`). |
 | `fontSize` | [`Record<FontSize, number>`](#fontsize) | A dictionary of font size values keyed by size names. |
 
-## BaseColors
+### BaseColors
 Default theme colors. You can extend the `BaseColors` with your own color properties.
 
 <DefaultColors />
 
-## Spaces
+### Spaces
 Spacing values for layout, such as margins and paddings. This is a key part of the theme that helps maintain consistent spacing across components.
 
 |  Name  | Type | Value | Description |
@@ -71,7 +71,7 @@ Spacing values for layout, such as margins and paddings. This is a key part of t
 | xxxl | `number` | 36 | Spacing of 36 units. |
 | `number` | `number` |  | A custom numeric spacing value. |
 
-## FontSize
+### FontSize
 Represents the possible font sizes used for text elements.
 
 |  Name  | Type | Value | Description |
@@ -85,11 +85,11 @@ Represents the possible font sizes used for text elements.
 | `xxl`| `number` | 24 | A large font size, 24 units. |
 | `number` | `number` |  | A custom numeric font size. |
 
-## Borders
+### Borders
 Border styles for components.
 This can include border widths, radius to ensure a consistent look and feel across your UI components.
 
-### BorderWidth
+#### BorderWidth
 Represents the possible border width values.
 
 |  Name  | Type | Value | Description |
@@ -102,7 +102,7 @@ Represents the possible border width values.
 | `number` | `number` |  | A custom numeric border width. |
 
 
-### BorderRadius
+#### BorderRadius
 Represents the possible border radius values.
 
 |  Name  | Type | Value | Description |
@@ -114,7 +114,7 @@ Represents the possible border radius values.
 | `full` | `number` | 99999 | A fully rounded border radius (99999 units). |
 | `number` | `number` |  | A custom numeric border radius. |
 
-## Usage Example
+### Usage Example
 
 When creating a custom theme, you conform to this interface. Typically, you start with the default theme and override specific properties.
 

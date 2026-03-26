@@ -32,3 +32,4 @@ export {
 } from './colors-utilities';
 
 export * from './colors';
+export * from './fonts';
