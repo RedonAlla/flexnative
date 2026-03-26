@@ -15,8 +15,8 @@ type Glyph = {
 }
 
 type IcoMoonConfig = {
-  icons: IcoMoonIcon[];
-  glyphs: Glyph[];
+  icons?: IcoMoonIcon[];
+  glyphs?: Glyph[];
   preferences: {
     fontPref: {
       metadata: {
