@@ -202,10 +202,10 @@ const config: Config = {
     },
     algolia: {
       // The application ID provided by Algolia
-      appId: process.env.ALGOLIA_APP_ID as string,
+      appId: "RLED3RXZZP",
 
       // Public API key: it is safe to commit it
-      apiKey: process.env.ALGOLIA_API_KEY as string,
+      apiKey: "23dc6877529fb058faafa8107c455efb",
 
       indexName: 'FlexNative Documentation website',
 
