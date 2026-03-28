@@ -91,7 +91,7 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     image: 'img/social-card.jpg',
-    metadata: [{name: 'algolia-site-verification', content: '01EB78D3F3F1D817'}],
+    metadata: [{name: 'algolia-site-verification', content: 'AC8A8AE1B72439D4'}],
 	  docs: {
       sidebar: {
         hideable: true,
@@ -202,7 +202,7 @@ const config: Config = {
     },
     algolia: {
       // The application ID provided by Algolia
-      appId: "RLED3RXZZP",
+      appId: "XCDB4S74PH",
 
       // Public API key: it is safe to commit it
       apiKey: "23dc6877529fb058faafa8107c455efb",
