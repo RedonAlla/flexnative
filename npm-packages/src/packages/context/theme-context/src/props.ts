@@ -185,6 +185,11 @@ export interface BaseTheme<TColors> {
    * Font size values used by components. 
    */
   fontSize: Record<FontSize, number>;
+
+  /*
+  A `scale` factor to the state and apply it to the theme dimensions (fonts, spaces, borders).
+  */
+  scale?: number;
 }
 
 /**
@@ -324,4 +329,7 @@ export interface ThemeContextProps<TColors> {
 
   /** @property {(scheme: ColorSchemeName) => void} [setColorScheme] - Function to update the color scheme. */
   setColorScheme?: (scheme: ColorSchemeName) => void;
+
+  /** @property {(arg: number) => void} [scale] - Function to update the theme.scale. */
+  setScale?: (scale: number) => void;
 }

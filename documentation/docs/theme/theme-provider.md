@@ -1,6 +1,6 @@
 ---
 title: Theme Provider
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 The `ThemeProvider` is the foundation of the FlexNative theming system.
@@ -39,13 +39,15 @@ It handles:
 
 You are required to implement these methods when subclassing `ThemeProvider`.
 
-### `onLoad()`
+### `onScaleChange()`
 
-Called automatically during `componentDidMount`. Use this to load saved theme preferences from storage.
+Method to change the application scaling factor.
+This abstract method should be implemented to handle changes in the UI scaling factor.
+It allows you to update the scale and persist the user's preference.
 
 **Signature:**
 ```typescript
-protected abstract onLoad(): Promise<void>;
+setScale?: (scale: number) => void;
 ```
 
 ### `onChangeColorScheme()`

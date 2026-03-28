@@ -47,9 +47,11 @@ export interface BaseTheme<TColors> {
 | `borders` | [`Borders`](#borders) | Contains configuration for border `width` and `radius`. |
 | `spaces` | [`Record<Spaces, number>`](#spaces) | A dictionary of spacing values (margins, paddings) keyed by size names (e.g., `sm`, `md`). |
 | `fontSize` | [`Record<FontSize, number>`](#fontsize) | A dictionary of font size values keyed by size names. |
+| `scale` | [`number` | A `scale` factor to the state and apply it to the theme dimensions (`fonts`, `spaces`, `borders`). |
 
 ### BaseColors
-Default theme colors. You can extend the `BaseColors` with your own color properties.
+Default theme colors.
+You can extend the `BaseColors` with your own color properties.
 
 <DefaultColors />
 

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 
 
+## [0.0.19] - 2026-03-27
+
+### Added
+
+- **Scaling**: Added formal support for scaling factor updates via `onScaleChange`.
+
 ## [0.0.18] - 2026-03-26
 - **Typography**: Platform-specific system font stacks for iOS, Web, and Android (supporting sans, serif, rounded, and mono).
 

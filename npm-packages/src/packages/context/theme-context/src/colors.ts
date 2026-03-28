@@ -40,7 +40,7 @@ export const light: BaseColors = {
   background: "#fafafa",
   card: "#ffffff",
   text: '#424242',
-  border: '#00000014',
+  border: '#FFFFFF14',
   placeholder: '#666666',
   info: "#0058e9",
   success: "#37b400",

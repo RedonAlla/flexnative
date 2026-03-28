@@ -1,6 +1,6 @@
 ---
 title: Consuming Themes
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 The `ThemeContext` module is a core part of the FlexNative theming system.

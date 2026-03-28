@@ -73,32 +73,6 @@ export default abstract class ThemeProvider<TColors, TState> extends React.PureC
     } as StateProps<TColors, TState>
   }
 
-  async componentDidMount() {
-    await this.onLoad();
-  }
-  
- /**
-   * onLoad - Lifecycle method called when the component is mounted.
-   *
-   * This abstract method should be implemented to load the theme from storage.
-   * It allows you to fetch and apply a previously saved theme.
-   * 
-   * @see Example <https://redonalla.github.io/flexnative/docs/theme/ThemeProvider>
-   *
-   * @abstract
-   * @returns {Promise<void>} A promise that resolves when the theme has been loaded.
-   * @example
-   * ```typescript
-   *  async onLoad() {
-   *      const savedTheme = await AsyncStorage.getItem('theme');
-   *      if (savedTheme) {
-   *          this.setState({ theme: JSON.parse(savedTheme) });
-   *      }
-   * }
-   * ```
-   */
-  protected abstract onLoad(): Promise<void>;
-
   /**
    * onChangeColorScheme - Method to change the color scheme.
    *
@@ -120,11 +94,33 @@ export default abstract class ThemeProvider<TColors, TState> extends React.PureC
   protected abstract onChangeColorScheme(colorScheme: ColorSchemeName): Promise<void>;
 
   /**
-  * onChangeTheme - Method to change the theme.
-  *
-  * This method can be overridden to handle changes in the theme.
-  * It enables you to update the theme object and persist the user's chosen theme.
-  *
+   * onScaleChange - Method to change the application scaling factor.
+   *
+   * This abstract method should be implemented to handle changes in the UI scaling factor.
+   * It allows you to update the scale and persist the user's preference.
+   *
+   * @abstract
+   * @param {number} scale - The new scaling factor to apply.
+   * @returns {Promise<void>} A promise that resolves when the scale has been changed.
+   * @example
+   * ```typescript
+   *  async onScaleChange(scale: number) {
+   *      await AsyncStorage.setItem('themeScale', scale.toString());
+   *      console.log('Scale saved:', scale);
+   * }
+   * ```
+   */
+  protected abstract onScaleChange(scale: number): Promise<void>;
+
+  /**
+   * onChangeTheme - Method to change the theme.
+   *
+   * This abstract method should be implemented to handle changes in the theme.
+   * It enables you to update the theme object and persist the user's chosen theme.
+   *
+   * @abstract
+   * @template T - The type of the theme argument.
+   * 
   * @param {T} arg - The new theme to apply.
   * @returns {Promise<void>} A promise that resolves when the theme has been changed.
   */
@@ -136,6 +132,7 @@ export default abstract class ThemeProvider<TColors, TState> extends React.PureC
         state: this.state.theme as BaseTheme<TColors>,
         setTheme: this.onChangeTheme.bind(this),
         setColorScheme: this.onChangeColorScheme.bind(this),
+        setScale: this.onScaleChange.bind(this)
       }}>
         {this.props.children}
       </ThemeContext.Provider>
