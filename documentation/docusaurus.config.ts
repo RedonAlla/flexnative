@@ -205,7 +205,7 @@ const config: Config = {
       appId: "XCDB4S74PH",
 
       // Public API key: it is safe to commit it
-      apiKey: "23dc6877529fb058faafa8107c455efb",
+      apiKey: "4bed36872dcb1405326989bce969cda5",
 
       indexName: 'FlexNative Documentation website',
 
