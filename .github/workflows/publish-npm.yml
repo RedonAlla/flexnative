@@ -20,12 +20,6 @@ jobs:
           # Fetch all history to compare commits
           fetch-depth: 0
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '24.x' # Or your preferred LTS version
-          registry-url: 'https://registry.npmjs.org'
-
       - name: Get changed package directories
         id: changed-packages
         run: |
@@ -49,19 +43,12 @@ jobs:
           echo "changed_dirs=${UNIQUE_DIRS}" >> $GITHUB_OUTPUT
           echo "Found changed packages in: ${UNIQUE_DIRS}"
 
-      - name: Install all workspace dependencies
+      - name: Setup Node.js
         if: steps.changed-packages.outputs.changed_dirs != ''
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          # Install root dependencies
-          npm install --production=false
-          
-          # Install and build theme-context first (base dependency)
-          cd npm-packages/src/packages/context/theme-context
-          npm install --production=false
-          npm run build
-          cd -
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24.x' # Or your preferred LTS version
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies and Publish
         if: steps.changed-packages.outputs.changed_dirs != ''
@@ -72,19 +59,14 @@ jobs:
           for dir in ${{ steps.changed-packages.outputs.changed_dirs }}; do
             echo "--- Processing package in $dir ---"
             cd "$dir"
-            
-            # Install local dependencies (including @flexnative/theme-context from npm registry)
-            npm install --production=false
-            
-            # Build the package
-            npm run build
-            
             PACKAGE_NAME=$(node -p "require('./package.json').name")
             PACKAGE_VERSION=$(node -p "require('./package.json').version")
             if npm view "$PACKAGE_NAME@$PACKAGE_VERSION" > /dev/null 2>&1; then
               echo "$PACKAGE_NAME@$PACKAGE_VERSION is already published. Skipping."
             else
               echo "Publishing $PACKAGE_NAME@$PACKAGE_VERSION..."
+              # Install all dependencies, including devDependencies, needed for the build step.
+              npm install --production=false
               npm publish
               echo "Successfully published $PACKAGE_NAME@$PACKAGE_VERSION"
             fi
