@@ -5,12 +5,21 @@ const config = getDefaultConfig(__dirname);
 
 // Path to the local package
 const iconsPackage = path.resolve(__dirname, '../npm-packages/src/packages/components/icons');
+const sliderPackage = path.resolve(__dirname, '../npm-packages/src/packages/components/slider');
 
-config.watchFolders = [iconsPackage];
+// Add all local packages to watchFolders so Metro can see the source files
+config.watchFolders = [iconsPackage, sliderPackage];
 
-config.resolver.nodeModulesPaths = [
-  path.resolve(__dirname, 'node_modules'),
-  path.resolve(iconsPackage, 'node_modules')
-];
+config.resolver.extraNodeModules = new Proxy(
+  {
+    // Explicitly map your local packages
+    '@flexnative/slider': sliderPackage,
+    '@flexnative/icons': iconsPackage,
+  },
+  {
+    // Redirect all other dependencies to the app's node_modules
+    get: (target, name) => (name in target ? target[name] : path.join(__dirname, 'node_modules', name)),
+  }
+);
 
 module.exports = config;

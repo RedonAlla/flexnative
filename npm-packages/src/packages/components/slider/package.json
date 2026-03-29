@@ -1,0 +1,52 @@
+{
+  "name": "@flexnative/slider",
+  "version": "0.1.4",
+  "description": "A flexible, performance-optimized, and highly customizable slider component for React Native, built with `Animated` and integrated with the FlexNative theme system.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc --build",
+    "watch": "tsc --build --watch",
+    "clean": "rm -rf dist",
+    "prepare": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "react",
+    "react-native",
+    "slider"
+  ],
+  "author": "Redon Alla",
+  "license": "MIT",
+  "dependencies": {
+    "@flexnative/theme-context": "*",
+    "expo-haptics": "~14.1.4"
+  },
+  "peerDependencies": {
+    "react": ">=19.0.0",
+    "react-native": ">=0.80.0",
+    "react-native-reanimated": ">=3.12.0",
+    "react-native-svg": ">=15.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.8",
+    "@types/react-native": "^0.73.0",
+    "typescript": "^5.8.3"
+  },
+  "homepage": "https://redonalla.github.io/flexnative/",
+  "bugs": "https://github.com/RedonAlla/flexnative/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RedonAlla/flexnative.git",
+    "directory": "npm-packages/src/packages/components/slider"
+  }
+}
