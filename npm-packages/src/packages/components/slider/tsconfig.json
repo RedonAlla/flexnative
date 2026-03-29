@@ -14,7 +14,11 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "composite": true
+    "composite": true,
+    "baseUrl": ".",
+    "paths": {
+      "@flexnative/theme-context": ["../../theme-context/src"]
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
