@@ -207,7 +207,7 @@ const config: Config = {
       // Public API key: it is safe to commit it
       apiKey: "4bed36872dcb1405326989bce969cda5",
 
-      indexName: 'FlexNative Documentation website',
+      indexName: 'crawler_flexnativeFlexNative Documentation',
 
       // Optional: see doc section below
       contextualSearch: true,
