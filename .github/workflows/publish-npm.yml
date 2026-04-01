@@ -50,6 +50,11 @@ jobs:
           node-version: '24.x' # Or your preferred LTS version
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Install all workspace dependencies
+        run: |
+          cd npm-packages
+          npm install
+
       - name: Install dependencies and Publish
         if: steps.changed-packages.outputs.changed_dirs != ''
         env:
