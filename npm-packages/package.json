@@ -1,5 +1,5 @@
 {
-  "name": "ra-framework",
+  "name": "@flexnative",
   "private": true,
   "workspaces": [
     "src/packages/*",

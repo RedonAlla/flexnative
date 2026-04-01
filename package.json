@@ -1,4 +1,9 @@
 {
+  "name": "flexnative",
+  "private": true,
+  "workspaces": [
+    "npm-packages/src/packages/**"
+  ],
   "devDependencies": {
     "esbuild": "^0.27.3"
   }
