@@ -1,8 +1,11 @@
 # Changelog
 
-## 0.1.4 (2026-03-29)
+All notable changes to this project will be documented in this file.
 
-### Features
+
+## [0.1.4] - 2026-03-29
+
+### Added
 
 - **Initial Release**: High-performance, customizable slider component for React Native.
 - **Theming**: Fully integrated with `@flexnative/theme-context` for automatic color, spacing, and variant support.
@@ -12,18 +15,3 @@
 - **Range Support**: Added dual-thumb support for range selection using the `range` prop.
 - **Stepped Values**: Support for both continuous sliding and discrete increments via the `step` prop.
 - **Accessibility**: Comprehensive built-in support for accessibility labels, roles, and test IDs.
-
-### Usage Instructions
-
-The `@flexnative/slider` can be used by importing it and providing control props:
-
-```tsx
-import React from 'react';
-import Slider from '@flexnative/slider';
-
-const MyComponent = () => (
-  <Slider value={0.5} onValueChange={(v) => console.log(v)} />
-);
-```
-
-For a complete list of props and advanced customization examples, refer to the README.md.

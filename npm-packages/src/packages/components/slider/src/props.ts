@@ -32,13 +32,9 @@ export class Rect {
 }
 
 /**
- * Props for the Slider component.
+ * Base props for the Slider components.
  */
-export interface SliderProps {
-  /** Initial value of the slider. */
-  value?: number | number[];
-  /** Whether the slider is a range slider. */
-  range?: boolean;
+export interface BaseSliderProps {
   hideSteps?: boolean;
   /** If true, the user won't be able to interact with the slider. */
   disabled?: boolean;
@@ -50,8 +46,6 @@ export interface SliderProps {
   step?: number;
   /** Specific values to snap to. If provided, the slider will only stop at these values. */
   snapPoints?: number[];
-  /** Minimum distance between the two handles. Default value is 0. */
-  minimumDistance?: number;
   /** The color used for the track to the left of the button. */
   minimumTrackTintColor?: string;
   /** The color used for the track to the right of the button. */
@@ -60,12 +54,6 @@ export interface SliderProps {
   thumbTintColor?: string;
   /** The size of the touch area that allows moving the thumb. The touch area has the thumb centered in it. */
   thumbTouchSize?: { width: number; height: number };
-  /** Callback continuously called while the user is dragging the slider. */
-  onValueChange?: (value: number | number[]) => void;
-  /** Callback called when the user starts changing the value (e.g. when the slider is pressed). */
-  onSlidingStart?: (value: number | number[]) => void;
-  /** Callback called when the user finishes changing the value (e.g. when the slider is released). */
-  onSlidingComplete?: (value: number | number[]) => void;
   /** The style applied to the slider container. */
   style?: StyleProp<ViewStyle>;
   /** The style applied to the track. */
@@ -90,6 +78,36 @@ export interface SliderProps {
   accessibilityLabel?: string;
   /** Used to locate this view in end-to-end tests. */
   testID?: string;
+}
+
+/**
+ * Props for the Slider component.
+ */
+export interface SliderProps extends BaseSliderProps {
+  /** Initial value of the slider. */
+  value?: number;
+  /** Callback continuously called while the user is dragging the slider. */
+  onValueChange?: (value: number) => void;
+  /** Callback called when the user starts changing the value. */
+  onSlidingStart?: (value: number) => void;
+  /** Callback called when the user finishes changing the value. */
+  onSlidingComplete?: (value: number) => void;
+}
+
+/**
+ * Props for the RangeSlider component.
+ */
+export interface RangeSliderProps extends BaseSliderProps {
+  /** Initial value of the slider. */
+  value?: number[];
+  /** Minimum distance between the two handles. Default value is 0. */
+  minimumDistance?: number;
+  /** Callback continuously called while the user is dragging the slider. */
+  onValueChange?: (value: number[]) => void;
+  /** Callback called when the user starts changing the value. */
+  onSlidingStart?: (value: number[]) => void;
+  /** Callback called when the user finishes changing the value. */
+  onSlidingComplete?: (value: number[]) => void;
 }
 
 /**

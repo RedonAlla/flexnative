@@ -73,11 +73,10 @@ To enable range selection with two thumbs, set the range prop to true and provid
 import Slider from '@flexnative/slider';
 
 <Slider
+  range
+  value={[0.2, 0.8]}
+  onValueChange={(values) => console.log(values)}
   minimumTrackTintColor="#FF5733"
-  maximumTrackTintColor="#D1D1D1"
-  thumbTintColor="#C70039"
-  trackStyle={{ height: 6 }}
-  thumbStyle={{ width: 24, height: 24 }}
 />
 ```
 

@@ -1,5 +1,6 @@
 import React, { memo } from "react";
-import { ColorValue, StyleSheet, Text, View } from "react-native";
+import { ColorValue } from "react-native";
+import { Circle, G, Text as SvgText } from "react-native-svg";
 
 interface StepsProps {
   step?: number;
@@ -13,7 +14,6 @@ interface StepsProps {
   maximumTrackTintColor: ColorValue;
   textColor: ColorValue;
   fontSize: number;
-  top: number;
   range?: boolean;
   lowValue: number;
   highValue: number;
@@ -42,11 +42,10 @@ const SliderSteps = memo(
     maximumTrackTintColor,
     textColor,
     fontSize,
-    top,
-  }: StepsProps): React.JSX.Element[] => {
+  }: StepsProps) => {
     const hasSnapPoints = snapPoints && snapPoints.length > 0;
     if (hideSteps || !allMeasured || (!hasSnapPoints && (!step || step <= 0)))
-      return [];
+      return null;
 
     const steps = [];
     const rangeVal = maximumValue - minimumValue;
@@ -58,7 +57,7 @@ const SliderSteps = memo(
         : 0;
 
     if (!allMeasured || stepCount < 0) {
-      return [];
+      return null;
     }
 
     const trackWidth = containerSize.width - thumbSize.width;
@@ -68,8 +67,7 @@ const SliderSteps = memo(
      * Optimization: If steps are too dense, skip rendering some to save resources.
      * We aim for a minimum of 3 pixels between ticks and ~40 pixels between labels.
      */
-    const stepSkip = density < 3 ? Math.ceil(3 / density) : 1;
-    const labelFrequency = density < 40 ? Math.ceil(40 / density) : 1;
+    const stepSkip = Math.max(1, density < 3 ? Math.ceil(3 / density) : 1);
 
     for (let i = 0; i <= stepCount; i += stepSkip) {
       const val = hasSnapPoints ? snapPoints[i] : minimumValue + i * step!;
@@ -87,62 +85,34 @@ const SliderSteps = memo(
         ? minimumTrackTintColor
         : maximumTrackTintColor;
 
+      const label = val % 1 === 0 ? val : val.toFixed(step! < 1 ? 1 : 0);
+
       steps.push(
-        <View
-          key={i}
-          style={[styles.stepIndicator, { left: left - 2 }]}
-          pointerEvents="none"
-        >
-          <View
-            style={[
-              styles.stepTick,
-              {
-                backgroundColor: tickColor,
-                opacity: isSelected ? 1 : 0.5,
-                transform: [{ scale: isSnapped ? 2 : 1 }],
-              },
-            ]}
+        <>
+          <Circle
+            key={`tick-${i}`}
+            cx={left}
+            cy={thumbSize.height + 2}
+            r={isSnapped ? 4 : 2}
+            fill={tickColor as string}
           />
-          {i % (stepSkip * labelFrequency) === 0 && (
-            <Text
-              numberOfLines={1}
-              style={[
-                styles.stepLabel,
-                {
-                  color: textColor,
-                  fontSize: fontSize,
-                  top: top,
-                },
-              ]}
-            >
-              {val % 1 === 0 ? val : val.toFixed(step! < 1 ? 1 : 0)}
-            </Text>
-          )}
-        </View>,
+          <SvgText
+            key={`label-${i}`}
+            x={left}
+            y={thumbSize.height * 2}
+            fill={textColor as string}
+            fontSize={fontSize}
+            fontWeight="bold"
+            textAnchor="middle"
+          >
+            {label}
+          </SvgText>
+        </>,
       );
     }
 
-    return steps;
+    return <G pointerEvents="none">{steps}</G>;
   },
 );
-
-const styles = StyleSheet.create({
-  stepIndicator: {
-    position: "absolute",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  stepTick: {
-    width: 4,
-    height: 4,
-    borderRadius: 2,
-    zIndex: 1,
-  },
-  stepLabel: {
-    position: "absolute",
-    textAlign: "center",
-    width: 40,
-  },
-});
 
 export default SliderSteps;

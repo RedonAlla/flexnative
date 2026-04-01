@@ -11,50 +11,52 @@ import {
 } from "react-native";
 import Svg, { Rect } from "react-native-svg";
 import { BaseSlider } from "./BaseSlider";
-import { SliderProps, State } from "./props";
+import { RangeSliderProps, State } from "./props";
 import SliderSteps from "./SliderSteps";
 import SliderThumb from "./SliderThumbImage";
 
 const AnimatedRect = Animated.createAnimatedComponent(Rect);
 
 /**
- * A custom Slider component for selecting a single value.
- *
- * This component is performance-optimized using `PureComponent` and `Animated` values, and it integrates with the FlexNative theme context.
+ * A custom RangeSlider component for selecting a range of values.
  */
-export default class Slider extends BaseSlider<SliderProps, State> {
-  static defaultProps: Partial<SliderProps> = {
-    value: 0,
+export default class RangeSlider extends BaseSlider<RangeSliderProps, State> {
+  static defaultProps: Partial<RangeSliderProps> = {
+    value: [0, 1],
     minimumValue: 0,
     maximumValue: 1,
     step: 0,
+    minimumDistance: 0,
     thumbTouchSize: { width: 40, height: 40 },
     animationType: "timing",
     animateTransitions: false,
   };
 
-  constructor(props: SliderProps) {
+  constructor(props: RangeSliderProps) {
     super(props);
-    this.animatedValue.setValue(props.value ?? 0);
+    this.animatedValue.setValue(props.value?.[0] ?? 0);
+    this.animatedValueHigh.setValue(props.value?.[1] ?? 1);
     this.state = {
       containerSize: { width: 0, height: 0 },
       trackSize: { width: 0, height: 0 },
       thumbSize: { width: 0, height: 0 },
       allMeasured: false,
-      lowValue: props.value ?? 0,
-      highValue: props.maximumValue ?? 1,
+      lowValue: props.value?.[0] ?? 0,
+      highValue: props.value?.[1] ?? 1,
       isSliding: false,
     };
   }
 
-  componentDidUpdate(prevProps: SliderProps) {
+  componentDidUpdate(prevProps: RangeSliderProps) {
     const { value, animateTransitions } = this.props;
 
     if (prevProps.value !== value && value !== undefined && !this.isDragging) {
       if (animateTransitions) {
-        this.setCurrentValueAnimated(value, "low");
+        this.setCurrentValueAnimated(value[0], "low");
+        this.setCurrentValueAnimated(value[1], "high");
       } else {
-        this.animatedValue.setValue(value);
+        this.animatedValue.setValue(value[0]);
+        this.animatedValueHigh.setValue(value[1]);
       }
     }
   }
@@ -67,7 +69,11 @@ export default class Slider extends BaseSlider<SliderProps, State> {
       minimumValue = 0,
       maximumValue = 1,
       snapPoints,
+      minimumDistance = 0,
     } = this.props;
+
+    const lowValue = (this.animatedValue as any).__getValue();
+    const highValue = (this.animatedValueHigh as any).__getValue();
 
     const { containerSize, thumbSize } = this.state;
     const length = containerSize.width - thumbSize.width;
@@ -88,7 +94,12 @@ export default class Slider extends BaseSlider<SliderProps, State> {
         Math.round((newValue - minimumValue) / step) * step + minimumValue;
     }
 
-    return Math.max(minimumValue, Math.min(maximumValue, newValue));
+    const min =
+      this.activeThumb === "high" ? lowValue + minimumDistance : minimumValue;
+    const max =
+      this.activeThumb === "low" ? highValue - minimumDistance : maximumValue;
+
+    return Math.max(min, Math.min(max, newValue));
   };
 
   protected fireChangeEvent = (
@@ -96,7 +107,9 @@ export default class Slider extends BaseSlider<SliderProps, State> {
   ): void => {
     const { [event]: callback } = this.props;
     if (callback) {
-      callback((this.animatedValue as any).__getValue());
+      const low = (this.animatedValue as any).__getValue();
+      const high = (this.animatedValueHigh as any).__getValue();
+      callback([low, high]);
     }
   };
 
@@ -106,7 +119,8 @@ export default class Slider extends BaseSlider<SliderProps, State> {
   ): void => {
     if (this.props.disabled) return;
     const newValue = this.getValueFromGesture(gestureState);
-    const target = this.animatedValue;
+    const target =
+      this.activeThumb === "low" ? this.animatedValue : this.animatedValueHigh;
     const hasSnap =
       (this.props.step && this.props.step > 0) ||
       (this.props.snapPoints && this.props.snapPoints.length > 0);
@@ -119,13 +133,55 @@ export default class Slider extends BaseSlider<SliderProps, State> {
 
   protected thumbHitTest = (e: GestureResponderEvent): boolean => {
     const { locationX, locationY } = e.nativeEvent;
+    const currentLow = (this.animatedValue as any).__getValue();
+    const currentHigh = (this.animatedValueHigh as any).__getValue();
+    const { containerSize, thumbSize } = this.state;
+    const originalThumb = this.activeThumb;
+
     this.activeThumb = "low";
-    return this.getThumbTouchRect().containsPoint(locationX, locationY);
+    const lowHit = this.getThumbTouchRect().containsPoint(locationX, locationY);
+
+    this.activeThumb = "high";
+    const highHit = this.getThumbTouchRect().containsPoint(
+      locationX,
+      locationY,
+    );
+
+    if (lowHit && highHit) {
+      const getLeft = (val: number) =>
+        this.getRatio(val) * (containerSize.width - thumbSize.width);
+      const lowPos = getLeft(currentLow) + thumbSize.width / 2;
+      const highPos = getLeft(currentHigh) + thumbSize.width / 2;
+      this.activeThumb =
+        Math.abs(locationX - lowPos) <= Math.abs(locationX - highPos)
+          ? "low"
+          : "high";
+      return true;
+    }
+
+    if (lowHit) {
+      this.activeThumb = "low";
+      return true;
+    }
+    if (highHit) {
+      this.activeThumb = "high";
+      return true;
+    }
+
+    this.activeThumb = originalThumb;
+    return false;
   };
+
+  protected getInterpolatedValues() {
+    const { minimumValue = 0, maximumValue = 1 } = this.props;
+    const { containerSize, thumbSize } = this.state;
+    const trackWidth = containerSize.width - thumbSize.width;
+
+    return { trackWidth, minimumValue, maximumValue };
+  }
 
   render() {
     const { fontSize, colors } = (this.context as ThemeContextProps<{}>).state;
-
     const {
       step,
       snapPoints,
@@ -147,7 +203,9 @@ export default class Slider extends BaseSlider<SliderProps, State> {
       testID,
     } = this.props;
 
-    const { allMeasured, containerSize, thumbSize, lowValue } = this.state;
+    const { allMeasured, containerSize, thumbSize, lowValue, highValue } =
+      this.state;
+    const { trackWidth } = this.getInterpolatedValues();
     const { trackDefaultStyle, thumbDefaultStyle } = this.getCommonStyles();
     const resolvedTrackStyle = StyleSheet.flatten([
       trackDefaultStyle,
@@ -164,14 +222,22 @@ export default class Slider extends BaseSlider<SliderProps, State> {
 
     const thumbLeft = this.animatedValue.interpolate({
       inputRange: [minimumValue, maximumValue],
-      outputRange: I18nManager.isRTL
-        ? [0, -(containerSize.width - thumbSize.width)]
-        : [0, containerSize.width - thumbSize.width],
+      outputRange: I18nManager.isRTL ? [0, -trackWidth] : [0, trackWidth],
+    });
+
+    const thumbLeftHigh = this.animatedValueHigh.interpolate({
+      inputRange: [minimumValue, maximumValue],
+      outputRange: I18nManager.isRTL ? [0, -trackWidth] : [0, trackWidth],
     });
 
     const minimumTrackWidth = this.animatedValue.interpolate({
       inputRange: [minimumValue, maximumValue],
-      outputRange: [0, containerSize.width - thumbSize.width / 2],
+      outputRange: [0, trackWidth],
+    });
+
+    const maximumTrackWidth = this.animatedValueHigh.interpolate({
+      inputRange: [minimumValue, maximumValue],
+      outputRange: [0, trackWidth],
     });
 
     const visibilityStyle = !allMeasured ? { opacity: 0 } : {};
@@ -205,11 +271,14 @@ export default class Slider extends BaseSlider<SliderProps, State> {
               rx={trackBorderRadius}
               fill={maximumTrackTintColor as string}
             />
-            {/* Active Track */}
+            {/* Active Range Track */}
             <AnimatedRect
-              x={0}
+              x={Animated.add(minimumTrackWidth, thumbSize.width / 2)}
               y={(containerSize.height - trackHeight) / 2}
-              width={minimumTrackWidth}
+              width={Animated.add(
+                Animated.multiply(minimumTrackWidth, -1),
+                maximumTrackWidth,
+              )}
               height={trackHeight}
               rx={trackBorderRadius}
               fill={minimumTrackTintColor as string}
@@ -223,11 +292,11 @@ export default class Slider extends BaseSlider<SliderProps, State> {
               maximumValue={maximumValue}
               containerSize={containerSize}
               thumbSize={thumbSize}
-              range={false}
+              range={true}
               lowValue={lowValue}
-              highValue={lowValue}
+              highValue={highValue}
               minimumTrackTintColor={minimumTrackTintColor}
-              maximumTrackTintColor={colors.card}
+              maximumTrackTintColor={maximumTrackTintColor}
               textColor={colors.text}
               fontSize={fontSize.xxs}
             />
@@ -255,7 +324,36 @@ export default class Slider extends BaseSlider<SliderProps, State> {
             showTooltip={this.state.isSliding}
             fontSize={fontSize.xxs}
             textColor={colors.light}
-            toolTipBackground={tooltipBorderColor ?? colors.dark}
+            toolTipBackground={tooltipBackgroundColor ?? colors.dark}
+            source={thumbImage}
+            size={thumbImageSize}
+            color={thumbTintColor}
+            borderColor={colors.background}
+            borderWidth={thumbBorderWidth}
+          />
+        </Animated.View>
+
+        <Animated.View
+          renderToHardwareTextureAndroid
+          style={[
+            thumbDefaultStyle,
+            thumbStyle,
+            {
+              backgroundColor: "transparent",
+              borderColor: "transparent",
+              borderWidth: 0,
+              transform: [{ translateX: thumbLeftHigh }],
+              ...visibilityStyle,
+            },
+          ]}
+        >
+          <SliderThumb
+            value={highValue}
+            step={step}
+            showTooltip={this.state.isSliding}
+            fontSize={fontSize.xxs}
+            textColor={colors.light}
+            toolTipBackground={tooltipBackgroundColor ?? colors.dark}
             source={thumbImage}
             size={thumbImageSize}
             color={thumbTintColor}
@@ -275,6 +373,7 @@ export default class Slider extends BaseSlider<SliderProps, State> {
 
 const styles = StyleSheet.create({
   container: {
+    width: "100%",
     justifyContent: "center",
   },
   trackWrapper: {
