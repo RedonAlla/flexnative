@@ -90,8 +90,3 @@ import Slider from '@flexnative/slider';
 - **Performance:** Uses `PureComponent` and native-driven animations for smooth interactions.
 - **RTL Support:** Fully compatible with Right-to-Left layouts.
 - **Accessibility:** Built-in support for accessibility labels and test IDs.
-
-
-## License
-
-MIT
