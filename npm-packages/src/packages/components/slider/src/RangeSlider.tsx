@@ -17,7 +17,7 @@ import SliderSteps from "./SliderSteps";
 import SliderThumb from "./SliderThumbImage";
 
 const AnimatedRect = Animated.createAnimatedComponent(Rect);
-const isWeb = Platform.OS !== 'web';
+const isWeb = Platform.OS === 'web';
 
 /**
  * A custom RangeSlider component for selecting a range of values.
