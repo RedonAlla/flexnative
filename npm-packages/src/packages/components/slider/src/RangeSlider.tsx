@@ -6,6 +6,7 @@ import {
   GestureResponderEvent,
   I18nManager,
   PanResponderGestureState,
+  Platform,
   StyleSheet,
   View,
 } from "react-native";
@@ -16,6 +17,7 @@ import SliderSteps from "./SliderSteps";
 import SliderThumb from "./SliderThumbImage";
 
 const AnimatedRect = Animated.createAnimatedComponent(Rect);
+const isWeb = Platform.OS !== 'web';
 
 /**
  * A custom RangeSlider component for selecting a range of values.
@@ -118,15 +120,20 @@ export default class RangeSlider extends BaseSlider<RangeSliderProps, State> {
     gestureState: PanResponderGestureState,
   ): void => {
     if (this.props.disabled) return;
+
     const newValue = this.getValueFromGesture(gestureState);
+
     const target =
       this.activeThumb === "low" ? this.animatedValue : this.animatedValueHigh;
+
     const hasSnap =
       (this.props.step && this.props.step > 0) ||
       (this.props.snapPoints && this.props.snapPoints.length > 0);
-    if (hasSnap && newValue !== (target as any).__getValue()) {
+
+    if (!isWeb && hasSnap && newValue !== (target as any).__getValue()) {
       Haptics.selectionAsync();
     }
+
     target.setValue(newValue);
     this.fireChangeEvent("onValueChange");
   };
