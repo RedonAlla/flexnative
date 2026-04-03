@@ -6,6 +6,7 @@ import {
   GestureResponderEvent,
   I18nManager,
   PanResponderGestureState,
+  Platform,
   StyleSheet,
   View,
 } from "react-native";
@@ -15,6 +16,7 @@ import { SliderProps, State } from "./props";
 import SliderSteps from "./SliderSteps";
 import SliderThumb from "./SliderThumbImage";
 
+const isWeb = Platform.OS === 'web';
 const AnimatedRect = Animated.createAnimatedComponent(Rect);
 
 /**
@@ -107,12 +109,15 @@ export default class Slider extends BaseSlider<SliderProps, State> {
     if (this.props.disabled) return;
     const newValue = this.getValueFromGesture(gestureState);
     const target = this.animatedValue;
+
     const hasSnap =
       (this.props.step && this.props.step > 0) ||
       (this.props.snapPoints && this.props.snapPoints.length > 0);
-    if (hasSnap && newValue !== (target as any).__getValue()) {
+
+    if (!isWeb && hasSnap && newValue !== (target as any).__getValue()) {
       Haptics.selectionAsync();
     }
+    
     target.setValue(newValue);
     this.fireChangeEvent("onValueChange");
   };
