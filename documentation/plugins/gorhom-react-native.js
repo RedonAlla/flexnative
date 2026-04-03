@@ -44,6 +44,11 @@ export default [
         "..",
         "node_modules/@flexnative/bottom-sheet"
       ),
+      "@flexnative/slider": resolve(
+        __dirname,
+        "..",
+        "node_modules/@flexnative/slider"
+      ),
     },
   }
 ];

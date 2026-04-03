@@ -13,6 +13,7 @@ import Icon, {
   ShakeIcon,
   WiggleIcon
 } from '@flexnative/icons';
+import { RangeSlider, Slider } from "@flexnative/slider";
 // import BottomSheet from "@flexnative/bottom-sheet";
 // import Tag from '@flexnative/tags';
 // import Badge from '@flexnative/badges';
@@ -21,9 +22,8 @@ import Icon, {
 // import Message from "@flexnative/messages";
 // import { Block } from '@flexnative/layout'; 
 
-
 // Add react-live imports you need here
-const ReactLiveScope: any = {
+const ReactLiveScope: Record<string, unknown> = {
   React,
   ...React,
   // Avatar,
@@ -39,6 +39,8 @@ const ReactLiveScope: any = {
   PulseIcon,
   ShakeIcon,
   WiggleIcon,
+  Slider,
+  RangeSlider,
   // BottomSheet,
   // Tag,
   // Badge,

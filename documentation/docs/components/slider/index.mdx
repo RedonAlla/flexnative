@@ -1,0 +1,216 @@
+---
+id: slider
+title: Slider
+sidebar_label: Slider
+sidebar_class_name: nav_session slider
+last_update:
+  date: 2026-04-3
+  author: Redon Alla
+tags: [react, react-native, expo, framework, component, slider]
+description: A flexible, performance-optimized, and highly customizable slider component for React Native, built with Animated and integrated with the FlexNative theme system.
+---
+
+[![npm version](https://img.shields.io/npm/v/@flexnative/slider.svg?logo=npm)](https://www.npmjs.com/package/@flexnative/slider)
+[![npm downloads](https://img.shields.io/npm/dt/@flexnative/slider.svg?logo=npm)](https://www.npmjs.com/package/@flexnative/slider)
+[![GitHub source code](https://img.shields.io/badge/github-source%20code-blue?logo=github)](https://github.com/RedonAlla/flexnative/tree/main/npm-packages/src/packages/components/slider)
+[![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat&logo=github)](https://github.com/RedonAlla/flexnative/issues)
+[![npm unpacked size](https://img.shields.io/npm/unpacked-size/@flexnative/slider.svg?logo=npm)](https://www.npmjs.com/package/@flexnative/slider)
+[![language](https://img.shields.io/github/languages/top/RedonAlla/flexnative?logo=github)](https://github.com/RedonAlla/flexnative)
+[![npm last update](https://img.shields.io/npm/last-update/@flexnative/slider.svg?logo=npm&label=last%20publish)](https://www.npmjs.com/package/@flexnative/slider)
+[![npm license](https://img.shields.io/npm/l/@flexnative/slider?logo=opensourceinitiative)](https://www.npmjs.com/package/@flexnative/slider)
+
+A flexible, performance-optimized, and highly customizable slider component for React Native.
+Built with React Native's `Animated` API and integrated with the FlexNative theme system, it provides a smooth and tactile user experience across Android, iOS, and the Web.
+
+The `@flexnative/slider` package provides a high-quality UI component for selecting a single value or a range of values from a range.
+It aims to solve common performance issues found in standard React Native sliders while providing deep integration with custom design systems through the FlexNative theme context.
+
+## Features
+
+- **Dual Mode Support**: Includes both `Slider` (single thumb) and `RangeSlider` (dual thumb).
+- **Haptic Feedback**: Built-in integration with `expo-haptics` to provide tactile feedback during value changes.
+- **Theming**: Automatically inherits colors and spacing from the `@flexnative/theme-context`.
+- **Customizable Steps**: Support for discrete steps with optional visible labels.
+- **Accessible**: Follows standard accessibility guidelines for slider inputs.
+
+## Installation
+
+Install the package using npm or yarn:
+
+```bash
+npm install @flexnative/slider
+```
+
+Ensure you have the required peer dependencies installed in your project:
+
+```bash
+npm install react-native-svg expo-haptics
+```
+
+## Basic Usage
+
+### Single Slider
+The standard `Slider` component is used for selecting a single numeric value.
+
+```tsx
+import React, { useState } from 'react';
+import { Slider } from '@flexnative/slider';
+
+const App = () => {
+  const [value, setValue] = useState(50);
+
+  return (
+    <Slider
+      value={value}
+      onValueChange={setValue}
+      minimumValue={0}
+      maximumValue={100}
+    />
+  );
+};
+```
+
+#### Slider Props
+
+| Prop | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `value` | `number` | `0` | The current value of the slider. |
+| `minimumValue` | `number` | `0` | Initial minimum value of the slider. |
+| `maximumValue` | `number` | `1` | Initial maximum value of the slider. |
+| `step` | `number` | `0` | Step value of the slider. The value should be between 0 and (`maximumValue` - `minimumValue`). |
+| `snapPoints` | `number[]` | `undefined` | Specific values to snap to. If provided, the slider will only stop at these values. |
+| `onValueChange` | `(value: number) => void` | `undefined` | Callback continuously called while the user is dragging the slider. |
+| `onSlidingStart` | `(value: number) => void` | `undefined` | Callback called when the user starts changing the value. |
+| `onSlidingComplete` | `(value: number) => void` | `undefined` | Callback called when the user finishes changing the value. |
+| `disabled` | `boolean` | `false` | If true, the user won't be able to interact with the slider. |
+| `hideSteps` | `boolean` | `false` | If true, visual step indicators on the track are hidden. |
+| `minimumTrackTintColor` | `string` | `undefined` | The color used for the track to the left of the button. |
+| `maximumTrackTintColor` | `string` | `undefined` | The color used for the track to the right of the button. |
+| `thumbTintColor` | `string` | `undefined` | The color used for the thumb. |
+| `thumbTouchSize` | `{ width: number; height: number }` | `undefined` | The size of the touch area that allows moving the thumb. |
+| `thumbImage` | `ImageSourcePropType` | `undefined` | Sets an image for the thumb. |
+| `style` | `StyleProp<ViewStyle>` | `undefined` | The style applied to the slider container. |
+| `trackStyle` | `StyleProp<ViewStyle>` | `undefined` | The style applied to the track. |
+| `thumbStyle` | `StyleProp<ViewStyle>` | `undefined` | The style applied to the thumb. |
+| `animateTransitions` | `boolean` | `false` | Set to true if you want to use the default 'spring' animation. |
+| `animationType` | `"spring" \| "timing"` | `"spring"` | Used to configure the animation type. |
+| `animationConfig` | `object` | `undefined` | Used to configure the animation parameters. |
+| `tooltipBackgroundColor` | `string` | `undefined` | The background color of the tooltip. |
+| `tooltipBorderColor` | `string` | `undefined` | The border color of the tooltip. |
+| `tooltipBorderWidth` | `number` | `undefined` | The border width of the tooltip. |
+| `accessibilityLabel` | `string` | `undefined` | Customizes the screen reader description. |
+| `testID` | `string` | `undefined` | Used to locate this view in end-to-end tests. |
+
+#### Interactive Playground
+
+You can experiment with the `Slider` component in real-time below. 
+
+```tsx live
+function SliderPlayground() {
+  const [val, setVal] = React.useState(30);
+
+  return (
+    <Slider
+        value={val}
+        onValueChange={setVal}
+        minimumValue={0}
+        maximumValue={100}
+        thumbTintColor="#F5A623"
+        maximumTrackTintColor="#E0E0E0"
+      />
+  );
+}
+```
+
+
+### Range Slider
+The `RangeSlider` component allows users to select a minimum and maximum value simultaneously.
+
+```tsx
+import React, { useState } from 'react';
+import { RangeSlider } from "@flexnative/slider";
+
+function SliderPlayground {
+  const [rangeValue, setRangeValue] = useState<number[]>([40, 60]);
+
+  return (
+    <RangeSlider
+      value={rangeValue}
+      onValueChange={setRangeValue}
+      minimumValue={0}
+      maximumValue={100}
+      step={20}
+      thumbTintColor="#F5A623"
+      maximumTrackTintColor="#E0E0E0"
+      minimumTrackTintColor="#4A90E2"
+    />
+  );
+};
+```
+
+
+#### RangeSlider Props
+
+| Prop | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `minValue` | `number` | `0` | The current minimum value of the range slider. |
+| `maxValue` | `number` | `1` | The current maximum value of the range slider. |
+| `minRange` | `number` | `0` | Minimum distance allowed between the two thumbs. |
+| `minimumValue` | `number` | `0` | Initial minimum value of the slider. |
+| `maximumValue` | `number` | `1` | Initial maximum value of the slider. |
+| `step` | `number` | `0` | Step value of the slider. The value should be between `0` and (`maximumValue` - `minimumValue`). |
+| `snapPoints` | `number[]` | `undefined` | Specific values to snap to. If provided, the slider will only stop at these values. |
+| `onValueChange` | `(range: { min: number; max: number }) => void` | `undefined` | Callback continuously called while the user is dragging the slider. Returns an object `{ min, max }`. |
+| `onSlidingStart` | `(range: { min: number; max: number }) => void` | `undefined` | Callback called when the user starts changing the value. Returns an object `{ min, max }`. |
+| `onSlidingComplete` | `(range: { min: number; max: number }) => void` | `undefined` | Callback called when the user finishes changing the value. Returns an object `{ min, max }`. |
+| `disabled` | `boolean` | `false` | If true, the user won't be able to interact with the slider. |
+| `hideSteps` | `boolean` | `false` | If true, visual step indicators on the track are hidden. |
+| `minimumTrackTintColor` | `string` | `undefined` | The color used for the track to the left of the minimum thumb and to the right of the maximum thumb. |
+| `maximumTrackTintColor` | `string` | `undefined` | The color used for the track between the two thumbs. |
+| `thumbTintColor` | `string` | `undefined` | The color used for the thumbs. |
+| `thumbTouchSize` | `{ width: number; height: number }` | `undefined` | The size of the touch area that allows moving the thumbs. |
+| `thumbImage` | `ImageSourcePropType` | `undefined` | Sets an image for the thumbs. |
+| `style` | `StyleProp<ViewStyle>` | `undefined` | The style applied to the slider container. |
+| `trackStyle` | `StyleProp<ViewStyle>` | `undefined` | The style applied to the track. |
+| `thumbStyle` | `StyleProp<ViewStyle>` | `undefined` | The style applied to the thumbs. |
+| `animateTransitions` | `boolean` | `false` | Set to `true` if you want to use the default 'spring' animation for value changes. |
+| `animationType` | `"spring" \| "timing"` | `"spring"` | Used to configure the animation type for value transitions. |
+| `animationConfig` | `object` | `undefined` | Used to configure the animation parameters (e.g., `duration`, `damping`, `stiffness`). |
+| `tooltipBackgroundColor` | `string` | `undefined` | The background color of the tooltips displaying the current values. |
+| `tooltipBorderColor` | `string` | `undefined` | The border color of the tooltips. |
+| `tooltipBorderWidth` | `number` | `undefined` | The border width of the tooltips. |
+| `accessibilityLabel` | `string` | `undefined` | Customizes the screen reader description for the range slider. |
+| `testID` | `string` | `undefined` | Used to locate this view in end-to-end tests. |
+
+
+#### Interactive Playground
+
+You can experiment with the `Slider` component in real-time below. 
+
+```tsx live
+function SliderPlayground() {
+  const [rangeValue, setRangeValue] = useState<number[]>([40, 60]);
+
+  return (
+    <RangeSlider
+      value={rangeValue}
+      onValueChange={setRangeValue}
+      minimumValue={0}
+      maximumValue={100}
+      step={20}
+      thumbTintColor="#F5A623"
+      maximumTrackTintColor="#E0E0E0"
+      minimumTrackTintColor="#4A90E2"
+    />
+  );
+}
+```
+
+## Dependencies
+- [@flexnative/theme-context](https://www.npmjs.com/package/@flexnative/theme-context)
+- [expo-haptics](https://www.npmjs.com/package/expo-haptics)
+
+## Dev Dependencies
+- [@types/react](https://www.npmjs.com/package/@types/react)
+- [@types/react-native](https://www.npmjs.com/package/@types/react-native)
+- [typescript](https://www.npmjs.com/package/typescript)

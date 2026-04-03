@@ -23,7 +23,8 @@
     "@docusaurus/theme-live-codeblock": "^3.9.2",
     "@docusaurus/theme-search-algolia": "^3.9.2",
     "@flexnative/icons": "^0.1.1",
-    "@flexnative/theme-context": "^0.0.16",
+    "@flexnative/slider": "^0.1.8",
+    "@flexnative/theme-context": "^0.0.19",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
     "css-loader": "^7.1.4",
@@ -48,6 +49,7 @@
     "@gorhom/docusaurus-react-native-plugin": "^1.0.1",
     "babel-plugin-module-resolver": "^5.0.2",
     "dotenv": "^17.3.1",
+    "raw-loader": "^4.0.2",
     "typescript": "~5.6.2"
   },
   "browserslist": {

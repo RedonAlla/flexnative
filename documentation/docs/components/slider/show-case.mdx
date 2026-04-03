@@ -1,0 +1,135 @@
+---
+title: Show case
+sidebar_position: 2
+last_update:
+  date: 2026-04-3
+  author: Redon Alla
+tags: [react, react-native, expo, framework, component, slider]
+---
+
+import ExampleWrapper from '@site/src/components/Docs/common/ExampleWrapper';
+
+
+## Slider
+Here are several examples of how to use the `Slider` component, categorized by its properties.
+
+### 1. Range and Value
+These properties define the bounds and the current position of the slider.
+
+import ValueExamples from '@site/src/components/Docs/Slider/ValueExamples';
+import ValueExamplesMdx from '!!raw-loader!@site/src/components/Docs/Slider/ValueExamples';
+
+<ExampleWrapper codeExample={ValueExamplesMdx}>
+<ValueExamples />
+</ExampleWrapper>
+
+### 2. Steps and Snapping
+Control the granularity of the selection using fixed intervals or specific points.
+
+import StepExamples from '@site/src/components/Docs/Slider/StepExamples';
+import StepExamplesMdx from '!!raw-loader!@site/src/components/Docs/Slider/StepExamples';
+
+<ExampleWrapper codeExample={StepExamplesMdx}>
+<StepExamples />
+</ExampleWrapper>
+
+### 3. Colors and Theming
+Customize the visual appearance of the tracks and the thumb.
+
+import ColorExamples from '@site/src/components/Docs/Slider/ColorExamples';
+import SColorExamplesMdx from '!!raw-loader!@site/src/components/Docs/Slider/ColorExamples';
+
+<ExampleWrapper codeExample={SColorExamplesMdx}>
+<ColorExamples />
+</ExampleWrapper>
+
+### 4. Tooltip Customization
+Adjust the tooltip that appears while sliding.
+
+import TooltipExamples from '@site/src/components/Docs/Slider/TooltipExamples';
+import TooltipExamplesMdx from '!!raw-loader!@site/src/components/Docs/Slider/TooltipExamples';
+
+<ExampleWrapper codeExample={TooltipExamplesMdx}>
+<TooltipExamples />
+</ExampleWrapper>
+
+### 5. Custom Styling
+Fine-tune the dimensions and shapes of the slider parts.
+
+To use custom SVG icons for the `Slider` thumb, you primarily use the `thumbImage` and `thumbTintColor` properties.
+
+
+
+import StyleExamples from '@site/src/components/Docs/Slider/StyleExamples';
+import StyleExamplesMdx from '!!raw-loader!@site/src/components/Docs/Slider/StyleExamples';
+
+<ExampleWrapper codeExample={StyleExamplesMdx}>
+<StyleExamples />
+</ExampleWrapper>
+
+### 6. State and Interaction
+Handle interaction behavior, animations, and disabled states.
+
+import InteractionExamples from '@site/src/components/Docs/Slider/InteractionExamples';
+import InteractionExamplesMdx from '!!raw-loader!@site/src/components/Docs/Slider/InteractionExamples';
+
+<ExampleWrapper codeExample={InteractionExamplesMdx}>
+<InteractionExamples />
+</ExampleWrapper>
+
+## RangeSlider
+
+Here are several examples of how to use the RangeSlider component, grouped by its properties.
+These examples demonstrate how to control the dual thumbs, intervals, and visual styling.
+
+### 1. Range, Value, and Distance
+The `RangeSlider` uses an array of two numbers for its `value`.
+The `minimumDistance` property ensures a specific gap is maintained between the two thumbs.
+
+import RangeValueDistance from '@site/src/components/Docs/RangeSlider/RangeValueDistance';
+import RangeValueDistanceMdx from '!!raw-loader!@site/src/components/Docs/RangeSlider/RangeValueDistance';
+
+<ExampleWrapper codeExample={RangeValueDistanceMdx}>
+<RangeValueDistance />
+</ExampleWrapper>
+
+### 2. Steps and Snapping
+Control the granularity of the selection. Visual step indicators can be shown or hidden.
+
+import StepsAndSnapping from '@site/src/components/Docs/RangeSlider/StepsAndSnapping';
+import StepsAndSnappingMdx from '!!raw-loader!@site/src/components/Docs/RangeSlider/StepsAndSnapping';
+
+<ExampleWrapper codeExample={StepsAndSnappingMdx}>
+<StepsAndSnapping />
+</ExampleWrapper>
+
+### 3. Colors and Tooltips
+The `minimumTrackTintColor` in a `RangeSlider` typically colors the segment between the two thumbs,
+while `maximumTrackTintColor` colors the outer segments.
+
+import ColorsAndTooltips from '@site/src/components/Docs/RangeSlider/ColorsAndTooltips';
+import ColorsAndTooltipsMdx from '!!raw-loader!@site/src/components/Docs/RangeSlider/ColorsAndTooltips';
+
+<ExampleWrapper codeExample={ColorsAndTooltipsMdx}>
+<ColorsAndTooltips />
+</ExampleWrapper>
+
+### 4. Custom Thumbs and Styling
+You can use icons or custom styles to change the appearance of the dual thumbs.
+
+import CustomThumbs from '@site/src/components/Docs/RangeSlider/CustomThumbs';
+import CustomThumbsMdx from '!!raw-loader!@site/src/components/Docs/RangeSlider/CustomThumbs';
+
+<ExampleWrapper codeExample={CustomThumbsMdx}>
+<CustomThumbs />
+</ExampleWrapper>
+
+### 5. State and Interaction
+Handle disabled states and transition animations when values change programmatically.
+
+import StateAndInteraction from '@site/src/components/Docs/RangeSlider/StateAndInteraction';
+import StateAndInteractionMdx from '!!raw-loader!@site/src/components/Docs/RangeSlider/StateAndInteraction';
+
+<ExampleWrapper codeExample={StateAndInteractionMdx}>
+<StateAndInteraction />
+</ExampleWrapper>

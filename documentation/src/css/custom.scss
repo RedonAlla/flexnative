@@ -134,7 +134,7 @@
   bottom: 0;
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  background: var(--navbar-background-color, rgba(255, 255, 255, 0.8));
+  background: var(--navbar-background-color);
 }
 
 .header-github-link::before {
@@ -204,6 +204,14 @@ li {
     & > div {
       & > a::before {
         content: "\e91e";
+      }
+    }
+  }
+
+  &.nav_session.slider {
+    & > div {
+      & > a::before {
+        content: "\f672";
       }
     }
   }

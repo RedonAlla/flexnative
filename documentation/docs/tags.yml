@@ -75,3 +75,7 @@ authentication:
   description: > 
     A package to implement almost full authentication and protect routes with Expo Router.
     `@flexnative/authentication` handles user authentication and protecting routes using Expo Router. The package includes React context, custom hooks, type definitions, and utilizes `expo-secure-store` for secure token storage. This integration enhances the security and manageability of authentication processes across the application.
+slider:
+  label: Slider
+  permalink: /slider
+  description: A flexible, performance-optimized, and highly customizable slider component for React Native.
