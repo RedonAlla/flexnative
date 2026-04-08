@@ -1,4 +1,4 @@
-import { ImageSourcePropType, StyleProp, ViewStyle } from "react-native";
+import { ColorValue, ImageSourcePropType, StyleProp, ViewStyle } from "react-native";
 
 /**
  * Represents a rectangular area.
@@ -47,11 +47,11 @@ export interface BaseSliderProps {
   /** Specific values to snap to. If provided, the slider will only stop at these values. */
   snapPoints?: number[];
   /** The color used for the track to the left of the button. */
-  minimumTrackTintColor?: string;
+  minimumTrackTintColor?: ColorValue;
   /** The color used for the track to the right of the button. */
-  maximumTrackTintColor?: string;
+  maximumTrackTintColor?: ColorValue;
   /** The color used for the thumb. */
-  thumbTintColor?: string;
+  thumbTintColor?: ColorValue;
   /** The size of the touch area that allows moving the thumb. The touch area has the thumb centered in it. */
   thumbTouchSize?: { width: number; height: number };
   /** The style applied to the slider container. */
@@ -61,9 +61,9 @@ export interface BaseSliderProps {
   /** The style applied to the thumb. */
   thumbStyle?: StyleProp<ViewStyle>;
   /** The background color of the tooltip. */
-  tooltipBackgroundColor?: string;
+  tooltipBackgroundColor?: ColorValue;
   /** The border color of the tooltip. */
-  tooltipBorderColor?: string;
+  tooltipBorderColor?: ColorValue;
   /** The border width of the tooltip. */
   tooltipBorderWidth?: number;
   /** Sets an image for the thumb. */
@@ -76,6 +76,10 @@ export interface BaseSliderProps {
   animationConfig?: object;
   /** Customizes the screen reader description. */
   accessibilityLabel?: string;
+  /** Accessibility label for the low value handle. */
+  accessibilityLabelLow?: string;
+  /** Accessibility label for the high value handle (RangeSlider only). */
+  accessibilityLabelHigh?: string;
   /** Used to locate this view in end-to-end tests. */
   testID?: string;
 }

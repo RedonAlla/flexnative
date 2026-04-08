@@ -1,14 +1,17 @@
 import ThemeContext, { ThemeContextProps } from "@flexnative/theme-context";
 import React, { PureComponent } from "react";
 import {
+  AccessibilityActionEvent,
   Animated,
   Easing,
   GestureResponderEvent,
+  I18nManager,
   LayoutAnimation,
   LayoutChangeEvent,
   PanResponder,
   PanResponderGestureState,
   Platform,
+  StyleSheet,
   UIManager,
   ViewStyle,
 } from "react-native";
@@ -88,6 +91,91 @@ export abstract class BaseSlider<
     return (value - minimumValue) / (maximumValue - minimumValue);
   };
 
+  protected getEffectiveTrackLength = (): number => {
+    return this.state.containerSize.width - this.state.thumbSize.width;
+  };
+
+  protected getThumbCenterOffset = (): number => {
+    return this.state.thumbSize.width / 2;
+  };
+
+  protected getInterpolatedTranslateX = (
+    animatedValue: Animated.Value,
+  ): Animated.AnimatedInterpolation<number> => {
+    const { minimumValue = 0, maximumValue = 1 } = this.props;
+    const effectiveTrackLength = this.getEffectiveTrackLength();
+
+    return animatedValue.interpolate({
+      inputRange: [minimumValue, maximumValue],
+      outputRange: I18nManager.isRTL
+        ? [effectiveTrackLength, 0]
+        : [0, effectiveTrackLength],
+    });
+  };
+
+  protected getActiveTrackProps = (
+    lowAnim: Animated.AnimatedInterpolation<number | string>,
+    highAnim?: Animated.AnimatedInterpolation<number | string>,
+  ) => {
+    const { containerSize } = this.state;
+    const offset = this.getThumbCenterOffset();
+    const lowCenter = Animated.add(lowAnim as Animated.Value, offset);
+
+    if (!highAnim) {
+      // Single Slider Logic
+      return {
+        x: I18nManager.isRTL ? lowCenter : 0,
+        width: I18nManager.isRTL
+          ? Animated.subtract(containerSize.width, lowCenter)
+          : lowCenter,
+      };
+    }
+
+    // Range Slider Logic
+    const highCenter = Animated.add(highAnim as Animated.Value, offset);
+    return {
+      x: I18nManager.isRTL ? highCenter : lowCenter,
+      width: I18nManager.isRTL
+        ? Animated.subtract(lowCenter, highCenter)
+        : Animated.subtract(highCenter, lowCenter),
+    };
+  };
+
+  protected getSliderGeometry = () => {
+    const isRange = Array.isArray((this.props as any).value);
+    const lowThumbTranslateX = this.getInterpolatedTranslateX(this.animatedValue);
+    const highThumbTranslateX = isRange
+      ? this.getInterpolatedTranslateX(this.animatedValueHigh)
+      : undefined;
+
+    const activeTrack = this.getActiveTrackProps(lowThumbTranslateX, highThumbTranslateX);
+
+    return {
+      lowThumbTranslateX,
+      highThumbTranslateX,
+      activeTrack,
+    };
+  };
+
+  protected getResolvedStyles = () => {
+    const { fontSize, colors } = (this.context as ThemeContextProps<{}>).state;
+    const { trackStyle, thumbStyle } = this.props;
+    const { trackDefaultStyle, thumbDefaultStyle } = this.getCommonStyles();
+
+    const resolvedTrackStyle = StyleSheet.flatten([trackDefaultStyle, trackStyle]);
+    const resolvedThumbStyle = StyleSheet.flatten([thumbDefaultStyle, thumbStyle]);
+
+    return {
+      fontSize,
+      colors,
+      thumbDefaultStyle,
+      trackHeight: (resolvedTrackStyle as ViewStyle)?.height as number ?? 0,
+      trackBorderRadius: (resolvedTrackStyle as ViewStyle)?.borderRadius as number ?? 0,
+      thumbImageSize: (resolvedThumbStyle as ViewStyle).width as number ?? fontSize.xl,
+      thumbBorderWidth: (resolvedThumbStyle as ViewStyle).borderWidth as number ?? 1,
+    };
+  };
+
   protected setCurrentValueAnimated = (
     value: number,
     thumb: "low" | "high" = "low",
@@ -148,6 +236,36 @@ export abstract class BaseSlider<
     return style;
   };
 
+  protected handleAccessibilityAction = (
+    event: AccessibilityActionEvent,
+    thumb: "low" | "high",
+  ): void => {
+    const { actionName } = event.nativeEvent;
+    const { step = 0, minimumValue = 0, maximumValue = 1 } = this.props;
+    
+    // Default step is 10% of range if not specified
+    const jump = step > 0 ? step : (maximumValue - minimumValue) / 10;
+    const currentVal = thumb === "low" 
+      ? (this.animatedValue as any).__getValue() 
+      : (this.animatedValueHigh as any).__getValue();
+
+    let newValue = currentVal;
+    if (actionName === "increment") {
+      newValue = currentVal + jump;
+    } else if (actionName === "decrement") {
+      newValue = currentVal - jump;
+    }
+
+    if (newValue !== currentVal) {
+      // Use a dummy gesture state to leverage existing constraints (minDistance, etc)
+      // or just manually clamp based on thumb type.
+      const clamped = Math.max(minimumValue, Math.min(maximumValue, newValue));
+      this.activeThumb = thumb;
+      this.setCurrentValueAnimated(clamped, thumb);
+      this.fireChangeEvent("onValueChange");
+    }
+  };
+
   protected getThumbTouchRect = (): Rect => {
     const { activeThumb } = this;
     const { containerSize, thumbSize } = this.state;
@@ -157,8 +275,11 @@ export abstract class BaseSlider<
     const activeAnim =
       activeThumb === "low" ? this.animatedValue : this.animatedValueHigh;
     const currentValue = (activeAnim as any).__getValue();
-    const nonRtlRatio = this.getRatio(currentValue);
-    const thumbLeft = nonRtlRatio * (containerSize.width - thumbSize.width);
+
+    const ratio = this.getRatio(currentValue);
+    const thumbLeft = I18nManager.isRTL
+      ? (1 - ratio) * this.getEffectiveTrackLength()
+      : ratio * this.getEffectiveTrackLength();
 
     return new Rect(
       touchOverflowSize.width / 2 +
@@ -188,10 +309,11 @@ export abstract class BaseSlider<
 
     const activeAnim =
       this.activeThumb === "low" ? this.animatedValue : this.animatedValueHigh;
-    const { containerSize, thumbSize } = this.state;
     const currentValue = (activeAnim as any).__getValue();
     const ratio = this.getRatio(currentValue);
-    this.previousLeft = ratio * (containerSize.width - thumbSize.width);
+    const length = this.getEffectiveTrackLength();
+    const physicalRatio = I18nManager.isRTL ? 1 - ratio : ratio;
+    this.previousLeft = physicalRatio * length;
 
     this.fireChangeEvent("onSlidingStart");
   };

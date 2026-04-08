@@ -71,8 +71,7 @@ export default class Slider extends BaseSlider<SliderProps, State> {
       snapPoints,
     } = this.props;
 
-    const { containerSize, thumbSize } = this.state;
-    const length = containerSize.width - thumbSize.width;
+    const length = this.getEffectiveTrackLength();
     if (length <= 0) return minimumValue;
 
     const thumbLeft = this.previousLeft + gestureState.dx;
@@ -129,7 +128,15 @@ export default class Slider extends BaseSlider<SliderProps, State> {
   };
 
   render() {
-    const { fontSize, colors } = (this.context as ThemeContextProps<{}>).state;
+    const {
+      fontSize,
+      colors,
+      trackHeight,
+      trackBorderRadius,
+      thumbImageSize,
+      thumbBorderWidth,
+      thumbDefaultStyle,
+    } = this.getResolvedStyles();
 
     const {
       step,
@@ -138,46 +145,22 @@ export default class Slider extends BaseSlider<SliderProps, State> {
       minimumValue = 0,
       maximumValue = 1,
       minimumTrackTintColor = colors.primary,
-      maximumTrackTintColor = colors.border,
+      maximumTrackTintColor = colors.background,
       thumbTintColor = colors.default,
       tooltipBackgroundColor,
       tooltipBorderColor,
       tooltipBorderWidth,
       style,
-      trackStyle,
       thumbStyle,
       thumbImage,
       disabled,
       accessibilityLabel,
+      accessibilityLabelLow = "Value",
       testID,
     } = this.props;
 
     const { allMeasured, containerSize, thumbSize, lowValue } = this.state;
-    const { trackDefaultStyle, thumbDefaultStyle } = this.getCommonStyles();
-    const resolvedTrackStyle = StyleSheet.flatten([
-      trackDefaultStyle,
-      trackStyle,
-    ]);
-    const resolvedThumbStyle = StyleSheet.flatten([
-      thumbDefaultStyle,
-      thumbStyle,
-    ]);
-    const trackHeight = (resolvedTrackStyle.height as number) ?? 0;
-    const trackBorderRadius = (resolvedTrackStyle.borderRadius as number) ?? 0;
-    const thumbImageSize = (resolvedThumbStyle.width as number) ?? fontSize.xl;
-    const thumbBorderWidth = (resolvedThumbStyle.borderWidth as number) ?? 1;
-
-    const thumbLeft = this.animatedValue.interpolate({
-      inputRange: [minimumValue, maximumValue],
-      outputRange: I18nManager.isRTL
-        ? [0, -(containerSize.width - thumbSize.width)]
-        : [0, containerSize.width - thumbSize.width],
-    });
-
-    const minimumTrackWidth = this.animatedValue.interpolate({
-      inputRange: [minimumValue, maximumValue],
-      outputRange: [0, containerSize.width - thumbSize.width / 2],
-    });
+    const { lowThumbTranslateX, activeTrack } = this.getSliderGeometry();
 
     const visibilityStyle = !allMeasured ? { opacity: 0 } : {};
     const labelHeight = hideSteps ? 0 : fontSize.md + fontSize.xxs;
@@ -191,8 +174,6 @@ export default class Slider extends BaseSlider<SliderProps, State> {
           style,
         ]}
         onLayout={this.handleMeasureContainer}
-        accessible={!!accessibilityLabel}
-        accessibilityLabel={accessibilityLabel}
         testID={testID}
       >
         <View onLayout={this.handleMeasureTrack} style={styles.trackWrapper}>
@@ -212,9 +193,9 @@ export default class Slider extends BaseSlider<SliderProps, State> {
             />
             {/* Active Track */}
             <AnimatedRect
-              x={0}
+              x={activeTrack.x}
               y={(containerSize.height - trackHeight) / 2}
-              width={minimumTrackWidth}
+              width={activeTrack.width}
               height={trackHeight}
               rx={trackBorderRadius}
               fill={minimumTrackTintColor as string}
@@ -242,6 +223,16 @@ export default class Slider extends BaseSlider<SliderProps, State> {
         <Animated.View
           onLayout={this.handleMeasureThumb}
           renderToHardwareTextureAndroid
+          accessible={true}
+          accessibilityRole="adjustable"
+          accessibilityLabel={accessibilityLabel ?? accessibilityLabelLow}
+          accessibilityValue={{
+            min: minimumValue,
+            max: maximumValue,
+            now: lowValue,
+            text: `${lowValue}`,
+          }}
+          onAccessibilityAction={(e) => this.handleAccessibilityAction(e, "low")}
           style={[
             thumbDefaultStyle,
             thumbStyle,
@@ -249,8 +240,7 @@ export default class Slider extends BaseSlider<SliderProps, State> {
               backgroundColor: "transparent",
               borderColor: "transparent",
               borderWidth: 0,
-              transform: [{ translateX: thumbLeft }],
-              ...visibilityStyle,
+              transform: [{ translateX: lowThumbTranslateX }]
             },
           ]}
         >

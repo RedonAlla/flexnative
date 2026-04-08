@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, ReactNode } from "react";
 import { ColorValue } from "react-native";
 import { Circle, G, Text as SvgText } from "react-native-svg";
 
@@ -20,10 +20,61 @@ interface StepsProps {
   minimumTrackTintColor: ColorValue;
 }
 
+interface StepItemProps {
+  left: number;
+  height: number;
+  isSelected: boolean;
+  isSnapped: boolean;
+  label: string | number;
+  fontSize: number;
+  textColor: ColorValue;
+  minimumTrackTintColor: ColorValue;
+  maximumTrackTintColor: ColorValue;
+}
+
+const StepItem = memo(({
+  left,
+  height,
+  isSelected,
+  isSnapped,
+  label,
+  fontSize,
+  textColor,
+  minimumTrackTintColor,
+  maximumTrackTintColor
+}: StepItemProps) => {
+  const tickColor = isSelected ? minimumTrackTintColor : maximumTrackTintColor;
+
+  return (
+    <G
+      accessible={false}
+      importantForAccessibility="no-hide-descendants"
+      aria-hidden={true}
+    >
+      <Circle
+        cx={left}
+        cy={height + 2}
+        r={isSnapped ? 4 : 2}
+        fill={tickColor as string}
+      />
+      <SvgText
+        x={left}
+        y={height * 2}
+        fill={textColor as string}
+        fontSize={fontSize}
+        fontWeight="bold"
+        textAnchor="middle"
+      >
+        {label}
+      </SvgText>
+    </G>
+  );
+});
+
 /**
- * A component that renders an image to be used as the thumb of a Slider.
- *
- * @param props - The component props.
+ * A component that renders step indicators for a Slider.
+ * Optimized to minimize re-renders of individual steps during thumb movement by using
+ * a memoized sub-component and discrete property tracking.
  */
 const SliderSteps = memo(
   ({
@@ -47,7 +98,7 @@ const SliderSteps = memo(
     if (hideSteps || !allMeasured || (!hasSnapPoints && (!step || step <= 0)))
       return null;
 
-    const steps = [];
+    const steps: ReactNode[] = [];
     const rangeVal = maximumValue - minimumValue;
 
     const stepCount = hasSnapPoints
@@ -80,38 +131,34 @@ const SliderSteps = memo(
         : val <= lowValue;
 
       const isSnapped = val === lowValue || (range && val === highValue);
-
-      const tickColor = isSelected
-        ? minimumTrackTintColor
-        : maximumTrackTintColor;
-
       const label = val % 1 === 0 ? val : val.toFixed(step! < 1 ? 1 : 0);
 
       steps.push(
-        <>
-          <Circle
-            key={`tick-${i}`}
-            cx={left}
-            cy={thumbSize.height + 2}
-            r={isSnapped ? 4 : 2}
-            fill={tickColor as string}
-          />
-          <SvgText
-            key={`label-${i}`}
-            x={left}
-            y={thumbSize.height * 2}
-            fill={textColor as string}
-            fontSize={fontSize}
-            fontWeight="bold"
-            textAnchor="middle"
-          >
-            {label}
-          </SvgText>
-        </>,
+        <StepItem
+          key={`step-${val}`}
+          left={left}
+          height={thumbSize.height}
+          isSelected={isSelected}
+          isSnapped={isSnapped!}
+          label={label}
+          fontSize={fontSize}
+          textColor={textColor}
+          minimumTrackTintColor={minimumTrackTintColor}
+          maximumTrackTintColor={maximumTrackTintColor}
+        />
       );
     }
 
-    return <G pointerEvents="none">{steps}</G>;
+    return (
+      <G
+        pointerEvents="none"
+        accessible={false}
+        importantForAccessibility="no-hide-descendants"
+        aria-hidden={true}
+      >
+        {steps}
+      </G>
+    );
   },
 );
 

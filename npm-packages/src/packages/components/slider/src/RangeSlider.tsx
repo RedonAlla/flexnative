@@ -77,8 +77,7 @@ export default class RangeSlider extends BaseSlider<RangeSliderProps, State> {
     const lowValue = (this.animatedValue as any).__getValue();
     const highValue = (this.animatedValueHigh as any).__getValue();
 
-    const { containerSize, thumbSize } = this.state;
-    const length = containerSize.width - thumbSize.width;
+    const length = this.getEffectiveTrackLength();
     if (length <= 0) return minimumValue;
 
     const thumbLeft = this.previousLeft + gestureState.dx;
@@ -188,7 +187,16 @@ export default class RangeSlider extends BaseSlider<RangeSliderProps, State> {
   }
 
   render() {
-    const { fontSize, colors } = (this.context as ThemeContextProps<{}>).state;
+    const {
+      fontSize,
+      colors,
+      trackHeight,
+      trackBorderRadius,
+      thumbImageSize,
+      thumbBorderWidth,
+      thumbDefaultStyle,
+    } = this.getResolvedStyles();
+
     const {
       step,
       snapPoints,
@@ -196,56 +204,28 @@ export default class RangeSlider extends BaseSlider<RangeSliderProps, State> {
       minimumValue = 0,
       maximumValue = 1,
       minimumTrackTintColor = colors.primary,
-      maximumTrackTintColor = colors.border,
+      maximumTrackTintColor = colors.background,
       thumbTintColor = colors.default,
       tooltipBackgroundColor,
       tooltipBorderColor,
       tooltipBorderWidth,
       style,
-      trackStyle,
       thumbStyle,
       thumbImage,
       disabled,
       accessibilityLabel,
+      accessibilityLabelLow = "Minimum value",
+      accessibilityLabelHigh = "Maximum value",
       testID,
     } = this.props;
 
     const { allMeasured, containerSize, thumbSize, lowValue, highValue } =
       this.state;
-    const { trackWidth } = this.getInterpolatedValues();
-    const { trackDefaultStyle, thumbDefaultStyle } = this.getCommonStyles();
-    const resolvedTrackStyle = StyleSheet.flatten([
-      trackDefaultStyle,
-      trackStyle,
-    ]);
-    const resolvedThumbStyle = StyleSheet.flatten([
-      thumbDefaultStyle,
-      thumbStyle,
-    ]);
-    const trackHeight = (resolvedTrackStyle.height as number) ?? 0;
-    const trackBorderRadius = (resolvedTrackStyle.borderRadius as number) ?? 0;
-    const thumbImageSize = (resolvedThumbStyle.width as number) ?? fontSize.xl;
-    const thumbBorderWidth = (resolvedThumbStyle.borderWidth as number) ?? 1;
-
-    const thumbLeft = this.animatedValue.interpolate({
-      inputRange: [minimumValue, maximumValue],
-      outputRange: I18nManager.isRTL ? [0, -trackWidth] : [0, trackWidth],
-    });
-
-    const thumbLeftHigh = this.animatedValueHigh.interpolate({
-      inputRange: [minimumValue, maximumValue],
-      outputRange: I18nManager.isRTL ? [0, -trackWidth] : [0, trackWidth],
-    });
-
-    const minimumTrackWidth = this.animatedValue.interpolate({
-      inputRange: [minimumValue, maximumValue],
-      outputRange: [0, trackWidth],
-    });
-
-    const maximumTrackWidth = this.animatedValueHigh.interpolate({
-      inputRange: [minimumValue, maximumValue],
-      outputRange: [0, trackWidth],
-    });
+    const { 
+      lowThumbTranslateX, 
+      highThumbTranslateX, 
+      activeTrack 
+    } = this.getSliderGeometry();
 
     const visibilityStyle = !allMeasured ? { opacity: 0 } : {};
     const labelHeight = hideSteps ? 0 : fontSize.md + fontSize.xxs;
@@ -259,8 +239,6 @@ export default class RangeSlider extends BaseSlider<RangeSliderProps, State> {
           style,
         ]}
         onLayout={this.handleMeasureContainer}
-        accessible={!!accessibilityLabel}
-        accessibilityLabel={accessibilityLabel}
         testID={testID}
       >
         <View onLayout={this.handleMeasureTrack} style={styles.trackWrapper}>
@@ -280,12 +258,9 @@ export default class RangeSlider extends BaseSlider<RangeSliderProps, State> {
             />
             {/* Active Range Track */}
             <AnimatedRect
-              x={Animated.add(minimumTrackWidth, thumbSize.width / 2)}
+              x={activeTrack.x}
               y={(containerSize.height - trackHeight) / 2}
-              width={Animated.add(
-                Animated.multiply(minimumTrackWidth, -1),
-                maximumTrackWidth,
-              )}
+              width={activeTrack.width}
               height={trackHeight}
               rx={trackBorderRadius}
               fill={minimumTrackTintColor as string}
@@ -313,6 +288,16 @@ export default class RangeSlider extends BaseSlider<RangeSliderProps, State> {
         <Animated.View
           onLayout={this.handleMeasureThumb}
           renderToHardwareTextureAndroid
+          accessible={true}
+          accessibilityRole="adjustable"
+          accessibilityLabel={accessibilityLabelLow}
+          accessibilityValue={{
+            min: minimumValue,
+            max: highValue - (this.props.minimumDistance || 0),
+            now: lowValue,
+            text: `${lowValue}`,
+          }}
+          onAccessibilityAction={(e) => this.handleAccessibilityAction(e, "low")}
           style={[
             thumbDefaultStyle,
             thumbStyle,
@@ -320,7 +305,7 @@ export default class RangeSlider extends BaseSlider<RangeSliderProps, State> {
               backgroundColor: "transparent",
               borderColor: "transparent",
               borderWidth: 0,
-              transform: [{ translateX: thumbLeft }],
+              transform: [{ translateX: lowThumbTranslateX }],
               ...visibilityStyle,
             },
           ]}
@@ -342,6 +327,16 @@ export default class RangeSlider extends BaseSlider<RangeSliderProps, State> {
 
         <Animated.View
           renderToHardwareTextureAndroid
+          accessible={true}
+          accessibilityRole="adjustable"
+          accessibilityLabel={accessibilityLabelHigh}
+          accessibilityValue={{
+            min: lowValue + (this.props.minimumDistance || 0),
+            max: maximumValue,
+            now: highValue,
+            text: `${highValue}`,
+          }}
+          onAccessibilityAction={(e) => this.handleAccessibilityAction(e, "high")}
           style={[
             thumbDefaultStyle,
             thumbStyle,
@@ -349,7 +344,7 @@ export default class RangeSlider extends BaseSlider<RangeSliderProps, State> {
               backgroundColor: "transparent",
               borderColor: "transparent",
               borderWidth: 0,
-              transform: [{ translateX: thumbLeftHigh }],
+              transform: highThumbTranslateX ? [{ translateX: highThumbTranslateX }] : [],
               ...visibilityStyle,
             },
           ]}

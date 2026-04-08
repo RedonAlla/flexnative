@@ -13,7 +13,6 @@
     "@expo/metro-runtime": "~5.0.4",
     "@expo/vector-icons": "^14.1.0",
     "@flexnative/avatar": "^0.0.3",
-    "@flexnative/slider": "file:../npm-packages/src/packages/components/slider",
     "@flexnative/theme-context": "^0.0.10",
     "@react-navigation/drawer": "^7.0.18",
     "@react-navigation/native": "^7.0.13",

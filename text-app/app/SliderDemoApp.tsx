@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import Slider from "@flexnative/slider";
+import { Slider } from "@flexnative/slider";
 
 // Custom images for thumb
 const THUMB_IMAGES = {
@@ -358,30 +358,6 @@ const SliderDemoApp = () => {
           >
             <Text style={styles.randomButtonText}>Jump to Random Value</Text>
           </TouchableOpacity>
-        </View>
-      </View>
-
-      {/* Example 9: Range Selector */}
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>9. Range Selector</Text>
-        <Text style={styles.sectionDescription}>
-          Dual-handle slider for selecting a range of values
-        </Text>
-
-        <View style={styles.sliderContainer}>
-          <Text style={styles.label}>
-            Selected Range: {rangeValue[0]} - {rangeValue[1]}
-          </Text>
-          <Slider
-            range
-            value={rangeValue}
-            onValueChange={handleRangeChange}
-            minimumValue={0}
-            maximumValue={100}
-            step={20}
-            minimumTrackTintColor="#4A90E2"
-            disabled={disabled}
-          />
         </View>
       </View>
 
