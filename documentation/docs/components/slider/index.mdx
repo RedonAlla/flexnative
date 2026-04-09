@@ -84,9 +84,9 @@ const App = () => {
 | `onSlidingComplete` | `(value: number) => void` | `undefined` | Callback called when the user finishes changing the value. |
 | `disabled` | `boolean` | `false` | If true, the user won't be able to interact with the slider. |
 | `hideSteps` | `boolean` | `false` | If true, visual step indicators on the track are hidden. |
-| `minimumTrackTintColor` | `string` | `undefined` | The color used for the track to the left of the button. |
-| `maximumTrackTintColor` | `string` | `undefined` | The color used for the track to the right of the button. |
-| `thumbTintColor` | `string` | `undefined` | The color used for the thumb. |
+| `minimumTrackTintColor` | [`ColorValue`](https://reactnative.dev/docs/colors) | `colors.primary` | The color used for the track to the left of the button. |
+| `maximumTrackTintColor` | [`ColorValue`](https://reactnative.dev/docs/colors) | `colors.background` | The color used for the track to the right of the button. |
+| `thumbTintColor` | [`ColorValue`](https://reactnative.dev/docs/colors) | `undefined` | The color used for the thumb. |
 | `thumbTouchSize` | `{ width: number; height: number }` | `undefined` | The size of the touch area that allows moving the thumb. |
 | `thumbImage` | `ImageSourcePropType` | `undefined` | Sets an image for the thumb. |
 | `style` | `StyleProp<ViewStyle>` | `undefined` | The style applied to the slider container. |
@@ -95,8 +95,8 @@ const App = () => {
 | `animateTransitions` | `boolean` | `false` | Set to true if you want to use the default 'spring' animation. |
 | `animationType` | `"spring" \| "timing"` | `"spring"` | Used to configure the animation type. |
 | `animationConfig` | `object` | `undefined` | Used to configure the animation parameters. |
-| `tooltipBackgroundColor` | `string` | `undefined` | The background color of the tooltip. |
-| `tooltipBorderColor` | `string` | `undefined` | The border color of the tooltip. |
+| `tooltipBackgroundColor` | [`ColorValue`](https://reactnative.dev/docs/colors) | `undefined` | The background color of the tooltip. |
+| `tooltipBorderColor` | [`ColorValue`](https://reactnative.dev/docs/colors) | `undefined` | The border color of the tooltip. |
 | `tooltipBorderWidth` | `number` | `undefined` | The border width of the tooltip. |
 | `accessibilityLabel` | `string` | `undefined` | Customizes the screen reader description. |
 | `accessibilityLabelLow` | `string` | `Value` | Accessibility label for the low value handle. |
@@ -166,9 +166,9 @@ function SliderPlayground {
 | `onSlidingComplete` | `(range: { min: number; max: number }) => void` | `undefined` | Callback called when the user finishes changing the value. Returns an object `{ min, max }`. |
 | `disabled` | `boolean` | `false` | If true, the user won't be able to interact with the slider. |
 | `hideSteps` | `boolean` | `false` | If true, visual step indicators on the track are hidden. |
-| `minimumTrackTintColor` | `string` | `undefined` | The color used for the track to the left of the minimum thumb and to the right of the maximum thumb. |
-| `maximumTrackTintColor` | `string` | `undefined` | The color used for the track between the two thumbs. |
-| `thumbTintColor` | `string` | `undefined` | The color used for the thumbs. |
+| `minimumTrackTintColor` | [`ColorValue`](https://reactnative.dev/docs/colors) | `theme.colors.primary` | The color used for the track to the left of the minimum thumb and to the right of the maximum thumb. |
+| `maximumTrackTintColor` | [`ColorValue`](https://reactnative.dev/docs/colors) | `theme.colors.background` | The color used for the track between the two thumbs. |
+| `thumbTintColor` | [`ColorValue`](https://reactnative.dev/docs/colors) | `undefined` | The color used for the thumbs. |
 | `thumbTouchSize` | `{ width: number; height: number }` | `undefined` | The size of the touch area that allows moving the thumbs. |
 | `thumbImage` | `ImageSourcePropType` | `undefined` | Sets an image for the thumbs. |
 | `style` | `StyleProp<ViewStyle>` | `undefined` | The style applied to the slider container. |
@@ -177,8 +177,8 @@ function SliderPlayground {
 | `animateTransitions` | `boolean` | `false` | Set to `true` if you want to use the default 'spring' animation for value changes. |
 | `animationType` | `"spring" \| "timing"` | `"spring"` | Used to configure the animation type for value transitions. |
 | `animationConfig` | `object` | `undefined` | Used to configure the animation parameters (e.g., `duration`, `damping`, `stiffness`). |
-| `tooltipBackgroundColor` | `string` | `undefined` | The background color of the tooltips displaying the current values. |
-| `tooltipBorderColor` | `string` | `undefined` | The border color of the tooltips. |
+| `tooltipBackgroundColor` | [`ColorValue`](https://reactnative.dev/docs/colors) | `undefined` | The background color of the tooltips displaying the current values. |
+| `tooltipBorderColor` | [`ColorValue`](https://reactnative.dev/docs/colors) | `undefined` | The border color of the tooltips. |
 | `tooltipBorderWidth` | `number` | `undefined` | The border width of the tooltips. |
 | `accessibilityLabel` | `string` | `undefined` | Customizes the screen reader description for the range slider. |
 | `accessibilityLabelLow` | `string` | `Minimum value` | Accessibility label for the low value handle. |

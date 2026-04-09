@@ -31,5 +31,6 @@ export {
   subtleActiveColor
 } from './colors-utilities';
 
+export *from './constants';
 export * from './colors';
 export * from './fonts';
