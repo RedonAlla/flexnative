@@ -1,0 +1,55 @@
+{
+  "name": "@flexnative/screens",
+  "version": "0.1.0",
+  "description": "A collection of screen and layout components for React Native applications, part of the FlexNative ecosystem.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc --build",
+    "clean": "rm -rf dist",
+    "prepare": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "react",
+    "react-native",
+    "screens",
+    "layout",
+    "flexnative",
+    "ui-components"
+  ],
+  "author": "Redon Alla",
+  "license": "MIT",
+  "dependencies": {
+    "@flexnative/theme-context": "*",
+    "@flexnative/icons": "*",
+    "@flexnative/slider": "*"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*",
+    "react-native-reanimated": "*",
+    "react-native-svg": "*"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.8",
+    "@types/react-native": "^0.73.0",
+    "typescript": "^5.8.3"
+  },
+  "homepage": "https://redonalla.github.io/flexnative/",
+  "bugs": "https://github.com/RedonAlla/flexnative/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RedonAlla/flexnative.git",
+    "directory": "npm-packages/src/packages/screens"
+  }
+}
