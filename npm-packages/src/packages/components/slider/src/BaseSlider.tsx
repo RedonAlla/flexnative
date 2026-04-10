@@ -10,9 +10,7 @@ import {
   LayoutChangeEvent,
   PanResponder,
   PanResponderGestureState,
-  Platform,
   StyleSheet,
-  UIManager,
   ViewStyle,
 } from "react-native";
 import { BaseSliderProps, Rect, State } from "./props";
@@ -30,13 +28,6 @@ export const DEFAULT_ANIMATION_CONFIGS = {
     useNativeDriver: true,
   },
 } as const;
-
-if (
-  Platform.OS === "android" &&
-  UIManager.setLayoutAnimationEnabledExperimental
-) {
-  UIManager.setLayoutAnimationEnabledExperimental(true);
-}
 
 export abstract class BaseSlider<
   P extends BaseSliderProps,

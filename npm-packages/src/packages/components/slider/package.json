@@ -1,6 +1,6 @@
 {
   "name": "@flexnative/slider",
-  "version": "0.1.9",
+  "version": "0.1.11",
   "description": "A flexible, performance-optimized, and highly customizable slider component for React Native, built with `Animated` and integrated with the FlexNative theme system.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -27,7 +27,7 @@
   "author": "Redon Alla",
   "license": "MIT",
   "dependencies": {
-    "@flexnative/theme-context": "0.0.19",
+    "@flexnative/theme-context": "*",
     "expo-haptics": "~14.1.4"
   },
   "peerDependencies": {
