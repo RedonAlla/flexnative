@@ -1,6 +1,7 @@
 ---
 title: Theme Utilities
 sidebar_position: 2
+tags: [react, react-native, expo, framework, utilities, theme, flexnative]
 ---
 
 # Theme Utilities

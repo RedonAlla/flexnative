@@ -3,7 +3,7 @@ title: Setup Theme Provider
 last_update:
   date: 2024-09-24
   author: Redon Alla
-tags: [react, react-native, expo, framework]
+tags: [react, react-native, expo, framework, theme, flexnative]
 ---
 
 The `ThemeProvider` is the foundation of the FlexNative theming system.

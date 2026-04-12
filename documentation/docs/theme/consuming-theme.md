@@ -1,6 +1,7 @@
 ---
 title: Consuming Themes
 sidebar_position: 4
+tags: [react, react-native, expo, framework, utilities, theme, flexnative]
 ---
 
 The `ThemeContext` module is a core part of the FlexNative theming system.

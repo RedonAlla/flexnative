@@ -6,6 +6,7 @@
     "src/packages/components/*",
     "src/packages/context/*",
     "src/packages/services/*",
+    "src/packages/screens/*",
     "src/shared/*"
   ],
   "version": "0.0.1",

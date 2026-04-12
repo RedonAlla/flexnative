@@ -1,6 +1,7 @@
 ---
 title: Theme Provider
 sidebar_position: 2
+tags: [react, react-native, expo, framework, utilities, theme, flexnative]
 ---
 
 The `ThemeProvider` is the foundation of the FlexNative theming system.

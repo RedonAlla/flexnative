@@ -3,7 +3,10 @@
   "compilerOptions": {
     "jsx": "react",
     "strict": true,
-    "sourceMap": false
+    "sourceMap": false,
+    "paths": {
+      "@flexnative/screens": ["../npm-packages/src/packages/screens/src/index"]
+    }
   },
   "include": [
     "**/*.ts",

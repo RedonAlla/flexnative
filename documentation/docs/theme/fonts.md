@@ -1,6 +1,7 @@
 ---
 title: Fonts
 sidebar_position: 4
+tags: [react, react-native, expo, framework, utilities, theme, flexnative]
 ---
 
 # Fonts

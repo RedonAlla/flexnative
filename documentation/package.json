@@ -23,6 +23,7 @@
     "@docusaurus/theme-live-codeblock": "^3.9.2",
     "@docusaurus/theme-search-algolia": "^3.9.2",
     "@flexnative/icons": "^0.1.1",
+    "@flexnative/screens": "^0.1.0",
     "@flexnative/slider": "^0.1.9",
     "@flexnative/theme-context": "^0.0.19",
     "@mdx-js/react": "^3.0.0",

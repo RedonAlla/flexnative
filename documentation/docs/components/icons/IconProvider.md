@@ -4,7 +4,7 @@ sidebar_position: 1
 last_update:
   date: 2026-03-21
   author: Redon Alla
-tags: [react, react-native, expo, framework, component, icons]
+tags: [react, react-native, expo, framework, component, flexnative, icons]
 ---
 
 IconProvider implements the **React Context API** for your icon system.

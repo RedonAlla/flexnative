@@ -68,6 +68,7 @@ export default function Index({ colors = defaultColors }: Props) {
       <View style={[styles.session, { backgroundColor: theme.colors.card }]}>
         <Title text="Appearance" icon="light-dark" />
         <ColorScheme
+          textColor={theme.colors.text}
           colorScheme={theme.scheme}
           primaryColor={theme.colors.primary}
           onColorSchemeChange={handleColorSchemeChange}

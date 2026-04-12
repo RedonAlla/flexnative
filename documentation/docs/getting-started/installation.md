@@ -5,7 +5,7 @@ sidebar_position: 1
 last_update:
   date: 2026-03-12
   author: Redon Alla
-tags: [react, react-native, expo, framework]
+tags: [react, react-native, expo, framework, flexnative]
 ---
 
 **FlexNative** is a component library that enables developers to build universal design systems.

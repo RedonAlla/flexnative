@@ -38,10 +38,11 @@ npm-packages/package-lock.json
 flexnative-demo/.vscode/settings.json
 flexnative-demo/package-lock.json
 text-app/package-lock.json
-text-app/package-lock.json
 npm-packages/package-lock.json
 documentation/docs/theme/theme-context.mdx
 documentation/build
 npm-packages/src/packages/components/slider/dist
 documentation/package-lock.json
 text-app/package-lock.json
+npm-packages/src/packages/screens/dist
+documentation/package-lock.json

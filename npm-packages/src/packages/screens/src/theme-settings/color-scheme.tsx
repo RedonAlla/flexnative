@@ -1,4 +1,3 @@
-import { dark, light } from "@flexnative/theme-context";
 import React from "react";
 import {
   ColorSchemeName,
@@ -8,18 +7,22 @@ import {
   Text,
   View,
 } from "react-native";
+import { dark, Fonts, light } from "@flexnative/theme-context";
 
 import { ITEM_GAP, PRESS_OPACITY } from "./constants";
 import { SVGComponent, SVGComponentDiagonal } from "./svg-cards";
 
+
 type ColorSchemeProps = {
+  textColor: ColorValue;
   primaryColor: ColorValue;
   colorScheme: ColorSchemeName;
   onColorSchemeChange(schema?: ColorSchemeName): Promise<void>;
 };
 
+
 export default function ColorScheme(props: ColorSchemeProps) {
-  const { primaryColor, colorScheme, onColorSchemeChange } = props;
+  const { primaryColor, colorScheme, textColor, onColorSchemeChange } = props;
 
   const getColor = (schemeColor: ColorValue) =>
     colorScheme === null ? primaryColor : schemeColor;
@@ -41,7 +44,17 @@ export default function ColorScheme(props: ColorSchemeProps) {
           secondaryColor={light.secondary}
           background={light.background}
         />
-        <Text>Light</Text>
+        <Text
+          style={[
+            styles.schemaText,
+            {
+              opacity: colorScheme === "light" ? 1 : PRESS_OPACITY,
+              color: textColor,
+            },
+          ]}
+        >
+          Light
+        </Text>
       </Pressable>
 
       <Pressable
@@ -59,7 +72,17 @@ export default function ColorScheme(props: ColorSchemeProps) {
           secondaryColor={dark.secondary}
           background={dark.background}
         />
-        <Text>Dark</Text>
+        <Text
+          style={[
+            styles.schemaText,
+            {
+              opacity: colorScheme === "dark" ? 1 : PRESS_OPACITY,
+              color: textColor,
+            },
+          ]}
+        >
+          Dark
+        </Text>
       </Pressable>
 
       <Pressable
@@ -82,7 +105,20 @@ export default function ColorScheme(props: ColorSchemeProps) {
           secondaryColorDark={dark.secondary}
           backgroundDark={dark.background}
         />
-        <Text>System</Text>
+        <Text
+          style={[
+            styles.schemaText,
+            {
+              opacity:
+                colorScheme === null || colorScheme === undefined
+                  ? 1
+                  : PRESS_OPACITY,
+              color: textColor,
+            },
+          ]}
+        >
+          System
+        </Text>
       </Pressable>
     </View>
   );
@@ -105,5 +141,9 @@ const styles = StyleSheet.create({
   schema: {
     alignItems: "center",
   },
-  schemaText: {},
+  schemaText: {
+    marginTop: 12,
+    fontWeight: "500",
+    fontFamily: Fonts.sans,
+  },
 });
