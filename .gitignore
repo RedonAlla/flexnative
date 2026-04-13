@@ -20,7 +20,6 @@
 /npm-packages/src/packages/utilities/dist
 /npm-packages/src/shared/ui-constants
 npm-packages/.vscode/settings.json
-documentation/package-lock.json
 npm-packages/src/packages/components/messages/dist
 npm-packages/src/packages/components/navigation/dist
 npm-packages/src/packages/components/layout/dist
@@ -32,7 +31,6 @@ npm-packages/.history
 documentation/.history
 npm-packages/dist
 text-app/.history
-documentation/package-lock.json
 npm-packages/src/packages/authentication/dist
 npm-packages/package-lock.json
 flexnative-demo/.vscode/settings.json
@@ -42,6 +40,5 @@ npm-packages/package-lock.json
 documentation/docs/theme/theme-context.mdx
 documentation/build
 npm-packages/src/packages/components/slider/dist
-documentation/package-lock.json
 text-app/package-lock.json
 npm-packages/src/packages/screens/dist
