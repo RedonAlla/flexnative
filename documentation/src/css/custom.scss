@@ -216,6 +216,14 @@ li {
     }
   }
 
+  &.nav_session.screens {
+    & > div {
+      & > a::before {
+        content: "\f002";
+      }
+    }
+  }
+
   &.nav_session.components {
     & > div {
       & > a::before {

@@ -1,5 +1,5 @@
 import React from "react";
-import { dark, light } from "@flexnative/theme-context";
+import { BaseColors, dark, light } from "@flexnative/theme-context";
 import { ColorValue } from "react-native";
 
 import './styles.scss';
@@ -33,8 +33,8 @@ export default class extends React.PureComponent {
                 <td>{key}</td>
                 <td><code><a href='https://reactnative.dev/docs/colors' target="_blank">ColorValue</a></code></td>
                 <td><strong>true</strong></td>
-                <td><ColorView color={light[key]} /> <code>{light[key]}</code></td>
-                <td><ColorView color={dark[key]} /> <code>{dark[key]}</code></td>
+                <td><ColorView color={light[key as keyof BaseColors] as ColorValue} /> <code>{(light[key as keyof BaseColors] as ColorValue).toString()}</code></td>
+                <td><ColorView color={dark[key as keyof BaseColors]} /> <code>{(dark[key as keyof BaseColors] as ColorValue).toString()}</code></td>
               </tr>
             )
           }
@@ -52,7 +52,7 @@ export default class extends React.PureComponent {
  * @param {Object} props - The component props.
  * @param {ColorValue} props.color - The color value to display.
  */
-const ColorView: React.FC<{color: ColorValue;}> = ({ color }) => {
+export const ColorView: React.FC<{color: ColorValue;}> = ({ color }: { color: ColorValue; }) => {
   return (
     <span className='color-view' style={{backgroundColor: color.toString()}} />
   );
