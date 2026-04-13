@@ -41,7 +41,7 @@ jobs:
         with:
           node-version-file: 'documentation/package.json'
           cache: 'npm'
-          cache-dependency-path: './documentation/package-lock.json'
+          cache-dependency-path: 'documentation/package-lock.json'
 
       - name: Install dependencies
         run: npm install --frozen-lockfile
