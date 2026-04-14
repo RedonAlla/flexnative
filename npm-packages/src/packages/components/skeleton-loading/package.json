@@ -10,7 +10,7 @@
   "exports": {
     ".": "./dist/index.js"
   },
-  "devDependencies": {
+  "dependencies": {
     "react-native-svg": "*",
     "@flexnative/theme-context": "*"
   },
