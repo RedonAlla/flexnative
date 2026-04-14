@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2023-10-08 12:56:54
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-07-12 17:15:11
+ * @ Modified time: 2026-04-13 22:27:46
  * @ Description: Prop for SkeletonLoader component.
  */
 

@@ -7,9 +7,15 @@ const config = getDefaultConfig(__dirname);
 const iconsPackage = path.resolve(__dirname, '../npm-packages/src/packages/components/icons');
 const sliderPackage = path.resolve(__dirname, '../npm-packages/src/packages/components/slider');
 const screensPackage = path.resolve(__dirname, '../npm-packages/src/packages/screens');
+const skeletonLoadingPackage = path.resolve(__dirname, '../npm-packages/src/packages/components/skeleton-loading');
 
 // Add all local packages to watchFolders so Metro can see the source files
-config.watchFolders = [iconsPackage, sliderPackage];
+config.watchFolders = [
+  iconsPackage,
+  sliderPackage,
+  screensPackage,
+  skeletonLoadingPackage
+];
 
 config.resolver.extraNodeModules = new Proxy(
   {
@@ -17,6 +23,7 @@ config.resolver.extraNodeModules = new Proxy(
     '@flexnative/slider': sliderPackage,
     '@flexnative/icons': iconsPackage,
     '@flexnative/screens': screensPackage,
+    '@flexnative/skeleton-loading': skeletonLoadingPackage,
   },
   {
     // Redirect all other dependencies to the app's node_modules

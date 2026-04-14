@@ -1,10 +1,12 @@
 import React from 'react';
+
 import { Slider } from '@flexnative/slider';
+import DemoBlock from '../../common/DemoBlock';
 
 export default class ColorExamples extends React.PureComponent {
   render() {
     return (
-      <div className='example-block' style={{display: 'block'}}>
+      <DemoBlock>
         {/* Custom track colors */}
         <Slider 
           minimumTrackTintColor="#FF5733" 
@@ -20,7 +22,7 @@ export default class ColorExamples extends React.PureComponent {
           maximumTrackTintColor="lightgray" 
           thumbTintColor="darkgreen" 
         />
-      </div>
+      </DemoBlock>
     );
   }
 }

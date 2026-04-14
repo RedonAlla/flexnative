@@ -1,8 +1,11 @@
 import React from 'react';
+
 import { RangeSlider } from '@flexnative/slider';
+import DemoBlock from '../../common/DemoBlock';
+
 
 export default () => (
-  <div className='example-block' style={{display: 'block'}}>
+  <DemoBlock>
     {/* Discrete steps of 10 */}
     <RangeSlider 
       minimumValue={0} 
@@ -21,5 +24,5 @@ export default () => (
       step={0.1} 
       hideSteps={true} 
     />
-  </div>
+  </DemoBlock>
 );

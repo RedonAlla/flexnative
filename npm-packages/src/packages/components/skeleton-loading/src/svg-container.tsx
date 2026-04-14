@@ -2,11 +2,11 @@
  * @ Author: Redon Alla
  * @ Create Time: 2023-10-08 12:58:28
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-04-06 18:11:56
+ * @ Modified time: 2026-04-13 20:24:31
  * @ Description: Provides components for creating skeleton loading animations.
  */
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, memo } from 'react';
 import { Animated } from 'react-native';
 import Svg, { ClipPath, Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 import { useThemeState } from '@flexnative/theme-context';
@@ -62,36 +62,43 @@ const SvgContainer: React.FC<IContentLoaderProps> = ({
   ...props
 }) => {
   const theme = useThemeState();
+  const currentScheme = theme.scheme ?? 'light';
   const animatedValue = useRef(new Animated.Value(-1)).current;
   const fixedId = useRef(uniqueKey || uid()).current;
   const idClip = `${fixedId}-diff`;
   const idGradient = `${fixedId}-animated-diff`;
 
-  const startAnimation = () => {
-    const durationMs = animationDuration(speed);
-    const delay = animationDelay(durationMs, interval);
-
-    Animated.timing(animatedValue, {
-      toValue: 2,
-      delay,
-      duration: durationMs,
-      useNativeDriver: true,
-    }).start(() => {
-      if (animate) {
-        animatedValue.setValue(-1);
-        startAnimation();
-      }
-    });
-  };
-
   useEffect(() => {
+    let isCancelled = false;
+
+    const startAnimation = () => {
+      if (!animate || isCancelled) return;
+
+      const durationMs = animationDuration(speed);
+      const delay = animationDelay(durationMs, interval);
+
+      animatedValue.setValue(-1);
+      Animated.timing(animatedValue, {
+        toValue: 2,
+        delay,
+        duration: durationMs,
+        useNativeDriver: false,
+      }).start(({ finished }) => {
+        if (finished && !isCancelled && animate) {
+          startAnimation();
+        }
+      });
+    };
+
     if (animate) {
       startAnimation();
     }
+
     return () => {
+      isCancelled = true;
       animatedValue.stopAnimation();
     };
-  }, [animate, speed, interval]);
+  }, [animate, speed, interval, animatedValue]);
 
   const x1Animation = animatedValue.interpolate({
     inputRange: [-1, 2],
@@ -124,12 +131,12 @@ const SvgContainer: React.FC<IContentLoaderProps> = ({
         <AnimatedLinearGradient id={idClip} x1={x1Animation} x2={x2Animation} y1="0" y2="0">
           <Stop
             offset="0"
-            stopColor={getColor(BACKGROUND_COLOR[theme.scheme!], backgroundColor)}
+            stopColor={getColor(BACKGROUND_COLOR[currentScheme], backgroundColor)}
           />
           <Stop offset="0.5" stopColor={getColor(theme.colors.card, foregroundColor)} />
           <Stop
             offset="1"
-            stopColor={getColor(BACKGROUND_COLOR[theme.scheme!], backgroundColor)}
+            stopColor={getColor(BACKGROUND_COLOR[currentScheme], backgroundColor)}
           />
         </AnimatedLinearGradient>
       </Defs>
@@ -137,4 +144,4 @@ const SvgContainer: React.FC<IContentLoaderProps> = ({
   );
 };
 
-export default SvgContainer;
+export default memo(SvgContainer);

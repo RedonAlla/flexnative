@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { Animated } from 'react-native';
+
 import { Slider } from '@flexnative/slider';
 
 export default () => {

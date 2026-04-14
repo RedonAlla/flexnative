@@ -1,10 +1,13 @@
 import React from 'react';
+
 import { Slider } from '@flexnative/slider';
+import DemoBlock from '../../common/DemoBlock';
+
 
 export default class StepExamples extends React.PureComponent {
   render() {
     return (
-      <div className='example-block' style={{display: 'block'}}>
+      <DemoBlock>
         {/* Integer steps of 1 */}
         <Slider value={3} step={1} minimumValue={0} maximumValue={10} />
 
@@ -18,7 +21,7 @@ export default class StepExamples extends React.PureComponent {
 
         {/* Hide the visual step indicators/labels */}
         <Slider step={0.2} hideSteps={true} />
-      </div>
+      </DemoBlock>
     );
   }
 }

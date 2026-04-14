@@ -1,10 +1,13 @@
 import React from 'react';
+
 import { Slider } from '@flexnative/slider';
+import DemoBlock from '../../common/DemoBlock';
+
 
 export default class TooltipExamples extends React.PureComponent {
   render() {
     return (
-      <div className='example-block' style={{display: 'block'}}>
+      <DemoBlock>
         {/* Custom tooltip colors */}
         <Slider 
           tooltipBackgroundColor="black" 
@@ -17,7 +20,7 @@ export default class TooltipExamples extends React.PureComponent {
           tooltipBorderColor="cyan" 
           tooltipBorderWidth={2} 
         />
-      </div>
+      </DemoBlock>
     );
   }
 }

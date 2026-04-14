@@ -1,10 +1,13 @@
 import React from 'react';
+
 import { Slider } from '@flexnative/slider';
+import DemoBlock from '../../common/DemoBlock';
+
 
 export default class InteractionExamples extends React.PureComponent {
   render() {
     return (
-      <div className='example-block' style={{display: 'block'}}>
+      <DemoBlock>
         {/* Disabled slider */}
         <Slider disabled={true} value={0.5} />
 
@@ -20,7 +23,7 @@ export default class InteractionExamples extends React.PureComponent {
           onValueChange={(val) => console.log("Changing:", val)}
           onSlidingComplete={(val) => console.log("Finished at:", val)}
         />
-      </div>
+      </DemoBlock>
     );
   }
 }

@@ -224,6 +224,14 @@ li {
     }
   }
 
+  &.nav_session.skeleton {
+    & > div {
+      & > a::before {
+        content: "\e912";
+      }
+    }
+  }
+
   &.nav_session.components {
     & > div {
       & > a::before {

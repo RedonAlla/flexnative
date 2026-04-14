@@ -6,6 +6,8 @@ import {
 } from "react-native";
 
 import { Slider } from '@flexnative/slider';
+import DemoBlock from '../../common/DemoBlock';
+
 
 export default () => {
   const [temperatureValue, setTemperatureValue] = useState(22);
@@ -22,7 +24,7 @@ export default () => {
   }, []);
 
   return (
-    <div className='example-block' style={{display: 'block'}}>
+    <DemoBlock>
       <View style={styles.sliderContainer}>
           <View style={styles.temperatureHeader}>
             <Text style={styles.temperatureIcon}>🌡️</Text>
@@ -57,7 +59,7 @@ export default () => {
             <Text style={styles.tempLabel}>🔥 Hot</Text>
           </View>
         </View>
-    </div>
+    </DemoBlock>
   );
 }
 

@@ -1,10 +1,13 @@
 import React from 'react';
+
 import { Slider } from '@flexnative/slider';
+import DemoBlock from '../../common/DemoBlock';
+
 
 export default class ValueExamples extends React.PureComponent {
   render() {
     return (
-      <div className='example-block' style={{display: 'block'}}>
+      <DemoBlock>
         {/* Basic 0 to 1 range (Default) */}
         <Slider value={0.5} />
 
@@ -21,7 +24,7 @@ export default class ValueExamples extends React.PureComponent {
           minimumValue={-50} 
           maximumValue={50} 
         />
-      </div>
+      </DemoBlock>
     );
   }
 }

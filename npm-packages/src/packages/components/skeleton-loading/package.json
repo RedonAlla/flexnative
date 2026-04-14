@@ -1,7 +1,7 @@
 {
   "name": "@flexnative/skeleton-loading",
-  "version": "0.0.3",
-  "description": "React Native Skeleton loadings",
+  "version": "0.0.4",
+  "description": "A performance-optimized and highly customizable skeleton loading component for React Native, utilizing SVG animations and integrated with the FlexNative theme system.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -31,6 +31,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/RedonAlla/flexnative.git",
-    "directory": "npm-packages/src/packages/context/ra-skeleton-loading"
+    "directory": "npm-packages/src/packages/components/skeleton-loading"
   }
 }

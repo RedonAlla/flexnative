@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+
 import { Slider } from '@flexnative/slider';
+import DemoBlock from '../../common/DemoBlock';
+
 
 export default () => {
   const [snapValue, setSnapValue] = useState(25);
 
   return (
-  <div className='example-block' style={{display: 'block'}}>
+  <DemoBlock>
     <View style={styles.sliderContainer}>
       <Text style={styles.label}>Snapped Value: {snapValue}</Text>
       <Slider
@@ -18,7 +21,7 @@ export default () => {
         minimumTrackTintColor="#2ECC71"
       />
       </View>
-  </div>
+  </DemoBlock>
   );
 };
 

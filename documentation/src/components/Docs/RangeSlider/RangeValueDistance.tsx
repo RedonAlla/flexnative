@@ -1,8 +1,11 @@
 import React from 'react';
+
 import { RangeSlider } from '@flexnative/slider';
+import DemoBlock from '../../common/DemoBlock';
+
 
 export default () => (
-  <div className='example-block' style={{display: 'block'}}>
+  <DemoBlock>
     {/* Default 0 to 1 range with specific starting points */}
     <RangeSlider value={[0.2, 0.8]} />
 
@@ -20,5 +23,5 @@ export default () => (
       minimumDistance={20} 
       value={[30, 40]} // Will snap to maintain the 20 unit gap
     />
-  </div>
+  </DemoBlock>
 );

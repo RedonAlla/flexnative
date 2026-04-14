@@ -1,9 +1,12 @@
 import React from 'react';
 import { RangeSlider } from '@flexnative/slider';
+
 import { LOGO } from '@site/src/constants/common';
+import DemoBlock from '../../common/DemoBlock';
+
 
 export default () => (
-  <div className='example-block' style={{display: 'block'}}>
+  <DemoBlock>
      {/* Using an icon for both thumbs */}
     <RangeSlider 
       humbImage={LOGO} 
@@ -15,5 +18,5 @@ export default () => (
       thumbStyle={{ width: 32, height: 32, borderRadius: 8 }}
       trackStyle={{ height: 8 }}
     />
-  </div>
+  </DemoBlock>
 );

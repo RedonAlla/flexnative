@@ -1,8 +1,11 @@
 import React from 'react';
+
 import { RangeSlider } from '@flexnative/slider';
+import DemoBlock from '../../common/DemoBlock';
+
 
 export default () => (
-  <div className='example-block' style={{display: 'block'}}>
+  <DemoBlock>
     {/* Interaction disabled */}
     <RangeSlider 
       disabled={true} 
@@ -20,5 +23,5 @@ export default () => (
     <RangeSlider 
       onValueChange={(values) => console.log("Low:", values[0], "High:", values[1])}
     />
-  </div>
+  </DemoBlock>
 );

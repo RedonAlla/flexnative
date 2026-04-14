@@ -1,0 +1,51 @@
+---
+title: Show case
+sidebar_position: 2
+last_update:
+  date: 2026-04-14
+  author: Redon Alla
+tags: [react, react-native, expo, framework, component, flexnative, skeleton]
+---
+
+
+import ExampleWrapper from '@site/src/components/Docs/common/ExampleWrapper';
+
+Here are several examples of how to use the `skeleton-loading` component, categorized by its properties.
+
+## 1. Animation
+This example demonstrates the basic animation of the `SkeletonLoader`.
+The shimmer effect moves across the defined shapes, indicating a loading state.
+You can control the animation's behavior using the `animate`, `speed`, and `interval` props.
+
+import AnimationExample from '@site/src/components/Docs/SkeletonLoading/AnimationExample';
+import AnimationExampleMdx from '!!raw-loader!@site/src/components/Docs/SkeletonLoading/AnimationExample';
+
+<ExampleWrapper codeExample={AnimationExampleMdx}>
+<AnimationExample />
+</ExampleWrapper>
+
+## 2. Mask
+The `beforeMask` property in the `SkeletonLoader` is designed to receive the SVG shapes (like `Rect`, `Circle`, or `Path`) that define the layout of your skeleton.
+These elements act as a mask, and the loading animation (the highlight/shimmer effect) is rendered through them.
+
+In the `flexnative` library, you can import these shapes directly from the package.
+Here is an example of how to use `beforeMask` to create a skeleton for a typical list item containing an avatar and two lines of text:
+
+import MaskExample from '@site/src/components/Docs/SkeletonLoading/MaskExample';
+import MaskExampleMdx from '!!raw-loader!@site/src/components/Docs/SkeletonLoading/MaskExample';
+
+<ExampleWrapper codeExample={MaskExampleMdx}>
+<MaskExample />
+</ExampleWrapper>
+
+## 3. Colors
+Customize the look of your skeleton components using the `backgroundColor` and `foregroundColor` properties. 
+`backgroundColor` defines the base color of the shapes, while `foregroundColor` defines the color of the highlight (shimmer) effect. 
+This is useful for matching your application's brand colors or ensuring the loader blends seamlessly into different UI backgrounds.
+
+import ColorsExample from '@site/src/components/Docs/SkeletonLoading/ColorsExample';
+import ColorsExampleMdx from '!!raw-loader!@site/src/components/Docs/SkeletonLoading/ColorsExample';
+
+<ExampleWrapper codeExample={ColorsExampleMdx}>
+<ColorsExample />
+</ExampleWrapper>

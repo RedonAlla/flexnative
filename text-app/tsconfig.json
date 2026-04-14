@@ -5,7 +5,8 @@
     "strict": true,
     "sourceMap": false,
     "paths": {
-      "@flexnative/screens": ["../npm-packages/src/packages/screens/src/index"]
+      "@flexnative/screens": ["../npm-packages/src/packages/screens/src/index"],
+      "@flexnative/skeleton-loading": ["../npm-packages/src/packages/components/skeleton-loading/src/index"]
     }
   },
   "include": [

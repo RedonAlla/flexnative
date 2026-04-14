@@ -1,12 +1,4 @@
 /**
- * @ Author: Redon Alla
- * @ Create Time: 2024-06-09 22:40:44
- * @ Modified by: Redon Alla
- * @ Modified time: 2024-11-27 16:59:16
- * @ Description: Constant Values use for SkeletonLoader component.
- */
-
-/**
  * Represents the light background color used for skeleton loading components.
  * This color is typically used as a placeholder background while content is loading.
  * 

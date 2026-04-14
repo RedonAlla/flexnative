@@ -1,6 +1,6 @@
 import React from "react";
 import { ColorValue } from "react-native";
-import { ColorView } from "../Colors/DefaultColors";
+import ColorView from "../../common/ColorView";
 
  const colors = {
   red: "#ff2325",

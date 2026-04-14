@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+
 import { RangeSlider } from '@flexnative/slider';
+import DemoBlock from '../../common/DemoBlock';
+
 
 export default () => {
   const [rangeValue, setRangeValue] = useState([20, 80]);
@@ -10,7 +13,7 @@ export default () => {
   };
 
   return (
-  <div className='example-block' style={{display: 'block'}}>
+  <DemoBlock>
     <View style={styles.sliderContainer}>
       <Text style={styles.label}>
         Selected Range: {rangeValue[0]} - {rangeValue[1]}
@@ -26,7 +29,7 @@ export default () => {
         thumbTintColor="#F5F5F4"
       />
     </View>
-  </div>
+  </DemoBlock>
   );
 };
 
