@@ -2,12 +2,12 @@
  * @ Author: Redon Alla
  * @ Create Time: 2023-10-08 12:58:28
  * @ Modified by: Redon Alla
- * @ Modified time: 2026-04-13 20:24:31
+ * @ Modified time: 2026-04-14 22:54:02
  * @ Description: Provides components for creating skeleton loading animations.
  */
 
 import React, { useEffect, useRef, memo } from 'react';
-import { Animated } from 'react-native';
+import { Animated, ColorSchemeName } from 'react-native';
 import Svg, { ClipPath, Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 import { useThemeState } from '@flexnative/theme-context';
 
@@ -62,7 +62,7 @@ const SvgContainer: React.FC<IContentLoaderProps> = ({
   ...props
 }) => {
   const theme = useThemeState();
-  const currentScheme = theme.scheme ?? 'light';
+  const currentScheme: ColorSchemeName = theme.scheme === 'dark' ? 'dark' : 'light';
   const animatedValue = useRef(new Animated.Value(-1)).current;
   const fixedId = useRef(uniqueKey || uid()).current;
   const idClip = `${fixedId}-diff`;
