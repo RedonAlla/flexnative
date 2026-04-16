@@ -10,6 +10,9 @@
   "exports": {
     ".": "./dist/index.js"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "expo-haptics": "~14.1.4",
     "react-native-svg": "*",
