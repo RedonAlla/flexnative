@@ -1,4 +1,14 @@
-# @flexnative/switch
+---
+id: switch
+title: Switch
+sidebar_label: Switch
+sidebar_class_name: nav_session switch
+last_update:
+  date: 2026-04-16
+  author: Redon Alla
+tags: [react, react-native, expo, framework, flexnative, component, switch]
+description: A highly customizable and universal switch component for React Native and Web, part of the FlexNative design system.
+---
 
 [![npm version](https://img.shields.io/npm/v/@flexnative/switch.svg?logo=npm)](https://www.npmjs.com/package/@flexnative/switch)
 [![npm downloads](https://img.shields.io/npm/dt/@flexnative/switch.svg?logo=npm)](https://www.npmjs.com/package/@flexnative/switch)
@@ -11,7 +21,6 @@
 
 
 A highly customizable and universal switch component for React Native and Web, part of the FlexNative design system.
-
 
 ## Features
 
@@ -40,6 +49,25 @@ Ensure they are installed in your project:
 npm install react-native-svg @flexnative/theme-context
 ```
 
+## Props
+
+| Prop | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| value | `boolean` | `false` | The value of the switch. |
+| onValueChange | `(value: boolean) => void` | `undefined` | Callback called when the value changes. |
+| activeTrackColor | `ColorValue` | `theme.colors.primary` | Background color when the switch is ON. |
+| inactiveTrackColor` | `ColorValue` | `theme.colors.default` | Background color when the switch is OFF. |
+| thumbColor | `ColorValue` | `theme.colors.card` | Color of the sliding thumb. |
+| width | `number` | `50` | Total width of the switch component. |
+| height | `number` | `28` | Total height of the switch component. |
+| duration | `number` | `200` | Duration of the toggle animation in milliseconds. |
+
+## Theming
+
+The component automatically consumes colors from the `@flexnative/theme-context`.
+If you don't provide explicit colors via props, it will fallback to your theme's `primary`, `default`, and `card` colors.
+
+
 ## Usage
 
 ```tsx
@@ -59,30 +87,22 @@ const Example = () => {
 };
 ```
 
-## Props
+#### Interactive Playground
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| value | `boolean` | `false` | The value of the switch. |
-| onValueChange | `(value: boolean) => void` | `undefined` | Callback called when the value changes. |
-| activeTrackColor | `ColorValue` | `theme.colors.primary` | Background color when the switch is ON. |
-| inactiveTrackColor` | `ColorValue` | `theme.colors.default` | Background color when the switch is OFF. |
-| thumbColor | `ColorValue` | `theme.colors.card` | Color of the sliding thumb. |
-| width | `number` | `50` | Total width of the switch component. |
-| height | `number` | `28` | Total height of the switch component. |
-| duration | `number` | `200` | Duration of the toggle animation in milliseconds. |
+You can experiment with the `Switch` component in real-time below. 
 
-## Theming
+```tsx live
+function SwitchPlayground() {
+  const [isNotificationsEnabled, setIsNotificationsEnabled] = useState(false);
 
-The component automatically consumes colors from the `@flexnative/theme-context`.
-If you don't provide explicit colors via props, it will fallback to your theme's `primary`, `default`, and `card` colors.
-
-## License
-
-MIT © Redon Alla
-
----
-
-For more information, visit the FlexNative Documentation.
-
-Report issues on GitHub.
+  return (
+    <Switch
+        value={isNotificationsEnabled}
+        onValueChange={setIsNotificationsEnabled}
+        activeTrackColor="#007AFF" // iOS blue
+        width={60}
+        height={32}
+      />
+  );
+}
+```

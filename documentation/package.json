@@ -26,6 +26,7 @@
     "@flexnative/screens": "^0.1.0",
     "@flexnative/skeleton-loading": "^0.0.3",
     "@flexnative/slider": "^0.1.9",
+    "@flexnative/switch": "^1.0.0",
     "@flexnative/theme-context": "^0.0.19",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",

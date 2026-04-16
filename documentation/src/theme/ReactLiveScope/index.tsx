@@ -14,6 +14,7 @@ import Icon, {
   WiggleIcon
 } from '@flexnative/icons';
 import { RangeSlider, Slider } from "@flexnative/slider";
+import Switch from '@flexnative/switch';
 // import BottomSheet from "@flexnative/bottom-sheet";
 // import Tag from '@flexnative/tags';
 // import Badge from '@flexnative/badges';
@@ -41,6 +42,7 @@ const ReactLiveScope: Record<string, unknown> = {
   WiggleIcon,
   Slider,
   RangeSlider,
+  Switch,
   // BottomSheet,
   // Tag,
   // Badge,

@@ -88,3 +88,7 @@ screens:
   label: Screens
   permalink: /screens
   description: A collection of screen and layout components for React Native applications, part of the FlexNative ecosystem.
+switch:
+  label: Switch
+  permalink: /switch
+  description: A highly customizable and universal switch component for React Native and Web, part of the FlexNative design system.
