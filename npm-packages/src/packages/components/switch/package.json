@@ -11,6 +11,7 @@
     ".": "./dist/index.js"
   },
   "dependencies": {
+    "expo-haptics": "~14.1.4",
     "react-native-svg": "*",
     "@flexnative/theme-context": "*"
   },
