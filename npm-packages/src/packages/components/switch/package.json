@@ -1,0 +1,36 @@
+{
+  "name": "@flexnative/switch",
+  "version": "1.0.0",
+  "description": "A highly customizable and universal switch component for React Native and Web, part of the FlexNative design system.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "dependencies": {
+    "react-native-svg": "*",
+    "@flexnative/theme-context": "*"
+  },
+  "keywords": [
+    "react",
+    "react-native",
+    "switch"
+  ],
+  "scripts": {
+    "build": "tsc --build",
+    "prepare": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Redon Alla",
+  "license": "MIT",
+  "homepage": "https://redonalla.github.io/flexnative/",
+  "bugs": "https://github.com/RedonAlla/flexnative/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RedonAlla/flexnative.git",
+    "directory": "npm-packages/src/packages/components/switch"
+  }
+}
