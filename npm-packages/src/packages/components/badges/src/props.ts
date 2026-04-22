@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-06-01 00:00:43
  * @ Modified by: Redon Alla
- * @ Modified time: 2026-04-21 21:58:20
+ * @ Modified time: 2026-04-22 21:54:38
  * @ Description: Defines the properties for the Badged component.
  */
 
@@ -57,7 +57,7 @@ export default interface BadgedProps extends TextProps {
   /**
    * The text content to be displayed within the badge.
    */
-  text?: string;
+  text: string;
 
   /**
    * Text color value.

@@ -192,6 +192,32 @@ li {
     }
   }
 
+  &.nav_session.badges {
+    & > a::before {
+      margin-right: 12px;
+      font-family: 'icons' !important;
+      line-height: 1;
+      margin-right: 12px;
+      font-size: 18px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      content: "\f003";
+    }
+  }
+
+  &.nav_session.switch {
+    & > a::before {
+      margin-right: 12px;
+      font-family: 'icons' !important;
+      line-height: 1;
+      margin-right: 12px;
+      font-size: 24px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      content: "\f754";
+    }
+  }
+
   &.nav_session.theme {
     & > div {
       & > a::before {

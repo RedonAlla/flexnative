@@ -17,7 +17,7 @@ import { RangeSlider, Slider } from "@flexnative/slider";
 import Switch from '@flexnative/switch';
 // import BottomSheet from "@flexnative/bottom-sheet";
 // import Tag from '@flexnative/tags';
-// import Badge from '@flexnative/badges';
+import Badge from '@flexnative/badges';
 import SkeletonLoader, { Circle, Rect } from '@flexnative/skeleton-loading';
 // import { TextBox, NumericTextBox, Check, CheckList } from '@flexnative/inputs';
 // import Message from "@flexnative/messages";
@@ -45,7 +45,7 @@ const ReactLiveScope: Record<string, unknown> = {
   Switch,
   // BottomSheet,
   // Tag,
-  // Badge,
+  Badge,
   SkeletonLoader,
   Circle,
   Rect,
