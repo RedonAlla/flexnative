@@ -2,11 +2,11 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-06-01 00:00:43
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-04-06 17:44:14
+ * @ Modified time: 2026-04-21 21:58:20
  * @ Description: Defines the properties for the Badged component.
  */
 
-import { BorderRadius, BorderWidth, Color, Sizes } from "@flexnative/theme-context";
+import { BorderRadius, BorderWidth, Color, FontSize } from "@flexnative/theme-context";
 import { TextProps, ColorValue } from "react-native";
 
 /**
@@ -36,16 +36,6 @@ export type Position = {
    */
   right?: number;
 }
-
-/**
- * Represents the type of a badge.
- * 
- * Possible badge types:
- * - `solid`: The standard badge type.
- * - `text`: A badge that displays text.
- * - `ghost`: A badge with a ghost style.
- */
-export type BadgeType = 'solid' | 'text' | 'ghost';
 
 /**
  * Represents the possible positions for a badge component.
@@ -93,14 +83,9 @@ export default interface BadgedProps extends TextProps {
   borderColor?: ColorValue;
 
   /** Badged Size variable
-  * @default 'medium'
+  * @default 'md'
   */
-  size?: Sizes;
-
-  /**
-   * @default 'solid'
-  */
-  type?: BadgeType;
+  size?: FontSize;
 
   /** Badged border radius.
   * @default 'full'
@@ -108,7 +93,7 @@ export default interface BadgedProps extends TextProps {
   radius?: BorderRadius;
 
   /** Color by theme or a custom color according `react-native` ColorValue.
-   * @default 'default'
+   * @default 'error'
   */
   color?: Color;
 }

@@ -2,7 +2,7 @@
  * @ Author: Redon Alla
  * @ Create Time: 2024-06-01 00:00:43
  * @ Modified by: Redon Alla
- * @ Modified time: 2025-04-06 17:22:13
+ * @ Modified time: 2026-04-21 23:20:27
  * @ Description: Defines constants used within the Badge component for styling and positioning.
  */
 

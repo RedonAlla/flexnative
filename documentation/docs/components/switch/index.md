@@ -61,6 +61,7 @@ npm install react-native-svg @flexnative/theme-context
 | width | `number` | `50` | Total width of the switch component. |
 | height | `number` | `28` | Total height of the switch component. |
 | duration | `number` | `200` | Duration of the toggle animation in milliseconds. |
+| disabled | `boolean` | `undefined` | If true, prevents user interaction. |
 
 ## Theming
 
