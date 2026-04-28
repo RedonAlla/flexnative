@@ -49,7 +49,7 @@ so any [`TextProps`](https://reactnative.dev/docs/text-style-props) properties a
 | :--- | :--- | :------- | :------ | :---------- |
 | text | `string` | ✅ | `undefined` | The text content to be displayed within the badge. |
 | textColor | [`ColorValue`](https://reactnative.dev/docs/colors) | 🔲 | `undefined` |  Custom styles for the badge label text. |
-| children | [`React.ReactNode`](https://reactnative.dev/docs/react-node) | 🔲 | The content that the badge will be positioned relative to. The badge will appear on top of this content. |
+| children | [`React.ReactNode`](https://reactnative.dev/docs/react-node) | 🔲 | `undefined` | The content that the badge will be positioned relative to. The badge will appear on top of this content. |
 | borderWidth | [`BorderWidth`](../../theme/default-theme#borderwidth) | 🔲 | `none` | Optional border width for the badge. |
 | position | [`BadgePosition`](#badgeposition) | 🔲 | `top-right` | Specifies the corner where the badge will be positioned relative to its children.  |
 | borderColor | [`ColorValue`](https://reactnative.dev/docs/colors) | 🔲 | `undefined` | BCustom border color for the badge. |
