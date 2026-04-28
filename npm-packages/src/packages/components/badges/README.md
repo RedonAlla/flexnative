@@ -74,7 +74,7 @@ so any [`TextProps`](https://reactnative.dev/docs/text-style-props) properties a
 | borderWidth | [`BorderWidth`](https://redonalla.github.io/flexnative/docs/theme/default-theme#borderwidth) | 🔲 | `none` | Optional border width for the badge. |
 | position | [`BadgePosition`](#badgeposition) | 🔲 | `top-right` | Specifies the corner where the badge will be positioned relative to its children.  |
 | borderColor | [`ColorValue`](https://reactnative.dev/docs/colors) | 🔲 | `undefined` | BCustom border color for the badge. |
-| size | [`FontSize`](https://redonalla.github.io/flexnative/docs/theme/default-theme#fontsize) | `md` | 🔲 | Badged Size variable. |
+| size | [`FontSize`](https://redonalla.github.io/flexnative/docs/theme/default-theme#fontsize) | 🔲 | `md` | Badged Size variable. |
 | radius | [`BorderRadius`](https://redonalla.github.io/flexnative/docs/theme/default-theme#borderradius) |  🔲 |`full` | Badged Size variable. |
 | color | [`ColorValue`](https://redonalla.github.io/flexnative/docs/theme/default-theme#basecolors) | 🔲 | `error` | Color by theme or a custom color. |
 
