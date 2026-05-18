@@ -1,7 +1,7 @@
-import Icon from "@flexnative/icons";
-import { Fonts, useThemeState } from "@flexnative/theme-context";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import Icon from "@flexnative/icons";
+import { Fonts, useThemeState } from "@flexnative/theme-context";
 
 type Props = {
   text: string;
